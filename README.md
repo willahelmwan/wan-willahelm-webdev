@@ -11,6 +11,6 @@ Web Development
 
 
 Links:
-https://dashboard.heroku.com/apps/wan-willahelm-webdev
+https://wan-willahelm-webdev.herokuapp.com/
 
 

@@ -2,6 +2,31 @@ input.form-control {
     margin-bottom: 5px;
 }
 
-body {
-    padding-top: 36px;
+body.profile {
+    padding-top: 60px;
+}
+
+.profilenav .navbar-default .navbar-toggle {
+    border-color: #fff;
+}
+
+.profilenav .navbar-default {
+    background-color: #40a8b7;
+    border-color: #b2b1b5;
+}
+
+.profilenav .navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.profilenav .navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.profilenav .navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+.plusglyphicon {
+    color: white;
 }

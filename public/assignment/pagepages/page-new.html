@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>New Page</title>
+    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+
+<body class="profile">
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">New Page</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-lg split-view-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="row">
+                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-2">
+                                <a href="page-new.html" class="plusglyphicon">
+                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Blog Post</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Blogs</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Home</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">About</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Contact Us</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9 col-xs-12 split-view-right">
+                <label for="name">Name</label>
+                <input name="pagename"
+                       placeholder="Page Name"
+                       class="form-control"
+                       id="name"/>
+
+                <label for="title">Title</label>
+                <input name="pagetitle"
+                          placeholder="Page Title"
+                          class="form-control"
+                          id="title"/>
+
+                <a class="btn btn-default btn-primary btn-block"
+                   href="page-list.html"
+                   role="button">Create</a>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   href="page-list.html"
+                   role="button">Cancel</a>
+            </div>
+        </div>
+
+        <div class="profilenav">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid">
+                    <a href="../userpages/profile.html" class="userglyphicon">
+                        <span class="pull-right glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+    </div>
+</body>
+</html>

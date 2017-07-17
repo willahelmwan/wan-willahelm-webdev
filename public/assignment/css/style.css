@@ -1,10 +1,13 @@
-input.form-control {
+input.form-control, textarea {
     margin-bottom: 5px;
 }
 
 body.profile {
     padding-top: 60px;
+    padding-bottom: 60px;
+    overflow-y: scroll;
 }
+
 
 .profilenav .navbar-default .navbar-toggle {
     border-color: #fff;
@@ -27,6 +30,36 @@ body.profile {
     background-color: #ffffff;
 }
 
-.plusglyphicon {
+.glyphicon {
     color: white;
+}
+
+.glyphicon-cog {
+    color: black;
+}
+
+.split-view-left {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    z-index: 1;
+    overflow-y: scroll;
+}
+
+@media (min-width: 1200px){
+    .col-lg-9.split-view-right {
+        width: 75%;
+        position: absolute;
+        right: 0px;
+        top: 60px;
+        bottom: 0px;
+        overflow-y: scroll;
+    }
+}
+
+span.pull-right.glyphicon.glyphicon-user {
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-left: 15px;
+    padding-bottom: 15px;
 }

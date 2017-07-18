@@ -34,7 +34,15 @@ body.profile {
     color: white;
 }
 
-.glyphicon-cog {
+span.pull-right.glyphicon.glyphicon-ok {
+    color: white;
+}
+
+span.pull-right.glyphicon.glyphicon-plus {
+    color: white;
+}
+
+span.pull-right.glyphicon.glyphicon-cog {
     color: black;
 }
 
@@ -44,6 +52,15 @@ body.profile {
     bottom: 0px;
     z-index: 1;
     overflow-y: scroll;
+}
+
+@media (min-width: 768px) {
+    .pull-right.glyphicon {
+        margin-right: 0px;
+    }
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: 0px;
+    }
 }
 
 @media (min-width: 1200px){
@@ -62,4 +79,19 @@ span.pull-right.glyphicon.glyphicon-user {
     padding-right: 0px;
     padding-left: 15px;
     padding-bottom: 15px;
+}
+
+span.pull-left.glyphicon.glyphicon-chevron-left {
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 15px;
+}
+
+
+.widget-list li {
+    margin-bottom: 15px;
+    list-style-type: none;
+    margin-left: 5px;
+    margin-top: 5px
 }

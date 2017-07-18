@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Widget Youtube</title>
+    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+
+<body class="profile">
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <a href="javascript:history.back()" class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <a href="widget-list.html" >
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
+
+                <div class="navbar-header">
+                    <a class="navbar-brand active" href="#">Widget Edit</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+
+        <label for="Name">Name</label>
+        <input name="Name"
+               class="form-control"
+               id="Name"/>
+
+        <label for="text">Text</label>
+        <input name="text"
+               class="form-control"
+               id="text"/>
+
+        <label for="URL">URL</label>
+        <input name="URL"
+               value="https://www.youtube.com/watch?v=h0w3-fT-MNA"
+               class="form-control"
+               id="URL"/>
+
+        <label for="Width">Width</label>
+        <input name="Width"
+               class="form-control"
+               id="Width"/>
+
+        <a class="btn btn-default btn-primary btn-block"
+           href="widget-list.html"
+           role="button">Cancel</a>
+
+        <a class="btn btn-default btn-danger btn-block"
+           href="widget-list.html"
+           role="button">Delete</a>
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <a href="profile.html" class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

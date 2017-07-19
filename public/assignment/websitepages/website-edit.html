@@ -2,21 +2,41 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Edit Website</title>
     <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 
 <body class="profile">
+    <!--<div class="profilenav">-->
+        <!--<div class="row">-->
+            <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+                <!--<a href="javascript:history.back()" >-->
+                    <!--<span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--<a href="javascript:history.back()">-->
+                    <!--<span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span>-->
+                <!--</a>-->
+                <!--<div class="container-fluid">-->
+                    <!--<div class="navbar-header">-->
+                        <!--<div class="col-xs-3 visible-lg split-view-left-nav"><a class="navbar-brand" >Websites</a></div>-->
+                        <!--<div class="col-lg-9 col-xs-12 split-view-right-nav"><a class="navbar-brand">Edit Website</a></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</nav>-->
+
+        <!--</div>-->
+    <!--</div>-->
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
 
-                <a href="javascript:history.back()" class="userglyphicon">
+                <a href="website-list.html" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a href="javascript:history.back()" >
+                <a href="website-list.html" >
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
 
@@ -45,7 +65,9 @@
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-10">Wikipedia</div>
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Wikipedia</a>
+                            </div>
                             <div class="col-xs-2">
                                 <a href="website-edit.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
@@ -56,7 +78,9 @@
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-10">Facebook</div>
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Facebook</a>
+                            </div>
                             <div class="col-xs-2">
                                 <a href="website-edit.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
@@ -67,7 +91,9 @@
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-10">Twitter</div>
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Twitter</a>
+                            </div>
                             <div class="col-xs-2">
                                 <a href="website-edit.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
@@ -78,7 +104,9 @@
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-10">Amazon</div>
+                            <div class="col-xs-10">
+                                <a href="../pagepages/page-list.html">Amazon</a>
+                            </div>
                             <div class="col-xs-2">
                                 <a href="website-edit.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
@@ -92,6 +120,7 @@
             <div class="col-lg-9 col-xs-12 split-view-right">
                 <label for="name">Name</label>
                 <input name="name"
+                       type="text"
                        placeholder="Facebook"
                        value="Lorem"
                        class="form-control"

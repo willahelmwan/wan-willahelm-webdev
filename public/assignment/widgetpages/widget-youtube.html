@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Widget Youtube</title>
     <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet"/>
@@ -13,7 +14,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
 
-                <a href="javascript:history.back()" class="userglyphicon">
+                <a href="widget-list.html" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
@@ -32,22 +33,29 @@
 
         <label for="Name">Name</label>
         <input name="Name"
+               type="text"
+               placeholder="Name of Video"
                class="form-control"
                id="Name"/>
 
         <label for="text">Text</label>
         <input name="text"
+               type="text"
+               placeholder="Text of Video"
                class="form-control"
                id="text"/>
 
         <label for="URL">URL</label>
         <input name="URL"
+               type="text"
                value="https://www.youtube.com/watch?v=h0w3-fT-MNA"
                class="form-control"
                id="URL"/>
 
         <label for="Width">Width</label>
         <input name="Width"
+               type="text"
+               placeholder="100%"
                class="form-control"
                id="Width"/>
 
@@ -63,7 +71,7 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
-                <a href="profile.html" class="userglyphicon">
+                <a href="../userpages/profile.html" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

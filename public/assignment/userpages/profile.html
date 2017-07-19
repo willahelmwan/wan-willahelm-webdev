@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Profile</title>
     <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet"/>
@@ -12,23 +13,17 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
-                <!--<div class="row">-->
-                    <!--<div class="col-xs-3 visible-lg split-view-left">-->
+                        <!--<a href="javascript:history.back()" class="userglyphicon">-->
+                            <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
+                        <!--</a>-->
 
-                        <a href="javascript:history.back()" class="userglyphicon">
-                            <span class="pull-left glyphicon glyphicon-chevron-left"></span>
-                        </a>
-
-                        <a href="javascript:history.back()" >
+                        <a href="profile.html" >
                             <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                         </a>
-                    <!--</div>-->
-                    <!--<div class="col-lg-9 col-xs-12 split-view-right">-->
-                        <div class="navbar-header">
-                            <a class="navbar-brand active" href="#">Profile</a>
+
+                        <div class="navbar-header navbar-title">
+                            <a class="navbar-brand active">Profile</a>
                         </div>
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </nav>
     </div>
@@ -36,12 +31,14 @@
 
         <label for="firstname">Firstname</label>
         <input name="firstname"
+               type="text"
                placeholder="Alice"
                class="form-control"
                id="firstname"/>
 
         <label for="lastname">Lastname</label>
         <input name="lastname"
+               type="text"
                placeholder="Wonderland"
                class="form-control"
                id="lastname"/>

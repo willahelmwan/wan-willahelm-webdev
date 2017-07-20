@@ -78,6 +78,7 @@ span.pull-right.glyphicon.glyphicon-align-justify {
 .split-view-left-nav {
     position: absolute;
     top: 0px;
+    left: 30px;
     bottom: 0px;
     z-index: 1;
 }
@@ -89,15 +90,23 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .navbar>.container-fluid .navbar-brand {
         margin-left: 0px;
     }
-    /*.container-fluid>.navbar-header{*/
+    .container-fluid>.navbar-header{
 
-        /*margin-left: -15px;*/
-    /*}*/
+        margin-left: -15px;
+    }
 }
 
-/*.navbar-title{*/
-    /*padding-left: 15px;*/
-/*}*/
+.navbar-brand.navsplit{
+    padding-left:0px;
+}
+
+.navbar-title{
+    padding-left: 15px;
+}
+
+.navbar-brand.active.profilespacing{
+    padding-left: 0px;
+}
 
 @media (max-width: 768px){
     .navbar-header {
@@ -107,6 +116,12 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .container-fluid>.navbar-header{
 
         margin-left: 0px;
+    }
+    .navbar-header.navbar-title{
+        padding-left: 0px;
+    }
+    .navbar-brand.splitnav{
+        padding-left: 0px;
     }
 
 }
@@ -127,7 +142,7 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .col-lg-9.split-view-right-nav {
         width: 75%;
         position: absolute;
-        right: 0px;
+        right: 30px;
         top: 0px;
         bottom: 0px;
     }

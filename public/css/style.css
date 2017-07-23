@@ -13,10 +13,9 @@ div.profile {
     border-color: #fff;
 }
 
-.navbar-background {
+.profilenav .navbar-default {
     background-color: #40a8b7;
     border-color: #b2b1b5;
-
 }
 
 .profilenav .navbar-default .navbar-brand {
@@ -27,9 +26,9 @@ div.profile {
     color: #fff;
 }
 
-/*.profilenav .navbar-default .navbar-toggle .icon-bar {*/
-    /*background-color: #ffffff;*/
-/*}*/
+.profilenav .navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
 
 .glyphicon {
     color: white;

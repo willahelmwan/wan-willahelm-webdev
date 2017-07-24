@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>New Page</title>
+    <title>Edit Page</title>
     <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
@@ -18,12 +18,8 @@
 
                 <div class="container-fluid nav-header">
                     <div class="navbar-header">
-                        <div class="col-lg-3 visible-lg split-view-left-nav">
-                            <a class="navbar-brand navsplit" >Pages</a>
-                        </div>
-                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite">
-                            <a class="navbar-brand splitnav">New Page</a>
-                        </div>
+                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >Pages</a></div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit Page</a></div>
                     </div>
                 </div>
             </nav>
@@ -48,7 +44,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widgetpages/widget-list.html">Blog Post</a>
+                                <a href="../widget/widget-list.html">Blog Post</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="page-edit.html">
@@ -61,7 +57,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widgetpages/widget-list.html">Blogs</a>
+                                <a href="../widget/widget-list.html">Blogs</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="page-edit.html">
@@ -74,7 +70,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widgetpages/widget-list.html">Home</a>
+                                <a href="../widget/widget-list.html">Home</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="page-edit.html">
@@ -87,7 +83,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widgetpages/widget-list.html">About</a>
+                                <a href="../widget/widget-list.html">About</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="page-edit.html">
@@ -100,7 +96,7 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widgetpages/widget-list.html">Contact Us</a>
+                                <a href="../widget/widget-list.html">Contact Us</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="page-edit.html">
@@ -116,29 +112,35 @@
                 <label for="name">Name</label>
                 <input name="pagename"
                        placeholder="Page Name"
+                       value="Blog Post"
                        class="form-control"
                        id="name"/>
 
                 <label for="title">Title</label>
                 <input name="pagetitle"
-                          placeholder="Page Title"
-                          class="form-control"
-                          id="title"/>
+                       placeholder="Page Title"
+                       value="My Blog"
+                       class="form-control"
+                       id="title"/>
+
+                <a class="btn btn-default btn-success btn-block"
+                   href="page-list.html"
+                   role="button">OK</a>
 
                 <a class="btn btn-default btn-primary btn-block"
                    href="page-list.html"
-                   role="button">Create</a>
+                   role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"
                    href="page-list.html"
-                   role="button">Cancel</a>
+                   role="button">Delete</a>
             </div>
         </div>
 
         <div class="profilenav">
             <nav class="navbar navbar-default navbar-fixed-bottom">
                 <div class="container-fluid">
-                    <a href="../userpages/profile.html" class="userglyphicon">
+                    <a href="../user/templates/profile.view.client.html" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </div>

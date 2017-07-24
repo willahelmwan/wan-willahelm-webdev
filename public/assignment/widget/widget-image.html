@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Widget Youtube</title>
+    <title>Widget Image</title>
     <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
@@ -34,30 +34,41 @@
         <label for="Name">Name</label>
         <input name="Name"
                type="text"
-               placeholder="Name of Video"
+               placeholder="Name of Image"
                class="form-control"
                id="Name"/>
 
         <label for="text">Text</label>
         <input name="text"
                type="text"
-               placeholder="Text of Video"
+               placeholder="Text of Image"
                class="form-control"
                id="text"/>
 
         <label for="URL">URL</label>
         <input name="URL"
                type="text"
-               value="https://www.youtube.com/watch?v=h0w3-fT-MNA"
+               value="http://zdnet3.cbsistatic.com/hub/i/r/2017/07/18/5e093efe-e23b-473f-b127-8ed4a00419ad/resize/770xauto/3209caea6df6e46c64ee6616fa4d1a21/screen-shot-2017-07-18-at-05-51-51.jpg"
                class="form-control"
                id="URL"/>
 
         <label for="Width">Width</label>
         <input name="Width"
                type="text"
-               placeholder="100%"
+               value="100%"
                class="form-control"
                id="Width"/>
+
+        <label for="upload">Upload</label>
+        <input name="upload"
+               type="file"
+               class="form-control"
+               accept="image/*"
+               id="upload"/>
+
+        <a class="btn btn-default btn-success btn-block"
+           href="widget-list.html"
+           role="button">Upload Image</a>
 
         <a class="btn btn-default btn-primary btn-block"
            href="widget-list.html"
@@ -71,7 +82,7 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
-                <a href="../userpages/profile.html" class="userglyphicon">
+                <a href="../user/templates/profile.view.client.html" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

@@ -7,7 +7,7 @@
                             <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
                         <!--</a>-->
 
-                        <a href="profile.html" >
+                        <a href="profile.view.client.html" >
                             <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                         </a>
 
@@ -22,6 +22,7 @@
         <label for="firstname">Firstname</label>
         <input name="firstname"
                type="text"
+               ng-model="model.user.firstName"
                placeholder="Alice"
                class="form-control"
                id="firstname"/>
@@ -29,6 +30,7 @@
         <label for="lastname">Lastname</label>
         <input name="lastname"
                type="text"
+               ng-model="model.user.lastName"
                placeholder="Wonderland"
                class="form-control"
                id="lastname"/>
@@ -37,7 +39,7 @@
         <input name="username"
                readonly
                type="text"
-               value="alice"
+               ng-model="model.user.username"
                placeholder="alice"
                class="form-control"
                id="username"/>
@@ -56,18 +58,26 @@
                id="dob"/>
 
         <a class="btn btn-default btn-primary btn-block"
-           href="../websitepages/website-list.html"
+           href="#!/user/{{model.user._id}}/website"
            role="button">Websites</a>
 
+        <a class="btn btn-default btn-primary btn-block"
+           ng-click="updateUser()"
+           role="button">Update</a>
+
         <a class="btn btn-default btn-danger btn-block"
-           href="login.html"
+           href="#!/login"
            role="button">Logout</a>
+
+        <a class="btn btn-default btn-danger btn-block"
+           ng-click="model.unregister()"
+           role="button">Unregister</a>
     </div>
 
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="profile.html" class="userglyphicon">
+                <a href="profile.view.client.html" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

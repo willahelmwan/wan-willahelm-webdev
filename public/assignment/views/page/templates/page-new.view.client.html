@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>New Page</title>
-    <link href="../../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../css/style.css" rel="stylesheet"/>
-</head>
-
-<body class="profile">
+<div class="profile">
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="page-list.view.client.html"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a href="page-list.view.client.html"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
-                <div class="container-fluid nav-header">
+                <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
                         <div class="col-lg-3 visible-lg split-view-left-nav">
                             <a class="navbar-brand navsplit" >Pages</a>
@@ -45,100 +35,52 @@
                         </div>
                     </li>
 
-                    <li class="list-group-item">
+                    <li ng-repeat="page in model.pages" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../../widget/widget-list.view.client.html">Blog Post</a>
+                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}/widget">{{page.name}}</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.view.client.html">
+                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
                         </div>
                     </li>
 
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../widget/widget-list.view.client.html">Blogs</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
 
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../widget/widget-list.view.client.html">Home</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../widget/widget-list.view.client.html">About</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../widget/widget-list.view.client.html">Contact Us</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="page-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
             <div class="col-lg-9 col-xs-12 split-view-right">
                 <label for="name">Name</label>
                 <input name="pagename"
+                       ng-model="page.name"
                        placeholder="Page Name"
                        class="form-control"
                        id="name"/>
 
                 <label for="title">Title</label>
                 <input name="pagetitle"
-                          placeholder="Page Title"
-                          class="form-control"
-                          id="title"/>
+                       ng-model="page.description"
+                       placeholder="Page Title"
+                       class="form-control"
+                       id="title"/>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="page-list.view.client.html"
+                   ng-click="model.createPage(page)"
                    role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="page-list.view.client.html"
+                   href="#!/user/{{model.userId}}/website/{{model.webId}}/page"
                    role="button">Cancel</a>
             </div>
         </div>
 
         <div class="profilenav">
             <nav class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container-fluid">
-                    <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
+                <div class="container-fluid navbar-background">
+                    <a href="#!/user/{{model.userId}}" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </div>
@@ -146,5 +88,4 @@
         </div>
 
     </div>
-</body>
-</html>
+</div>

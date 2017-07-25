@@ -10,55 +10,55 @@
                 { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
             ];
 
-        // this.createWebsite = createWebsite;
-        // this.findWebsitesByUser = findWebsitesByUser;
-        // this.findWebsiteById = findWebsiteById;
-        // this.updateWebsite = updateWebsite;
-        // this.deleteWebsite = deleteWebsite;
+        this.createPage = createPage;
+        this.findPageById = findPageById;
+        this.findPageByWebsiteId = findPageByWebsiteId;
+        this.updatePage= updatePage;
+        this.deletePage = deletePage;
 
-        // function createWebsite(userId, website){
-        //     website._id = (new Date()).getTime() +"";
-        //     website.developerId= userId;
-        //     websites.push(website);
-        //     return websites;
-        // }
-        //
-        // function findWebsitesByUser(userId){
-        //     var sites = [];
-        //     for (var w in websites){
-        //         if(websites[w].developerId === userId) {
-        //             sites.push(websites[w]);
-        //         }
-        //     }
-        //     return sites;
-        // }
-        //
-        // function findWebsiteById(wid){
-        //     for(var w in websites){
-        //         if(websites[w]._id=== wid){
-        //             return websites[w];
-        //         }
-        //     }
-        //     return null;
-        // }
-        //
-        // function updateWebsite(wid, website){
-        //     for(var w in websites){
-        //         if(websites[w]._id === wid){
-        //             websites[w] = website;
-        //             return;
-        //         }
-        //     }
-        //     return null;
-        // }
-        //
-        // function deleteWebsite(wid){
-        //     for(var w in websites){
-        //         if(websites[w]._id === wid){
-        //             delete websites[w];
-        //             return;
-        //         }
-        //     }
-        // }
+        function createPage(webId, page){
+            page._id = (new Date()).getTime() +"";
+            page.websiteId= webId;
+            pages.push(page);
+            return pages;
+        }
+
+        function findPageByWebsiteId(wid){
+            var ps = [];
+            for (var p in pages){
+                if(pages[p].websiteId === wid) {
+                    ps.push(pages[p]);
+                }
+            }
+            return ps;
+        }
+
+        function findPageById(pid){
+            for(var p in pages){
+                if(pages[p]._id=== pid){
+                    return pages[p];
+                }
+            }
+            return null;
+        }
+
+        function updatePage (pid, page){
+            for(var p in pages){
+                if(pages[p]._id === pid){
+                    pages[p] = page;
+                    return;
+                }
+            }
+            return null;
+        }
+
+        function deletePage(pid){
+            for(var p in pages){
+                if(pages[p]._id === pid){
+                    delete pages[p];
+                    return;
+                }
+            }
+        }
     }
 })();

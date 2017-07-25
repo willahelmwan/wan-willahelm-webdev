@@ -42,5 +42,21 @@
                 controller:"websiteEditController",
                 controllerAs: "model"
             } )
+            .when("/user/:userId/website/:wid/page",{
+                templateUrl:"views/page/templates/page-list.view.client.html",
+                // controller:"websiteListController",
+                // controllerAs: "model"
+            } )
+            .when("/user/:userId/website/:wid/page/new",{
+                templateUrl:"views/page/templates/page-new.view.client.html",
+                // controller:"websiteNewController",
+                // controllerAs: "model"
+            } )
+            .when("/user/:userId/website/:wid/page/:pid",{
+                templateUrl:"views/page/templates/page-edit.view.client.html",
+                // controller:"websiteEditController",
+                // controllerAs: "model"
+            } )
+
     }
 })();

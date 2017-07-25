@@ -18,7 +18,4 @@
             $location.url("user/" + model.userId +"/website");
         }
     }
-
-
-
 })();

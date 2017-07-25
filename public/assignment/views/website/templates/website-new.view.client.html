@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="website-new.view.client.html" class="plusglyphicon">
+                                <a href="#!/user/{{model.userId}}/website/new" class="plusglyphicon">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -37,7 +37,7 @@
                     <li ng-repeat="website in model.websites" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../../page/page-list.view.client.html">{{website.name}}</a>
+                                <a href="../../page/templates/page-list.view.client.html">{{website.name}}</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="#!/user/{{model.userId}}/website/{{website._id}}">
@@ -71,7 +71,7 @@
                    role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="website-list.view.client.html"
+                   href="#!/user/{{model.userId}}/website"
                    role="button">Cancel</a>
             </div>
         </div>

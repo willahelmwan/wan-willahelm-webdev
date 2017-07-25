@@ -2,9 +2,9 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="website-list.view.client.html"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/user/{{model.userId}}/website"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a href="website-list.view.client.html"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a href="#!/user/{{model.userId}}/website"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="website-new.view.client.html" class="plusglyphicon">
+                                <a href="#!/user/{{model.userId}}/website/new" class="plusglyphicon">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -34,7 +34,7 @@
                     <li ng-repeat="website in model.websites" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../../page/page-list.view.client.html">{{website.name}}</a>
+                                <a href="../../page/templates/page-list.view.client.html">{{website.name}}</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="#!/user/{{model.userId}}/website/{{website._id}}">
@@ -50,28 +50,29 @@
                 <label for="name">Name</label>
                 <input name="name"
                        type="text"
+                       ng-model="model.website.name"
                        placeholder="Facebook"
-                       value="Lorem"
                        class="form-control"
                        id="name"/>
 
                 <label for="description">Description</label>
                 <textarea name="description"
                           rows="5"
+                          ng-model="model.website.description"
                           placeholder="Largest country in the world"
                           class="form-control"
-                          id="description"/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</textarea>
+                          id="description"/></textarea>
 
                 <a class="btn btn-default btn-success btn-block"
-                   href="website-list.view.client.html"
+                   ng-click="model.updateWebsite(model.website)"
                    role="button">OK</a>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="website-list.view.client.html"
+                   href="#!/user/{{model.userId}}/website"
                    role="button">Cancel</a>
-
+                <!--href="website-list.view.client.html"-->
                 <a class="btn btn-default btn-danger btn-block"
-                   href="website-list.view.client.html"
+                   ng-click="model.deleteWebsite(model.website)"
                    role="button">Delete</a>
             </div>
         </div>
@@ -79,7 +80,7 @@
         <div class="profilenav">
             <nav class="navbar navbar-default navbar-fixed-bottom">
                 <div class="container-fluid navbar-background">
-                    <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
+                    <a href="#!/user/{{model.userId}}" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </div>

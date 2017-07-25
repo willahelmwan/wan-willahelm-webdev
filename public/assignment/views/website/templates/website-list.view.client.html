@@ -3,11 +3,11 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
 
-                <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
+                <a href="#!/user/{{model.userId}}" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a href="website-list.view.client.html">
+                <a href="#!/user/{{model.userId}}/website">
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
 
@@ -39,25 +39,24 @@
             <li ng-repeat="website in model.websites" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="../../page/page-list.html">{{website.name}}</a>
+                        <a href="../../page/page-list.view.client.html">{{website.name}}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">2017-07-05</div>
                     <div class="col-sm-3 hidden-xs">1,345,345</div>
                     <div class="col-xs-2">
-                        <a href="website-edit.view.client.html">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}" >
                             <span class="pull-right glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
                 </div>
             </li>
         </ul>
-        {{model.websites}}
     </div>
 
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
+                <a href="#!/user/{{model.userId}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, userService){
+    function profileController($routeParams, userService, $location){
         var model = this;
         var userId = $routeParams.userId;
 
@@ -20,8 +20,9 @@
             userService.updateUser(user._id, user)
         }
 
-        function unregister(){
-
+        function unregister(user){
+            userService.deleteUser(user._id, user);
+            $location.url("login/")
         }
     }
 })();

@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Edit Website</title>
-    <link href="../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet"/>
-</head>
-
-<body class="profile">
+<div class="profile">
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
@@ -16,7 +6,7 @@
 
                 <a href="website-list.view.client.html"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
-                <div class="container-fluid nav-header">
+                <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
                         <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >Websites</a></div>
                         <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit Website</a></div>
@@ -41,52 +31,13 @@
                         </div>
                     </li>
 
-                    <li class="list-group-item">
+                    <li ng-repeat="website in model.websites" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../../page/page-list.html">Wikipedia</a>
+                                <a href="../../page/page-list.view.client.html">{{website.name}}</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="website-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../page/page-list.html">Facebook</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="website-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../page/page-list.html">Twitter</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="website-edit.view.client.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a href="../../page/page-list.html">Amazon</a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="website-edit.view.client.html">
+                                <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -127,7 +78,7 @@
 
         <div class="profilenav">
             <nav class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container-fluid">
+                <div class="container-fluid navbar-background">
                     <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
@@ -136,5 +87,4 @@
         </div>
 
     </div>
-</body>
-</html>
+</div>

@@ -18,11 +18,11 @@
                 model.errorMessage = "User not found";
                 return;
             }
-            var user = userService.findUserByUsernameAndPassword(user.username, user.password);
+            var user = userService.findUserByCredentials(user.username, user.password);
             if(user=== null){
                 model.errorMessage = "User not found.";
             } else{
-                $location.url("profile/"+user._id);
+                $location.url("user/"+user._id);
             }
 
         }

@@ -12,35 +12,17 @@
         ];
 
         var api ={
-            "findUserByUsername": findUserByUsername,
-            "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
+            "createUser": createUser,
             "findUserById": findUserById,
-            "registerUser": registerUser,
-            "updateUser": updateUser
+            "findUserByUsername": findUserByUsername,
+            "findUserByCredentials": findUserByCredentials,
+            "updateUser": updateUser,
+            "deleteUser": deleteUser
         };
 
         return api;
 
-        function updateUser(userId, user){
-            for(var u in users){
-                if(users[u]._id === userId){
-                    users[u] = user;
-                    return;
-                }
-            }
-            return null;
-        }
-
-        function findUserByUsername(username){
-            for(var u in users){
-                if(users[u].username === username){
-                    return users[u];
-                }
-            }
-            return null;
-        }
-
-        function registerUser(user){
+        function createUser(user){
             user._id = (new Date()).getTime()+ "";
             users.push(user);
             return user;
@@ -55,7 +37,16 @@
             return null;
         }
 
-        function findUserByUsernameAndPassword(username, password){
+        function findUserByUsername(username){
+            for(var u in users){
+                if(users[u].username === username){
+                    return users[u];
+                }
+            }
+            return null;
+        }
+
+        function findUserByCredentials(username, password){
             for(var u in users){
                 var _user = users[u];
                 if(_user.username === username && _user.password === password){
@@ -65,5 +56,23 @@
             return null;
         }
 
+        function updateUser(userId, user){
+            for(var u in users){
+                if(users[u]._id === userId){
+                    users[u] = user;
+                    return;
+                }
+            }
+            return null;
+        }
+
+        function deleteUser(userId, user){
+            for(var u in users){
+                if(users[u]._id === userId){
+                    delete users[u];
+                    return;
+                }
+            }
+        }
     }
 })();

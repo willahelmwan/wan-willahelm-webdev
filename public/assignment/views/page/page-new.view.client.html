@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Edit Page</title>
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet"/>
+    <title>New Page</title>
+    <link href="../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet"/>
 </head>
 
 <body class="profile">
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="page-list.html"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="page-list.view.client.html"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a href="page-list.html"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a href="page-list.view.client.html"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header">
                     <div class="navbar-header">
-                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >Pages</a></div>
-                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit Page</a></div>
+                        <div class="col-lg-3 visible-lg split-view-left-nav">
+                            <a class="navbar-brand navsplit" >Pages</a>
+                        </div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite">
+                            <a class="navbar-brand splitnav">New Page</a>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -34,7 +38,7 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="page-new.html" class="plusglyphicon">
+                                <a href="page-new.view.client.html" class="plusglyphicon">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -44,10 +48,10 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widget/widget-list.html">Blog Post</a>
+                                <a href="../widget/widget-list.view.client.html">Blog Post</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="page-edit.view.client.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -57,10 +61,10 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widget/widget-list.html">Blogs</a>
+                                <a href="../widget/widget-list.view.client.html">Blogs</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="page-edit.view.client.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -70,10 +74,10 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widget/widget-list.html">Home</a>
+                                <a href="../widget/widget-list.view.client.html">Home</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="page-edit.view.client.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -83,10 +87,10 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widget/widget-list.html">About</a>
+                                <a href="../widget/widget-list.view.client.html">About</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="page-edit.view.client.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -96,10 +100,10 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="../widget/widget-list.html">Contact Us</a>
+                                <a href="../widget/widget-list.view.client.html">Contact Us</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="page-edit.html">
+                                <a href="page-edit.view.client.html">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -112,28 +116,22 @@
                 <label for="name">Name</label>
                 <input name="pagename"
                        placeholder="Page Name"
-                       value="Blog Post"
                        class="form-control"
                        id="name"/>
 
                 <label for="title">Title</label>
                 <input name="pagetitle"
-                       placeholder="Page Title"
-                       value="My Blog"
-                       class="form-control"
-                       id="title"/>
-
-                <a class="btn btn-default btn-success btn-block"
-                   href="page-list.html"
-                   role="button">OK</a>
+                          placeholder="Page Title"
+                          class="form-control"
+                          id="title"/>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="page-list.html"
-                   role="button">Cancel</a>
+                   href="page-list.view.client.html"
+                   role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="page-list.html"
-                   role="button">Delete</a>
+                   href="page-list.view.client.html"
+                   role="button">Cancel</a>
             </div>
         </div>
 

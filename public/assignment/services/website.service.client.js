@@ -14,8 +14,18 @@
             { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
         ];
 
-        this.findWebsitesForUser = findWebsitesForUser;
-        function findWebsitesForUser(userId){
+        this.createWebsite = createWebsite;
+        this.findWebsitesByUser = findWebsitesByUser;
+
+
+        function createWebsite(userId, website){
+            website._id = (new Date()).getTime() +"";
+            website.developerId= userId;
+            websites.push(website);
+            return websites;
+        }
+
+        function findWebsitesByUser(userId){
             var sites = [];
             for (var w in websites){
                 if(websites[w].developerId === userId) {

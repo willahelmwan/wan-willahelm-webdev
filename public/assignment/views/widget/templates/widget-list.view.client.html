@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Pages</title>
-    <link href="../../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../css/style.css" rel="stylesheet"/>
-</head>
-
-<body class="profile">
+<div class="profile">
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
+            <div class="container-fluid navbar-background">
 
                 <a href="../../page/templates/page-list.view.client.html" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
@@ -31,80 +21,112 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
-                <h3>GIZMODO</h3>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-heading.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
-            <div class="col-xs-12">
-                <h4>Japan's space agency robot ball takes us through life off-plane</h4>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-heading.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
-
-            <div class="col-xs-12">
-                <img class="img-responsive"
-                     src="screen-shot-2017-07-18-at-05-51-51.jpg"
-                     alt="robot">
-                    <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                    <a href="widget-image.view.client.html">
-                        <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                    </a>
-            </div>
-
-            <div class="col-xs-12">
-                <p>The Japan Aerospace Exploration Agency (JAXA) has given us a snapshot of life in space with the release of a tiny spheric drone into the atmosphere of the International Space Station (ISS).</p>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-image.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
-
-            <div class="col-xs-12">
-                <h4>Grapefruit Bonsai Tree, Aug 2016</h4>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-heading.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
-
-            <div class="col-xs-12">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/h0w3-fT-MNA"
-                            frameborder="0"
-                            allowfullscreen></iframe>
+            <div ng-repeat="widget in model.widgets" class="col-xs-12">
+                <div ng-switch="widget.widgetType">
+                    <div ng-switch-when="HEADING">
+                        <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                        </a>
+                    </div>
+                    <div ng-switch-when="IMAGE">
+                        <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
+                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                        </a>
+                    </div>
+                    <div ng-switch-when="YOUTUBE">
+                        <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
+                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                        </a>
+                    </div>
+                    <div ng-switch-when="HTML">
+                        <div ng-include="'views/widget/templates/widget-HTML.view.client.html'"></div>
+                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                        </a>
+                    </div>
                 </div>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-youtube.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
             </div>
 
-            <div class="col-xs-12">
-                <p>Pruning and re potting my old Grapefruit bonsai. I look at pictures of old Osage Orange trees for future inspiration. This tree was started from a seed about 20 years ago and has been root pruned every two years.</p>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="widget-youtube.view.client.html">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
+            <!--<div class="col-xs-12">-->
+                <!--<h3>GIZMODO</h3>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-heading-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12">-->
+                <!--<h4>Japan's space agency robot ball takes us through life off-plane</h4>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-heading-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;views/widget/templates/screen-shot-2017-07-18-at-05-51-51.jpg&ndash;&gt;-->
+            <!--<div class="col-xs-12">-->
+                <!--<img class="img-responsive"-->
+                     <!--src="http://lorempixel.com/400/200/"-->
+                     <!--alt="robot">-->
+                    <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                    <!--<a hrwidget-image-edit.view.client.htmlhtml">-->
+                        <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                    <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12">-->
+                <!--<p>The Japan Aerospace Exploration Agency (JAXA) has given us a snapshot of life in space with the release of a tiny spheric drone into the atmosphere of the International Space Station (ISS).</p>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-image-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12">-->
+                <!--<h4>Grapefruit Bonsai Tree, Aug 2016</h4>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-heading-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12">-->
+                <!--<div class="embed-responsive embed-responsive-16by9">-->
+                    <!--<iframe width="560"-->
+                            <!--height="315"-->
+                            <!--src="https://www.youtube.com/embed/h0w3-fT-MNA"-->
+                            <!--frameborder="0"-->
+                            <!--allowfullscreen></iframe>-->
+                <!--</div>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-youtube-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12">-->
+                <!--<p>Pruning and re potting my old Grapefruit bonsai. I look at pictures of old Osage Orange trees for future inspiration. This tree was started from a seed about 20 years ago and has been root pruned every two years.</p>-->
+                <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                <!--<a hrwidget-youtube-edit.view.client.htmlhtml">-->
+                    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                <!--</a>-->
+            <!--</div>-->
 
         </div>
     </div>
 
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                <a href="../../user/templates/profile.view.client.html" class="userglyphicon">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </nav>
     </div>
-</body>
-</html>
+</div>

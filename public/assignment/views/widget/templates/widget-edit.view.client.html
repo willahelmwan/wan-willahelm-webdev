@@ -1,0 +1,84 @@
+<div class="profile">
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}/widget" class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}/widget" >
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active">Widget Edit</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    <div ng-switch="model.widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <div ng-include="'views/widget/editors/widget-heading-edit.view.client.html'"></div>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <div ng-include="'views/widget/editors/widget-image-edit.view.client.html'"></div>
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <div ng-include="'views/widget/editors/widget-youtube-edit.view.client.html'"></div>
+        </div>
+        <div ng-switch-when="HTML">
+            <div ng-include="'views/widget/templates/widget-HTML.view.client.html'"></div>
+            <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+            <a href="../editors/widget-image-edit.view.client.html">
+                <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+            </a>
+        </div>
+    </div>
+    <!--<div class="container-fluid">-->
+
+        <!--<label for="Name">Name</label>-->
+        <!--<input name="Name"-->
+               <!--type="text"-->
+               <!--placeholder="Name of Header"-->
+               <!--class="form-control"-->
+               <!--id="Name"/>-->
+
+        <!--<label for="text">Text</label>-->
+        <!--<input name="text"-->
+               <!--type="text"-->
+               <!--value="Trump Lays Blame for Health Care Bill Failure"-->
+               <!--placeholder="Enter header title here"-->
+               <!--class="form-control"-->
+               <!--id="text"/>-->
+
+        <!--<label for="size">Size</label>-->
+        <!--<input name="size"-->
+               <!--type="number"-->
+               <!--value="3"-->
+               <!--placeholder="Enter font size here"-->
+               <!--class="form-control"-->
+               <!--id="size"/>-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="container-fluid">&ndash;&gt;-->
+        <!--<a class="btn btn-default btn-primary btn-block"-->
+           <!--href="../templates/widget-list.view.client.html"-->
+           <!--role="button">Cancel</a>-->
+
+        <!--<a class="btn btn-default btn-danger btn-block"-->
+           <!--href="../templates/widget-list.view.client.html"-->
+           <!--role="button">Delete</a>-->
+    <!--</div>-->
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

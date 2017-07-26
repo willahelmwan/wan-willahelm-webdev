@@ -17,8 +17,8 @@
             ];
 
         // this.createPage = createPage;
-        // this.findPageById = findPageById;
-        // this.findPageByWebsiteId = findPageByWebsiteId;
+        this.findWidgetById = findWidgetById;
+        this.findWidgetsByPageId = findWidgetsByPageId;
         // this.updatePage= updatePage;
         // this.deletePage = deletePage;
         //
@@ -29,25 +29,25 @@
         //     return pages;
         // }
         //
-        // function findPageByWebsiteId(wid){
-        //     var ps = [];
-        //     for (var p in pages){
-        //         if(pages[p].websiteId === wid) {
-        //             ps.push(pages[p]);
-        //         }
-        //     }
-        //     return ps;
-        // }
-        //
-        // function findPageById(pid){
-        //     for(var p in pages){
-        //         if(pages[p]._id=== pid){
-        //             return pages[p];
-        //         }
-        //     }
-        //     return null;
-        // }
-        //
+        function findWidgetsByPageId(pid){
+            var ws = [];
+            for (var w in widgets){
+                if(widgets[w].pageId === pid) {
+                    ws.push(widgets[w]);
+                }
+            }
+            return ws;
+        }
+
+        function findWidgetById(wgid){
+            for(var w in widgets){
+                if(widgets[w]._id=== wgid){
+                    return widgets[w];
+                }
+            }
+            return null;
+        }
+
         // function updatePage (pid, page){
         //     for(var p in pages){
         //         if(pages[p]._id === pid){

@@ -59,8 +59,8 @@
             } )
             .when("/user/:userId/website/:wid/page/:pid/widget",{
                 templateUrl:"views/widget/templates/widget-list.view.client.html",
-                // controller:"widgetListController",
-                // controllerAs: "model"
+                controller:"widgetListController",
+                controllerAs: "model"
             } )
             .when("/user/:userId/website/:wid/page/:pid/widget/new",{
                 templateUrl:"views/widget/templates/widget-chooser.view.client.html",
@@ -69,8 +69,8 @@
             } )
             .when("/user/:userId/website/:wid/page/:pid/widget/:wgid",{
                 templateUrl:"views/widget/templates/widget-edit.view.client.html",
-                // controller:"pageEditController",
-                // controllerAs: "model"
+                controller:"widgetEditController",
+                controllerAs: "model"
             } )
     }
 })();

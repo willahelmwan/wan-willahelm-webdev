@@ -4,8 +4,8 @@
         .module("WebAppMaker")
         .controller("loginController", loginController);
 
-    function loginController($location, userService){
-        //JSON = JavaScript Object Notation
+    function loginController($location, userService, $rootScope){
+
         var model = this;
         model.login = login;
         function init(){
@@ -18,10 +18,11 @@
                 model.errorMessage = "User not found";
                 return;
             }
-            var user = userService.findUserByCredentials(user.username, user.password);
+            user = userService.findUserByCredentials(user.username, user.password);
             if(user=== null){
                 model.errorMessage = "User not found.";
             } else{
+                $rootScope.currentUser = user;
                 $location.url("user/"+user._id);
             }
 

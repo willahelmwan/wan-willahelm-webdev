@@ -4,7 +4,8 @@
             <nav class="navbar navbar-default navbar-fixed-top">
                 <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a ng-click="model.updatePage(model.page)"
+                   role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
@@ -51,7 +52,6 @@
                 <input name="pagename"
                        ng-model="model.page.name"
                        placeholder="Page Name"
-                       value="Blog Post"
                        class="form-control"
                        id="name"/>
 
@@ -59,7 +59,6 @@
                 <input name="pagetitle"
                        ng-model="model.page.description"
                        placeholder="Page Title"
-                       value="My Blog"
                        class="form-control"
                        id="title"/>
 

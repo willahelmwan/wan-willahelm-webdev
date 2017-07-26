@@ -4,7 +4,8 @@
             <nav class="navbar navbar-default navbar-fixed-top">
                 <a href="#!/user/{{model.userId}}/website"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a href="#!/user/{{model.userId}}/website"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a ng-click="model.deleteWebsite(model.website)"
+                   role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">

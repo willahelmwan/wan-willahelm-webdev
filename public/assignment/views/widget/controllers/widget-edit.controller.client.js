@@ -9,7 +9,7 @@
         model.webId = $routeParams.wid;
         model.pageId = $routeParams.pid;
         model.widgetId = $routeParams.wgid;
-        // model.updatePage = updatePage;
+        model.updateWidget = updateWidget;
         // model.deletePage = deletePage;
 
         function init(){
@@ -18,11 +18,11 @@
         }
         init();
 
-        // function updatePage(page){
-        //     pageService.updatePage(page._id, page);
-        //     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
-        // }
-        //
+        function updateWidget(widget){
+            widgetService.updateWidget(widget._id, widget);
+            $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
+        }
+
         // function deletePage(page){
         //     pageService.deletePage(page._id);
         //     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");

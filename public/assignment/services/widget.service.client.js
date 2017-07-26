@@ -16,19 +16,31 @@
                 { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
             ];
 
-        // this.createPage = createPage;
+        this.createWidget = createWidget;
         this.findWidgetById = findWidgetById;
         this.findWidgetsByPageId = findWidgetsByPageId;
-        // this.updatePage= updatePage;
+        this.updateWidget= updateWidget;
         // this.deletePage = deletePage;
         //
-        // function createPage(webId, page){
-        //     page._id = (new Date()).getTime() +"";
-        //     page.websiteId= webId;
-        //     pages.push(page);
-        //     return pages;
-        // }
-        //
+        function createWidget(pageId, widget){
+
+            widget.pageId= pageId;
+            if(widget.widgetType==="HEADING"){
+                widget.size = "";
+                widget.text = "";
+            }else if(widget.widgetType==="IMAGE"){
+                widget.width="";
+                widget.url="";
+            }else if(widget.widgetType==="YOUTUBE"){
+                widget.width="";
+                widget.url="";
+            }else{
+                widget.text ="";
+            }
+            widgets.push(widget);
+            return widgets;
+        }
+
         function findWidgetsByPageId(pid){
             var ws = [];
             for (var w in widgets){
@@ -48,16 +60,16 @@
             return null;
         }
 
-        // function updatePage (pid, page){
-        //     for(var p in pages){
-        //         if(pages[p]._id === pid){
-        //             pages[p] = page;
-        //             return;
-        //         }
-        //     }
-        //     return null;
-        // }
-        //
+        function updateWidget (wgid, widget){
+            for(var w in widgets){
+                if(widgets[w]._id === wgid){
+                    widgets[w] = widget;
+                    return;
+                }
+            }
+            return null;
+        }
+
         // function deletePage(pid){
         //     for(var p in pages){
         //         if(pages[p]._id === pid){

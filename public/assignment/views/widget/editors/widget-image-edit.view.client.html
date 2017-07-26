@@ -40,10 +40,10 @@
        role="button">Upload Image</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       href="../templates/widget-list.view.client.html"
+       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
        role="button">Cancel</a>
 
     <a class="btn btn-default btn-danger btn-block"
-       href="../templates/widget-list.view.client.html"
+       ng-click="model.deleteWidget(model.widget)"
        role="button">Delete</a>
 </div>

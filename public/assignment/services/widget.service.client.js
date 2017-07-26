@@ -20,8 +20,8 @@
         this.findWidgetById = findWidgetById;
         this.findWidgetsByPageId = findWidgetsByPageId;
         this.updateWidget= updateWidget;
-        // this.deletePage = deletePage;
-        //
+        this.deleteWidget = deleteWidget;
+
         function createWidget(pageId, widget){
 
             widget.pageId= pageId;
@@ -70,13 +70,13 @@
             return null;
         }
 
-        // function deletePage(pid){
-        //     for(var p in pages){
-        //         if(pages[p]._id === pid){
-        //             delete pages[p];
-        //             return;
-        //         }
-        //     }
-        // }
+        function deleteWidget(wgid){
+            for(var w in widgets){
+                if(widgets[w]._id === wgid){
+                    delete widgets[w];
+                    return;
+                }
+            }
+        }
     }
 })();

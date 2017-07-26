@@ -10,7 +10,7 @@
         model.pageId = $routeParams.pid;
         model.widgetId = $routeParams.wgid;
         model.updateWidget = updateWidget;
-        // model.deletePage = deletePage;
+        model.deleteWidget = deleteWidget;
 
         function init(){
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
@@ -23,10 +23,10 @@
             $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
         }
 
-        // function deletePage(page){
-        //     pageService.deletePage(page._id);
-        //     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
-        // }
+        function deleteWidget(widget){
+            widgetService.deleteWidget(widget._id);
+            $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
+        }
 
     }
 })();

@@ -36,7 +36,7 @@
         function findPageById(pid){
             for(var p in pages){
                 if(pages[p]._id=== pid){
-                    return pages[p];
+                    return angular.copy(pages[p]);
                 }
             }
             return null;

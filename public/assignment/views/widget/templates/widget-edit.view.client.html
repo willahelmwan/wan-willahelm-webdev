@@ -22,20 +22,11 @@
     </div>
 
     <div ng-switch="model.widget.widgetType">
-        <div ng-switch-when="HEADING">
-            <div ng-include="'views/widget/editors/widget-heading-edit.view.client.html'">
-            </div>
-        </div>
-        <div ng-switch-when="IMAGE">
-            <div ng-include="'views/widget/editors/widget-image-edit.view.client.html'"></div>
-        </div>
-        <div ng-switch-when="YOUTUBE">
-            <div ng-include="'views/widget/editors/widget-youtube-edit.view.client.html'"></div>
-        </div>
-        <div ng-switch-when="HTML">
-            <div ng-include="'views/widget/editors/widget-heading-edit.view.client.html'">
-            </div>
-        </div>
+        <div ng-include="model.getWidgetIncludeUrl(model.widget.widgetType)"></div>
+        <!--<div ng-switch-when="HTML">-->
+            <!--<div ng-include="'views/widget/editors/widget-heading-edit.view.client.html'">-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 
     <div class="profilenav">

@@ -11,6 +11,7 @@
         model.widgetId = $routeParams.wgid;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
+        model.getWidgetIncludeUrl = getWidgetIncludeUrl;
 
         function init(){
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
@@ -28,5 +29,8 @@
             $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
         }
 
+        function getWidgetIncludeUrl(widgetType){
+            return "views/widget/editors/widget-" + widgetType + "-edit.view.client.html";
+        }
     }
 })();

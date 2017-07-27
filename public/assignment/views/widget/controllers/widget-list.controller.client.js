@@ -10,6 +10,7 @@
         model.pageId = $routeParams.pid;
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
+        model.getWidgetIncludeUrl = getWidgetIncludeUrl;
 
         function init(){
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
@@ -25,6 +26,10 @@
             var urlParts = url.split("/");
             youtubeUrl += urlParts[urlParts.length-1];
             return $sce.trustAsResourceUrl(youtubeUrl);
+        }
+
+        function getWidgetIncludeUrl(widgetType){
+            return "views/widget/templates/widget-" + widgetType + ".view.client.html";
         }
     }
 })();

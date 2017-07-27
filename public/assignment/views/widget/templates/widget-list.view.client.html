@@ -23,34 +23,18 @@
         <div class="row">
             <div ng-repeat="widget in model.widgets" class="col-xs-12">
                 <div ng-switch="widget.widgetType">
-                    <div ng-switch-when="HEADING">
-                        <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
-                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                        </a>
-                    </div>
-                    <div ng-switch-when="IMAGE">
-                        <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
-                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                        </a>
-                    </div>
-                    <div ng-switch-when="YOUTUBE">
-                        <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
-                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                        </a>
-                    </div>
-                    <div ng-switch-when="HTML">
-                        <div ng-include="'views/widget/templates/widget-HTML.view.client.html'"></div>
-                        <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                        </a>
-                    </div>
+                    <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
+                    <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                    <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                    </a>
+                <!--<div ng-switch-when="IMAGE">-->
+                    <!--<div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>-->
+                    <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+                    <!--<a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
+                        <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+                    <!--</a>-->
+                <!--</div>-->
                 </div>
             </div>
         </div>

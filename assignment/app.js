@@ -12,6 +12,21 @@ app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
 app.post("/api/user", createUser);
+app.put("/api/user/:userId", updateUser);
+
+function updateUser(req, res){
+    var userId = req.params.userId;
+    var user = req.body;
+
+    for(var u in users){
+        if(users[u]._id === userId){
+            users[u] = user;
+            res.send(user)
+            return;
+        }
+    }
+    res.sendStatus(404);
+}
 
 function createUser(req, res){
     var user = req.body;
@@ -51,6 +66,7 @@ function getAllUsers (req, response){
 function getUserById(req, response){
     for(var u in users){
         if(users[u]._id === req.params.userId){
+            // response.send(angular.copy(users[u]));
             response.send(users[u]);
         }
     }

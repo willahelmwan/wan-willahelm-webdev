@@ -9,7 +9,7 @@ var users=[
 
 // html handlers
 app.get("/api/users", getAllUsers);
-app.get("/api/users/:userId", getUserById);
+app.get("/api/user/:userId", getUserById);
 
 function getAllUsers (req, response){
     response.send(users);

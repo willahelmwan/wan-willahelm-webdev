@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express();
+var app = require('./express');
+var express = app.express;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -9,9 +9,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-require ("./test/app.js")(app);
+require ("./test/app");
 require("./assignment/app");
 
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
 
-app.listen(port);
+app.listen(3000);

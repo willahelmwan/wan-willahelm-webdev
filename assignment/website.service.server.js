@@ -11,6 +11,28 @@ var websites = [
 ];
 
 app.get("/api/user/:userId/website", findWebsitesForUser);
+app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
+app.post("/api/user/:userId/website", createWebsite);
+
+function findWebsiteById(req,res){
+    for (var w in websites){
+        if(websites[w]._id === req.params.websiteId){
+            res.json(websites[w]);
+        }
+    }
+    res.sendStatus(404);
+}
+
+function createWebsite(req, res){
+    var website = req.body;
+    var userId = req.params.userId;
+    website.developerId = userId;
+    website._id = (new Date()).getTime()+"";
+    websites.push(website);
+
+    res.json(websites);
+
+}
 
 function findWebsitesForUser(req,res){
     var userId = req.params.userId;

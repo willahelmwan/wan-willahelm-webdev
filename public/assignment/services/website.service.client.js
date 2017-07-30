@@ -12,10 +12,13 @@
         this.deleteWebsite = deleteWebsite;
 
         function createWebsite(userId, website){
-            website._id = (new Date()).getTime() +"";
-            website.developerId= userId;
-            websites.push(website);
-            return websites;
+            var url = "/api/user/" + userId + "/website";
+            return $http.post(url,website);
+
+            // website._id = (new Date()).getTime() +"";
+            // website.developerId= userId;
+            // websites.push(website);
+            // return websites;
         }
 
         function findWebsitesByUser(userId){
@@ -34,13 +37,16 @@
             // return sites;
         }
 
-        function findWebsiteById(wid){
-            for(var w in websites){
-                if(websites[w]._id=== wid){
-                    return angular.copy(websites[w]);
-                }
-            }
-            return null;
+        function findWebsiteById(userId, wid){
+            var url = "/api/user/" + userId + "/website/" + wid;
+            return $http.get(url);
+
+            // for(var w in websites){
+            //     if(websites[w]._id=== wid){
+            //         return angular.copy(websites[w]);
+            //     }
+            // }
+            // return null;
         }
 
         function updateWebsite(wid, website){

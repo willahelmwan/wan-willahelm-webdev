@@ -37,9 +37,12 @@
             // return sites;
         }
 
-        function findWebsiteById(userId, wid){
-            var url = "/api/user/" + userId + "/website/" + wid;
-            return $http.get(url);
+        function findWebsiteById(wid){
+            var url = "/api/website/" + wid;
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var w in websites){
             //     if(websites[w]._id=== wid){
@@ -50,22 +53,32 @@
         }
 
         function updateWebsite(wid, website){
-            for(var w in websites){
-                if(websites[w]._id === wid){
-                    websites[w] = website;
-                    return;
-                }
-            }
-            return null;
+            var url = "/api/website/" + wid;
+            return $http.put(url, website)
+                .then(function(response){
+                    return response.data;
+                })
+            // for(var w in websites){
+            //     if(websites[w]._id === wid){
+            //         websites[w] = website;
+            //         return;
+            //     }
+            // }
+            // return null;
         }
 
         function deleteWebsite(wid){
-            for(var w in websites){
-                if(websites[w]._id === wid){
-                    delete websites[w];
-                    return;
-                }
-            }
+            var url = "/api/website/" + wid;
+            return $http.delete(url)
+                .then(function(response){
+                    return response.data;
+                })
+            // for(var w in websites){
+            //     if(websites[w]._id === wid){
+            //         delete websites[w];
+            //         return;
+            //     }
+            // }
         }
     }
 })();

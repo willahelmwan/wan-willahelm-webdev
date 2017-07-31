@@ -44,17 +44,12 @@
 
         function updateUser(userId, user){
             var url = "/api/user/" + userId;
-
             return $http.put(url, user);
         }
 
         function deleteUser(userId, user){
-            for(var u in users){
-                if(users[u]._id === userId){
-                    delete users[u];
-                    return;
-                }
-            }
+            var url = "/api/user/" + userId;
+            return $http.delete(url, user);
         }
     }
 })();

@@ -10,14 +10,41 @@ var websites = [
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 ];
 
-app.get("/api/user/:userId/website", findWebsitesForUser);
-app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
 app.post("/api/user/:userId/website", createWebsite);
+app.get("/api/user/:userId/website", findAllWebsitesForUser);
+app.get("/api/website/:websiteId", findWebsiteById);
+app.put("/api/website/:websiteId", updateWebsite);
+app.delete("/api/website/:websiteId", deleteWebsite);
+
+function deleteWebsite(req, res){
+    for(var w in websites){
+        if(websites[w]._id === req.params.websiteId){
+            delete websites[w];
+            res.send(websites);
+            return;
+        }
+    }
+    res.sendStatus(404);
+}
+
+function updateWebsite(req, res){
+    var website = req.body;
+
+    for(var w in websites){
+        if(websites[w]._id === req.params.websiteId){
+            websites[w] = website;
+            res.send(website);
+            return;
+        }
+    }
+    return null;
+}
 
 function findWebsiteById(req,res){
     for (var w in websites){
         if(websites[w]._id === req.params.websiteId){
             res.json(websites[w]);
+            return;
         }
     }
     res.sendStatus(404);
@@ -34,7 +61,7 @@ function createWebsite(req, res){
 
 }
 
-function findWebsitesForUser(req,res){
+function findAllWebsitesForUser(req,res){
     var userId = req.params.userId;
 
     var sites = [];

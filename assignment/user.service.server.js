@@ -13,6 +13,19 @@ app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
 app.post("/api/user", createUser);
 app.put("/api/user/:userId", updateUser);
+app.delete("/api/user/:userId", deleteUser);
+
+function deleteUser(req, res){
+    var userId = req.params.userId;
+    for(var u in users){
+        if(users[u]._id === userId){
+            delete users[u];
+            res.send(users);
+            return;
+        }
+    }
+    res.sendStatus(404);
+}
 
 function updateUser(req, res){
     var userId = req.params.userId;
@@ -42,18 +55,18 @@ function findUser(req, response){
     if (username && password){
         for(var u in users){
             var _user = users[u];
-            if(_user.username === username && _user.password === password){
-                response.send(_user);
-                return;
+            if(_user.username === username){
+                if(_user.password === password){
+                    response.send(users[u]);
+                    return;
+                }else{
+                    response.send("0");
+                    return;
+                }
             }
         }
-    } else if(username){
-        for(var u in users){
-            if(users[u].username === username){
-                response.send(users[u]);
-                return;
-            }
-        }
+        response.send("2");
+        return;
     }
     response.send("0");
 }

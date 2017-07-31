@@ -44,6 +44,7 @@
         }
 
         function getWidgetIncludeUrl(widgetType){
+            // if(widgetType)
             return "views/widget/editors/widget-" + widgetType + "-edit.view.client.html";
         }
     }

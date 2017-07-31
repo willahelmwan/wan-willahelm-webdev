@@ -10,13 +10,20 @@
         model.createPage = createPage;
 
         function init(){
-            model.pages = pageService.findPageByWebsiteId(model.webId);
+            pageService
+                .findPageByWebsiteId(model.webId)
+                .then(function(pages){
+                    model.pages = pages;
+                });
         }
         init();
 
         function createPage(page){
-            pageService.createPage(model.webId, page);
-            $location.url("user/" + model.userId +"/website/" + model.webId +"/page");
+            pageService
+                .createPage(model.webId, page)
+                .then(function(){
+                    $location.url("user/" + model.userId +"/website/" + model.webId +"/page");
+                });
         }
     }
 })();

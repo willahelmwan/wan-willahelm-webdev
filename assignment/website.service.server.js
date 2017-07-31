@@ -37,7 +37,7 @@ function updateWebsite(req, res){
             return;
         }
     }
-    return null;
+    res.send("0");
 }
 
 function findWebsiteById(req,res){

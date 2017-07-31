@@ -28,7 +28,7 @@
         function updatePage(page){
             pageService
                 .updatePage(page._id, page)
-                .then(function(response){
+                .then(function(){
                     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
                 });
         }
@@ -36,7 +36,7 @@
         function deletePage(page){
             pageService
                 .deletePage(page._id)
-                .then(function(response){
+                .then(function(){
                     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
                 });
         }

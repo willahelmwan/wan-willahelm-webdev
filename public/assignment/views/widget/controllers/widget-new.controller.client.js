@@ -10,36 +10,30 @@
         model.pageId = $routeParams.pid;
         model.widgetId = $routeParams.wgid;
         model.createWidget = createWidget;
-        // model.deletePage = deletePage;
 
         function init(){
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
-            model.widget= widgetService.findWidgetById(model.widgetId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function(widgets){
+                    model.widgets = widgets;
+                });
         }
         init();
 
         function createWidget(type){
-            if(type === 'HEADING'){
-                var widget = {widgetType: type};
-                widget._id = (new Date()).getTime() +"";
-            }else if (type === 'IMAGE'){
-                var widget = {widgetType: type};
-                widget._id = (new Date()).getTime() +"";
-            }else if (type === 'YOUTUBE'){
-                var widget = {widgetType: type};
-                widget._id = (new Date()).getTime() +"";
-            }else {
-                var widget = {widgetType: type};
-                widget._id = (new Date()).getTime() +"";
-            }
-            widgetService.createWidget(model.pageId, widget);
-            $location.url("user/" + model.userId +"/website/" + model.webId +"/page/" + model.pageId + "/widget/"+widget._id);
+            var widget = {_id: (new Date()).getTime() +""};
+            widget.widgetType = type;
+            model.widgetId = widget._id;
+            widgetService
+                .createWidget(model.pageId, widget)
+                .then(function(){
+                    widgetService
+                        .findWidgetById(model.widgetId)
+                        .then (function(widget){
+                            $location.url("user/" + model.userId +"/website/" + model.webId +"/page/" + model.pageId + "/widget/"+widget._id);
+                        });
+                })
+
         }
-
-        // function deletePage(page){
-        //     pageService.deletePage(page._id);
-        //     $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
-        // }
-
     }
 })();

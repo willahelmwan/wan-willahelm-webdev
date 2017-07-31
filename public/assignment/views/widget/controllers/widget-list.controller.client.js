@@ -13,7 +13,11 @@
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
 
         function init(){
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function(widgets){
+                    model.widgets = widgets;
+                });
         }
         init();
 

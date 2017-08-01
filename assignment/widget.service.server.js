@@ -1,5 +1,7 @@
 var app = require("../express");
 
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../public/assignment/uploads' });
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
     { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -17,6 +19,34 @@ app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
+app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
+
+function uploadImage(req, res) {
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    for (var w in widgets){
+        if(widgets[w]._id === req.body.widgetId){
+            widgets[w].url = '/assignment/uploads/'+filename;
+            widgets[w].width = req.body.width;
+        }
+    }
+
+    var callbackUrl = "http://localhost:3000/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget"
+    res.redirect(callbackUrl);
+}
 
 function deleteWidget(req, res){
     for(var w in widgets){

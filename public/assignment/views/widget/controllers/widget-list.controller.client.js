@@ -17,6 +17,10 @@
                 .findWidgetsByPageId(model.pageId)
                 .then(function(widgets){
                     model.widgets = widgets;
+                    $('#widget-list')
+                        .sortable({
+                            axis: "y"
+                        });
                 });
         }
         init();

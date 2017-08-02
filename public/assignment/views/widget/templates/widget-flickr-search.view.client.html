@@ -1,0 +1,34 @@
+<div class="profile">
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+                   class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active">Search Flickr</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+
+        <ul class="list-group widget-list">
+        </ul>
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}"  class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

@@ -1,10 +1,10 @@
 body{
-    background-image: url(/pictures/ironman.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 10px;
-    color: white;
-}
+     background-image: url(/pictures/ironman.gif);
+     background-repeat: no-repeat;
+     background-size: cover;
+     margin: 10px;
+     color: white;
+ }
 
 p{
     color: whitesmoke;

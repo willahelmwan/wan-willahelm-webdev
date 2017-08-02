@@ -22,13 +22,11 @@
     <div  class="container-fluid">
         <div class="row" wbdv-sortable="">
             <div ng-repeat="widget in model.widgets" class="col-xs-12">
-                <!--<div ng-switch="widget.widgetType">-->
-                    <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
-                    <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                    <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                        <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                    </a>
-                <!--</div>-->
+                <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
+                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                </a>
             </div>
         </div>
     </div>

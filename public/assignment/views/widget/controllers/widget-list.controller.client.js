@@ -21,6 +21,7 @@
         }
         init();
 
+
         function trustHtmlContent(htmlContent){
             return $sce.trustAsHtml(htmlContent);
         }

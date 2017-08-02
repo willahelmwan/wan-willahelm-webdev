@@ -13,6 +13,7 @@ var widgets = [
         "url": "https://youtu.be/AM2Ivdi9c4E" },
     { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
+var test =[ 'a', 'b', 'c', 'd', 'e'];
 
 app.post("/api/page/:pageId/widget", createWidget);
 app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
@@ -20,6 +21,15 @@ app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
 app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
+app.put("/api/page/:pageId/widget", updateSortIndex);
+
+function updateSortIndex(req, res){
+    var initial = req.query.initial;
+    var final = req.query.final;
+    widgets.splice(final, 0, widgets.splice(initial,1)[0]);
+    res.send(widgets);
+}
+
 
 function uploadImage(req, res) {
     var widgetId      = req.body.widgetId;
@@ -44,7 +54,7 @@ function uploadImage(req, res) {
         }
     }
 
-    var callbackUrl = "http://localhost:3000/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget"
+    var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget"
     res.redirect(callbackUrl);
 }
 

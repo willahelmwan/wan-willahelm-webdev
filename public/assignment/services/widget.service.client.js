@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .service("widgetService", widgetService);
 
-    function widgetService($http){
+    function widgetService($http, $location){
 
 
         this.createWidget = createWidget;
@@ -11,6 +11,15 @@
         this.findWidgetsByPageId = findWidgetsByPageId;
         this.updateWidget= updateWidget;
         this.deleteWidget = deleteWidget;
+        this.updateSortIndex = updateSortIndex;
+
+        function updateSortIndex(start, end, pageId){
+            var url = "/api/page/" + pageId + "/widget?initial="+ start + "&final="+end;
+            return $http.put(url)
+                .then(function(response){
+                    return response.data;
+                });
+        }
 
         function createWidget(pageId, widget){
             var url = "/api/page/"+pageId+"/widget";

@@ -20,7 +20,7 @@
     </div>
 
     <div  class="container-fluid">
-        <div class="row" id="widget-list">
+        <div class="row" wbdv-sortable="">
             <div ng-repeat="widget in model.widgets" class="col-xs-12">
                 <div ng-switch="widget.widgetType">
                     <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>

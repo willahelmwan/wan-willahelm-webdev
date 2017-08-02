@@ -1,11 +1,11 @@
 (function(){
     angular
         .module('wbdvDirectives',[])
-        .directive('wdDraggable', wdDraggable);
+        .directive('wbdvSortable', wbdvSortable);
 
-    function wdDraggable(){
+    function wbdvSortable(){
         function linkFunction(scope, element){
-            $(element).sortable();
+            $(element).sortable({axis: 'y'});
         }
         return {
             link: linkFunction

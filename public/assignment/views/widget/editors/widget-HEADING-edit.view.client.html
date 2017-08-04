@@ -16,12 +16,25 @@
            id="text"/>
 
     <label for="size">Size</label>
-    <input name="size"
-           type="number"
-           ng-model="model.widget.size"
-           placeholder="Enter font size here"
-           class="form-control"
-           id="size"/>
+    <select name="size"
+            type="number"
+            ng-model="model.widget.size"
+            class="form-control sizeSelect"
+            id="size">
+        <option value="" disabled selected>Select your option</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+    </select>
+    <!--<input name="size"-->
+           <!--type="number"-->
+           <!--ng-model="model.widget.size"-->
+           <!--placeholder="Enter font size here"-->
+           <!--class="form-control"-->
+           <!--id="size"/>-->
 
     <a class="btn btn-default btn-primary btn-block"
        href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"

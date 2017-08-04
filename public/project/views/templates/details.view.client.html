@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <table class="table-responsive">
+        <tr>
+            <td>
+
+                <div class="col-md-6">
+                    <h1>OMDB API</h1>
+                    <h2>Movie Details</h2>
+                    <div>
+                        <img ng-src="{{model.movie.Poster}}"/>
+                    </div>
+                    <h1>{{model.movie.Title}}</h1>
+                    <div class="description">{{model.movie.Plot}}</div>
+                </div>
+
+            </td>
+
+            <td>
+                <div class="col-md-6 details">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
+                        <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
+                        <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
+                        <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
+                        <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
+                        <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
+                        <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
+                        <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
+                        <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
+                        <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
+                        <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
+                        <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+</div>

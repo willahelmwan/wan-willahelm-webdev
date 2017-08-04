@@ -1,0 +1,14 @@
+/*.col {*/
+    /*width: 500px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
+
+.details {
+    top: 50px;
+    right: 100px;
+}
+
+.form-group {
+    padding-left: 20px;
+}

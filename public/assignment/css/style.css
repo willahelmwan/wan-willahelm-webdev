@@ -1,6 +1,7 @@
-input.form-control, textarea {
+input.form-control, select.form-control, textarea {
     margin-bottom: 5px;
 }
+
 
 div.profile {
     padding-top: 60px;

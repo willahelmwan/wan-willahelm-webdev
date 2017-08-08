@@ -39,6 +39,10 @@ div.profile {
     color: white;
 }
 
+.glyphicon.glyphicon-search{
+    color: #46b8da;
+}
+
 span.pull-right.glyphicon.glyphicon-ok {
     color: white;
 }

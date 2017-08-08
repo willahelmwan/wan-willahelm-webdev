@@ -1,4 +1,4 @@
-var app = require("../express");
+var app = require("../../express");
 
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname+'/../public/assignment/uploads' });

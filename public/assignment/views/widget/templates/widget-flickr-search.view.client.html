@@ -3,7 +3,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
 
-                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{model.widgetId}}"
                    class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
@@ -18,14 +18,33 @@
 
     <div class="container-fluid">
 
-        <ul class="list-group widget-list">
-        </ul>
+        <div class="input-group">
+            <input ng-model="searchText"
+                   type="text"
+                   class="form-control">
+            <span class="input-group-btn">
+                <a ng-click="model.searchPhotos(searchText)"
+                   class="btn btn-default"
+                   type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+                <img ng-click="model.selectPhoto(photo)"
+                     ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.userId}}/website/{{website._id}}"  class="userglyphicon">
+                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

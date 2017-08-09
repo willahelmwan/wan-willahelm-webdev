@@ -2,6 +2,7 @@ var app = require("../../express");
 
 
 var websiteModel = require('../models/website/website.model.server');
+var userModel = require('../models/user/user.model.server');
 
 // var websites = [
 //     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -59,6 +60,7 @@ function createWebsite(req, res){
     websiteModel
         .createWebsiteForUser(userId,website)
         .then(function(website){
+            // updateUser(userId,website);
             res.json(website);
         });
 }
@@ -71,3 +73,13 @@ function findAllWebsitesForUser(req,res){
             res.json(websites);
         })
 }
+
+// function updateUser(userId, website){
+//     userModel
+//         .findUserById(userId)
+//         .then(function(user){
+//             user.websites= user.websites.push(website._id)
+//             userModel
+//                 .updateUser(userId, user)
+//         })
+// }

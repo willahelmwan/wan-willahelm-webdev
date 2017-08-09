@@ -21,12 +21,14 @@
         init();
 
         function createWidget(type){
-            var widget = {_id: (new Date()).getTime() +""};
-            widget.widgetType = type;
-            model.widgetId = widget._id;
+            // var widget = {_id: (new Date()).getTime() +""};
+            var widget = {type: type};
+            // widget.widgetType = type;
+            // model.widgetId = widget._id;
             widgetService
                 .createWidget(model.pageId, widget)
-                .then(function(){
+                .then(function(response){
+                    model.widgetId = response._id;
                     widgetService
                         .findWidgetById(model.widgetId)
                         .then (function(widget){

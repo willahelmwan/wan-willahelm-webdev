@@ -13,6 +13,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.deleteAll = deleteAll;
 
 module.exports = userModel;
 
@@ -46,3 +47,12 @@ function deleteUser(userId){
     return userModel.remove({_id: userId});
 }
 
+function deleteAll(){
+    return userModel.remove({});
+}
+
+
+// createUser({username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true });
+// createUser({username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley" });
+// createUser({username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi"});
+// createUser({username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia" });

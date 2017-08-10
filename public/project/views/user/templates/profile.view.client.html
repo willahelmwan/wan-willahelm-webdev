@@ -48,6 +48,7 @@
         <label for="email">Email</label>
         <input name="email"
                type="email"
+               ng-model="model.user.email"
                placeholder="alice@wonderland.com"
                class="form-control"
                id="email"/>
@@ -78,7 +79,7 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="#!/profile/{{model.user._id}}" class="userglyphicon">
+                <a href="#!/user/{{model.user._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

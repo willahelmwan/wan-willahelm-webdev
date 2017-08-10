@@ -7,6 +7,22 @@
 
         <h2>Register</h2>
 
+        <label for="firstname">Firstname</label>
+        <input name="firstname"
+               type="text"
+               ng-model="user.firstName"
+               placeholder="Alice"
+               class="form-control"
+               id="firstname"/>
+
+        <label for="lastname">Lastname</label>
+        <input name="lastname"
+               type="text"
+               ng-model="user.lastName"
+               placeholder="Wonderland"
+               class="form-control"
+               id="lastname"/>
+
         <label for="username">Username</label>
         <input name="username"
                ng-model="user.username"
@@ -14,6 +30,14 @@
                placeholder="alice"
                class="form-control"
                id="username"/>
+
+        <label for="email">Email</label>
+        <input name="email"
+               ng-model="user.email"
+               type="text"
+               placeholder="alice@wonderland.com"
+               class="form-control"
+               id="email"/>
 
         <label for="password">Password</label>
         <input name="password"

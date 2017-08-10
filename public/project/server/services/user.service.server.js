@@ -78,7 +78,17 @@ function findUser(req, response){
             });
 
     }else{
-        response.send("0");
+        userModel
+            .findUserByUsername(username)
+            .then(function(user){
+                if(user===null){
+                    response.send("2");
+                    return;
+                }else{
+                    response.send("0");
+                    return;
+                }
+            });
     }
 }
 

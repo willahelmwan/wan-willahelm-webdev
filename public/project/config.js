@@ -8,12 +8,12 @@
 
         $routeProvider
             .when("/", {
-                templateUrl: "views/templates/search.view.client.html",
-                controller: "searchController",
+                templateUrl: "views/home/templates/home.view.client.html",
+                controller: "homeController",
                 controllerAs: "model"
             })
             .when("/details/:imdbID", {
-                templateUrl: "views/templates/details.view.client.html",
+                templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
                 controllerAs: "model"
             })

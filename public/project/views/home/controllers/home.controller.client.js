@@ -1,10 +1,10 @@
 (function () {
     angular
         .module("omdbApp")
-        .controller("searchController", searchController);
+        .controller("homeController", homeController);
 
 
-    function searchController(movieService) {
+    function homeController(movieService) {
         var model = this;
 
         model.searchMovieByTitle = searchMovieByTitle;

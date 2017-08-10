@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+    <form action="/api/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">
+        <label for="Name">Name</label>
+        <input name="Name"
+               type="text"
+               ng-model="model.widget.name"
+               placeholder="Name of Image"
+               class="form-control"
+               id="Name"/>
+
+        <label for="text">Text</label>
+        <input name="text"
+               type="text"
+               ng-model="model.widget.text"
+               placeholder="Text of Image"
+               class="form-control"
+               id="text"/>
+
+        <label for="URL">URL</label>
+        <input name="URL"
+               type="text"
+               ng-model="model.widget.url"
+               placeholder="URL"
+               class="form-control"
+               id="URL"/>
+
+        <label for="Width">Width</label>
+        <input name="width"
+               type="text"
+               ng-model="model.widget.width"
+               placeholder="100%"
+               class="form-control"
+               id="Width"/>
+        <label for="upload">Upload</label>
+        <input  name="myFile"
+                type="file"
+                class="form-control"
+                id="upload"/>
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.webId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"
+                class="btn btn-default btn-block btn-success">Upload Image</button>
+    </form>
+
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+       role="button">Cancel</a>
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
+       role="button">Search</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.deleteWidget(model.widget)"
+       role="button">Delete</a>
+</div>

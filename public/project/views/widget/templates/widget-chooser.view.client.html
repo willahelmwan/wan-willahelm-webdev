@@ -1,0 +1,79 @@
+<div class="profile">
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+                   class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active">Choose Widget</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+
+        <ul class="list-group widget-list">
+            <li>
+                <a ng-click="model.createWidget('HEADING')"
+                   role="button">Header</a>
+            </li>
+
+            <li>
+                <a href="#">Label</a>
+            </li>
+
+            <li>
+                <a ng-click="model.createWidget('HTML')"
+                   role="button">HTML</a>
+            </li>
+
+            <li>
+                <a ng-click="model.createWidget('INPUT')"
+                   role="button">Text Input</a>
+            </li>
+
+            <li>
+                <a href="#">Link</a>
+            </li>
+
+            <li>
+                <a href="#">Button</a>
+            </li>
+
+            <li>
+                <a ng-click="model.createWidget('IMAGE')"
+                   role="button">Image</a>
+            </li>
+
+            <li>
+                <a ng-click="model.createWidget('YOUTUBE')"
+                   role="button">YouTube</a>
+            </li>
+
+            <li>
+                <a href="#">Data Table</a>
+            </li>
+
+            <li>
+                <a href="#">Repeater</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

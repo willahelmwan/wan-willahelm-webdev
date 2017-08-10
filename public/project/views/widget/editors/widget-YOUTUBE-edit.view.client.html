@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+    <label for="Name">Name</label>
+    <input name="Name"
+           type="text"
+           ng-model="model.widget.name"
+           placeholder="Name of Video"
+           class="form-control"
+           id="Name"/>
+
+    <label for="text">Text</label>
+    <input name="text"
+           type="text"
+           ng-model="model.widget.text"
+           placeholder="Text of Video"
+           class="form-control"
+           id="text"/>
+
+    <label for="URL">URL</label>
+    <input name="URL"
+           type="text"
+           ng-model="model.widget.url"
+           placeholder="URL"
+           class="form-control"
+           id="URL"/>
+
+    <label for="Width">Width</label>
+    <input name="Width"
+           type="text"
+           ng-model="model.widget.width"
+           placeholder="100%"
+           class="form-control"
+           id="Width"/>
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+       role="button">Cancel</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.deleteWidget(model.widget)"
+       role="button">Delete</a>
+</div>

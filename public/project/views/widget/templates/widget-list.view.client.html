@@ -1,0 +1,43 @@
+<div class="profile">
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page" class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/new" >
+                    <span class="navbar-text pull-right glyphicon glyphicon-plus"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active">Widgets</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div  class="container-fluid">
+        <div class="row" wbdv-sortable="">
+            <div ng-repeat="widget in model.widgets" class="col-xs-12">
+                <div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>
+                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}" class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

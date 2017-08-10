@@ -20,10 +20,5 @@
         function renderMovie(movie) {
             model.movie = movie;
         }
-
-
-
-
-
     }
 })();

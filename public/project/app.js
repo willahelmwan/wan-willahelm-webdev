@@ -1,3 +1,3 @@
 (function () {
-    angular.module("omdbApp", ["ngRoute"]);
+    angular.module("omdbApp", ["ngRoute", "textAngular"]);
 })();

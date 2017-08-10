@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+    <label for="Name">Name</label>
+    <input name="Name"
+           type="text"
+           ng-model="model.widget.name"
+           placeholder="Name of Header"
+           class="form-control"
+           id="Name"/>
+
+    <label for="text">Text</label>
+    <input name="text"
+           type="text"
+           ng-model="model.widget.text"
+           placeholder="Enter header title here"
+           class="form-control"
+           id="text"/>
+
+    <label for="size">Size</label>
+    <select name="size"
+            type="number"
+            ng-model="model.widget.size"
+            class="form-control sizeSelect"
+            id="size">
+        <option value="" disabled selected>Select your option</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+    </select>
+    <!--<input name="size"-->
+           <!--type="number"-->
+           <!--ng-model="model.widget.size"-->
+           <!--placeholder="Enter font size here"-->
+           <!--class="form-control"-->
+           <!--id="size"/>-->
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+       role="button">Cancel</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.deleteWidget(model.widget)"
+       role="button">Delete</a>
+</div>

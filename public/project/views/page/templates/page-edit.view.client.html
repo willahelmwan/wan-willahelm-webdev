@@ -1,0 +1,90 @@
+<div class="profile">
+    <div class="profilenav">
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+
+                <a ng-click="model.updatePage(model.page)"
+                   role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+
+                <div class="container-fluid nav-header navbar-background">
+                    <div class="navbar-header">
+                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >Pages</a></div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit Page</a></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-lg split-view-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="row">
+                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-2">
+                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/new" class="plusglyphicon">
+                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li ng-repeat="page in model.pages" class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9 col-xs-12 split-view-right">
+                <label for="name">Name</label>
+                <input name="pagename"
+                       ng-model="model.page.name"
+                       placeholder="Page Name"
+                       class="form-control"
+                       id="name"/>
+
+                <label for="title">Title</label>
+                <input name="pagetitle"
+                       ng-model="model.page.description"
+                       placeholder="Page Title"
+                       class="form-control"
+                       id="title"/>
+
+                <a class="btn btn-default btn-success btn-block"
+                   ng-click="model.updatePage(model.page)"
+                   role="button">OK</a>
+
+                <a class="btn btn-default btn-primary btn-block"
+                   href="#!/user/{{model.userId}}/website/{{model.webId}}/page"
+                   role="button">Cancel</a>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   ng-click="model.deletePage(model.page)"
+                   role="button">Delete</a>
+            </div>
+        </div>
+
+        <div class="profilenav">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid navbar-background">
+                    <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+                        <span class="pull-right glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+    </div>
+</div>

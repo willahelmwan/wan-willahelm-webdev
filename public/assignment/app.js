@@ -1,3 +1,3 @@
 (function (){
-    angular.module("WebAppMaker",['ngRoute', 'wbdvDirectives']);
+    angular.module("WebAppMaker",["ngRoute","wbdvDirectives", "textAngular"]);
 })();

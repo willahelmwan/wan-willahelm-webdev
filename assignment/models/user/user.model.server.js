@@ -14,6 +14,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.deleteAll = deleteAll;
+userModel.addWebsiteToArray = addWebsiteToArray;
 
 module.exports = userModel;
 
@@ -49,6 +50,14 @@ function deleteUser(userId){
 
 function deleteAll(){
     return userModel.remove({});
+}
+
+function addWebsiteToArray(userId, website) {
+    return userModel.findById(userId)
+        .then(function (user) {
+            user.websites.push(website._id);
+            return user.save();
+        });
 }
 
 

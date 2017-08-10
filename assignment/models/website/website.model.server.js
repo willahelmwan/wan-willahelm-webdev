@@ -8,6 +8,7 @@ websiteModel.createWebsiteForUser = createWebsiteForUser;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.updateWebsite = updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
+websiteModel.addPageToArray = addPageToArray;
 
 module.exports = websiteModel;
 
@@ -36,4 +37,11 @@ function findAllWebsites(){
     return websiteModel.find();
 }
 
+function addPageToArray(webId, page) {
+    return websiteModel.findById(webId)
+        .then(function (website) {
+            website.pages.push(page._id);
+            return website.save();
+        });
+}
 

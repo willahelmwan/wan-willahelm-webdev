@@ -1,5 +1,6 @@
 var app = require("../../express");
 var widgetModel = require('../models/widget/widget.model.server');
+var pageModel = require('../models/page/page.model.server');
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 
@@ -73,34 +74,20 @@ function deleteWidget(req, res){
         }, function(err){
             res.send(err);
         });
-    // for(var w in widgets){
-    //     if(widgets[w]._id === req.params.widgetId){
-    //         delete widgets[w];
-    //         res.json(widgets);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function updateWidget(req, res){
     var widget = req.body;
     var widgetId = req.params.widgetId;
+    var pageId = req.body._page;
     widgetModel
         .updateWidget(widgetId, widget)
         .then(function(status){
+            // updatePage(pageId, widgetId, widget);
             res.send(status);
         }, function(err){
             res.send(err);
         });
-    // for(var w in widgets){
-    //     if(widgets[w]._id === req.params.widgetId){
-    //         widgets[w] = widget;
-    //         res.json(widget);
-    //         return;
-    //     }
-    // }
-    // res.send("0");
 }
 
 function findWidgetById(req,res){
@@ -112,13 +99,6 @@ function findWidgetById(req,res){
         }, function(err){
             res.send(err);
         });
-    // for(var w in widgets){
-    //     if(widgets[w]._id=== req.params.widgetId){
-    //         res.json(widgets[w]);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function createWidget(req, res){
@@ -127,38 +107,61 @@ function createWidget(req, res){
     widgetModel
         .createWidget(pageId, widget)
         .then(function(widget){
+            addToPage(pageId, widget);
             res.json(widget);
         })
-    // widget.pageId= req.params.pageId;
-    // if(widget.widgetType==="HEADING"){
-    //     widget.size = "";
-    //     widget.text = "";
-    // }else if(widget.widgetType==="IMAGE"){
-    //     widget.width="";
-    //     widget.url="";
-    // }else if(widget.widgetType==="YOUTUBE"){
-    //     widget.width="";
-    //     widget.url="";
-    // }else{
-    //     widget.text ="";
-    // }
-    // widgets.push(widget);
-    // res.json(widgets);
 }
 
 function findAllWidgetsForPage(req,res){
-
     var pageId = req.params.pageId;
     widgetModel
         .findAllWidgetsForPage(pageId)
-        .then(function(widgets){
-            res.json(widgets);
+        .then(function(page){
+            var widgets = page.widgets;
+            var ws = [];
+            var promises =[];
+            for (w = 0; w < widgets.length; w++) {
+                var promise = widgetModel
+                    .findWidgetById(widgets[w])
+                    .then(function(widget){
+                        ws.push(widget);
+                    });
+                promises.push(promise);
+            }
+            Promise.all(promises).then(function(){
+                res.json(ws);
+            })
         })
-    // var ws = [];
-    // for (var w in widgets){
-    //     if(widgets[w].pageId === req.params.pageId) {
-    //         ws.push(widgets[w]);
-    //     }
-    // }
-    // res.json(ws);
 }
+
+function addToPage(pageId, widget){
+    pageModel
+        .findPageById(pageId)
+        .then(function(page){
+            page.widgets.push(widget._id);
+            return page.save();
+            // pageModel
+            //     .addWidgetToArray(pageId, widget)
+        })
+}
+
+// function deleteFromPage(pageId, widget){
+//     pageModel
+//         .findPageById(pageId)
+//         .then(function(page){
+//             console.log((page.widgets.indexOf(widget._id)));
+//         })
+// }
+
+// function updatePage(pageId, widgetId, widget){
+//     pageModel
+//         .findPageById(pageId)
+//         .then(function(page){
+//             var result = page.widgets.find(function(d){
+//                 return d._id === widgetId;
+//             });
+//             console.log(result);
+//             // page.widgets.update({_id: widgetId}, {$set: widget});
+//             // return page.save();
+//         })
+// }

@@ -1,5 +1,6 @@
 var app = require("../../express");
 var pageModel = require('../models/page/page.model.server');
+var websiteModel = require('../models/website/website.model.server');
 
 // var pages = [
 //     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -53,6 +54,7 @@ function createPage(req, res){
     pageModel
         .createPage(webId, page)
         .then(function(page){
+            updateWebsite(webId, page);
             res.json(page);
         });
 }
@@ -63,5 +65,15 @@ function findAllPagesForWebsite(req,res){
         .findAllPagesForWebsite(webId)
         .then(function(pages){
             res.json(pages);
+        })
+}
+
+function updateWebsite(webId, page){
+    websiteModel
+        .findWebsiteById(webId)
+        .then(function(website){
+            website.pages= website.pages.push(page._id);
+            websiteModel
+                .addPageToArray(webId, page)
         })
 }

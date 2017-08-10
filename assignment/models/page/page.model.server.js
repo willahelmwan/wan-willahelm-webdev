@@ -7,6 +7,7 @@ pageModel.createPage = createPage;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
+// pageModel.addWidgetToArray = addWidgetToArray;
 
 module.exports = pageModel;
 

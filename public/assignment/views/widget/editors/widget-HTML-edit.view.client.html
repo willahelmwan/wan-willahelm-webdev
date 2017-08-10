@@ -8,21 +8,20 @@
            class="form-control"
            id="Name"/>
 
-    <label for="text">Text</label>
-    <input name="text"
-           type="text"
-           ng-model="model.widget.text"
-           placeholder="Enter header title here"
-           class="form-control"
-           id="text"/>
+    <div ng-model="model.widget.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
 
-    <label for="size">Size</label>
-    <input name="size"
-           type="number"
-           ng-model="model.widget.size"
-           placeholder="Enter font size here"
-           class="form-control"
-           id="size"/>
+    <!--<label for="size">Size</label>-->
+    <!--<input name="size"-->
+           <!--type="number"-->
+           <!--ng-model="model.widget.size"-->
+           <!--placeholder="Enter font size here"-->
+           <!--class="form-control"-->
+           <!--id="size"/>-->
 
     <a class="btn btn-default btn-primary btn-block"
        href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"

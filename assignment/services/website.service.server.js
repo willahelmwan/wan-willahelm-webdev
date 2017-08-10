@@ -60,7 +60,7 @@ function createWebsite(req, res){
     websiteModel
         .createWebsiteForUser(userId,website)
         .then(function(website){
-            // updateUser(userId,website);
+            updateUser(userId,website);
             res.json(website);
         });
 }
@@ -71,6 +71,16 @@ function findAllWebsitesForUser(req,res){
         .findAllWebsitesForUser(userId)
         .then(function(websites){
             res.json(websites);
+        })
+}
+
+function updateUser(userId, website){
+    userModel
+        .findUserById(userId)
+        .then(function(user){
+            user.websites= user.websites.push(website._id);
+            userModel
+                .addWebsiteToArray(userId, website)
         })
 }
 

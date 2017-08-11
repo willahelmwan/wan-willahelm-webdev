@@ -4,7 +4,6 @@
             <td>
 
                 <div class="col-md-6">
-                    <h1>OMDB API</h1>
                     <h2>Movie Details</h2>
                     <div>
                         <img ng-src="{{model.movie.Poster}}"/>
@@ -35,6 +34,9 @@
             </td>
         </tr>
     </table>
-
-
+    <textarea row="5"
+              placeholder="Enter comment here..."
+              class="form-control"></textarea>
+    <a class="btn btn-default btn-success btn-block"
+       role="button">Submit</a>
 </div>

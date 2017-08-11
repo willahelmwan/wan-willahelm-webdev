@@ -11,7 +11,7 @@
 
         function init(){
             pageService
-                .findPageByWebsiteId(model.webId)
+                .findPageBywatchlistId(model.webId)
                 .then(function(pages){
                     model.pages = pages;
                 });
@@ -22,7 +22,7 @@
             pageService
                 .createPage(model.webId, page)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/" + model.webId +"/page");
+                    $location.url("user/" + model.userId +"/watchlist/" + model.webId +"/page");
                 });
         }
     }

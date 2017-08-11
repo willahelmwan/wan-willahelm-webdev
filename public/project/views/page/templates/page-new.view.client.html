@@ -2,7 +2,7 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
                 <a ng-click="model.createPage(page)"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
@@ -11,7 +11,7 @@
                         <div class="col-lg-3 visible-lg split-view-left-nav">
                             <a class="navbar-brand navsplit" >Pages</a>
                         </div>
-                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite">
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist">
                             <a class="navbar-brand splitnav">New Page</a>
                         </div>
                     </div>
@@ -38,10 +38,10 @@
                     <li ng-repeat="page in model.pages" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{page._id}}/widget">{{page.name}}</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{page._id}}">
+                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{page._id}}">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -72,7 +72,7 @@
                    role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="#!/user/{{model.userId}}/website/{{model.webId}}/page"
+                   href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page"
                    role="button">Cancel</a>
             </div>
         </div>

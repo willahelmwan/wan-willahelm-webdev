@@ -41,7 +41,7 @@ function uploadImage(req, res) {
     var myFile        = req.file;
 
     var userId = req.body.userId;
-    var websiteId = req.body.websiteId;
+    var watchlistId = req.body.watchlistId;
     var pageId = req.body.pageId;
 
     var originalname  = myFile.originalname; // file name on user's computer
@@ -59,7 +59,7 @@ function uploadImage(req, res) {
             widgetModel
                 .updateWidget(widgetId,widget)
                 .then(function(status){
-                    var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget"
+                    var callbackUrl = "/assignment/#!/user/" + userId + "/watchlist/" + watchlistId + "/page/" + pageId + "/widget"
                     res.redirect(callbackUrl);
                 })
         })

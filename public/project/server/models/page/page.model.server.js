@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('projectPageModel', pageSchema);
 
-pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
+pageModel.findAllPagesForwatchlist = findAllPagesForwatchlist;
 pageModel.createPage = createPage;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
@@ -15,13 +15,13 @@ function findPageById(pageId){
     return pageModel.findById(pageId);
 }
 
-function createPage(websiteId, page){
-    page._website = websiteId;
+function createPage(watchlistId, page){
+    page._watchlist = watchlistId;
     return pageModel.create(page);
 }
 
-function findAllPagesForWebsite(websiteId){
-    return pageModel.find({_website: websiteId});
+function findAllPagesForwatchlist(watchlistId){
+    return pageModel.find({_watchlist: watchlistId});
 }
 
 function updatePage(pageId, page){

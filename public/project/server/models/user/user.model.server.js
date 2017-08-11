@@ -14,7 +14,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.deleteAll = deleteAll;
-userModel.addWebsiteToArray = addWebsiteToArray;
+userModel.addwatchlistToArray = addwatchlistToArray;
 
 module.exports = userModel;
 
@@ -52,10 +52,10 @@ function deleteAll(){
     return userModel.remove({});
 }
 
-function addWebsiteToArray(userId, website) {
+function addwatchlistToArray(userId, watchlist) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.websites.push(website._id);
+            user.watchlists.push(watchlist._id);
             return user.save();
         });
 }

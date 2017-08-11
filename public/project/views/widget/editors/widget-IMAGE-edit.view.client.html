@@ -38,7 +38,7 @@
                 class="form-control"
                 id="upload"/>
         <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
-        <input  name="websiteId" value="{{model.webId}}"   style="display: none"/>
+        <input  name="watchlistId" value="{{model.webId}}"   style="display: none"/>
         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
         <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
         <button type="submit"
@@ -47,11 +47,11 @@
 
 
     <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget"
+       href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget"
        role="button">Cancel</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
+       href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
        role="button">Search</a>
 
     <a class="btn btn-default btn-danger btn-block"

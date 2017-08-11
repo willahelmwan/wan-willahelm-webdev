@@ -32,7 +32,7 @@
                     widgetService
                         .findWidgetById(model.widgetId)
                         .then (function(widget){
-                            $location.url("user/" + model.userId +"/website/" + model.webId +"/page/" + model.pageId + "/widget/"+widget._id);
+                            $location.url("user/" + model.userId +"/watchlist/" + model.webId +"/page/" + model.pageId + "/widget/"+widget._id);
                         });
                 })
 

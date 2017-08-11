@@ -15,8 +15,8 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a ng-show="!currentUser" href="#!/login">Login</a></li>
           <li><a ng-show="!currentUser" href="#!/register">Register</a></li>
-          <li><a ng-show="currentUser" href="#!/user/{{currentUser._id}}">Profile</a></li>
-          <li><a ng-show="currentUser" href="#!/login">Logout</a></li>
+          <li><a ng-show="!(currentUser==='0')" href="#!/user/{{currentUser._id}}">Profile</a></li>
+          <li><a ng-show="!(currentUser==='0')" href="#!/login">Logout</a></li>
           <li><a ng-show="currentUser.isAdmin" href="#!/admin">Admin</a></li>
           <li><a href="#!/about">About</a></li>
           <li><a href="#!/contact">Contact</a></li>
@@ -39,11 +39,11 @@
 
   <div class="container theme-showcase" role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <h1>NeuTube</h1>
-      <p>Fish Tank is a simple web application that provides users tools to build their own mini watchlists.</p>
+      <p>Build your watchlists.</p>
     </div>
+    {{model.currentUser}}
     <div class="form-group">
       <input placeholder="Search"
              ng-model="movieTitle"
@@ -68,6 +68,6 @@
       </table>
     </div>
 
-  </div> <!-- /container -->
+  </div>
 
 </div>

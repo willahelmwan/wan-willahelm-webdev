@@ -34,9 +34,15 @@
             </td>
         </tr>
     </table>
-    <textarea row="5"
-              placeholder="Enter comment here..."
-              class="form-control"></textarea>
+    <!--<textarea row="5"-->
+              <!--placeholder="Enter comment here..."-->
+              <!--class="form-control"></textarea>-->
     <a class="btn btn-default btn-success btn-block"
-       role="button">Submit</a>
+       role="button">Watch Movie</a>
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.login(model.user)"
+       role="button">Add to Watchlist</a>
+
+    {{currentUser}}
 </div>

@@ -10,7 +10,10 @@
             .when("/", {
                 templateUrl: "views/home/templates/home.view.client.html",
                 controller: "homeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
@@ -84,4 +87,19 @@
                 controllerAs: "model"
             } )
     }
+
+    function checkCurrentUser($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.resolve({});
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
 })();

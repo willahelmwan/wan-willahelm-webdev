@@ -4,15 +4,15 @@
         .controller("homeController", homeController);
 
 
-    function homeController(movieService) {
+    function homeController(movieService, currentUser) {
         var model = this;
 
         model.searchMovieByTitle = searchMovieByTitle;
 
         model.searchMovieByImdbId = searchMovieByImdbId;
-
+        model.currentUser = currentUser;
         function init() {
-
+            console.log(currentUser);
         }
 
         init();
@@ -32,8 +32,6 @@
         function renderMovies(movies) {
             model.movies = movies;
         }
-
-
     }
 
 

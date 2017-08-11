@@ -17,10 +17,19 @@
             "findUserByUsername": findUserByUsername,
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "checkLoggedIn": checkLoggedIn
         };
 
         return api;
+
+        function checkLoggedIn() {
+            var url = "/api/project/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function createUser(user){
             var url = "/api/project/user";

@@ -13,11 +13,11 @@
       <div id="navbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a ng-show="!currentUser" href="#!/login">Login</a></li>
-          <li><a ng-show="!currentUser" href="#!/register">Register</a></li>
-          <li><a ng-show="!(currentUser==='0')" href="#!/user/{{currentUser._id}}">Profile</a></li>
-          <li><a ng-show="!(currentUser==='0')" href="#!/login">Logout</a></li>
-          <li><a ng-show="currentUser.isAdmin" href="#!/admin">Admin</a></li>
+          <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+          <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+          <li><a ng-show="model.currentUser._id" href="#!/user/{{model.currentUser._id}}">Profile</a></li>
+          <li><a ng-show="model.currentUser._id" href="#!/login">Logout</a></li>
+          <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
           <li><a href="#!/about">About</a></li>
           <li><a href="#!/contact">Contact</a></li>
           <li class="dropdown">

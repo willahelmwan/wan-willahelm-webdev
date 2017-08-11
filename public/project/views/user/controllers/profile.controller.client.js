@@ -10,6 +10,7 @@
 
         model.updateUser = updateUser;
         model.unregister = unregister;
+        model.logoutUser = logoutUser;
 
         function init(){
             userService.findUserById(userId)
@@ -18,6 +19,10 @@
                 });
         }
         init();
+
+        function logoutUser(){
+            userService.logoutUser()
+        }
 
         function updateUser(user){
             userService.updateUser(user._id, user)

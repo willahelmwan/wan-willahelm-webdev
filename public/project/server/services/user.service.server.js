@@ -14,11 +14,16 @@ var loggedin = "0";
 // http handlers
 app.get("/api/project/users", getAllUsers);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
+app.get("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
 app.get("/api/project/user", findUser);
 app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
+
+function logoutUser(req, res){
+    loggedin = "0";
+}
 
 function checkLoggedIn(req, res){
     res.send(loggedin);

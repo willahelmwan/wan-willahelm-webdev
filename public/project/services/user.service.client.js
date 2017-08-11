@@ -18,10 +18,19 @@
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
             "deleteUser": deleteUser,
-            "checkLoggedIn": checkLoggedIn
+            "checkLoggedIn": checkLoggedIn,
+            "logoutUser":logoutUser
         };
 
         return api;
+
+        function logoutUser(){
+            var url = "/api/project/logoutUser";
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                });
+        }
 
         function checkLoggedIn() {
             var url = "/api/project/checkLoggedIn";

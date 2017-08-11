@@ -7,7 +7,9 @@ var userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    websites: [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}],
+    followers: [{type: mongoose.Schema.Types.ObjectId, ref: "FollowersModel"}],
+    following: [{type: mongoose.Schema.Types.ObjectId, ref: "FollowingModel"}],
+    watchlist: [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}],
     dateCreated: {type: Date, default: Date.now},
     isAdmin: Boolean
 }, {collection: "projectuser"});

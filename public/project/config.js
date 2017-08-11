@@ -83,5 +83,21 @@
                 controller:"FlickrImageSearchController",
                 controllerAs: "model"
             } )
+            // website routes
+            .when("/user/:userId/discussion",{
+                templateUrl:"views/discussion/templates/discussion-list.view.client.html",
+                controller:"websiteListController",
+                controllerAs: "model"
+            } )
+            .when("/user/:userId/discussion/new",{
+                templateUrl:"views/discussion/templates/discussion-new.view.client.html",
+                controller:"websiteNewController",
+                controllerAs: "model"
+            } )
+            .when("/user/:userId/discussion/:discussionId",{
+                templateUrl:"views/discussion/templates/discussion-edit.view.client.html",
+                controller:"websiteEditController",
+                controllerAs: "model"
+            } )
     }
 })();

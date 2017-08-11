@@ -1,0 +1,67 @@
+
+<div class="profile">
+
+    <div class="profilenav">
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <a href="#!/user/{{model.userId}}/website" ><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+
+                <a ng-click="model.createWebsite(website)"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+
+                <div class="container-fluid nav-header navbar-background">
+                    <div class="navbar-header">
+                            <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit"
+                            >Watchlists
+                            </a></div>
+                            <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">New Watchlist</a></div>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-lg split-view-left">
+                <div ng-include="'views/website/templates/website-list.component.client.html'"></div>
+            </div>
+
+            <div class="col-lg-9 col-xs-12 split-view-right">
+                <label for="name">Name</label>
+                <input name="name"
+                       type="text"
+                       ng-model="website.name"
+                       placeholder="Facebook"
+                       class="form-control"
+                       id="name"/>
+
+                <label for="description">Description</label>
+                <textarea name="description"
+                          rows="5"
+                          ng-model="website.description"
+                          placeholder="Largest country in the world"
+                          class="form-control"
+                          id="description"/></textarea>
+
+                <a class="btn btn-default btn-primary btn-block"
+                   ng-click="model.createWebsite(website)"
+                   role="button">Create</a>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   href="#!/user/{{model.userId}}/website"
+                   role="button">Cancel</a>
+            </div>
+        </div>
+
+        <div class="profilenav">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid navbar-background">
+                    <a href="#!/user/{{model.userId}}" class="userglyphicon">
+                        <span class="pull-right glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

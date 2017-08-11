@@ -42,12 +42,13 @@
               cols="50"
               name="comment"
               form="comment"
-              placeholder="Enter comment here..."></textarea>
+              ng-model="page.comment"
+              placeholder="Enter comment here...">
+    </textarea>
     </form>
 
     <a class="btn btn-default btn-success btn-block"
-       href="#!/login"
-       ng-click="model.registerUser(user)"
+       ng-click="model.createPage(page)"
        role="button">Submit</a>
     </div>
 </div>

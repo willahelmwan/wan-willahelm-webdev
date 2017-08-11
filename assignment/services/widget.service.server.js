@@ -21,7 +21,7 @@ app.post("/api/page/:pageId/widget", createWidget);
 app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
-app.delete("/api/widget/:widgetId", deleteWidget);
+app.delete("/api/widget/:widgetId/:pageId", deleteWidget);
 app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.put("/api/page/:pageId/widget", updateSortIndex);
 
@@ -29,9 +29,19 @@ function updateSortIndex(req, res){
     var initial = req.query.initial;
     var final = req.query.final;
     var pageId =req.params.pageId;
-
-    widgets.splice(final, 0, widgets.splice(initial,1)[0]);
-    res.send(widgets);
+    widgetModel
+        .reorderWidget(pageId, initial, final);
+    // pageModel
+    //     .findPageById(pageId)
+    //     .then(function(page){
+    //         console.log(page.widgets);
+    //     })
+    // widgetModel
+    //     .findAllWidgetsForPage(pageId)
+    //     .then(function(widgets){
+    //         widgets.splice(final, 0, widgets.splice(initial,1)[0]);
+    //         res.send(widgets);
+    //     })
 }
 
 
@@ -67,9 +77,11 @@ function uploadImage(req, res) {
 
 function deleteWidget(req, res){
     var widgetId = req.params.widgetId;
+    var pageId = req.params.pageId;
     widgetModel
         .deleteWidget(widgetId)
         .then(function(status){
+            deleteFromPage(pageId, widgetId);
             res.send(status);
         }, function(err){
             res.send(err);
@@ -79,11 +91,9 @@ function deleteWidget(req, res){
 function updateWidget(req, res){
     var widget = req.body;
     var widgetId = req.params.widgetId;
-    var pageId = req.body._page;
     widgetModel
         .updateWidget(widgetId, widget)
         .then(function(status){
-            // updatePage(pageId, widgetId, widget);
             res.send(status);
         }, function(err){
             res.send(err);
@@ -114,8 +124,8 @@ function createWidget(req, res){
 
 function findAllWidgetsForPage(req,res){
     var pageId = req.params.pageId;
-    widgetModel
-        .findAllWidgetsForPage(pageId)
+    pageModel
+        .findPageById(pageId)
         .then(function(page){
             var widgets = page.widgets;
             var ws = [];
@@ -129,7 +139,15 @@ function findAllWidgetsForPage(req,res){
                 promises.push(promise);
             }
             Promise.all(promises).then(function(){
-                res.json(ws);
+                var reorderws =[];
+                for (w = 0; w < widgets.length; w++) {
+                    for(o = 0; o < ws.length; o++){
+                        if (widgets[w].toString()== ws[o]._id.toString()){
+                            reorderws.push(ws[o]);
+                        }
+                    }
+                }
+                res.json(reorderws);
             })
         })
 }
@@ -140,28 +158,16 @@ function addToPage(pageId, widget){
         .then(function(page){
             page.widgets.push(widget._id);
             return page.save();
-            // pageModel
-            //     .addWidgetToArray(pageId, widget)
         })
 }
 
-// function deleteFromPage(pageId, widget){
-//     pageModel
-//         .findPageById(pageId)
-//         .then(function(page){
-//             console.log((page.widgets.indexOf(widget._id)));
-//         })
-// }
+function deleteFromPage(pageId, widgetId){
+    pageModel
+        .findPageById(pageId)
+        .then(function(page){
+            var index = (page.widgets).indexOf(widgetId);
+            page.widgets.splice(index,1);
+            return page.save();
+        })
+}
 
-// function updatePage(pageId, widgetId, widget){
-//     pageModel
-//         .findPageById(pageId)
-//         .then(function(page){
-//             var result = page.widgets.find(function(d){
-//                 return d._id === widgetId;
-//             });
-//             console.log(result);
-//             // page.widgets.update({_id: widgetId}, {$set: widget});
-//             // return page.save();
-//         })
-// }

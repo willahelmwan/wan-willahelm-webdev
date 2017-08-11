@@ -4,7 +4,7 @@
     ['indent','outdent'],['html']]"></div>
 <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
        placeholder="{{widget.textInput.placeholder}}" class="form-control"/>
-<textarea ng-if="!widget.formatted && (widget.rows > 1)"
+<textarea name="{{widget.name}}" ng-if="!widget.formatted && (widget.rows > 1)"
           rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
           class="form-control">{{widget.text}}</textarea>
 

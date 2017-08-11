@@ -30,7 +30,7 @@ function createWidget(pageId, widget){
 }
 
 function findAllWidgetsForPage(pageId){
-    return pageModel.findById(pageId);
+    return widgetModel.find({_page: pageId});
 }
 
 function findWidgetById(widgetId){
@@ -46,7 +46,13 @@ function deleteWidget(widgetId){
 }
 
 function reorderWidget(pageId, start, end){
-
+    pageModel
+        .findPageById(pageId)
+        .then(function(page){
+            console.log(page.widgets);
+            page.widgets.splice(end, 0, page.widgets.splice(start,1)[0]);
+            return page.save();
+        })
 }
 
 

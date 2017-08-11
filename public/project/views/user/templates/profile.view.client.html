@@ -3,18 +3,18 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
-                        <!--<a href="javascript:history.back()" class="userglyphicon">-->
-                            <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
-                        <!--</a>-->
+                <!--<a href="javascript:history.back()" class="userglyphicon">-->
+                <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
 
-                        <a ng-click="model.updateUser(model.user)"
-                           role="button">
-                            <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
-                        </a>
+                <a ng-click="model.updateUser(model.user)"
+                   role="button">
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
 
-                        <div class="navbar-header navbar-title">
-                            <a class="navbar-brand active profilespacing">Profile</a>
-                        </div>
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active profilespacing">Profile</a>
+                </div>
             </div>
         </nav>
     </div>
@@ -59,26 +59,13 @@
                class="form-control"
                id="dob"/>
 
-        <a class="btn btn-default btn-info btn-block"
-           href="#!/"
-           role="button">Home</a>
-
         <a class="btn btn-default btn-primary btn-block"
-<<<<<<< HEAD
-           href="#!/user/{{model.user._id}}/website"
-           role="button">Watchlists</a>
-
-        <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.user._id}}/discussion"
-           role="button">Discussions</a>
-=======
            href="#!/user/{{model.user._id}}/watchlist"
            role="button">Watchlists</a>
 
         <a class="btn btn-default btn-primary btn-block"
            href="#!/user/{{model.user._id}}/watchlist"
            role="button">Movie Discussions</a>
->>>>>>> 6df849cc0b088b88793c2dd96656b7c276bafd18
 
         <a class="btn btn-default btn-primary btn-block"
            ng-click="model.updateUser(model.user)"

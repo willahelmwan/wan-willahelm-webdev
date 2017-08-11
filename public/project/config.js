@@ -34,7 +34,7 @@
             })
 
             .when("/user/:userId/watchlist",{
-                templateUrl:"views/watchlist/templates/watchlist-list.view.client.html",
+                templateUrl:"views/watchlist/templates/watchlist-VIDEO.view.client.html",
                 controller:"watchlistListController",
                 controllerAs: "model"
             } )
@@ -83,21 +83,12 @@
                 controller:"FlickrImageSearchController",
                 controllerAs: "model"
             } )
-            // website routes
-            .when("/user/:userId/discussion",{
-                templateUrl:"views/discussion/templates/discussion-list.view.client.html",
-                controller:"websiteListController",
+            .when("/user/:userId/watchlist/:wid/video/:videoId/widget",{
+                templateUrl:"views/watch/templates/watch-video.view.client.html",
+                controller:"widgetListController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/discussion/new",{
-                templateUrl:"views/discussion/templates/discussion-new.view.client.html",
-                controller:"websiteNewController",
-                controllerAs: "model"
-            } )
-            .when("/user/:userId/discussion/:discussionId",{
-                templateUrl:"views/discussion/templates/discussion-edit.view.client.html",
-                controller:"websiteEditController",
-                controllerAs: "model"
-            } )
+
+
     }
 })();

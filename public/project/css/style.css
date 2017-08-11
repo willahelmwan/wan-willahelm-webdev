@@ -2,6 +2,10 @@ input.form-control, select.form-control, textarea {
     margin-bottom: 5px;
 }
 
+.addto{
+    padding-bottom:5px;
+}
+
 .theme-showcase{
     margin-top:150px;
 

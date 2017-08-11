@@ -1,4 +1,15 @@
 <div class="container-fluid">
+    <div  ng-show="model.message"
+          class="alert alert-success alert-dismissable">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{model.message}}
+    </div>
+    <div  ng-show="model.warning"
+          class="alert alert-warning alert-dismissable">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{model.warning}}
+    </div>
+
     <table class="table-responsive">
         <tr>
             <td>
@@ -37,12 +48,42 @@
     <!--<textarea row="5"-->
               <!--placeholder="Enter comment here..."-->
               <!--class="form-control"></textarea>-->
+    <div class="dropdown addto">
+        <button class="btn btn-default dropdown-toggle"
+                type="button"
+                data-toggle="dropdown">Add to
+            <span class="glyphicon-plus"></span></button>
+        <ul class="dropdown-menu">
+            <li ng-repeat="watchlist in model.watchlists">
+                <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
+                   role="button">{{watchlist.name}}</a>
+            </li>
+        </ul>
+    </div>
     <a class="btn btn-default btn-success btn-block"
        role="button">Watch Movie</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.login(model.user)"
-       role="button">Add to Watchlist</a>
+       href="#!/user/{{model.currentUser._id}}"
+       role="button">Profile</a>
 
-    {{currentUser}}
+    <!--<a class="btn btn-default btn-primary btn-block"-->
+       <!--ng-click="model.login(model.user)"-->
+       <!--role="button">Add to Watchlist</a>-->
+
+    <!--<div ng-repeat="widget in model.widgets" class="col-xs-12">-->
+        <!--<div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>-->
+        <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+        <!--<a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
+            <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <!--ng-click="model.findAllwatchlistsForUser(model.currentUser._id)"-->
+
+
+
+    {{model.movie.imdbID}}
+    {{model.watchlists}}
+    {{model.currentUser}}
 </div>

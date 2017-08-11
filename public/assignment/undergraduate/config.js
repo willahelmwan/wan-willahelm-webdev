@@ -93,6 +93,21 @@
         return deferred.promise;
     }
 
+    function checkLoggedIn($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
     function checkAdmin($q, $location, userService) {
         var deferred = $q.defer();
         userService
@@ -108,18 +123,5 @@
         return deferred.promise;
     }
 
-    function checkLoggedIn($q, $location, userService) {
-        var deferred = $q.defer();
-        userService
-            .checkLoggedIn()
-            .then(function (currentUser) {
-                if(currentUser === '0') {
-                    deferred.reject();
-                    $location.url('/login');
-                } else {
-                    deferred.resolve(currentUser);
-                }
-            });
-        return deferred.promise;
-    }
+
 })();

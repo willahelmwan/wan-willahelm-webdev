@@ -18,7 +18,10 @@
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -95,6 +98,21 @@
             .then(function (currentUser) {
                 if(currentUser === '0') {
                     deferred.resolve({});
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkLoggedIn($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/login');
                 } else {
                     deferred.resolve(currentUser);
                 }

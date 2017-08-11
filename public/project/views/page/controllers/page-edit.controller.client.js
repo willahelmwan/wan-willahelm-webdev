@@ -13,7 +13,7 @@
 
         function init(){
             pageService
-                .findPageByWebsiteId(model.webId)
+                .findPageBywatchlistId(model.webId)
                 .then(function(pages){
                     model.pages = pages;
                 });
@@ -29,7 +29,7 @@
             pageService
                 .updatePage(page._id, page)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
+                    $location.url("user/" + model.userId +"/watchlist/"+ model.webId +"/page");
                 });
         }
 
@@ -37,7 +37,7 @@
             pageService
                 .deletePage(page._id)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/"+ model.webId +"/page");
+                    $location.url("user/" + model.userId +"/watchlist/"+ model.webId +"/page");
                 });
         }
     }

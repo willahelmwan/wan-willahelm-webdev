@@ -53,8 +53,8 @@
                 });
         }
 
-        function deleteWidget(wgid){
-            var url = "/api/widget/"+wgid;
+        function deleteWidget(wgid, widget){
+            var url = "/api/widget/"+wgid+"/"+widget._page;
             return $http.delete(url)
                 .then(function(response){
                     return response.data;

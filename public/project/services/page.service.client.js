@@ -7,17 +7,17 @@
 
         this.createPage = createPage;
         this.findPageById = findPageById;
-        this.findPageByWebsiteId = findPageByWebsiteId;
+        this.findPageBywatchlistId = findPageBywatchlistId;
         this.updatePage= updatePage;
         this.deletePage = deletePage;
 
         function createPage(webId, page){
-            var url =　"/api/project/website/" + webId + "/page";
+            var url =　"/api/project/watchlist/" + webId + "/page";
             return $http.post(url, page);
         }
 
-        function findPageByWebsiteId(wid){
-            var url = "/api/project/website/" + wid + "/page";
+        function findPageBywatchlistId(wid){
+            var url = "/api/project/watchlist/" + wid + "/page";
             return $http.get(url)
                 .then(function(response){
                     return response.data;

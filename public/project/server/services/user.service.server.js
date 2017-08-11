@@ -107,12 +107,4 @@ function getUserById(req, response){
         .then(function(user){
             response.json(user);
         });
-    // for(var u in users){
-    //     if(users[u]._id === req.params.userId){
-    //         // response.send(angular.copy(users[u]));
-    //         response.send(users[u]);
-    //         return;
-    //     }
-    // }
-    // response.send(users);
 }

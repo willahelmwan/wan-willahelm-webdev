@@ -10,7 +10,7 @@
 
         function init(){
             pageService
-                .findPageByWebsiteId(model.webId)
+                .findPageBywatchlistId(model.webId)
                 .then(function(pages){
                     model.pages = pages;
                 });

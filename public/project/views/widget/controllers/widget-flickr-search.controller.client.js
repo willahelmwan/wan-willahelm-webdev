@@ -29,7 +29,7 @@
             widgetService
                 .updateWidget(model.widgetId, model.widget)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget/"+model.widgetId);
+                    $location.url("user/" + model.userId +"/watchlist/"+ model.webId +"/page/" + model.pageId +"/widget/"+model.widgetId);
                 });
 
         }

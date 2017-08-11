@@ -12,13 +12,15 @@ app.post("/api/website/:websiteId/page", createPage);
 app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
 app.get("/api/page/:pageId", findPageById);
 app.put("/api/page/:pageId", updatePage);
-app.delete("/api/page/:pageId", deletePage);
+app.delete("/api/page/:pageId/:webId", deletePage);
 
 function deletePage(req, res){
     var pageId = req.params.pageId;
+    var webId = req.params.webId;
     pageModel
         .deletePage(pageId)
         .then(function(status){
+            deleteFromWebsite(webId, pageId);
             res.send(status);
         }, function(err){
             res.send(err);
@@ -75,5 +77,15 @@ function updateWebsite(webId, page){
             website.pages= website.pages.push(page._id);
             websiteModel
                 .addPageToArray(webId, page)
+        })
+}
+
+function deleteFromWebsite(webId, pageId){
+    websiteModel
+        .findWebsiteById(webId)
+        .then(function(website){
+            var index = (website.pages).indexOf(pageId);
+            website.pages.splice(index,1);
+            return website.save();
         })
 }

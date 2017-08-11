@@ -18,13 +18,15 @@ app.post("/api/user/:userId/website", createWebsite);
 app.get("/api/user/:userId/website", findAllWebsitesForUser);
 app.get("/api/website/:websiteId", findWebsiteById);
 app.put("/api/website/:websiteId", updateWebsite);
-app.delete("/api/website/:websiteId", deleteWebsite);
+app.delete("/api/website/:websiteId/:userId", deleteWebsite);
 
 function deleteWebsite(req, res){
     var websiteId = req.params.websiteId;
+    var userId = req.params.userId;
     websiteModel
         .deleteWebsite(websiteId)
         .then(function(status){
+            deleteFromUser(userId, websiteId)
             res.send(status);
         }, function(err){
             res.send(err);
@@ -84,12 +86,12 @@ function updateUser(userId, website){
         })
 }
 
-// function updateUser(userId, website){
-//     userModel
-//         .findUserById(userId)
-//         .then(function(user){
-//             user.websites= user.websites.push(website._id)
-//             userModel
-//                 .updateUser(userId, user)
-//         })
-// }
+function deleteFromUser(userId, webId){
+    userModel
+        .findUserById(userId)
+        .then(function(user){
+            var index = (user.websites).indexOf(webId);
+            user.websites.splice(index,1);
+            return user.save();
+        })
+}

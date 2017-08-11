@@ -32,53 +32,53 @@
                 controller:"profileController",
                 controllerAs: "model"
             })
-            // website routes
-            .when("/user/:userId/website",{
-                templateUrl:"views/website/templates/website-list.view.client.html",
-                controller:"websiteListController",
+
+            .when("/user/:userId/watchlist",{
+                templateUrl:"views/watchlist/templates/watchlist-list.view.client.html",
+                controller:"watchlistListController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/new",{
-                templateUrl:"views/website/templates/website-new.view.client.html",
-                controller:"websiteNewController",
+            .when("/user/:userId/watchlist/new",{
+                templateUrl:"views/watchlist/templates/watchlist-new.view.client.html",
+                controller:"watchlistNewController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid",{
-                templateUrl:"views/website/templates/website-edit.view.client.html",
-                controller:"websiteEditController",
+            .when("/user/:userId/watchlist/:wid",{
+                templateUrl:"views/watchlist/templates/watchlist-edit.view.client.html",
+                controller:"watchlistEditController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page",{
+            .when("/user/:userId/watchlist/:wid/page",{
                 templateUrl:"views/page/templates/page-list.view.client.html",
                 controller:"pageListController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/new",{
+            .when("/user/:userId/watchlist/:wid/page/new",{
                 templateUrl:"views/page/templates/page-new.view.client.html",
                 controller:"pageNewController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/:pid",{
+            .when("/user/:userId/watchlist/:wid/page/:pid",{
                 templateUrl:"views/page/templates/page-edit.view.client.html",
                 controller:"pageEditController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/:pid/widget",{
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget",{
                 templateUrl:"views/widget/templates/widget-list.view.client.html",
                 controller:"widgetListController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/:pid/widget/new",{
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/new",{
                 templateUrl:"views/widget/templates/widget-chooser.view.client.html",
                 controller:"widgetNewController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/:pid/widget/:wgid",{
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid",{
                 templateUrl:"views/widget/templates/widget-edit.view.client.html",
                 controller:"widgetEditController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/website/:wid/page/:pid/widget/:wgid/flickr",{
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid/flickr",{
                 templateUrl:"views/widget/templates/widget-flickr-search.view.client.html",
                 controller:"FlickrImageSearchController",
                 controllerAs: "model"

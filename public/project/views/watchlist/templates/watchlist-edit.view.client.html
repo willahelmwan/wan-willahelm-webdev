@@ -2,15 +2,15 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="#!/user/{{model.userId}}/website"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/user/{{model.userId}}/watchlist"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a ng-click="model.updateWebsite(model.website)"
+                <a ng-click="model.updatewatchlist(model.watchlist)"
                    role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
-                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >Websites</a></div>
-                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit Website</a></div>
+                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >watchlists</a></div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist"><a class="navbar-brand splitnav">Edit watchlist</a></div>
                     </div>
                 </div>
             </nav>
@@ -20,14 +20,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 visible-lg split-view-left">
-                <div ng-include="'views/website/templates/website-list.component.client.html'"></div>
+                <div ng-include="'views/watchlist/templates/watchlist-list.component.client.html'"></div>
             </div>
 
             <div class="col-lg-9 col-xs-12 split-view-right">
                 <label for="name">Name</label>
                 <input name="name"
                        type="text"
-                       ng-model="model.website.name"
+                       ng-model="model.watchlist.name"
                        placeholder="Facebook"
                        class="form-control"
                        id="name"/>
@@ -35,21 +35,21 @@
                 <label for="description">Description</label>
                 <textarea name="description"
                           rows="5"
-                          ng-model="model.website.description"
+                          ng-model="model.watchlist.description"
                           placeholder="Largest country in the world"
                           class="form-control"
                           id="description"/></textarea>
 
                 <a class="btn btn-default btn-success btn-block"
-                   ng-click="model.updateWebsite(model.website)"
+                   ng-click="model.updatewatchlist(model.watchlist)"
                    role="button">OK</a>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="#!/user/{{model.userId}}/website"
+                   href="#!/user/{{model.userId}}/watchlist"
                    role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   ng-click="model.deleteWebsite(model.website)"
+                   ng-click="model.deletewatchlist(model.watchlist)"
                    role="button">Delete</a>
             </div>
         </div>

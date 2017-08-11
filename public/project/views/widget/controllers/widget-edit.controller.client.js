@@ -31,7 +31,7 @@
             widgetService
                 .updateWidget(widget._id, widget)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
+                    $location.url("user/" + model.userId +"/watchlist/"+ model.webId +"/page/" + model.pageId +"/widget");
                 });
         }
 
@@ -39,7 +39,7 @@
             widgetService
                 .deleteWidget(widget._id)
                 .then(function(){
-                    $location.url("user/" + model.userId +"/website/"+ model.webId +"/page/" + model.pageId +"/widget");
+                    $location.url("user/" + model.userId +"/watchlist/"+ model.webId +"/page/" + model.pageId +"/widget");
                 });
         }
 

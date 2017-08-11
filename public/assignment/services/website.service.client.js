@@ -40,8 +40,8 @@
                 })
         }
 
-        function deleteWebsite(wid){
-            var url = "/api/website/" + wid;
+        function deleteWebsite(wid, website){
+            var url = "/api/website/" + wid +"/"+ website._user;
             return $http.delete(url)
                 .then(function(response){
                     return response.data;

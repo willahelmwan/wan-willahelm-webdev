@@ -1,15 +1,15 @@
 var app = require("../../../../express");
 var pageModel = require('../models/page/page.model.server');
-var websiteModel = require('../models/website/website.model.server');
+var watchlistModel = require('../models/watchlist/watchlist.model.server');
 
 // var pages = [
-//     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-//     { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-//     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
+//     { "_id": "321", "name": "Post 1", "watchlistId": "456", "description": "Lorem" },
+//     { "_id": "432", "name": "Post 2", "watchlistId": "456", "description": "Lorem" },
+//     { "_id": "543", "name": "Post 3", "watchlistId": "456", "description": "Lorem" }
 // ];
 
-app.post("/api/project/website/:websiteId/page", createPage);
-app.get("/api/project/website/:websiteId/page", findAllPagesForWebsite);
+app.post("/api/project/watchlist/:watchlistId/page", createPage);
+app.get("/api/project/watchlist/:watchlistId/page", findAllPagesForwatchlist);
 app.get("/api/project/page/:pageId", findPageById);
 app.put("/api/project/page/:pageId", updatePage);
 app.delete("/api/project/page/:pageId", deletePage);
@@ -50,30 +50,30 @@ function findPageById(req,res){
 
 function createPage(req, res){
     var page = req.body;
-    var webId = req.params.websiteId;
+    var webId = req.params.watchlistId;
     pageModel
         .createPage(webId, page)
         .then(function(page){
-            updateWebsite(webId, page);
+            updatewatchlist(webId, page);
             res.json(page);
         });
 }
 
-function findAllPagesForWebsite(req,res){
-    var webId = req.params.websiteId;
+function findAllPagesForwatchlist(req,res){
+    var webId = req.params.watchlistId;
     pageModel
-        .findAllPagesForWebsite(webId)
+        .findAllPagesForwatchlist(webId)
         .then(function(pages){
             res.json(pages);
         })
 }
 
-function updateWebsite(webId, page){
-    websiteModel
-        .findWebsiteById(webId)
-        .then(function(website){
-            website.pages= website.pages.push(page._id);
-            websiteModel
+function updatewatchlist(webId, page){
+    watchlistModel
+        .findwatchlistById(webId)
+        .then(function(watchlist){
+            watchlist.pages= watchlist.pages.push(page._id);
+            watchlistModel
                 .addPageToArray(webId, page)
         })
 }

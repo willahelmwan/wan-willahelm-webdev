@@ -5,6 +5,7 @@
         .config(configuration);
 
     function configuration($routeProvider){
+        // $qProvider.errorOnUnhandledRejections(false);
         $routeProvider
             .when("/", {
                 templateUrl: "views/home/home.view.client.html",
@@ -78,4 +79,5 @@
                 controllerAs: "model"
             } )
     }
+
 })();

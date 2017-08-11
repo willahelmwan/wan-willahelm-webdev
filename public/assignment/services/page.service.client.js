@@ -40,8 +40,8 @@
                 });
         }
 
-        function deletePage(pid){
-            var url = "/api/page/" + pid;
+        function deletePage(pid, page){
+            var url = "/api/page/" + pid+"/"+page._website;;
             return $http.delete(url)
                 .then(function(response){
                     return response.data;

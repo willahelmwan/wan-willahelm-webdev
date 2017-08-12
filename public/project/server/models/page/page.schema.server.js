@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 var pageSchema = mongoose.Schema({
     _watchlist: {type: mongoose.Schema.Types.ObjectId, ref: "watchlistModel"},
@@ -10,7 +9,4 @@ var pageSchema = mongoose.Schema({
 }, {collection: 'projectpage'});
 
 module.exports = pageSchema;
-
-
-
 

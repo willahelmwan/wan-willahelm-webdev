@@ -1,0 +1,36 @@
+<div class="profile">
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget" class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <a ng-click="model.updateWidget(model.widget)"
+                   role="button">
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active">Widget Edit</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div ng-if="model.widget.type"
+         ng-include="model.getWidgetIncludeUrl(model.widget.type)"></div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

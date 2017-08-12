@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('projectPageModel', pageSchema);
@@ -32,6 +31,9 @@ function updatePage(pageId, page){
 function deletePage(pageId){
     return pageModel.remove({_id: pageId});
 }
+
+
+
 
 
 

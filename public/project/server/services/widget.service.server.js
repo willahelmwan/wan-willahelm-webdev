@@ -54,12 +54,12 @@ function uploadImage(req, res) {
     widgetModel
         .findWidgetById(widgetId)
         .then(function(widget){
-            widget.url = '/project/public/uploads/'+filename;
+            widget.url = '/project/public/assignment/uploads/'+filename;
             widget.width = width;
             widgetModel
                 .updateWidget(widgetId,widget)
                 .then(function(status){
-                    var callbackUrl = "/project/#!/user/" + userId + "/watchlist/" + watchlistId + "/page/" + pageId + "/widget";
+                    var callbackUrl = "/project/#!/user/" + userId + "/watchlist/" + watchlistId + "/page/" + pageId + "/widget"
                     res.redirect(callbackUrl);
                 })
         })

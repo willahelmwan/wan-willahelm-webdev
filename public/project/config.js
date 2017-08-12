@@ -10,12 +10,26 @@
             .when("/", {
                 templateUrl: "views/home/templates/home.view.client.html",
                 controller: "homeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/video/new", {
+                templateUrl: "views/video/templates/video-new.view.client.html",
+                controller: "videoNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -30,11 +44,14 @@
             .when("/user/:userId",{
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller:"profileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
             .when("/user/:userId/watchlist",{
-                templateUrl:"views/watchlist/templates/watchlist-VIDEO.view.client.html",
+                templateUrl:"views/watchlist/templates/watchlist-list.view.client.html",
                 controller:"watchlistListController",
                 controllerAs: "model"
             } )
@@ -83,12 +100,35 @@
                 controller:"FlickrImageSearchController",
                 controllerAs: "model"
             } )
-            .when("/user/:userId/watchlist/:wid/video/:videoId/widget",{
-                templateUrl:"views/watch/templates/watch-video.view.client.html",
-                controller:"widgetListController",
-                controllerAs: "model"
-            } )
-
-
     }
+
+    function checkCurrentUser($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.resolve({});
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkLoggedIn($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
 })();

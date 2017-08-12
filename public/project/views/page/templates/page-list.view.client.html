@@ -12,7 +12,7 @@
                 </a>
 
                 <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active ">Pages</a>
+                    <a class="navbar-brand active ">{{model.watchlist.name}}</a>
                 </div>
 
             </div>
@@ -35,10 +35,11 @@
                 </div>
             </li>
 
-            <li ng-repeat="page in model.pages" class="list-group-item">
+            <li ng-repeat="movie in model.watchlist.movies" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                        <a href="#!/details/{{movie}}">{{movie}}</a>
+                        <!--{{model.searchMovieByImdbId(movie)}}-->
                     </div>
                     <div class="col-xs-6 col-sm-3">2017-07-05</div>
                     <div class="col-sm-3 hidden-xs">1,345,345</div>
@@ -49,7 +50,6 @@
                     </div>
                 </div>
             </li>
-
         </ul>
 
     </div>

@@ -4,7 +4,7 @@
         .module("omdbApp")
         .controller("loginController", loginController);
 
-    function loginController($location, userService, $rootScope){
+    function loginController($location, userService){
 
         var model = this;
         model.login = login;
@@ -28,8 +28,8 @@
                         model.errorMessage = "User not found."
                     }
                     else{
-                        $rootScope.currentUser = user;
-                        $location.url("user/"+user._id);
+                        // $rootScope.currentUser = user;
+                        $location.url("/");
                     }
                 });
         }

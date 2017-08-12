@@ -4,18 +4,22 @@
         .controller("homeController", homeController);
 
 
-    function homeController(movieService) {
+    function homeController(movieService, currentUser, userService) {
         var model = this;
 
         model.searchMovieByTitle = searchMovieByTitle;
-
+        model.logoutUser = logoutUser;
         model.searchMovieByImdbId = searchMovieByImdbId;
-
+        model.currentUser = currentUser;
         function init() {
-
+            console.log(currentUser);
         }
 
         init();
+
+        function logoutUser(){
+            userService.logoutUser()
+        }
 
         function searchMovieByImdbId(imdbID) {
             movieService
@@ -32,8 +36,6 @@
         function renderMovies(movies) {
             model.movies = movies;
         }
-
-
     }
 
 

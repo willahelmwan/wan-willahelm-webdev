@@ -16,6 +16,7 @@ app.get("/api/project/users", getAllUsers);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
 app.get("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
+app.post("/api/project/login", login);
 app.get("/api/project/user", findUser);
 app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
@@ -63,9 +64,37 @@ function createUser(req, res){
         });
 }
 
+function login(req, response){
+    var body = req.body;
+    var username = body.username;
+    var password = body.password;
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function(user){
+            if(user===null){
+                userModel
+                    .findUserByUsername(username)
+                    .then(function(user){
+                        if(user===null){
+                            response.send("2");
+                            return;
+                        }else{
+                            response.send("0");
+                            return;
+                        }
+                    });
+            }else{
+                loggedin = user;
+                response.send(user);
+                return;
+            }
+        });
+}
+
 function findUser(req, response){
-    var username = req.query.username;
-    var password = req.query.password;
+    var body = req.body;
+    var username = body.username;
+    var password = body.password;
 
     if (username && password){
         userModel

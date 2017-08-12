@@ -55,8 +55,8 @@
         }
 
         function findUserByCredentials(username, password){
-            var url = "/api/project/user?username="+ username + "&password="+password;
-            return $http.get(url);
+            var url = "/api/project/login";
+            return $http.post(url, {username: username, password: password});
 
         }
 

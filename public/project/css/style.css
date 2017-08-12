@@ -43,9 +43,12 @@ div.profile {
     color: #fff;
 }
 
-/*.profilenav .navbar-default .navbar-toggle .icon-bar {*/
-    /*background-color: #ffffff;*/
-/*}*/
+.commenttext{
+    margin-top:2px;
+    margin-bottom:2px;
+    border-style: solid;
+    border-color: #8c8c8c;
+}
 
 .glyphicon {
     color: white;
@@ -53,6 +56,11 @@ div.profile {
 
 .glyphicon.glyphicon-search{
     color: #46b8da;
+}
+
+.glyphicon.comment-glyphicon{
+    color: #2B81AF;
+    padding-right:10px;
 }
 
 span.pull-right.glyphicon.glyphicon-ok {

@@ -45,9 +45,7 @@
             </td>
         </tr>
     </table>
-    <!--<textarea row="5"-->
-              <!--placeholder="Enter comment here..."-->
-              <!--class="form-control"></textarea>-->
+
     <div class="dropdown addto">
         <button class="btn btn-default dropdown-toggle"
                 type="button"
@@ -67,6 +65,33 @@
        href="#!/user/{{model.currentUser._id}}"
        role="button">Profile</a>
 
+    <div>
+        Comments:
+        <div ng-repeat="comment in model.comments" class="commenttext">
+            <a href="#!/user/{{comment._user}}">
+                <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
+            </a>{{comment.text}}
+            <a href="#!/user/{{comment._user}}">
+                <i ng-show="!(model.currentUser._id===comment._user)"
+                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+            </a>
+
+        </div>
+    </div>
+
+
+    <textarea row="5"
+              placeholder="Enter comment here..."
+              ng-model="model.comment.text"
+              class="form-control"></textarea>
+    <!--<input  name="watchlistId" value="{{model.webId}}"   style="display: none"/>-->
+    <!--<input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>-->
+    <!--<input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>-->
+
+    <a class="btn btn-default btn-success btn-block"
+       ng-click="model.createComment(model.movie.imdbID, model.comment)"
+       role="button">Submit</a>
+
     <!--<a class="btn btn-default btn-primary btn-block"-->
        <!--ng-click="model.login(model.user)"-->
        <!--role="button">Add to Watchlist</a>-->
@@ -82,8 +107,4 @@
     <!--ng-click="model.findAllwatchlistsForUser(model.currentUser._id)"-->
 
 
-
-    {{model.movie.imdbID}}
-    {{model.watchlists}}
-    {{model.currentUser}}
 </div>

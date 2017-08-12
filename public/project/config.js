@@ -23,6 +23,14 @@
                     currentUser: checkLoggedIn
                 }
             })
+            .when("/video/new", {
+                templateUrl: "views/video/templates/video-new.view.client.html",
+                controller: "videoNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller:"loginController",
@@ -36,7 +44,10 @@
             .when("/user/:userId",{
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller:"profileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
             .when("/user/:userId/watchlist",{

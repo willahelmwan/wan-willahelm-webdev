@@ -59,15 +59,30 @@
                class="form-control"
                id="dob"/>
 
+
+        <a class="btn btn-default btn-success btn-block"
+           ng-show="!(model.currentUser._id===model.user._id)"
+           ng-click="model.followUser(model.user._id, model.currentUser)"
+           role="button">Follow</a>
+        {{model.currentUser}}
+
         <a class="btn btn-default btn-primary btn-block"
+           ng-show="model.currentUser._id===model.user._id"
+           href="#!/video/new"
+           role="button">Create Video</a>
+
+        <a class="btn btn-default btn-primary btn-block"
+           ng-show="model.currentUser._id===model.user._id"
            href="#!/user/{{model.user._id}}/watchlist"
            role="button">Watchlists</a>
 
         <a class="btn btn-default btn-primary btn-block"
+           ng-show="model.currentUser._id===model.user._id"
            href="#!/user/{{model.user._id}}/watchlist"
            role="button">Movie Discussions</a>
 
         <a class="btn btn-default btn-primary btn-block"
+           ng-show="model.currentUser._id===model.user._id"
            ng-click="model.updateUser(model.user)"
            role="button">Update</a>
 
@@ -76,11 +91,13 @@
            role="button">Home</a>
 
         <a class="btn btn-default btn-danger btn-block"
+           ng-show="model.currentUser._id===model.user._id"
            ng-click="model.logoutUser()"
            href="#!/login"
            role="button">Logout</a>
 
         <a class="btn btn-default btn-danger btn-block"
+           ng-show="model.currentUser._id===model.user._id"
            ng-click="model.unregister(model.user)"
            role="button">Unregister</a>
     </div>
@@ -88,7 +105,7 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.user._id}}" class="userglyphicon">
+                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

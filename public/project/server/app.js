@@ -19,3 +19,5 @@ require("./services/user.service.server");
 require("./services/watchlist.service.server");
 require("./services/page.service.server");
 require("./services/widget.service.server");
+require("./services/comment.service.server");
+// require("./services/video.service.server");

@@ -24,7 +24,7 @@
                     })
                     .then(function (response){
                         _user = response.data;
-                        $location.url("user/" + _user._id);
+                        $location.url("login/");
                     });
             }else{
                 model.error="These passwords don't match. Try again?";

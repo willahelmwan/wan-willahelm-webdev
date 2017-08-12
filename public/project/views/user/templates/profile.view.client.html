@@ -68,7 +68,7 @@
 
         <a class="btn btn-default btn-success btn-block"
            ng-show="!(model.currentUser._id===model.user._id)"
-           ng-click="model.followUser(model.user.username, model.currentUser)"
+           ng-click="model.followUser(model.user._id, model.currentUser)"
            role="button">Follow</a>
 
 

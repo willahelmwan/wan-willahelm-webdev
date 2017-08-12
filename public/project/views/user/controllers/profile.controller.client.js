@@ -26,8 +26,8 @@
         }
         init();
 
-        function followUser(username, cUser){
-            cUser.following.push(username);
+        function followUser(userId, cUser){
+            cUser.following.push(userId);
             console.log(model.currentUser);
             userService.updateUser(cUser._id, cUser);
         }

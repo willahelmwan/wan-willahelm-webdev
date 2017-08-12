@@ -18,12 +18,18 @@
                 .then(function(response){
                     model.user = response.data;
                 });
+            userService
+                .findUserById(model.currentUser._id)
+                .then(function(response){
+                    model.currentUser= response.data;
+                })
         }
         init();
 
-        function followUser(userId, currentUser){
-            currentUser.following.push(userId);
-            userService.updateUser(userId, currentUser);
+        function followUser(username, cUser){
+            cUser.following.push(username);
+            console.log(model.currentUser);
+            userService.updateUser(cUser._id, cUser);
         }
 
         function logoutUser(){

@@ -1,6 +1,10 @@
 var app = require("../../../../express");
-
 var userModel = require('../models/user/user.model.server');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 // var users=[
 //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true },
@@ -9,25 +13,83 @@ var userModel = require('../models/user/user.model.server');
 //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
 // ];
 
-var loggedin = "0";
+
+app.post("/api/project/login", passport.authenticate('local'), login);
+
 
 // http handlers
 app.get("/api/project/users", getAllUsers);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
-app.get("/api/project/logoutUser", logoutUser);
+app.post("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
-app.post("/api/project/login", login);
 app.get("/api/project/user", findUser);
 app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
 
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+function localStrategy(username, password, done){
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function(user){
+            if (!user) {
+                return done(null, false);
+            }
+            loggedin=user;
+            return done(null, user);
+        }, function(err){
+            if (err){
+                return done(err);
+            }
+        });
+}
+//
+// if(user===null){
+//     userModel
+//         .findUserByUsername(username)
+//         .then(function(user){
+//             if(user===null){
+//                 response.send("2");
+//                 return;
+//             }else{
+//                 response.send("0");
+//                 return;
+//             }
+//         });
+// }else{
+//     loggedin = user;
+//     response.send(user);
+//     return;
+// }
+
+function login(req, res){
+    var user = req.user;
+    res.json(user);
+}
+
 function logoutUser(req, res){
-    loggedin = "0";
+    req.logOut();
+    res.send(200);
 }
 
 function checkLoggedIn(req, res){
-    res.send(loggedin);
+    res.send(req.isAuthenticated() ? req.user : '0');
 }
 
 function deleteUser(req, res){
@@ -64,74 +126,20 @@ function createUser(req, res){
         });
 }
 
-function login(req, response){
-    var body = req.body;
-    var username = body.username;
-    var password = body.password;
+
+function findUser(req, response){
+    var username = req.query.username;
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(function(user){
             if(user===null){
-                userModel
-                    .findUserByUsername(username)
-                    .then(function(user){
-                        if(user===null){
-                            response.send("2");
-                            return;
-                        }else{
-                            response.send("0");
-                            return;
-                        }
-                    });
+                response.send("2");
+                return;
             }else{
-                loggedin = user;
-                response.send(user);
+                response.send("0");
                 return;
             }
         });
-}
-
-function findUser(req, response){
-    var body = req.body;
-    var username = body.username;
-    var password = body.password;
-
-    if (username && password){
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function(user){
-                if(user===null){
-                    userModel
-                        .findUserByUsername(username)
-                        .then(function(user){
-                            if(user===null){
-                                response.send("2");
-                                return;
-                            }else{
-                                response.send("0");
-                                return;
-                            }
-                        });
-                }else{
-                    loggedin = user;
-                    response.send(user);
-                    return;
-                }
-            });
-
-    }else{
-        userModel
-            .findUserByUsername(username)
-            .then(function(user){
-                if(user===null){
-                    response.send("2");
-                    return;
-                }else{
-                    response.send("0");
-                    return;
-                }
-            });
-    }
 }
 
 function getAllUsers (req, response){

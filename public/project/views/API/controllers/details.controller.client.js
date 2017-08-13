@@ -37,8 +37,8 @@
             commentService
                 .createComment(imdbId, comment)
                 .then(function () {
-                    location.reload();
-                    // $location.url("details/"+model.imdbID);
+                    // location.reload();
+                    $location.url("details/"+model.imdbID +"/");
                 });
         }
 

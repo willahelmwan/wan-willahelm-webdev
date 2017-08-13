@@ -18,7 +18,7 @@
         init();
 
         function logoutUser(){
-            userService.logoutUser()
+            userService.logoutUser();
         }
 
         function searchMovieByImdbId(imdbID) {

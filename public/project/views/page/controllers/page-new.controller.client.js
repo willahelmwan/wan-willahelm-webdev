@@ -1,28 +1,29 @@
-(function(){
+(function () {
     angular
         .module("omdbApp")
         .controller("pageNewController", pageNewController);
 
-    function pageNewController($routeParams, pageService,$location){
+    function pageNewController($routeParams, pageService, $location, currentUser) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.webId = $routeParams.wid;
         model.createPage = createPage;
 
-        function init(){
+        function init() {
             pageService
                 .findPageBywatchlistId(model.webId)
-                .then(function(pages){
+                .then(function (pages) {
                     model.pages = pages;
                 });
         }
+
         init();
 
-        function createPage(page){
+        function createPage(page) {
             pageService
                 .createPage(model.webId, page)
-                .then(function(){
-                    $location.url("user/" + model.userId +"/watchlist/" + model.webId +"/page");
+                .then(function () {
+                    $location.url("user/" + model.userId + "/watchlist/" + model.webId + "/page");
                 });
         }
     }

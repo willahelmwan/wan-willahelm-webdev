@@ -30,7 +30,7 @@ div.profile {
 }
 
 .navbar-background {
-    background-color: #40a8b7;
+    background-color: #36454f;
     border-color: #b2b1b5;
 
 }
@@ -127,9 +127,14 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .navbar>.container-fluid .navbar-brand {
         margin-left: 0px;
     }
+
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: -15px;
+    }
+
     .container-fluid>.navbar-header{
 
-        margin-left: -15px;
+        margin-left: 0px;
     }
 }
 

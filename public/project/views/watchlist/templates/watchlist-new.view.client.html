@@ -4,9 +4,9 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="#!/user/{{model.userId}}/watchlist" ><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/watchlist" ><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
-                <a ng-click="model.createwatchlist(watchlist)"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+                <a ng-click="model.createwatchlist(watchlist)" role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
@@ -47,7 +47,7 @@
                    role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="#!/user/{{model.userId}}/watchlist"
+                   href="#!/watchlist"
                    role="button">Cancel</a>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="profilenav">
             <nav class="navbar navbar-default navbar-fixed-bottom">
                 <div class="container-fluid navbar-background">
-                    <a href="#!/user/{{model.userId}}" class="userglyphicon">
+                    <a href="#!/user" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </div>

@@ -3,9 +3,9 @@
         .module("omdbApp")
         .controller("watchlistListController", watchlistListController);
 
-    function watchlistListController($routeParams, watchlistService){
+    function watchlistListController($routeParams, watchlistService, currentUser){
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
 
         function init(){
             watchlistService

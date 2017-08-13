@@ -26,10 +26,10 @@
 
         function logoutUser(){
             var url = "/api/project/logoutUser";
-            return $http.get(url)
-                .then(function(response){
-                    return response.data;
-                });
+            return $http.post(url);
+                // .then(function(response){
+                //     return response.data;
+                // });
         }
 
         function checkLoggedIn() {

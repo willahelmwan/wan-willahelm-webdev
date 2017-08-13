@@ -44,3 +44,4 @@ function addPageToArray(webId, page) {
             return watchlist.save();
         });
 }
+

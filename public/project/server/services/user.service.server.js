@@ -1,123 +1,148 @@
 var app = require("../../../../express");
-
 var userModel = require('../models/user/user.model.server');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-// var users=[
-//     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true },
-//     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-//     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-//     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-// ];
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
-var loggedin = "0";
+var auth = authorized;
 
 // http handlers
-app.get("/api/project/users", getAllUsers);
+app.post("/api/project/login", passport.authenticate('local'), login);
+app.get("/api/project/users", auth, getAllUsers);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
-app.get("/api/project/logoutUser", logoutUser);
+app.post("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
-app.get("/api/project/user", findUser);
+app.get("/api/project/user", auth, findUser);
 app.post("/api/project/user", createUser);
-app.put("/api/project/user/:userId", updateUser);
-app.delete("/api/project/user/:userId", deleteUser);
+app.put("/api/project/user/:userId", auth, updateUser);
+app.delete("/api/project/user/:userId", auth, deleteUser);
 
-function logoutUser(req, res){
-    loggedin = "0";
+function authorized(req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.send(401);
+    } else {
+        next();
+    }
 }
 
-function checkLoggedIn(req, res){
-    res.send(loggedin);
+function serializeUser(user, done) {
+    done(null, user);
 }
 
-function deleteUser(req, res){
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function (user) {
+                done(null, user);
+            },
+            function (err) {
+                done(err, null);
+            }
+        );
+}
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function (user) {
+                if (user) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            },
+            function (err) {
+                done(err, false);
+            }
+        );
+}
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+function logoutUser(req, res) {
+    req.logOut();
+    res.sendStatus(200);
+}
+
+function checkLoggedIn(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+}
+
+function deleteUser(req, res) {
     var userId = req.params.userId;
     userModel
         .deleteUser(userId)
-        .then(function(doc){
+        .then(function (doc) {
             res.send(doc);
-        }, function(err){
+        }, function (err) {
             res.send(err);
         });
 }
 
-function updateUser(req, res){
+function updateUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
     userModel
         .updateUser(userId, user)
-        .then(function(doc){
+        .then(function (doc) {
             res.send(doc);
-        }, function(err){
+        }, function (err) {
             res.send(err);
         });
 }
 
-function createUser(req, res){
+function createUser(req, res) {
     var user = req.body;
     userModel
         .createUser(user)
-        .then(function(doc){
-            res.json(doc);
-        }, function(err){
-            res.send(err);
+        .then(function (user) {
+            if (user) {
+                req.login(user, function (err) {
+                    if (err) {
+                        res.status(400).send(err);
+                    } else {
+                        res.json(user);
+                    }
+                });
+            }
         });
 }
 
-function findUser(req, response){
+function findUser(req, response) {
     var username = req.query.username;
-    var password = req.query.password;
-
-    if (username && password){
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function(user){
-                if(user===null){
-                    userModel
-                        .findUserByUsername(username)
-                        .then(function(user){
-                            if(user===null){
-                                response.send("2");
-                                return;
-                            }else{
-                                response.send("0");
-                                return;
-                            }
-                        });
-                }else{
-                    loggedin = user;
-                    response.send(user);
-                    return;
-                }
-            });
-
-    }else{
-        userModel
-            .findUserByUsername(username)
-            .then(function(user){
-                if(user===null){
-                    response.send("2");
-                    return;
-                }else{
-                    response.send("0");
-                    return;
-                }
-            });
-    }
+    userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            if (user === null) {
+                response.send("2");
+                return;
+            } else {
+                response.send("0");
+                return;
+            }
+        });
 }
 
-function getAllUsers (req, response){
+function getAllUsers(req, response) {
     userModel
         .findAllUser()
-        .then(function(users){
+        .then(function (users) {
             response.send(users);
         });
 }
 
-function getUserById(req, response){
+function getUserById(req, response) {
     var userId = req.params['userId'];
     userModel
         .findUserById(userId)
-        .then(function(user){
+        .then(function (user) {
             response.json(user);
         });
 }

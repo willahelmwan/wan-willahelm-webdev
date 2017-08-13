@@ -22,21 +22,21 @@
     </div>
 
     <div class="container-fluid">
-        <iframe>
-            <div ng-if="model.video"
-                 ng-include="model.getVideoIncludeUrl(model.video)">
-            </div>
-        </iframe>
+    <iframe>
+    <div ng-if="model.video"
+         ng-include="model.getVideoIncludeUrl(model.video)">
+    </div>
+    </iframe>
 
 
-        <textarea row="5"
-                  placeholder="Enter comment here..."
-                  ng-model="model.comment.text"
-                  class="form-control"></textarea>
+    <textarea row="5"
+              placeholder="Enter comment here..."
+              ng-model="model.comment.text"
+              class="form-control"></textarea>
 
-        <a class="btn btn-default btn-success btn-block"
-           ng-click="model.createComment(model.comment)"
-           role="button">Submit</a>
+    <a class="btn btn-default btn-success btn-block"
+       ng-click="model.createComment(model.comment)"
+       role="button">Submit</a>
 
     </div>
 

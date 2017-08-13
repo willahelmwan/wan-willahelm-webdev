@@ -4,14 +4,15 @@
         .module("omdbApp")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, userService, $location, currentUser){
+    function profileController(userService, $location, currentUser){
         var model = this;
-        var userId = $routeParams.userId;
         model.currentUser = currentUser;
         model.updateUser = updateUser;
         model.unregister = unregister;
         model.logoutUser = logoutUser;
         model.followUser = followUser;
+
+        var userId = currentUser._id;
 
         function init(){
             userService.findUserById(userId)
@@ -28,12 +29,19 @@
 
         function followUser(userId, cUser){
             cUser.following.push(userId);
-            // console.log(model.currentUser);
+            console.log(model.currentUser);
             userService.updateUser(cUser._id, cUser);
         }
 
         function logoutUser(){
-            userService.logoutUser()
+            userService
+                .logoutUser()
+                .then(function (){
+                    $location.url("/")
+                }, function(err) {
+                    return err;
+                })
+
         }
 
         function updateUser(user){

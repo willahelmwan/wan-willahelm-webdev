@@ -1,8 +1,5 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/webdev_2017', {
-//     useMongoClient: true
-// });
-// mongoose.Promise = require('q').Promise;
+
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('projectUserModel', userSchema);
 

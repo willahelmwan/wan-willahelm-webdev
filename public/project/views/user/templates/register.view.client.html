@@ -1,5 +1,4 @@
-
-<div class="container-fluid">
+<div class="container-fluid entry">
 
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
@@ -7,56 +6,60 @@
 
     <h2>Register</h2>
 
-    <label for="firstname">Firstname</label>
+    <label for="firstname">First Name</label>
     <input name="firstname"
            type="text"
            ng-model="user.firstName"
-           placeholder="Alice"
+           placeholder="First Name"
            class="form-control"
            id="firstname"/>
 
-    <label for="lastname">Lastname</label>
+    <label for="lastname">Last Name</label>
     <input name="lastname"
            type="text"
            ng-model="user.lastName"
-           placeholder="Wonderland"
+           placeholder="Last Name"
            class="form-control"
            id="lastname"/>
-
-    <label for="username">Username</label>
-    <input name="username"
-           ng-model="user.username"
-           type="text"
-           placeholder="alice"
-           class="form-control"
-           id="username"/>
 
     <label for="email">Email</label>
     <input name="email"
            ng-model="user.email"
            type="text"
-           placeholder="alice@wonderland.com"
+           placeholder="email"
            class="form-control"
            id="email"/>
+
+    <label for="username">Username</label>
+    <input name="username"
+           ng-model="user.username"
+           ng-required
+           type="text"
+           placeholder="username"
+           class="form-control"
+           id="username"/>
 
     <label for="password">Password</label>
     <input name="password"
            ng-model="user.password"
+           ng-required
            type="password"
-           placeholder="12345678"
+           placeholder="password"
            class="form-control"
            id="password"/>
 
     <label for="password2">Verify Password</label>
     <input name="password2"
            ng-model="user.password2"
+           ng-required
            type="password"
-           placeholder="12345678"
+           placeholder="verify password"
            class="form-control"
            id="password2"/>
 
     <a class="btn btn-default btn-primary btn-block"
        ng-click="model.registerUser(user)"
+       type="submit"
        role="button">Register</a>
 
     <a class="btn btn-default btn-danger btn-block"

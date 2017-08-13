@@ -3,28 +3,28 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
-                <!--<a href="javascript:history.back()" class="userglyphicon">-->
-                <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
-                <!--</a>-->
+                        <!--<a href="javascript:history.back()" class="userglyphicon">-->
+                            <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
+                        <!--</a>-->
 
-                <a ng-click="model.updateUser(model.user)"
-                   role="button">
-                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
-                </a>
+                        <a ng-click="model.updateUser(model.user)"
+                           role="button">
+                            <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                        </a>
 
-                <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active profilespacing">Profile</a>
-                </div>
+                        <div class="navbar-header navbar-title">
+                            <a class="navbar-brand active profilespacing">Profile</a>
+                        </div>
             </div>
         </nav>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid entry">
 
         <label for="firstname">Firstname</label>
         <input name="firstname"
                type="text"
                ng-model="model.user.firstName"
-               placeholder="Alice"
+               placeholder="firstname"
                class="form-control"
                id="firstname"/>
 
@@ -32,7 +32,7 @@
         <input name="lastname"
                type="text"
                ng-model="model.user.lastName"
-               placeholder="Wonderland"
+               placeholder="lastname"
                class="form-control"
                id="lastname"/>
 
@@ -41,7 +41,7 @@
                readonly
                type="text"
                ng-model="model.user.username"
-               placeholder="alice"
+               placeholder="username"
                class="form-control"
                id="username"/>
 
@@ -49,7 +49,7 @@
         <input name="email"
                type="email"
                ng-model="model.user.email"
-               placeholder="alice@wonderland.com"
+               placeholder="email"
                class="form-control"
                id="email"/>
 
@@ -61,9 +61,9 @@
 
         <!--<label for="dob">Date of Birth</label>-->
         <!--<input name="dob"-->
-        <!--type="date"-->
-        <!--class="form-control"-->
-        <!--id="dob"/>-->
+               <!--type="date"-->
+               <!--class="form-control"-->
+               <!--id="dob"/>-->
 
 
         <a class="btn btn-default btn-success btn-block"
@@ -79,7 +79,7 @@
 
         <a class="btn btn-default btn-primary btn-block"
            ng-show="model.currentUser._id===model.user._id"
-           href="#!/user/{{model.user._id}}/watchlist"
+           href="#!/watchlist"
            role="button">Watchlists</a>
 
         <a class="btn btn-default btn-primary btn-block"

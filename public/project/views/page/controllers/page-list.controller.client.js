@@ -3,9 +3,9 @@
         .module("omdbApp")
         .controller("pageListController", pageListController);
 
-    function pageListController($routeParams, pageService, watchlistService, movieService){
+    function pageListController($routeParams, pageService, watchlistService, currentUser, movieService){
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.watchlistId = $routeParams.wid;
         model.searchMovieByImdbId = searchMovieByImdbId;
 

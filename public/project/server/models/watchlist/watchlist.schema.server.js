@@ -10,3 +10,4 @@ var watchlistSchema = mongoose.Schema({
 
 module.exports = watchlistSchema;
 
+

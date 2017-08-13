@@ -1,5 +1,26 @@
+@font-face {
+    font-family: 'Neon Lights';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Neon Lights'), url(../../vendor/css/bootstrap/fonts/neon2.woff) format('woff');
+}
+
 input.form-control, select.form-control, textarea {
     margin-bottom: 5px;
+}
+
+.jumbotron h1 {
+    font-family: "Neon Lights", serif;
+    font-style: normal;
+    font-size: 10em;
+    color: darkred;
+    font-weight: normal;
+
+}
+
+body
+{
+    background: url("../../vendor/image/zwartevilt_@2X.jpg");
 }
 
 .addto{
@@ -13,6 +34,18 @@ input.form-control, select.form-control, textarea {
 .details {
     top: 50px;
     right: 100px;
+}
+
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: inherit;
+}
+
+.table>tbody>tr>td .table>thead>tr>th {
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px none;
 }
 
 div.profile {
@@ -29,10 +62,11 @@ div.profile {
     border-color: #fff;
 }
 
-.navbar-background {
-    background-color: #40a8b7;
-    border-color: #b2b1b5;
 
+
+.navbar-background {
+    background-color: #36454f;
+    border-color: #b2b1b5;
 }
 
 .profilenav .navbar-default .navbar-brand {
@@ -127,9 +161,14 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .navbar>.container-fluid .navbar-brand {
         margin-left: 0px;
     }
+
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: -15px;
+    }
+
     .container-fluid>.navbar-header{
 
-        margin-left: -15px;
+        margin-left: 0px;
     }
 }
 
@@ -148,7 +187,7 @@ span.pull-right.glyphicon.glyphicon-align-justify {
 @media (max-width: 768px){
     .navbar-header {
         float: left;
-    !important;
+        !important;
     }
     .container-fluid>.navbar-header{
 
@@ -224,4 +263,27 @@ span.pull-left.glyphicon.glyphicon-chevron-left.nav-glyphicon-chevron-left {
 
 a:hover {
     text-decoration: none;
+}
+
+.container-fluid.entry {
+    margin: auto;
+    max-width: 400px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.jumbotron {
+    background: black;
+}
+
+.jumbotron p {
+    color: white;
+}
+
+#center {
+    margin-left:auto;
+    margin-right:auto;
 }

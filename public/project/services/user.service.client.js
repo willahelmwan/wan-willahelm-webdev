@@ -1,9 +1,9 @@
-(function(){
+(function () {
     angular
         .module("omdbApp")
         .factory("userService", userService);
 
-    function userService($http){
+    function userService($http) {
         // var users=[
         //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true },
         //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -11,7 +11,7 @@
         //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
         // ];
 
-        var api ={
+        var api = {
             "createUser": createUser,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
@@ -19,17 +19,17 @@
             "updateUser": updateUser,
             "deleteUser": deleteUser,
             "checkLoggedIn": checkLoggedIn,
-            "logoutUser":logoutUser
+            "logoutUser": logoutUser
         };
 
         return api;
 
-        function logoutUser(){
+        function logoutUser() {
             var url = "/api/project/logoutUser";
-            return $http.get(url)
-                .then(function(response){
-                    return response.data;
-                });
+            return $http.post(url);
+            // .then(function(response){
+            //     return response.data;
+            // });
         }
 
         function checkLoggedIn() {
@@ -40,32 +40,39 @@
                 });
         }
 
-        function createUser(user){
+        function createUser(user) {
             var url = "/api/project/user";
             return $http.post(url, user);
         }
 
-        function findUserById(userId){
+        function findUserById(userId) {
             return $http.get("/api/project/user/" + userId);
         }
 
-        function findUserByUsername(username){
+        function findUserByUsername(username) {
             var url = "/api/project/user?username=" + username;
             return $http.get(url);
         }
 
-        function findUserByCredentials(username, password){
-            var url = "/api/project/user?username="+ username + "&password="+password;
-            return $http.get(url);
+        function findUserByCredentials(username, password) {
+            var url = "/api/project/login";
+            var credentials = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, credentials)
+                .then(function (response) {
+                    return response.data;
+                });
 
         }
 
-        function updateUser(userId, user){
+        function updateUser(userId, user) {
             var url = "/api/project/user/" + userId;
             return $http.put(url, user);
         }
 
-        function deleteUser(userId, user){
+        function deleteUser(userId, user) {
             var url = "/api/project/user/" + userId;
             return $http.delete(url, user);
         }

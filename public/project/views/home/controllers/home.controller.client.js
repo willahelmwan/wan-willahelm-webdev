@@ -12,13 +12,13 @@
         model.searchMovieByImdbId = searchMovieByImdbId;
         model.currentUser = currentUser;
         function init() {
-            console.log(currentUser);
+            // console.log(currentUser);
         }
 
         init();
 
         function logoutUser(){
-            userService.logoutUser()
+            userService.logoutUser();
         }
 
         function searchMovieByImdbId(imdbID) {

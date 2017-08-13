@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-10">Name</div>
             <div class="col-xs-2">
-                <a href="#!/user/{{model.userId}}/watchlist/new" class="plusglyphicon">
+                <a href="#!/watchlist/new" class="plusglyphicon">
                     <span class="pull-right glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -13,10 +13,10 @@
     <li ng-repeat="watchlist in model.watchlists" class="list-group-item">
         <div class="row">
             <div class="col-xs-10">
-                <a href="#!/user/{{model.userId}}/watchlist/{{watchlist._id}}/page">{{watchlist.name}}</a>
+                <a href="#!/watchlist/{{watchlist._id}}/page">{{watchlist.name}}</a>
             </div>
             <div class="col-xs-2">
-                <a href="#!/user/{{model.userId}}/watchlist/{{watchlist._id}}">
+                <a href="#!/watchlist/{{watchlist._id}}">
                     <span class="pull-right glyphicon glyphicon-cog"></span>
                 </a>
             </div>

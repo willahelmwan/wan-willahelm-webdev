@@ -69,7 +69,21 @@
         Comments:
         <div ng-repeat="comment in model.comments" class="commenttext">
             <a href="#!/user/{{comment._user}}">
-                <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
+                <div class="btn-group open">
+                    <a class="btn btn-primary">
+                        <i class="fa fa-user fa-fw"></i> User</a>
+                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
+                        <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+                        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-unlock"></i> Make admin</a></li>
+                    </ul>
+                </div>
+                <!--<span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>-->
             </a>{{comment.text}}
             <a href="#!/user/{{comment._user}}">
                 <i ng-show="!(model.currentUser._id===comment._user)"
@@ -93,15 +107,15 @@
        role="button">Submit</a>
 
     <!--<a class="btn btn-default btn-primary btn-block"-->
-    <!--ng-click="model.login(model.user)"-->
-    <!--role="button">Add to Watchlist</a>-->
+       <!--ng-click="model.login(model.user)"-->
+       <!--role="button">Add to Watchlist</a>-->
 
     <!--<div ng-repeat="widget in model.widgets" class="col-xs-12">-->
-    <!--<div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>-->
-    <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
-    <!--<a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
-    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
-    <!--</a>-->
+        <!--<div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>-->
+        <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+        <!--<a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
+            <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+        <!--</a>-->
     <!--</div>-->
 
     <!--ng-click="model.findAllwatchlistsForUser(model.currentUser._id)"-->

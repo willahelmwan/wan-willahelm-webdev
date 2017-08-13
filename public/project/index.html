@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="omdbApp">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-  <link rel="icon" href="css/Paomedia-Small-N-Flat-Device-camera.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="icon" href="css/Paomedia-Small-N-Flat-Device-camera.ico">
 
-  <title>NeuTube</title>
+    <title>NeuTube</title>
+    <script src="../vendor/angular/angular.min.js"></script>
+    <script src="../vendor/angular/angular-route.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery-ui.js"></script>
+    <script src="../vendor/jquery/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/textAngular-rangy.min.js"></script>
+    <script src="js/textAngular-sanitize.min.js"></script>
+    <script src="js/textAngular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="services/movie.service.client.js"></script>
+    <script src="views/home/controllers/home.controller.client.js"></script>
+    <script src="views/API/controllers/details.controller.client.js"></script>
+    <!--<script src="directives/wbdv-sortable.js"></script>-->
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/watchlist/controllers/watchlist-list.controller.client.js"></script>
+    <script src="views/watchlist/controllers/watchlist-new.controller.client.js"></script>
+    <script src="views/watchlist/controllers/watchlist-edit.controller.client.js"></script>
+    <script src="views/video/controllers/video-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-flickr-search.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-new.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/watchlist.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+    <script src="services/flickr.service.client.js"></script>
+    <script src="services/comment.service.client.js"></script>
 
-  <script src="../vendor/angular/angular.min.js"></script>
-  <script src="../vendor/angular/angular-route.min.js"></script>
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/jquery/jquery-ui.js"></script>
-  <script src="../vendor/jquery/jquery.ui.touch-punch.min.js"></script>
-  <script src="js/textAngular-rangy.min.js"></script>
-  <script src="js/textAngular-sanitize.min.js"></script>
-  <script src="js/textAngular.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="app.js"></script>
-  <script src="config.js"></script>
-  <script src="services/movie.service.client.js"></script>
-  <script src="views/home/controllers/home.controller.client.js"></script>
-  <script src="views/API/controllers/details.controller.client.js"></script>
-  <!--<script src="directives/wbdv-sortable.js"></script>-->
-  <script src="views/user/controllers/profile.controller.client.js"></script>
-  <script src="views/user/controllers/login.controller.client.js"></script>
-  <script src="views/user/controllers/register.controller.client.js"></script>
-  <script src="views/watchlist/controllers/watchlist-list.controller.client.js"></script>
-  <script src="views/watchlist/controllers/watchlist-new.controller.client.js"></script>
-  <script src="views/watchlist/controllers/watchlist-edit.controller.client.js"></script>
-  <script src="views/video/controllers/video-new.controller.client.js"></script>
-  <script src="views/page/controllers/page-list.controller.client.js"></script>
-  <script src="views/page/controllers/page-new.controller.client.js"></script>
-  <script src="views/page/controllers/page-edit.controller.client.js"></script>
-  <script src="views/widget/controllers/widget-list.controller.client.js"></script>
-  <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
-  <script src="views/widget/controllers/widget-flickr-search.controller.client.js"></script>
-  <script src="views/widget/controllers/widget-new.controller.client.js"></script>
-  <script src="services/user.service.client.js"></script>
-  <script src="services/watchlist.service.client.js"></script>
-  <script src="services/page.service.client.js"></script>
-  <script src="services/widget.service.client.js"></script>
-  <script src="services/flickr.service.client.js"></script>
-  <script src="services/comment.service.client.js"></script>
 
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap theme -->
-  <link href="../vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/textAngular.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/textAngular.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-</head>
+  <body>
 
-<body>
+    <div ng-view>
 
-<div ng-view>
+    </div>
 
-</div>
-
-</body>
+  </body>
 </html>

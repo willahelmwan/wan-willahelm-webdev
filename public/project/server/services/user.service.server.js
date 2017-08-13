@@ -85,7 +85,7 @@ function login(req, res){
 
 function logoutUser(req, res){
     req.logOut();
-    res.send(200);
+    res.sendStatus(200);
 }
 
 function checkLoggedIn(req, res){
@@ -119,10 +119,16 @@ function createUser(req, res){
     var user = req.body;
     userModel
         .createUser(user)
-        .then(function(doc){
-            res.json(doc);
-        }, function(err){
-            res.send(err);
+        .then(function(user){
+            if(user){
+                req.login(user, function(err) {
+                    if(err) {
+                        res.status(400).send(err);
+                    } else {
+                        res.json(user);
+                    }
+                });
+            }
         });
 }
 

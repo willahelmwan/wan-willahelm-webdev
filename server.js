@@ -5,18 +5,13 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var passport = require('passport');
 
-var session_secret = "this is a secret.";
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-if(process.env.SESSION_SECRET) {
-    session_secret = process.env.SESSION_SECRET;
-}
 
 app.use(session({
-    secret: session_secret,
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true}));
 

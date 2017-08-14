@@ -53,7 +53,7 @@
                class="form-control"
                id="email"/>
 
-        Following:
+        <label>Following:</label>
         <li ng-repeat="followinguser in model.currentUser.following" class="list-group-item">
             <a ng-show="model.currentUser._id===model.user._id"
                href="#!/user/{{followinguser}}">{{followinguser}}</a>

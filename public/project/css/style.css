@@ -236,3 +236,60 @@ a:hover {
     text-decoration: none;
 }
 
+@font-face {
+    font-family: 'Neon Lights';
+    font-style: normal;
+    font-weight: normal;
+}
+
+.jumbotron h1 {
+    font-style: normal;
+    font-size: 10em;
+    color: darkred;
+    font-weight: normal;
+
+}
+
+body
+{
+    background: url("../../vendor/image/nice_snow_@2X.png");
+}
+
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: inherit;
+}
+
+.table>tbody>tr>td .table>thead>tr>th {
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px none;
+}
+
+
+.jumbotron {
+    background: black;
+}
+
+.jumbotron p {
+    color: #b2b1b5;
+}
+
+#center {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.table>tbody>tr>td {
+    border-top: none;
+}
+
+/*label{*/
+    /*color: white;*/
+/*}*/

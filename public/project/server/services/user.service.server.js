@@ -3,6 +3,7 @@ var userModel = require('../models/user/user.model.server');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require("bcrypt-nodejs");
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
@@ -20,7 +21,7 @@ app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
 
-app.get("/project/auth/google", passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get("/project/auth/google", passport.authenticate('google', {scope: ['profile', 'email']}));
 
 app.get('/google/oauth/callback',
     passport.authenticate('google', {
@@ -29,9 +30,9 @@ app.get('/google/oauth/callback',
     }));
 
 var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
 };
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
@@ -40,35 +41,39 @@ function googleStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByGoogleId(profile.id)
         .then(
-            function(user) {
-                if(user) {
+            function (user) {
+                if (user) {
                     return done(null, user);
                 } else {
                     var email = profile.emails[0].value;
                     var emailParts = email.split("@");
                     var newGoogleUser = {
-                        username:  emailParts[0],
+                        username: emailParts[0],
                         firstName: profile.name.givenName,
-                        lastName:  profile.name.familyName,
-                        email:     email,
+                        lastName: profile.name.familyName,
+                        email: email,
                         google: {
-                            id:    profile.id,
+                            id: profile.id,
                             token: token
                         }
                     };
                     return userModel.createUser(newGoogleUser);
                 }
             },
-            function(err) {
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         )
         .then(
-            function(user){
+            function (user) {
                 return done(null, user);
             },
-            function(err){
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
@@ -93,12 +98,17 @@ function deserializeUser(user, done) {
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(function (user) {
             if (!user) {
-                return done(null, false, {message: "User and password combination not found."});
+                return done(null, false, {message: "User not found."});
+            } else {
+                if (user && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, {message: "User and password combination not found."});
+                }
             }
-            return done(null, user);
         }, function (err) {
             if (err) {
                 return done(err);
@@ -159,6 +169,9 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
+    user.password2 = bcrypt.hashSync(user.password2);
+    console.log(user);
     userModel
         .createUser(user)
         .then(function (user) {

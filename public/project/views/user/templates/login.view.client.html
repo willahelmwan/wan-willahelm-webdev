@@ -1,4 +1,4 @@
-    <div class="container-fluid">
+    <div class="container-fluid entry">
         <div>
 
             <div ng-show="model.errorMessage" class="alert alert-danger">
@@ -10,7 +10,7 @@
             <input name="username"
                    ng-model="model.user.username"
                    type="text"
-                   placeholder="alice"
+                   placeholder="username"
                    class="form-control"
                    id="username"/>
 
@@ -18,13 +18,18 @@
             <input name="password"
                    ng-model="model.user.password"
                    type="password"
-                   placeholder="12345678"
+                   placeholder="password"
                    class="form-control"
                    id="password"/>
 
             <a class="btn btn-default btn-primary btn-block"
                ng-click="model.login(model.user)"
                role="button">Login</a>
+
+            <a href="/project/auth/google" class="btn btn-danger btn-block">
+                <span class="fa fa-google-plus"></span>
+                Google
+            </a>
 
             <a class="btn btn-default btn-success btn-block"
                href="#!/register"
@@ -33,5 +38,7 @@
             <a class="btn btn-default btn-info btn-block"
                href="#!/"
                role="button">Home</a>
+
+
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid entry">
 
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
@@ -6,19 +6,19 @@
 
     <h2>Register</h2>
 
-    <label for="firstname">Firstname</label>
+    <label for="firstname">First Name</label>
     <input name="firstname"
            type="text"
            ng-model="user.firstName"
-           placeholder="Alice"
+           placeholder="First Name"
            class="form-control"
            id="firstname"/>
 
-    <label for="lastname">Lastname</label>
+    <label for="lastname">Last Name</label>
     <input name="lastname"
            type="text"
            ng-model="user.lastName"
-           placeholder="Wonderland"
+           placeholder="Last Name"
            class="form-control"
            id="lastname"/>
 
@@ -26,7 +26,7 @@
     <input name="email"
            ng-model="user.email"
            type="text"
-           placeholder="alice@wonderland.com"
+           placeholder="email"
            class="form-control"
            id="email"/>
 
@@ -35,7 +35,7 @@
            ng-model="user.username"
            ng-required
            type="text"
-           placeholder="alice"
+           placeholder="username"
            class="form-control"
            id="username"/>
 
@@ -44,7 +44,7 @@
            ng-model="user.password"
            ng-required
            type="password"
-           placeholder="12345678"
+           placeholder="password"
            class="form-control"
            id="password"/>
 
@@ -53,7 +53,7 @@
            ng-model="user.password2"
            ng-required
            type="password"
-           placeholder="12345678"
+           placeholder="verify password"
            class="form-control"
            id="password2"/>
 

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var passport = require('passport');
+
 var session_secret = "this is a secret.";
 
 app.use(bodyParser.json());

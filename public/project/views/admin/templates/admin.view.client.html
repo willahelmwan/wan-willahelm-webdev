@@ -1,15 +1,43 @@
-<div class="container-fluid">
-    <h2>Admin</h2>
+<div class="profile">
 
-    <ul class="list-group">
-        <li class="list-group-item active">
-            Users
-        </li>
-        <li ng-repeat="user in model.users" class="list-group-item">
-            {{user.username}}
-            <span ng-click="model.deleteUser(user)"
-                  class="glyphicon glyphicon-remove pull-right userremove"
-                  role="button"></span>
-        </li>
-    </ul>
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid navbar-background">
+
+                <a href="#!/user"
+                   role="button">
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active profilespacing">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid entry">
+
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Users
+            </li>
+            <li ng-repeat="user in model.users" class="list-group-item">
+                {{user.username}}
+                <span ng-click="model.deleteUser(user)"
+                      class="glyphicon glyphicon-remove pull-right userremove"
+                      role="button"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid navbar-background">
+                <a href="#!/user" class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
 </div>

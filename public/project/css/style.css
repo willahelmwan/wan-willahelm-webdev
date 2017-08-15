@@ -7,14 +7,15 @@ input.form-control, select.form-control, textarea {
     margin-bottom: 5px;
 }
 
-.addto{
-    padding-bottom:5px;
+.addto {
+    padding-bottom: 5px;
 }
 
-.theme-showcase{
-    margin-top:150px;
+.theme-showcase {
+    margin-top: 150px;
 
 }
+
 .details {
     top: 50px;
     right: 100px;
@@ -26,8 +27,8 @@ div.profile {
     overflow-y: scroll;
 }
 
-.fileupload{
-    padding-bottom:5px;
+.fileupload {
+    padding-bottom: 5px;
 }
 
 .profilenav .navbar-default .navbar-toggle {
@@ -44,13 +45,13 @@ div.profile {
     color: #fff;
 }
 
-.profilenav .navbar-default .navbar-nav>li>a {
+.profilenav .navbar-default .navbar-nav > li > a {
     color: #fff;
 }
 
-.commenttext{
-    margin-top:2px;
-    margin-bottom:2px;
+.commenttext {
+    margin-top: 2px;
+    margin-bottom: 2px;
     border-style: solid;
     border-color: #8c8c8c;
 }
@@ -59,17 +60,17 @@ div.profile {
     color: white;
 }
 
-.glyphicon.glyphicon-search{
+.glyphicon.glyphicon-search {
     color: #46b8da;
 }
 
-.glyphicon.glyphicon-remove.userremove{
+.glyphicon.glyphicon-remove.userremove {
     color: maroon;
 }
 
-.glyphicon.comment-glyphicon{
+.glyphicon.comment-glyphicon {
     color: #2B81AF;
-    padding-right:10px;
+    padding-right: 10px;
 }
 
 span.pull-right.glyphicon.glyphicon-ok {
@@ -88,20 +89,20 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     color: black;
 }
 
-.widgetjustify{
+.widgetjustify {
     position: absolute;
     top: 0px;
     right: 10px;
-    background-color: rgba(255,255,255,0.5);
-    border:5px solid rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 5px solid rgba(255, 255, 255, 0.05);
 }
 
-.widgetcog{
+.widgetcog {
     position: absolute;
     top: 0px;
     right: 30px;
-    background-color: rgba(255,255,255,0.5);
-    border:5px solid rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 5px solid rgba(255, 255, 255, 0.05);
     border-bottom-left-radius: 0.2em;
 }
 
@@ -133,52 +134,55 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     .pull-right.glyphicon {
         margin-right: 0px;
     }
-    .navbar>.container-fluid .navbar-brand {
+
+    .navbar > .container-fluid .navbar-brand {
         margin-left: 0px;
     }
 
-    .navbar>.container-fluid .navbar-brand {
+    .navbar > .container-fluid .navbar-brand {
         margin-left: -15px;
     }
 
-    .container-fluid>.navbar-header{
+    .container-fluid > .navbar-header {
 
         margin-left: 0px;
     }
 }
 
-.navbar-brand.navsplit{
-    padding-left:0px;
-}
-
-.navbar-title{
-    padding-left: 15px;
-}
-
-.navbar-brand.active.profilespacing{
+.navbar-brand.navsplit {
     padding-left: 0px;
 }
 
-@media (max-width: 768px){
+.navbar-title {
+    padding-left: 15px;
+}
+
+.navbar-brand.active.profilespacing {
+    padding-left: 0px;
+}
+
+@media (max-width: 768px) {
     .navbar-header {
         float: left;
-        !important;
+    !important;
     }
-    .container-fluid>.navbar-header{
+
+    .container-fluid > .navbar-header {
 
         margin-left: 0px;
     }
-    .navbar-header.navbar-title{
+
+    .navbar-header.navbar-title {
         padding-left: 0px;
     }
-    .navbar-brand.splitnav{
+
+    .navbar-brand.splitnav {
         padding-left: 0px;
     }
 
 }
 
-
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
     .col-lg-9.split-view-right {
         width: 75%;
         position: absolute;
@@ -189,7 +193,7 @@ span.pull-right.glyphicon.glyphicon-align-justify {
     }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
     .col-lg-9.split-view-right-nav {
         width: 75%;
         position: absolute;
@@ -198,7 +202,6 @@ span.pull-right.glyphicon.glyphicon-align-justify {
         bottom: 0px;
     }
 }
-
 
 span.pull-right.glyphicon.glyphicon-user {
     padding-top: 15px;
@@ -221,13 +224,12 @@ span.pull-left.glyphicon.glyphicon-chevron-left.nav-glyphicon-chevron-left {
     padding-bottom: 15px;
 }
 
-.nav-glyphicon-ok{
+.nav-glyphicon-ok {
     padding-top: 15px;
     padding-right: 15px;
     padding-left: 0px;
     padding-bottom: 15px;
 }
-
 
 .widget-list li {
     margin-bottom: 15px;
@@ -254,8 +256,7 @@ a:hover {
 
 }
 
-body
-{
+body {
     background: url("../../vendor/image/nice_snow_@2X.png");
 }
 
@@ -265,12 +266,11 @@ body
     border-collapse: inherit;
 }
 
-.table>tbody>tr>td .table>thead>tr>th {
+.table > tbody > tr > td .table > thead > tr > th {
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 0px none;
 }
-
 
 .jumbotron {
     background: black;
@@ -281,8 +281,8 @@ body
 }
 
 #center {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar.navbar-inverse.navbar-fixed-top {
@@ -290,11 +290,49 @@ body
     border-color: darkred;
 }
 
-.table>tbody>tr>td {
+.table > tbody > tr > td {
     border-top: none;
 }
 
+.table > tbody > tr > td {
+    border-top: none;
+}
 
-/*label{*/
-    /*color: white;*/
-/*}*/
+.table > tbody > tr > td {
+    left: 0px;
+    margin: auto;
+    max-width: 1100px;
+    position: absolute;
+    right: 0px;
+    text-align: center;
+}
+
+.table > tbody > tr > td > img {
+    position: relative;
+    text-align: center;
+}
+
+.jumbotron {
+    background: black;
+    overflow: hidden;
+}
+
+/*Start of Responsive Design*/
+
+/* ---- Start of max-width 992px CSS ---- */
+@media (max-width: 992px) {
+    .jumbotron > h1 {
+        font-size: 80px;
+    }
+
+}
+
+/* ---- End of max-width 992px CSS ---- */
+
+/* ---- Start of max-width 767px CSS ---- */
+@media all and (max-width: 767px) {
+    .jumbotron > h1 {
+        font-size: 60px;
+    }
+
+}

@@ -4,7 +4,7 @@
         .controller("detailsController", detailsController);
 
 
-    function detailsController($routeParams, movieService, $location, currentUser, watchlistService,commentService) {
+    function detailsController($routeParams, movieService, $location, currentUser, watchlistService, userService, commentService) {
         var model = this;
 
         model.imdbID = $routeParams.imdbID;
@@ -12,6 +12,7 @@
         // model.findwatchlistsByUser = findwatchlistsByUser;
         model.addMovieToWatchlist = addMovieToWatchlist;
         model.createComment = createComment;
+        model.followUser = followUser;
 
         function init() {
             movieService
@@ -31,6 +32,11 @@
 
         init();
 
+        function followUser(userId, cUser){
+            cUser.following.push(userId);
+            userService.updateUser(cUser._id, cUser);
+        }
+
         function createComment(imdbId, comment) {
             comment._user = model.currentUser._id;
             comment._video = imdbId;
@@ -42,9 +48,10 @@
                 });
         }
 
-        function addMovieToWatchlist(movieId, watchlistId, watchlist){
-            if (watchlist.movies.indexOf(movieId)== -1){
-                watchlist.movies.push(movieId);
+        function addMovieToWatchlist(movie, watchlistId, watchlist){
+            var movieObj={"_id": movie.imdbID, "title": movie.Title};
+            if (watchlist.movies.indexOf(movieObj)== -1){
+                watchlist.movies.push(movieObj);
                 watchlistService
                     .updatewatchlist(watchlistId, watchlist)
                     .then(function(response){
@@ -53,16 +60,9 @@
             }else{
                 model.warning="Movie is already in the watchlist.";
             }
-
         }
 
-        // function findwatchlistsByUser(userId){
-        //     watchlistService
-        //         .findwatchlistsByUser(userId)
-        //         .then(function(watchlists){
-        //             model.watchlists=watchlists;
-        //         })
-        // }
+
 
         function renderMovie(movie) {
             model.movie = movie;

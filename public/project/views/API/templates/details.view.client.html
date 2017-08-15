@@ -53,7 +53,7 @@
             <span class="glyphicon-plus"></span></button>
         <ul class="dropdown-menu">
             <li ng-repeat="watchlist in model.watchlists">
-                <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
+                <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
                    role="button">{{watchlist.name}}</a>
             </li>
         </ul>
@@ -62,17 +62,19 @@
        role="button">Watch Movie</a>
 
     <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.currentUser._id}}"
+       href="#!/user"
        role="button">Profile</a>
 
     <div>
         Comments:
         <div ng-repeat="comment in model.comments" class="commenttext">
-            <a href="#!/user/{{comment._user}}">
-                <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
-            </a>{{comment.text}}
-            <a href="#!/user/{{comment._user}}">
+            <!--<a href="#!/user/{{comment._user}}">-->
+                <!--<span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>-->
+            <!--</a>-->
+            <b>{{comment._user.username}}: </b>{{comment.text}}
+            <a href="#!/user">
                 <i ng-show="!(model.currentUser._id===comment._user)"
+                   ng-click="model.followUser(comment._user, model.currentUser)"
                    class="fa fa-user-plus pull-right" aria-hidden="true"></i>
             </a>
 

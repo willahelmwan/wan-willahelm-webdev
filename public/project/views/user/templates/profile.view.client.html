@@ -68,8 +68,8 @@
            <!--role="button">Follow</a>-->
 
 
-        <a class="btn btn-default btn-primary btn-block"
-           ng-if="model.currentUser._id===model.user._id"
+        <a class="btn btn-default btn-success btn-block"
+           ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.user._id"
            href="#!/video/new"
            role="button">Create Video</a>
 

@@ -354,7 +354,6 @@ body {
 .poster {
     display: inline-block;
     float: left;
-    /*position: absolute;*/
 }
 
 .details {
@@ -400,4 +399,8 @@ div.details {
 
 .detailsPageMessage{
     padding-top: 60px;
+}
+
+.contentCreatorMessage{
+    color: #3c3c3c;
 }

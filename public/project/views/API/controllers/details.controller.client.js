@@ -14,6 +14,7 @@
         model.createComment = createComment;
         model.followUser = followUser;
 
+
         function init() {
             movieService
                 .searchMovieByImdbId(model.imdbID)
@@ -27,22 +28,35 @@
                 .findCommentsByVideoId(model.imdbID)
                 .then(function (comments) {
                     model.comments = comments;
-                })
+                });
         }
 
         init();
 
-        function followUser(userId, cUser) {
-            if (model.currentUser.following.indexOf(userId) == -1) {
-                cUser.following.push(userId);
-                userService
-                    .updateUser(cUser._id, cUser)
-                    .then(function (response) {
-                        model.followingmessage = "You are now following the user."
-                    })
-            }else{
+        function followUser(user, currentUser) {
+            var followings = model.currentUser.following;
+            var follow = true;
+            for (var u in followings){
+                if (user._id === followings[u]._id){
+                    follow = false;
+                }
+            }
+            if (follow) {
+                model.currentUser.following.push(user);
+                updateUser(currentUser);
+            } else {
+                model.messageType = "warning";
                 model.warning = "You are already following the user."
             }
+        }
+
+        function updateUser(cUser) {
+            userService
+                .updateUser(cUser._id, cUser)
+                .then(function () {
+                    model.messageType = "message";
+                    model.message = "You are now following the user."
+                })
         }
 
         function createComment(imdbId, comment) {
@@ -63,9 +77,11 @@
                 watchlistService
                     .updatewatchlist(watchlistId, watchlist)
                     .then(function (response) {
+                        model.messageType = "message";
                         model.message = "Movie is added to the watchlist."
                     })
             } else {
+                model.messageType = "warning";
                 model.warning = "Movie is already in the watchlist.";
             }
         }

@@ -38,6 +38,8 @@ var googleConfig = {
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
+
+
 function isAdmin(req, res) {
     res.send(req.isAuthenticated() && req.user.role === 'ADMIN' ? req.user : '0');
 }

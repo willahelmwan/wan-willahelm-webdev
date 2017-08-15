@@ -22,10 +22,18 @@
             "logoutUser":logoutUser,
             "isAdmin": isAdmin,
             "findAllUser": findAllUser
+            // "checkFollowing": checkFollowing
         };
 
         return api;
 
+        // function checkFollowing(user, currentUser){
+        //     if (currentUser.following.indexOf(user) == -1) {
+        //         return currentUser.following.push(user);
+        //     }else{
+        //         return "0";
+        //     }
+        // }
 
         function findAllUser() {
             var url = "/api/project/admin/user";

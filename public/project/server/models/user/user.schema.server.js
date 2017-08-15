@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
     username: {type: String, unique: true, required: true},
-    password: {type: String, required: true},
+    password: {type: String},
     role: {type: String, enum:['SADMIN', 'ADMIN', 'CREATOR', 'USER', 'CRITIC'], default:'USER'},
     firstName: String,
     lastName: String,

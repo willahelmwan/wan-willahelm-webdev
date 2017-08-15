@@ -45,30 +45,123 @@
     </nav>
 
     <div class="container-fluid details-page">
-
-        <div ng-show="model.message"
-             class="alert alert-success alert-dismissable">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{model.message}}
-        </div>
-
-        <div ng-show="model.warning"
-             class="alert alert-warning alert-dismissable">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{model.warning}}
-        </div>
-
         <div class="row">
-            <div class="col-xs-4">
-                <h1 class="top-padding">Movie Details</h1>
+            <div class="col-xs-12 col-sm-7 col-md-6"></div>
+            <div ng-show="model.message"
+                 class="alert alert-success alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{model.message}}
+            </div>
+
+            <div ng-show="model.warning"
+                 class="alert alert-warning alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{model.warning}}
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
 
 
-                <div class="poster">
-                    <img ng-src="{{model.movie.Poster}}"/>
+                    <div class="col-xs-12 col-sm-6 col-md-4 poster">
+                        <h2 class="top-padding">Movie Details</h2>
+                        <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
+                    </div>
+
+                    <!--<div class="row">-->
+
+
+                    <!--<div class="row">-->
+                    <div class="col-sm-12 col-md-8 details">
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>{{model.movie.Title}}</h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>{{model.movie.Plot}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Year: {{model.movie.Year}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Rated: {{model.movie.Rated}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Released: {{model.movie.Released}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Runtime: {{model.movie.Runtime}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Genre: {{model.movie.Genre}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Director: {{model.movie.Director}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Writer: {{model.movie.Writer}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Actors: {{model.movie.Actors}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Language: {{model.movie.Language}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Country: {{model.movie.Country}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Awards: {{model.movie.Awards}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Ratings: {{model.movie.Ratings[0].Source}}</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
 
                         <div class="container-fluid details-buttons">
                             <div class="dropdown addto">
@@ -116,38 +209,10 @@
                                ng-click="model.createComment(model.movie.imdbID, model.comment)"
                                role="button">Submit</a>
                         </div>
-
                     </div>
                 </div>
-            </div>
 
-            <div class="container col-xs-8">
-                <table>
-                    <tr>
-                        <td class="table-padding">
-                            <h1 class="title">{{model.movie.Title}}</h1>
-                            <div class="description">{{model.movie.Plot}}</div>
-                            <div>
-                                <ul class="list-group details">
-                                    <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
-                                    <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
-                                    <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
-                                    <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
-                                    <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
-                                    <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
-                                    <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
-                                    <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
-                                    <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
-                                    <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
-                                    <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
-                                    <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
             </div>
-
         </div>
     </div>
 </div>

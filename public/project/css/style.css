@@ -308,6 +308,11 @@ body {
         font-size: 80px;
     }
 
+    .col-sm-12.col-md-8.details {
+        padding-top: 0;
+        max-width: 500px;
+    }
+
 }
 
 /* ---- End of max-width 992px CSS ---- */
@@ -322,6 +327,7 @@ body {
 
 .top-padding {
     padding-top: 50px;
+    /*padding-left: 15px;*/
 }
 
 .table-padding {
@@ -339,20 +345,18 @@ body {
 }
 
 .details {
-    display: inline-block;
+    display: block;
     float: left;
-    min-height: 180px;
-    padding: 18px 20px;
-    /*top: 60px;*/
-    /*position: relative;*/
+    padding-top: 50px;
+    position: static;
 }
 
-.description {
-    /*display: inline-block;*/
-    /*float: left;*/
-    overflow: hidden;
-    padding: 18px 20px;
-}
+/*.description {*/
+    /*!*display: inline-block;*!*/
+    /*!*float: left;*!*/
+    /*overflow: hidden;*/
+    /*!*padding: 18px 20px;*!*/
+/*}*/
 
 .title {
     top: 60px;
@@ -361,7 +365,6 @@ body {
     overflow: hidden;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
     padding-bottom: 0px;
 }
 
@@ -382,8 +385,8 @@ div.details {
     padding-top: 10px;
     padding-bottom: 50px;
     position: absolute;
-    left: 0px;
+    left: 30px;
     right: 0px;
-    margin: auto;
+    margin: 0;
     width: 333px;
 }

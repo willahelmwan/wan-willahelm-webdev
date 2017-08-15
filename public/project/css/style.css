@@ -290,9 +290,6 @@ body {
     border-color: darkred;
 }
 
-.table > tbody > tr > td {
-    border-top: none;
-}
 
 .table > tbody > tr > td {
     border-top: none;
@@ -325,6 +322,11 @@ body {
         font-size: 80px;
     }
 
+    .col-sm-12.col-md-8.details {
+        padding-top: 0;
+        max-width: 500px;
+    }
+
 }
 
 /* ---- End of max-width 992px CSS ---- */
@@ -335,4 +337,67 @@ body {
         font-size: 60px;
     }
 
+}
+
+.top-padding {
+    padding-top: 50px;
+}
+
+.table-padding {
+    padding-top: 30px;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.poster {
+    display: inline-block;
+    float: left;
+    /*position: absolute;*/
+}
+
+.details {
+    display: block;
+    float: left;
+    padding-top: 50px;
+    position: static;
+}
+
+
+.title {
+    top: 60px;
+    display: inline-block;
+    /*float: left;*/
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+}
+
+
+div.details {
+    display: block;
+}
+
+.details-page {
+    left: 0px;
+    margin: auto;
+    max-width: 1100px;
+    position: absolute;
+    right: 0px;
+}
+
+.details-buttons {
+    padding-top: 10px;
+    padding-bottom: 50px;
+    position: absolute;
+    left: 30px;
+    right: 0px;
+    margin: 0;
+    width: 333px;
+}
+
+.detailsPageMessage{
+    padding-top: 60px;
 }

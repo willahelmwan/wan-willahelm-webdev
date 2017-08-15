@@ -1,0 +1,120 @@
+<div class="container-fluid">
+
+    <div ng-switch="model.messageType">
+
+        <div ng-switch-when="message"
+             ng-show="model.message"
+             class="alert alert-success alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.message}}
+        </div>
+
+        <div ng-switch-when="warning"
+             ng-show="model.warning"
+             class="alert alert-warning alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.warning}}
+        </div>
+
+    </div>
+
+    <table class="table-responsive">
+        <tr>
+            <td>
+
+                <div class="col-md-6">
+                    <h2>Movie Details</h2>
+                    <div>
+                        <img ng-src="{{model.movie.Poster}}"/>
+                    </div>
+                    <h1>{{model.movie.Title}}</h1>
+                    <div class="description">{{model.movie.Plot}}</div>
+                </div>
+
+            </td>
+
+            <td>
+                <div class="col-md-6 details">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
+                        <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
+                        <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
+                        <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
+                        <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
+                        <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
+                        <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
+                        <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
+                        <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
+                        <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
+                        <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
+                        <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="dropdown addto">
+        <button class="btn btn-default dropdown-toggle"
+                type="button"
+                data-toggle="dropdown">Add to
+            <span class="glyphicon-plus"></span></button>
+        <ul class="dropdown-menu">
+            <li ng-repeat="watchlist in model.watchlists">
+                <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
+                   role="button">{{watchlist.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <a class="btn btn-default btn-success btn-block"
+       role="button">Watch Movie</a>
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user"
+       role="button">Profile</a>
+
+    <div>
+        Comments:
+        <div ng-repeat="comment in model.comments" class="commenttext">
+            <!--<a href="#!/user/{{comment._user}}">-->
+            <!--<span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>-->
+            <!--</a>-->
+            <b>{{comment._user.username}}: </b>{{comment.text}}
+            <a>
+                <i ng-show="!(model.currentUser._id===comment._user._id)"
+                   ng-click="model.followUser(comment._user, model.currentUser)"
+                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+            </a>
+
+        </div>
+    </div>
+
+
+    <textarea row="5"
+              placeholder="Enter comment here..."
+              ng-model="model.comment.text"
+              class="form-control"></textarea>
+    <!--<input  name="watchlistId" value="{{model.webId}}"   style="display: none"/>-->
+    <!--<input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>-->
+    <!--<input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>-->
+
+    <a class="btn btn-default btn-success btn-block"
+       ng-click="model.createComment(model.movie.imdbID, model.comment)"
+       role="button">Submit</a>
+
+    <!--<a class="btn btn-default btn-primary btn-block"-->
+    <!--ng-click="model.login(model.user)"-->
+    <!--role="button">Add to Watchlist</a>-->
+
+    <!--<div ng-repeat="widget in model.widgets" class="col-xs-12">-->
+    <!--<div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>-->
+    <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
+    <!--<a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
+    <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
+    <!--</a>-->
+    <!--</div>-->
+
+    <!--ng-click="model.findAllwatchlistsForUser(model.currentUser._id)"-->
+
+
+</div>

@@ -3,9 +3,6 @@
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
-                        <!--<a href="javascript:history.back()" class="userglyphicon">-->
-                            <!--<span class="pull-left glyphicon glyphicon-chevron-left"></span>-->
-                        <!--</a>-->
 
                         <a ng-click="model.updateUser(model.user)"
                            role="button">
@@ -20,19 +17,19 @@
     </div>
     <div class="container-fluid entry">
 
-        <label for="firstname">Firstname</label>
+        <label for="firstname">First Name</label>
         <input name="firstname"
                type="text"
                ng-model="model.user.firstName"
-               placeholder="Alice"
+               placeholder="First Name"
                class="form-control"
                id="firstname"/>
 
-        <label for="lastname">Lastname</label>
+        <label for="lastname">Last Name</label>
         <input name="lastname"
                type="text"
                ng-model="model.user.lastName"
-               placeholder="Wonderland"
+               placeholder="Last Name"
                class="form-control"
                id="lastname"/>
 
@@ -49,69 +46,74 @@
         <input name="email"
                type="email"
                ng-model="model.user.email"
-               placeholder="alice@wonderland.com"
+               placeholder="Email"
                class="form-control"
                id="email"/>
 
         <label>Following:</label>
         <li ng-repeat="followinguser in model.currentUser.following" class="list-group-item">
-            <a ng-show="model.currentUser._id===model.user._id"
-               href="#!/user/{{followinguser}}">{{followinguser}}</a>
+            <a ng-if="model.currentUser._id===model.user._id">{{followinguser.username}}</a>
         </li>
+        <br/>
 
         <!--<label for="dob">Date of Birth</label>-->
         <!--<input name="dob"-->
                <!--type="date"-->
-               <!--class="forms-control"-->
+               <!--class="form-control"-->
                <!--id="dob"/>-->
 
-
-        <a class="btn btn-default btn-success btn-block"
-           ng-show="!(model.currentUser._id===model.user._id)"
-           ng-click="model.followUser(model.user._id, model.currentUser)"
-           role="button">Follow</a>
+        <!--<a class="btn btn-default btn-success btn-block"-->
+           <!--ng-if="!(model.currentUser._id===model.user._id)"-->
+           <!--ng-click="model.followUser(model.user._id, model.currentUser)"-->
+           <!--role="button">Follow</a>-->
 
 
         <a class="btn btn-default btn-primary btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            href="#!/video/new"
            role="button">Create Video</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            href="#!/watchlist"
            role="button">Watchlists</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            href="#!/user/{{model.user._id}}/watchlist"
            role="button">Movie Discussions</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            ng-click="model.updateUser(model.user)"
            role="button">Update</a>
+
+        <a class="btn btn-default btn-warning btn-block"
+           ng-if="model.currentUser.role === 'ADMIN'"
+           href="#!/admin"
+           role="button">Admin</a>
 
         <a class="btn btn-default btn-info btn-block"
            href="#!/"
            role="button">Home</a>
 
         <a class="btn btn-default btn-danger btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            ng-click="model.logoutUser()"
            href="#!/login"
            role="button">Logout</a>
 
         <a class="btn btn-default btn-danger btn-block"
-           ng-show="model.currentUser._id===model.user._id"
+           ng-if="model.currentUser._id===model.user._id"
            ng-click="model.unregister(model.user)"
            role="button">Unregister</a>
+        <!--|| model.currentUser.type === 'ADMIN'-->
     </div>
 
     <div class="profilenav">
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
+                <a href="#!/user" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

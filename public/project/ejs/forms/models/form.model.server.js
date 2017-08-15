@@ -1,10 +1,9 @@
 module.exports = function () {
-
     var forms = require('./form.mock.server.json');
 
     var api = {
         createForm: createForm,
-        findAllForms: findAllForms,
+        findAllForms: findAllforms,
         deleteForm: deleteForm,
         findFormById: findFormById,
         updateForm: updateForm
@@ -21,7 +20,7 @@ module.exports = function () {
 
     function findFormById(formId) {
         for (var f in forms) {
-            if (forms[f]._id == formId) {
+            if (formId == forms[f]._id) {
                 return forms[f];
             }
         }
@@ -40,7 +39,7 @@ module.exports = function () {
         forms.push(form);
     }
 
-    function findAllForms() {
+    function findAllforms() {
         return forms;
     }
 };

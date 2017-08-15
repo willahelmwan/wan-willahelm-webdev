@@ -14,8 +14,8 @@ var userModel = require('../models/user/user.model.server');
 //     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 // ];
 
-app.post("/api/project/user/:userId/watchlist", createwatchlist);
-app.get("/api/project/user/:userId/watchlist", findAllwatchlistsForUser);
+app.post("/api/project/watchlist", createwatchlist);
+app.get("/api/project/watchlist", findAllwatchlistsForUser);
 app.get("/api/project/watchlist/:watchlistId", findwatchlistById);
 app.put("/api/project/watchlist/:watchlistId", updatewatchlist);
 app.delete("/api/project/watchlist/:watchlistId", deletewatchlist);

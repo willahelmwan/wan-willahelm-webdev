@@ -4,7 +4,7 @@
         .controller("detailsController", detailsController);
 
 
-    function detailsController($routeParams, movieService, $location, currentUser, watchlistService,commentService) {
+    function detailsController($routeParams, movieService, $location, currentUser, watchlistService, userService, commentService) {
         var model = this;
 
         model.imdbID = $routeParams.imdbID;
@@ -12,6 +12,8 @@
         // model.findwatchlistsByUser = findwatchlistsByUser;
         model.addMovieToWatchlist = addMovieToWatchlist;
         model.createComment = createComment;
+        model.followUser = followUser;
+
 
         function init() {
             movieService
@@ -19,17 +21,43 @@
                 .then(renderMovie);
             watchlistService
                 .findwatchlistsByUser(model.currentUser._id)
-                .then(function(watchlists){
-                    model.watchlists=watchlists;
+                .then(function (watchlists) {
+                    model.watchlists = watchlists;
                 });
             commentService
                 .findCommentsByVideoId(model.imdbID)
-                .then(function(comments){
+                .then(function (comments) {
                     model.comments = comments;
-                })
+                });
         }
 
         init();
+
+        function followUser(user, currentUser) {
+            var followings = model.currentUser.following;
+            var follow = true;
+            for (var u in followings){
+                if (user._id === followings[u]._id){
+                    follow = false;
+                }
+            }
+            if (follow) {
+                model.currentUser.following.push(user);
+                updateUser(currentUser);
+            } else {
+                model.messageType = "warning";
+                model.warning = "You are already following the user."
+            }
+        }
+
+        function updateUser(cUser) {
+            userService
+                .updateUser(cUser._id, cUser)
+                .then(function () {
+                    model.messageType = "message";
+                    model.message = "You are now following the user."
+                })
+        }
 
         function createComment(imdbId, comment) {
             comment._user = model.currentUser._id;
@@ -38,31 +66,26 @@
                 .createComment(imdbId, comment)
                 .then(function () {
                     // location.reload();
-                    $location.url("details/"+model.imdbID +"/");
+                    $location.url("details/" + model.imdbID + "/");
                 });
         }
 
-        function addMovieToWatchlist(movieId, watchlistId, watchlist){
-            if (watchlist.movies.indexOf(movieId)== -1){
-                watchlist.movies.push(movieId);
+        function addMovieToWatchlist(movie, watchlistId, watchlist) {
+            var movieObj = {"_id": movie.imdbID, "title": movie.Title};
+            if (watchlist.movies.indexOf(movieObj) == -1) {
+                watchlist.movies.push(movieObj);
                 watchlistService
                     .updatewatchlist(watchlistId, watchlist)
-                    .then(function(response){
+                    .then(function (response) {
+                        model.messageType = "message";
                         model.message = "Movie is added to the watchlist."
                     })
-            }else{
-                model.warning="Movie is already in the watchlist.";
+            } else {
+                model.messageType = "warning";
+                model.warning = "Movie is already in the watchlist.";
             }
-
         }
 
-        // function findwatchlistsByUser(userId){
-        //     watchlistService
-        //         .findwatchlistsByUser(userId)
-        //         .then(function(watchlists){
-        //             model.watchlists=watchlists;
-        //         })
-        // }
 
         function renderMovie(movie) {
             model.movie = movie;

@@ -64,6 +64,10 @@ div.profile {
     color: #46b8da;
 }
 
+.glyphicon.glyphicon-remove.userremove {
+    color: maroon;
+}
+
 .glyphicon.comment-glyphicon {
     color: #2B81AF;
     padding-right: 10px;
@@ -256,10 +260,20 @@ body {
     background: url("../../vendor/image/nice_snow_@2X.png");
 }
 
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: inherit;
+}
+
 .table > tbody > tr > td .table > thead > tr > th {
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 0px none;
+}
+
+.jumbotron {
+    background: black;
 }
 
 .jumbotron p {
@@ -276,7 +290,7 @@ body {
     border-color: darkred;
 }
 
-/********************NEW**************************/
+
 .table > tbody > tr > td {
     border-top: none;
 }
@@ -327,7 +341,6 @@ body {
 
 .top-padding {
     padding-top: 50px;
-    /*padding-left: 15px;*/
 }
 
 .table-padding {
@@ -351,12 +364,6 @@ body {
     position: static;
 }
 
-/*.description {*/
-    /*!*display: inline-block;*!*/
-    /*!*float: left;*!*/
-    /*overflow: hidden;*/
-    /*!*padding: 18px 20px;*!*/
-/*}*/
 
 .title {
     top: 60px;
@@ -389,4 +396,8 @@ div.details {
     right: 0px;
     margin: 0;
     width: 333px;
+}
+
+.detailsPageMessage{
+    padding-top: 60px;
 }

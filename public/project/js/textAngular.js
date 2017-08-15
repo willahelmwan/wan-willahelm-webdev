@@ -1735,7 +1735,7 @@ angular.module('textAngular.taBind', ['textAngular.factories', 'textAngular.DOM'
             taSelection, taSelectableElements, taApplyCustomRenderers, taOptions,
             _taBlankTest, $parse, taDOM, textAngularManager){
     // Uses for this are textarea or input with ng-model and ta-bind='text'
-    // OR any non-forms element with contenteditable="contenteditable" ta-bind="html|text" ng-model
+    // OR any non-form element with contenteditable="contenteditable" ta-bind="html|text" ng-model
     return {
         priority: 2, // So we override validators correctly
         require: ['ngModel','?ngModelOptions'],

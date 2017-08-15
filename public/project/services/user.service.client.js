@@ -4,12 +4,12 @@
         .factory("userService", userService);
 
     function userService($http){
-        var users=[
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-        ];
+        // var users=[
+        //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true },
+        //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+        //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+        //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+        // ];
 
         var api ={
             "createUser": createUser,
@@ -19,17 +19,41 @@
             "updateUser": updateUser,
             "deleteUser": deleteUser,
             "checkLoggedIn": checkLoggedIn,
-            "logoutUser":logoutUser
+            "logoutUser":logoutUser,
+            "isAdmin": isAdmin,
+            "findAllUser": findAllUser
+            // "checkFollowing": checkFollowing
         };
 
         return api;
 
+        // function checkFollowing(user, currentUser){
+        //     if (currentUser.following.indexOf(user) == -1) {
+        //         return currentUser.following.push(user);
+        //     }else{
+        //         return "0";
+        //     }
+        // }
+
+        function findAllUser() {
+            var url = "/api/project/admin/user";
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
+        
+        function isAdmin() {
+            var url = "/api/project/isAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
         function logoutUser(){
             var url = "/api/project/logoutUser";
             return $http.post(url);
-                // .then(function(response){
-                //     return response.data;
-                // });
         }
 
         function checkLoggedIn() {

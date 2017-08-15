@@ -17,7 +17,10 @@ function createCommentForVideo(videoId, comment){
 }
 
 function findCommentsByVideoId(videoId){
-    return commentModel.find({_video: videoId});
+    return commentModel
+        .find({_video: videoId})
+        .populate('_user')
+        .exec();
 }
 
 // function findWidgetById(widgetId){

@@ -20,21 +20,29 @@
                 .then(renderMovie);
             watchlistService
                 .findwatchlistsByUser(model.currentUser._id)
-                .then(function(watchlists){
-                    model.watchlists=watchlists;
+                .then(function (watchlists) {
+                    model.watchlists = watchlists;
                 });
             commentService
                 .findCommentsByVideoId(model.imdbID)
-                .then(function(comments){
+                .then(function (comments) {
                     model.comments = comments;
                 })
         }
 
         init();
 
-        function followUser(userId, cUser){
-            cUser.following.push(userId);
-            userService.updateUser(cUser._id, cUser);
+        function followUser(userId, cUser) {
+            if (model.currentUser.following.indexOf(userId) == -1) {
+                cUser.following.push(userId);
+                userService
+                    .updateUser(cUser._id, cUser)
+                    .then(function (response) {
+                        model.followingmessage = "You are now following the user."
+                    })
+            }else{
+                model.warning = "You are already following the user."
+            }
         }
 
         function createComment(imdbId, comment) {
@@ -44,24 +52,23 @@
                 .createComment(imdbId, comment)
                 .then(function () {
                     // location.reload();
-                    $location.url("details/"+model.imdbID +"/");
+                    $location.url("details/" + model.imdbID + "/");
                 });
         }
 
-        function addMovieToWatchlist(movie, watchlistId, watchlist){
-            var movieObj={"_id": movie.imdbID, "title": movie.Title};
-            if (watchlist.movies.indexOf(movieObj)== -1){
+        function addMovieToWatchlist(movie, watchlistId, watchlist) {
+            var movieObj = {"_id": movie.imdbID, "title": movie.Title};
+            if (watchlist.movies.indexOf(movieObj) == -1) {
                 watchlist.movies.push(movieObj);
                 watchlistService
                     .updatewatchlist(watchlistId, watchlist)
-                    .then(function(response){
+                    .then(function (response) {
                         model.message = "Movie is added to the watchlist."
                     })
-            }else{
-                model.warning="Movie is already in the watchlist.";
+            } else {
+                model.warning = "Movie is already in the watchlist.";
             }
         }
-
 
 
         function renderMovie(movie) {

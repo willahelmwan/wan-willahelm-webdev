@@ -4,6 +4,11 @@
         <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{model.message}}
     </div>
+    <div  ng-show="model.followingmessage"
+          class="alert alert-success alert-dismissable">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{model.followingmessage}}
+    </div>
     <div  ng-show="model.warning"
           class="alert alert-warning alert-dismissable">
         <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -72,7 +77,7 @@
                 <!--<span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>-->
             <!--</a>-->
             <b>{{comment._user.username}}: </b>{{comment.text}}
-            <a href="#!/user">
+            <a>
                 <i ng-show="!(model.currentUser._id===comment._user._id)"
                    ng-click="model.followUser(comment._user, model.currentUser)"
                    class="fa fa-user-plus pull-right" aria-hidden="true"></i>

@@ -2477,7 +2477,7 @@ $.extend( $.effects, {
 			cssPosition = element.css( "position" ),
 			position = element.position();
 
-		// Lock in margins first to account for form elements, which
+		// Lock in margins first to account for forms elements, which
 		// will change margin if you explicitly set height
 		// see: http://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
 		// Support: Safari
@@ -3947,8 +3947,8 @@ var focusable = $.ui.focusable;
 
 
 // Support: IE8 Only
-// IE8 does not support the form attribute and when it is supplied. It overwrites the form prop
-// with a string, so we need to find the proper form.
+// IE8 does not support the forms attribute and when it is supplied. It overwrites the forms prop
+// with a string, so we need to find the proper forms.
 var form = $.fn.form = function() {
 	return typeof this[ 0 ].form === "string" ? this.closest( "form" ) : $( this[ 0 ].form );
 };
@@ -3965,7 +3965,7 @@ var form = $.fn.form = function() {
 
 //>>label: Form Reset Mixin
 //>>group: Core
-//>>description: Refresh input widgets when their form is reset
+//>>description: Refresh input widgets when their forms is reset
 //>>docs: http://api.jqueryui.com/form-reset-mixin/
 
 
@@ -3974,9 +3974,9 @@ var formResetMixin = $.ui.formResetMixin = {
 	_formResetHandler: function() {
 		var form = $( this );
 
-		// Wait for the form reset to actually happen before refreshing
+		// Wait for the forms reset to actually happen before refreshing
 		setTimeout( function() {
-			var instances = form.data( "ui-form-reset-instances" );
+			var instances = form.data( "ui-forms-reset-instances" );
 			$.each( instances, function() {
 				this.refresh();
 			} );
@@ -3989,14 +3989,14 @@ var formResetMixin = $.ui.formResetMixin = {
 			return;
 		}
 
-		var instances = this.form.data( "ui-form-reset-instances" ) || [];
+		var instances = this.form.data( "ui-forms-reset-instances" ) || [];
 		if ( !instances.length ) {
 
-			// We don't use _on() here because we use a single event handler per form
-			this.form.on( "reset.ui-form-reset", this._formResetHandler );
+			// We don't use _on() here because we use a single event handler per forms
+			this.form.on( "reset.ui-forms-reset", this._formResetHandler );
 		}
 		instances.push( this );
-		this.form.data( "ui-form-reset-instances", instances );
+		this.form.data( "ui-forms-reset-instances", instances );
 	},
 
 	_unbindFormResetHandler: function() {
@@ -4004,14 +4004,14 @@ var formResetMixin = $.ui.formResetMixin = {
 			return;
 		}
 
-		var instances = this.form.data( "ui-form-reset-instances" );
+		var instances = this.form.data( "ui-forms-reset-instances" );
 		instances.splice( $.inArray( this, instances ), 1 );
 		if ( instances.length ) {
-			this.form.data( "ui-form-reset-instances", instances );
+			this.form.data( "ui-forms-reset-instances", instances );
 		} else {
 			this.form
-				.removeData( "ui-form-reset-instances" )
-				.off( "reset.ui-form-reset" );
+				.removeData( "ui-forms-reset-instances" )
+				.off( "reset.ui-forms-reset" );
 		}
 	}
 };
@@ -5705,7 +5705,7 @@ $.widget( "ui.autocomplete", {
 
 						// Different browsers have different default behavior for escape
 						// Single press can mean undo or clear
-						// Double press in IE means clear the whole form
+						// Double press in IE means clear the whole forms
 						event.preventDefault();
 					}
 					break;
@@ -6250,7 +6250,7 @@ var widgetsAutocomplete = $.ui.autocomplete;
 
 //>>label: Controlgroup
 //>>group: Widgets
-//>>description: Visually groups form control widgets
+//>>description: Visually groups forms control widgets
 //>>docs: http://api.jqueryui.com/controlgroup/
 //>>demos: http://jqueryui.com/controlgroup/
 //>>css.structure: ../../themes/base/core.css
@@ -6535,7 +6535,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 
 //>>label: Checkboxradio
 //>>group: Widgets
-//>>description: Enhances a form with multiple themeable checkboxes or radio buttons.
+//>>description: Enhances a forms with multiple themeable checkboxes or radio buttons.
 //>>docs: http://api.jqueryui.com/checkboxradio/
 //>>demos: http://jqueryui.com/checkboxradio/
 //>>css.structure: ../../themes/base/core.css
@@ -6672,7 +6672,7 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 			group = $( this.form[ 0 ].elements ).filter( nameSelector );
 		} else {
 
-			// Not inside a form, check all inputs that also are not inside a form
+			// Not inside a forms, check all inputs that also are not inside a forms
 			group = $( nameSelector ).filter( function() {
 				return $( this ).form().length === 0;
 			} );
@@ -6805,7 +6805,7 @@ var widgetsCheckboxradio = $.ui.checkboxradio;
 
 //>>label: Button
 //>>group: Widgets
-//>>description: Enhances a form with themeable buttons.
+//>>description: Enhances a forms with themeable buttons.
 //>>docs: http://api.jqueryui.com/button/
 //>>demos: http://jqueryui.com/button/
 //>>css.structure: ../../themes/base/core.css
@@ -7773,7 +7773,7 @@ $.extend( Datepicker.prototype, {
 							$.datepicker._hideDatepicker();
 						}
 
-						return false; // don't submit the form
+						return false; // don't submit the forms
 				case 27: $.datepicker._hideDatepicker();
 						break; // hide on escape
 				case 33: $.datepicker._adjustDate( event.target, ( event.ctrlKey ?

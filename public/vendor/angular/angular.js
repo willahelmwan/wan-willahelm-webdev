@@ -75,7 +75,7 @@ function isValidObjectMaxDepth(maxDepth) {
  *
  * Since data will be parsed statically during a build step, some restrictions
  * are applied with respect to how minErr instances are created and called.
- * Instances should have names of the form namespaceMinErr for a minErr created
+ * Instances should have names of the forms namespaceMinErr for a minErr created
  * using minErr('namespace') . Error codes, namespaces and template strings
  * should all be static strings, not variables or general expressions.
  *
@@ -240,7 +240,7 @@ function minErr(module, ErrorConstructor) {
 
 var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
 
-// The name of a form control's ValidityState property.
+// The name of a forms control's ValidityState property.
 // This is used so that it's possible for internal tests to create mock ValidityStates.
 var VALIDITY_STATE_PROPERTY = 'validity';
 
@@ -909,7 +909,7 @@ function isElement(node) {
 
 /**
  * @param str 'key1,key2,...'
- * @returns {object} in the form of {key1:true, key2:true, ...}
+ * @returns {object} in the forms of {key1:true, key2:true, ...}
  */
 function makeMap(str) {
   var obj = {}, items = str.split(','), i;
@@ -3513,7 +3513,7 @@ forEach('multiple,selected,checked,disabled,readOnly,required,open'.split(','), 
   BOOLEAN_ATTR[lowercase(value)] = value;
 });
 var BOOLEAN_ELEMENTS = {};
-forEach('input,select,option,textarea,button,form,details'.split(','), function(value) {
+forEach('input,select,option,textarea,button,forms,details'.split(','), function(value) {
   BOOLEAN_ELEMENTS[value] = true;
 });
 var ALIASED_ATTR = {
@@ -4406,7 +4406,7 @@ function annotate(fn, strictDi, name) {
  *
  * # Argument names
  *
- * The simplest form is to extract the dependencies from the arguments of the function. This is done
+ * The simplest forms is to extract the dependencies from the arguments of the function. This is done
  * by converting the function into a string using `toString()` method and extracting the argument
  * names.
  * ```js
@@ -8656,7 +8656,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
        *
        * @description
        * Converts an attribute name (e.g. dash/colon/underscore-delimited string, optionally prefixed with `x-` or
-       * `data-`) to its normalized, camelCase form.
+       * `data-`) to its normalized, camelCase forms.
        *
        * Also there is special case for Moz prefix starting with upper case letter.
        *
@@ -11210,7 +11210,7 @@ function $HttpParamSerializerJQLikeProvider() {
    * {@link $httpProvider#defaults `$httpProvider`}.
    *
    * Additionally, you can inject the serializer and use it explicitly, for example to serialize
-   * form data for submission:
+   * forms data for submission:
    *
    * ```js
    * .controller(function($http, $httpParamSerializerJQLike) {
@@ -11221,7 +11221,7 @@ function $HttpParamSerializerJQLikeProvider() {
    *     method: 'POST',
    *     data: $httpParamSerializerJQLike(myData),
    *     headers: {
-   *       'Content-Type': 'application/x-www-form-urlencoded'
+   *       'Content-Type': 'application/x-www-forms-urlencoded'
    *     }
    *   });
    *
@@ -20083,7 +20083,7 @@ function $SnifferProvider() {
         // it. In particular the event is not fired when backspace or delete key are pressed or
         // when cut operation is performed.
         // IE10+ implements 'input' event but it erroneously fires under various situations,
-        // e.g. when placeholder changes, or a form is focused.
+        // e.g. when placeholder changes, or a forms is focused.
         if (event === 'input' && msie) return false;
 
         if (isUndefined(eventSupport[event])) {
@@ -21240,7 +21240,7 @@ function parse(numStr) {
     numStr = numStr.replace(DECIMAL_SEP, '');
   }
 
-  // Exponential form?
+  // Exponential forms?
   if ((i = numStr.search(/e/i)) > 0) {
     // Work out the exponent.
     if (numberOfIntegerDigits < 0) numberOfIntegerDigits = i;
@@ -23140,11 +23140,11 @@ function nullFormRenameControl(control, name) {
  * @ngdoc type
  * @name form.FormController
  *
- * @property {boolean} $pristine True if user has not interacted with the form yet.
- * @property {boolean} $dirty True if user has already interacted with the form.
+ * @property {boolean} $pristine True if user has not interacted with the forms yet.
+ * @property {boolean} $dirty True if user has already interacted with the forms.
  * @property {boolean} $valid True if all of the containing forms and controls are valid.
- * @property {boolean} $invalid True if at least one containing control or form is invalid.
- * @property {boolean} $submitted True if user has submitted the form even if its invalid.
+ * @property {boolean} $invalid True if at least one containing control or forms is invalid.
+ * @property {boolean} $submitted True if user has submitted the forms even if its invalid.
  *
  * @property {Object} $pending An object hash, containing references to controls or forms with
  *  pending validators, where:
@@ -23180,7 +23180,7 @@ function nullFormRenameControl(control, name) {
  * `FormController` keeps track of all its controls and nested forms as well as the state of them,
  * such as being valid/invalid or dirty/pristine.
  *
- * Each {@link ng.directive:form form} directive creates an instance
+ * Each {@link ng.directive:forms forms} directive creates an instance
  * of `FormController`.
  *
  */
@@ -23213,11 +23213,11 @@ FormController.prototype = {
    * @name form.FormController#$rollbackViewValue
    *
    * @description
-   * Rollback all form controls pending updates to the `$modelValue`.
+   * Rollback all forms controls pending updates to the `$modelValue`.
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is typically needed by the reset button of
-   * a form that uses `ng-model-options` to pend updates.
+   * a forms that uses `ng-model-options` to pend updates.
    */
   $rollbackViewValue: function() {
     forEach(this.$$controls, function(control) {
@@ -23230,7 +23230,7 @@ FormController.prototype = {
    * @name form.FormController#$commitViewValue
    *
    * @description
-   * Commit all form controls pending updates to the `$modelValue`.
+   * Commit all forms controls pending updates to the `$modelValue`.
    *
    * Updates may be pending by a debounced event or because the input is waiting for a some future
    * event defined in `ng-model-options`. This method is rarely needed as `NgModelController`
@@ -23249,19 +23249,19 @@ FormController.prototype = {
    * {@link ngModel.NgModelController}
    *
    * @description
-   * Register a control with the form. Input elements using ngModelController do this automatically
+   * Register a control with the forms. Input elements using ngModelController do this automatically
    * when they are linked.
    *
-   * Note that the current state of the control will not be reflected on the new parent form. This
+   * Note that the current state of the control will not be reflected on the new parent forms. This
    * is not an issue with normal use, as freshly compiled and linked controls are in a `$pristine`
    * state.
    *
    * However, if the method is used programmatically, for example by adding dynamically created controls,
    * or controls that have been previously removed without destroying their corresponding DOM element,
-   * it's the developers responsibility to make sure the current state propagates to the parent form.
+   * it's the developers responsibility to make sure the current state propagates to the parent forms.
    *
    * For example, if an input control is added that is already `$dirty` and has `$error` properties,
-   * calling `$setDirty()` and `$validate()` afterwards will propagate the state to the parent form.
+   * calling `$setDirty()` and `$validate()` afterwards will propagate the state to the parent forms.
    */
   $addControl: function(control) {
     // Breaking change - before, inputs whose name was "hasOwnProperty" were quietly ignored
@@ -23276,7 +23276,7 @@ FormController.prototype = {
     control.$$parentForm = this;
   },
 
-  // Private API: rename a form control
+  // Private API: rename a forms control
   $$renameControl: function(control, newName) {
     var oldName = control.$name;
 
@@ -23294,14 +23294,14 @@ FormController.prototype = {
    * {@link ngModel.NgModelController}
    *
    * @description
-   * Deregister a control from the form.
+   * Deregister a control from the forms.
    *
    * Input elements using ngModelController do this automatically when they are destroyed.
    *
    * Note that only the removed control's validation state (`$errors`etc.) will be removed from the
-   * form. `$dirty`, `$submitted` states will not be changed, because the expected behavior can be
-   * different from case to case. For example, removing the only `$dirty` control from a form may or
-   * may not mean that the form is still `$dirty`.
+   * forms. `$dirty`, `$submitted` states will not be changed, because the expected behavior can be
+   * different from case to case. For example, removing the only `$dirty` control from a forms may or
+   * may not mean that the forms is still `$dirty`.
    */
   $removeControl: function(control) {
     if (control.$name && this[control.$name] === control) {
@@ -23329,9 +23329,9 @@ FormController.prototype = {
    * @name form.FormController#$setDirty
    *
    * @description
-   * Sets the form to a dirty state.
+   * Sets the forms to a dirty state.
    *
-   * This method can be called to add the 'ng-dirty' class and set the form to a dirty
+   * This method can be called to add the 'ng-dirty' class and set the forms to a dirty
    * state (ng-dirty class). This method will also propagate to parent forms.
    */
   $setDirty: function() {
@@ -23347,15 +23347,15 @@ FormController.prototype = {
    * @name form.FormController#$setPristine
    *
    * @description
-   * Sets the form to its pristine state.
+   * Sets the forms to its pristine state.
    *
-   * This method sets the form's `$pristine` state to true, the `$dirty` state to false, removes
+   * This method sets the forms's `$pristine` state to true, the `$dirty` state to false, removes
    * the `ng-dirty` class and adds the `ng-pristine` class. Additionally, it sets the `$submitted`
    * state to false.
    *
-   * This method will also propagate to all the controls contained in this form.
+   * This method will also propagate to all the controls contained in this forms.
    *
-   * Setting a form back to a pristine state is often useful when we want to 'reuse' a form after
+   * Setting a forms back to a pristine state is often useful when we want to 'reuse' a forms after
    * saving or resetting it.
    */
   $setPristine: function() {
@@ -23373,12 +23373,12 @@ FormController.prototype = {
    * @name form.FormController#$setUntouched
    *
    * @description
-   * Sets the form to its untouched state.
+   * Sets the forms to its untouched state.
    *
-   * This method can be called to remove the 'ng-touched' class and set the form controls to their
+   * This method can be called to remove the 'ng-touched' class and set the forms controls to their
    * untouched state (ng-untouched class).
    *
-   * Setting a form controls back to their untouched state is often useful when setting the form
+   * Setting a forms controls back to their untouched state is often useful when setting the forms
    * back to its pristine state.
    */
   $setUntouched: function() {
@@ -23392,7 +23392,7 @@ FormController.prototype = {
    * @name form.FormController#$setSubmitted
    *
    * @description
-   * Sets the form to its submitted state.
+   * Sets the forms to its submitted state.
    */
   $setSubmitted: function() {
     this.$$animate.addClass(this.$$element, SUBMITTED_CLASS);
@@ -23406,7 +23406,7 @@ FormController.prototype = {
  * @name form.FormController#$setValidity
  *
  * @description
- * Change the validity state of the form, and notify the parent form (if any).
+ * Change the validity state of the forms, and notify the parent forms (if any).
  *
  * Application developers will rarely need to call this method directly. It is used internally, by
  * {@link ngModel.NgModelController#$setValidity NgModelController.$setValidity()}, to propagate a
@@ -23456,15 +23456,15 @@ addSetValidityMethod({
  * @restrict EAC
  *
  * @description
- * Nestable alias of {@link ng.directive:form `form`} directive. HTML
- * does not allow nesting of form elements. It is useful to nest forms, for example if the validity of a
+ * Nestable alias of {@link ng.directive:forms `forms`} directive. HTML
+ * does not allow nesting of forms elements. It is useful to nest forms, for example if the validity of a
  * sub-group of controls needs to be determined.
  *
  * Note: the purpose of `ngForm` is to group controls,
- * but not to be a replacement for the `<form>` tag with all of its capabilities
+ * but not to be a replacement for the `<forms>` tag with all of its capabilities
  * (e.g. posting to the server, ...).
  *
- * @param {string=} ngForm|name Name of the form. If specified, the form controller will be published into
+ * @param {string=} ngForm|name Name of the forms. If specified, the forms controller will be published into
  *                       related scope, under this name.
  *
  */
@@ -23616,7 +23616,7 @@ var formDirectiveFactory = function(isNgForm) {
     var formDirective = {
       name: 'form',
       restrict: isNgForm ? 'EAC' : 'E',
-      require: ['form', '^^?form'], //first is the form's own ctrl, second is an optional parent form
+      require: ['form', '^^?forms'], //first is the forms's own ctrl, second is an optional parent forms
       controller: FormController,
       compile: function ngFormCompile(formElement, attr) {
         // Setup initial state of the control
@@ -23628,14 +23628,14 @@ var formDirectiveFactory = function(isNgForm) {
           pre: function ngFormPreLink(scope, formElement, attr, ctrls) {
             var controller = ctrls[0];
 
-            // if `action` attr is not present on the form, prevent the default action (submission)
+            // if `action` attr is not present on the forms, prevent the default action (submission)
             if (!('action' in attr)) {
-              // we can't use jq events because if a form is destroyed during submission the default
+              // we can't use jq events because if a forms is destroyed during submission the default
               // action is not prevented. see #1238
               //
               // IE 9 is not affected because it doesn't fire a submit event and try to do a full
-              // page reload if the form was destroyed by submission of the form via a click handler
-              // on a button in the form. Looks like an IE9 specific bug.
+              // page reload if the forms was destroyed by submission of the forms via a click handler
+              // on a button in the forms. Looks like an IE9 specific bug.
               var handleFormSubmission = function(event) {
                 scope.$apply(function() {
                   controller.$commitViewValue();
@@ -25110,7 +25110,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   }
 
   // if user paste into input using mouse on older browser
-  // or form autocomplete on newer browser, we need "change" event to catch it
+  // or forms autocomplete on newer browser, we need "change" event to catch it
   element.on('change', listener);
 
   // Some native input types (date-family) have the ability to change validity without
@@ -25685,7 +25685,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  * {@link ng.directive:input input element}.
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
- * @param {string=} name Property name of the form under which the control is published.
+ * @param {string=} name Property name of the forms under which the control is published.
  * @param {string=} required Sets `required` validation error key if the value is not entered.
  * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
  *    the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of
@@ -29263,7 +29263,7 @@ function setupModelWatcher(ctrl) {
  * @name ngModel.NgModelController#$setValidity
  *
  * @description
- * Change the validity state, and notify the form.
+ * Change the validity state, and notify the forms.
  *
  * This method can be called within $parsers/$formatters or a custom validation implementation.
  * However, in most cases it should be sufficient to use the `ngModel.$validators` and
@@ -29481,7 +29481,7 @@ addSetValidityMethod({
 var ngModelDirective = ['$rootScope', function($rootScope) {
   return {
     restrict: 'A',
-    require: ['ngModel', '^?form', '^?ngModelOptions'],
+    require: ['ngModel', '^?forms', '^?ngModelOptions'],
     controller: NgModelController,
     // Prelink needs to run before any input directive
     // so that we can set the NgModelOptions in NgModelController
@@ -29609,7 +29609,7 @@ ModelOptions.prototype = {
     }, this);
 
     if (inheritAll) {
-      // We have a property of the form: `"*": "$inherit"`
+      // We have a property of the forms: `"*": "$inherit"`
       delete options['*'];
       defaults(options, this.$$options);
     }
@@ -30197,7 +30197,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
     var match = optionsExp.match(NG_OPTIONS_REGEXP);
     if (!(match)) {
       throw ngOptionsMinErr('iexp',
-        'Expected expression in form of ' +
+        'Expected expression in forms of ' +
         '\'_select_ (as _label_)? for (_key_,)?_value_ in _collection_\'' +
         ' but got \'{0}\'. Element: {1}',
         optionsExp, startingTag(selectElement));
@@ -31273,7 +31273,7 @@ var ngRepeatDirective = ['$parse', '$animate', '$compile', function($parse, $ani
       var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)(?:\s+as\s+([\s\S]+?))?(?:\s+track\s+by\s+([\s\S]+?))?\s*$/);
 
       if (!match) {
-        throw ngRepeatMinErr('iexp', 'Expected expression in form of \'_item_ in _collection_[ track by _id_]\' but got \'{0}\'.',
+        throw ngRepeatMinErr('iexp', 'Expected expression in forms of \'_item_ in _collection_[ track by _id_]\' but got \'{0}\'.',
             expression);
       }
 
@@ -32330,7 +32330,7 @@ var ngTranscludeDirective = ['$compile', function($compile) {
         }
 
 
-        // If the attribute is of the form: `ng-transclude="ng-transclude"` then treat it like the default
+        // If the attribute is of the forms: `ng-transclude="ng-transclude"` then treat it like the default
         if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
           $attrs.ngTransclude = '';
         }
@@ -33828,4 +33828,4 @@ $provide.value("$locale", {
 
 })(window);
 
-!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:forms{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');

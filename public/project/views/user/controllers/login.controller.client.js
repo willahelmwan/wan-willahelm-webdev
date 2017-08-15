@@ -23,14 +23,10 @@
                 userService
                     .findUserByCredentials(user.username, user.password)
                     .then(function (response) {
-                        var user = response.data;
-                        $location.url("/");
-                        if (user === "0") {
-                            model.errorMessage = "User and password combination not found.";
-                        } else if (user === "2") {
-                            model.errorMessage = "User not found.";
-                        }
-                        else {
+                        var success = response.data.success;
+                        if (success === false) {
+                            model.errorMessage = response.data.message;
+                        } else {
                             // $rootScope.currentUser = user;
                             $location.url("/");
                         }

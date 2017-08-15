@@ -4,18 +4,24 @@
         .controller("homeController", homeController);
 
 
-    function homeController(movieService, currentUser, userService) {
+    function homeController(movieService, currentUser, $location, userService) {
         var model = this;
 
         model.searchMovieByTitle = searchMovieByTitle;
         model.logoutUser = logoutUser;
         model.searchMovieByImdbId = searchMovieByImdbId;
+        model.gotoDetailPage = gotoDetailPage;
+
         model.currentUser = currentUser;
         function init() {
-            // console.log(currentUser);
+            console.log(currentUser);
         }
 
         init();
+
+        function gotoDetailPage(imdbId){
+            $location.url("/details/"+imdbId);
+        }
 
         function logoutUser(){
             userService.logoutUser();

@@ -1,124 +1,151 @@
-<div class="container-fluid">
-    <div  ng-show="model.message"
-          class="alert alert-success alert-dismissable">
-        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{model.message}}
-    </div>
-    <div  ng-show="model.warning"
-          class="alert alert-warning alert-dismissable">
-        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{model.warning}}
-    </div>
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">NeuTube</a>
+            <div class="navbar-header pull-right">
+                <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-    <table class="table-responsive">
-        <tr>
-            <td>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse navbar-left">>
+                <ul class="nav navbar-nav collapsed pull-left">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+                    <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+                    <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
+                    <li><a ng-show="model.currentUser._id"
+                           ng-click="model.logoutUser()"
+                           href="#!">Logout</a></li>
+                    <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                    <li><a href="#!/about">About</a></li>
+                    <li><a href="#!/contact">Contact</a></li>
 
-                <div class="col-md-6">
-                    <h2>Movie Details</h2>
-                    <div>
-                        <img ng-src="{{model.movie.Poster}}"/>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container-fluid details-page">
+        <div ng-show="model.message"
+             class="alert alert-success alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.message}}
+        </div>
+        <div ng-show="model.warning"
+             class="alert alert-warning alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.warning}}
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="top-padding">Movie Details</h2>
+
+                <!--<tr>-->
+                <!--<td>-->
+                <div class="poster">
+                    <img ng-src="{{model.movie.Poster}}"/>
+                </div>
+                <div class="container">
+                    <table>
+                        <tr>
+                            <td>
+                                <h1 class="title">{{model.movie.Title}}</h1>
+                                <div class="description">{{model.movie.Plot}}</div>
+                                <div>
+                                    <ul class="list-group details">
+                                        <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
+                                        <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
+                                        <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
+                                        <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
+                                        <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
+                                        <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
+                                        <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
+                                        <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
+                                        <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
+                                        <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
+                                        <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
+                                        <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+
+                <div class="container-fluid details-buttons">
+                    <div class="dropdown addto">
+                        <button class="btn btn-default dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown">Add to
+                            <span class="glyphicon-plus"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="watchlist in model.watchlists">
+                                <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
+                                   role="button">{{watchlist.name}}</a>
+                            </li>
+                        </ul>
                     </div>
-                    <h1>{{model.movie.Title}}</h1>
-                    <div class="description">{{model.movie.Plot}}</div>
+                    <a class="btn btn-default btn-success btn-block"
+                       role="button">Watch Movie</a>
+
+                    <a class="btn btn-default btn-primary btn-block"
+                       href="#!/user/{{model.currentUser._id}}"
+                       role="button">Profile</a>
+
+                    <div>
+                        Comments:
+                        <div ng-repeat="comment in model.comments" class="commenttext">
+                            <a href="#!/user/">
+                                <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
+                            </a>{{comment.text}}
+                            <a href="#!/user/{{comment._user}}">
+                                <i ng-show="!(model.currentUser._id===comment._user)"
+                                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                    <textarea row="5"
+                              placeholder="Enter comment here..."
+                              ng-model="model.comment.text"
+                              class="form-control"></textarea>
+
+
+                    <a class="btn btn-default btn-success btn-block"
+                       ng-click="model.createComment(model.movie.imdbID, model.comment)"
+                       role="button">Submit</a>
+
                 </div>
 
-            </td>
-
-            <td>
-                <div class="col-md-6 details">
-                    <ul class="list-group">
-                        <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
-                        <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
-                        <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
-                        <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
-                        <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
-                        <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
-                        <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
-                        <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
-                        <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
-                        <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
-                        <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
-                        <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
-                    </ul>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <div class="dropdown addto">
-        <button class="btn btn-default dropdown-toggle"
-                type="button"
-                data-toggle="dropdown">Add to
-            <span class="glyphicon-plus"></span></button>
-        <ul class="dropdown-menu">
-            <li ng-repeat="watchlist in model.watchlists">
-                <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
-                   role="button">{{watchlist.name}}</a>
-            </li>
-        </ul>
-    </div>
-    <a class="btn btn-default btn-success btn-block"
-       role="button">Watch Movie</a>
-
-    <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.currentUser._id}}"
-       role="button">Profile</a>
-
-    <div>
-        Comments:
-        <div ng-repeat="comment in model.comments" class="commenttext">
-            <a href="#!/user/{{comment._user}}">
-                <div class="btn-group open">
-                    <a class="btn btn-primary">
-                        <i class="fa fa-user fa-fw"></i> User</a>
-                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
-                        <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
-                        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-unlock"></i> Make admin</a></li>
-                    </ul>
-                </div>
-                <!--<span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>-->
-            </a>{{comment.text}}
-            <a href="#!/user/{{comment._user}}">
-                <i ng-show="!(model.currentUser._id===comment._user)"
-                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
-            </a>
-
+            </div>
         </div>
     </div>
-
-
-    <textarea row="5"
-              placeholder="Enter comment here..."
-              ng-model="model.comment.text"
-              class="form-control"></textarea>
-    <!--<input  name="watchlistId" value="{{model.webId}}"   style="display: none"/>-->
-    <!--<input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>-->
-    <!--<input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>-->
-
-    <a class="btn btn-default btn-success btn-block"
-       ng-click="model.createComment(model.movie.imdbID, model.comment)"
-       role="button">Submit</a>
-
-    <!--<a class="btn btn-default btn-primary btn-block"-->
-       <!--ng-click="model.login(model.user)"-->
-       <!--role="button">Add to Watchlist</a>-->
-
-    <!--<div ng-repeat="widget in model.widgets" class="col-xs-12">-->
-        <!--<div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>-->
-        <!--<span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>-->
-        <!--<a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
-            <!--<span class="pull-right glyphicon glyphicon-cog widgetcog"></span>-->
-        <!--</a>-->
-    <!--</div>-->
-
-    <!--ng-click="model.findAllwatchlistsForUser(model.currentUser._id)"-->
 
 
 </div>

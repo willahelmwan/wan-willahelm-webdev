@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-
+// mongoose.connect('mongodb://localhost/webdev_2017', {
+//     useMongoClient: true
+// });
+// mongoose.Promise = require('q').Promise;
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('projectUserModel', userSchema);
 
@@ -12,8 +15,14 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.deleteAll = deleteAll;
 userModel.addwatchlistToArray = addwatchlistToArray;
+userModel.findUserByGoogleId = findUserByGoogleId;
+
 
 module.exports = userModel;
+
+function findUserByGoogleId(googleId){
+    return userModel.findOne({'google.id': googleId});
+}
 
 function createUser(user){
     return userModel.create(user);

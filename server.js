@@ -4,12 +4,13 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
-app.use(session({
-    secret: "this is the secret",//process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true
-}));
+
 app.use(cookieParser());
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -25,6 +26,7 @@ app.use(express.static(__dirname + '/public'));
 require("./test/app");
 require("./assignment/app");
 require("./public/project/server/app");
+require("./public/project/ejs/forms/app") (app);
 
 var port = process.env.PORT || 3000;
 

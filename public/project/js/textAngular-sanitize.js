@@ -231,7 +231,7 @@ var htmlAttrs = makeMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspac
 
 // SVG attributes (without "id" and "name" attributes)
 // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Attributes
-var svgAttrs = makeMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
+var svgAttrs = makeMap('accent-height,accumulate,additive,alphabetic,arabic-forms,ascent,' +
     'attributeName,attributeType,baseProfile,bbox,begin,by,calcMode,cap-height,class,color,' +
     'color-rendering,content,cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,' +
     'font-size,font-stretch,font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,' +
@@ -603,7 +603,7 @@ function validCustomTag(tag, attrs, lkey, value){
 /**
  * create an HTML/XML writer which writes to buffer
  * @param {Array} buf use buf.jain('') to get out sanitized html string
- * @returns {object} in the form of {
+ * @returns {object} in the forms of {
  *     start: function(tag, attrs, unary) {},
  *     end: function(tag) {},
  *     chars: function(text) {},

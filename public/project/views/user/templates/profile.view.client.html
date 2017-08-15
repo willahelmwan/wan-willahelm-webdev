@@ -24,7 +24,7 @@
         <input name="firstname"
                type="text"
                ng-model="model.user.firstName"
-               placeholder="firstname"
+               placeholder="Alice"
                class="form-control"
                id="firstname"/>
 
@@ -32,7 +32,7 @@
         <input name="lastname"
                type="text"
                ng-model="model.user.lastName"
-               placeholder="lastname"
+               placeholder="Wonderland"
                class="form-control"
                id="lastname"/>
 
@@ -41,7 +41,7 @@
                readonly
                type="text"
                ng-model="model.user.username"
-               placeholder="username"
+               placeholder="alice"
                class="form-control"
                id="username"/>
 
@@ -49,11 +49,11 @@
         <input name="email"
                type="email"
                ng-model="model.user.email"
-               placeholder="email"
+               placeholder="alice@wonderland.com"
                class="form-control"
                id="email"/>
 
-        Following:
+        <label>Following:</label>
         <li ng-repeat="followinguser in model.currentUser.following" class="list-group-item">
             <a ng-show="model.currentUser._id===model.user._id"
                href="#!/user/{{followinguser}}">{{followinguser}}</a>
@@ -62,7 +62,7 @@
         <!--<label for="dob">Date of Birth</label>-->
         <!--<input name="dob"-->
                <!--type="date"-->
-               <!--class="form-control"-->
+               <!--class="forms-control"-->
                <!--id="dob"/>-->
 
 

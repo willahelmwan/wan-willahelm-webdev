@@ -45,107 +45,109 @@
     </nav>
 
     <div class="container-fluid details-page">
+
         <div ng-show="model.message"
              class="alert alert-success alert-dismissable">
             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{model.message}}
         </div>
+
         <div ng-show="model.warning"
              class="alert alert-warning alert-dismissable">
             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{model.warning}}
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="top-padding">Movie Details</h2>
 
-                <!--<tr>-->
-                <!--<td>-->
+        <div class="row">
+            <div class="col-xs-4">
+                <h1 class="top-padding">Movie Details</h1>
+
+
                 <div class="poster">
                     <img ng-src="{{model.movie.Poster}}"/>
                 </div>
-                <div class="container">
-                    <table>
-                        <tr>
-                            <td>
-                                <h1 class="title">{{model.movie.Title}}</h1>
-                                <div class="description">{{model.movie.Plot}}</div>
-                                <div>
-                                    <ul class="list-group details">
-                                        <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
-                                        <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
-                                        <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
-                                        <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
-                                        <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
-                                        <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
-                                        <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
-                                        <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
-                                        <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
-                                        <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
-                                        <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
-                                        <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
-                                    </ul>
+
+                <div class="row">
+                    <div class="col-xs-4">
+
+                        <div class="container-fluid details-buttons">
+                            <div class="dropdown addto">
+                                <button class="btn btn-default dropdown-toggle"
+                                        type="button"
+                                        data-toggle="dropdown">Add to
+                                    <span class="glyphicon-plus"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="watchlist in model.watchlists">
+                                        <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
+                                           role="button">{{watchlist.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a class="btn btn-default btn-success btn-block"
+                               role="button">Watch Movie</a>
+
+                            <a class="btn btn-default btn-primary btn-block"
+                               href="#!/user/{{model.currentUser._id}}"
+                               role="button">Profile</a>
+
+                            <div>
+                                Comments:
+                                <div ng-repeat="comment in model.comments" class="commenttext">
+                                    <a href="#!/user/">
+                                        <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
+                                    </a>{{comment.text}}
+                                    <a href="#!/user/{{comment._user}}">
+                                        <i ng-show="!(model.currentUser._id===comment._user)"
+                                           class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+                                    </a>
+
                                 </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                            </div>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
 
-                <div class="container-fluid details-buttons">
-                    <div class="dropdown addto">
-                        <button class="btn btn-default dropdown-toggle"
-                                type="button"
-                                data-toggle="dropdown">Add to
-                            <span class="glyphicon-plus"></span></button>
-                        <ul class="dropdown-menu">
-                            <li ng-repeat="watchlist in model.watchlists">
-                                <a ng-click="model.addMovieToWatchlist(model.movie.imdbID, watchlist._id, watchlist)"
-                                   role="button">{{watchlist.name}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="btn btn-default btn-success btn-block"
-                       role="button">Watch Movie</a>
+                            <textarea row="5"
+                                      placeholder="Enter comment here..."
+                                      ng-model="model.comment.text"
+                                      class="form-control"></textarea>
 
-                    <a class="btn btn-default btn-primary btn-block"
-                       href="#!/user/{{model.currentUser._id}}"
-                       role="button">Profile</a>
 
-                    <div>
-                        Comments:
-                        <div ng-repeat="comment in model.comments" class="commenttext">
-                            <a href="#!/user/">
-                                <span class="pull-left glyphicon glyphicon-user comment-glyphicon"></span>
-                            </a>{{comment.text}}
-                            <a href="#!/user/{{comment._user}}">
-                                <i ng-show="!(model.currentUser._id===comment._user)"
-                                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
-                            </a>
-
+                            <a class="btn btn-default btn-success btn-block"
+                               ng-click="model.createComment(model.movie.imdbID, model.comment)"
+                               role="button">Submit</a>
                         </div>
+
                     </div>
-
-
-                    <textarea row="5"
-                              placeholder="Enter comment here..."
-                              ng-model="model.comment.text"
-                              class="form-control"></textarea>
-
-
-                    <a class="btn btn-default btn-success btn-block"
-                       ng-click="model.createComment(model.movie.imdbID, model.comment)"
-                       role="button">Submit</a>
-
                 </div>
-
             </div>
+
+            <div class="container col-xs-8">
+                <table>
+                    <tr>
+                        <td class="table-padding">
+                            <h1 class="title">{{model.movie.Title}}</h1>
+                            <div class="description">{{model.movie.Plot}}</div>
+                            <div>
+                                <ul class="list-group details">
+                                    <li class="list-group-item"><span>Year: {{model.movie.Year}}</span></li>
+                                    <li class="list-group-item"><span>Rated: {{model.movie.Rated}}</span></li>
+                                    <li class="list-group-item"><span>Released: {{model.movie.Released}}</span></li>
+                                    <li class="list-group-item"><span>Runtime: {{model.movie.Runtime}}</span></li>
+                                    <li class="list-group-item"><span>Genre: {{model.movie.Genre}}</span></li>
+                                    <li class="list-group-item"><span>Director: {{model.movie.Director}}</span></li>
+                                    <li class="list-group-item"><span>Writer: {{model.movie.Writer}}</span></li>
+                                    <li class="list-group-item"><span>Actors: {{model.movie.Actors}}</span></li>
+                                    <li class="list-group-item"><span>Language: {{model.movie.Language}}</span></li>
+                                    <li class="list-group-item"><span>Country: {{model.movie.Country}}</span></li>
+                                    <li class="list-group-item"><span>Awards: {{model.movie.Awards}}</span></li>
+                                    <li class="list-group-item"><span>Ratings: {{model.movie.Ratings}}</span></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
-
-
 </div>

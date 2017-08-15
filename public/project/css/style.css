@@ -321,7 +321,11 @@ body {
 }
 
 .top-padding {
-    padding-top: 60px;
+    padding-top: 50px;
+}
+
+.table-padding {
+    padding-top: 30px;
 }
 
 body {
@@ -346,7 +350,7 @@ body {
 .description {
     /*display: inline-block;*/
     /*float: left;*/
-    /*overflow: hidden;*/
+    overflow: hidden;
     padding: 18px 20px;
 }
 
@@ -354,8 +358,11 @@ body {
     top: 60px;
     display: inline-block;
     /*float: left;*/
-    /*overflow: hidden;*/
-    padding: 18px 20px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
 }
 
 
@@ -369,4 +376,14 @@ div.details {
     max-width: 1100px;
     position: absolute;
     right: 0px;
+}
+
+.details-buttons {
+    padding-top: 10px;
+    padding-bottom: 50px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 333px;
 }

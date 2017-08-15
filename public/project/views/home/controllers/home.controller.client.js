@@ -14,7 +14,6 @@
 
         model.currentUser = currentUser;
         function init() {
-            console.log(currentUser);
         }
 
         init();

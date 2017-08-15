@@ -12,7 +12,8 @@ app.post("/api/project/login", login);
 
 
 // http handlers
-app.get("/api/project/users", getAllUsers);
+app.get("/api/project/isAdmin", isAdmin);
+app.get("/api/project/admin/user", getAllUser);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
 app.post("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
@@ -36,6 +37,10 @@ var googleConfig = {
 };
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+function isAdmin(req, res) {
+    res.send(req.isAuthenticated() && req.user.role === 'ADMIN' ? req.user : '0');
+}
 
 function googleStrategy(token, refreshToken, profile, done) {
     userModel
@@ -146,13 +151,17 @@ function checkLoggedIn(req, res) {
 
 function deleteUser(req, res) {
     var userId = req.params.userId;
-    userModel
-        .deleteUser(userId)
-        .then(function (doc) {
-            res.send(doc);
-        }, function (err) {
-            res.send(err);
-        });
+    if (req.user && (req.user._id == userId || req.user.role === "ADMIN" )) {
+        userModel
+            .deleteUser(userId)
+            .then(function (doc) {
+                res.send(doc);
+            }, function (err) {
+                res.send(err);
+            });
+    } else {
+        res.sendStatus(401);
+    }
 }
 
 function updateUser(req, res) {
@@ -171,7 +180,6 @@ function createUser(req, res) {
     var user = req.body;
     user.password = bcrypt.hashSync(user.password);
     user.password2 = bcrypt.hashSync(user.password2);
-    console.log(user);
     userModel
         .createUser(user)
         .then(function (user) {
@@ -203,12 +211,16 @@ function findUser(req, response) {
         });
 }
 
-function getAllUsers(req, response) {
-    userModel
-        .findAllUser()
-        .then(function (users) {
-            response.send(users);
-        });
+function getAllUser(req, response) {
+    if (req.user && req.user.role === 'ADMIN') {
+        userModel
+            .findAllUser()
+            .then(function (users) {
+                response.send(users);
+            });
+    } else {
+        response.sendStatus(401);
+    }
 }
 
 function getUserById(req, response) {

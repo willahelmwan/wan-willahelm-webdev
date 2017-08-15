@@ -20,7 +20,7 @@
                 controller: "detailsController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLoggedIn
+                    currentUser: checkCurrentUser
                 }
             })
             .when("/video/new", {
@@ -49,7 +49,14 @@
                     currentUser: checkLoggedIn
                 }
             })
-
+            .when("/admin",{
+                templateUrl: "views/admin/templates/admin.view.client.html",
+                controller: "adminController",
+                controllerAs: "model",
+                resolve: {
+                    adminUser: isAdmin
+                }
+            })
             .when("/watchlist", {
                 templateUrl: "views/watchlist/templates/watchlist-list.view.client.html",
                 controller: "watchlistListController",
@@ -118,6 +125,21 @@
                 controller: "FlickrImageSearchController",
                 controllerAs: "model"
             })
+    }
+
+    function isAdmin($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .isAdmin()
+            .then(function (user) {
+                if (user === '0') {
+                    deferred.reject();
+                    $location.url('/user');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
     }
 
     function checkCurrentUser($q, userService) {

@@ -316,38 +316,20 @@ body {
 }
 
 /*Start of Responsive Design*/
-@media (min-width: 992px) {
-    .details-buttons {
-        margin-top: -50px;
-    }
 
-}
 /* ---- Start of max-width 992px CSS ---- */
 @media (max-width: 992px) {
     .jumbotron > h1 {
         font-size: 80px;
     }
 
-    .col-sm-12.col-md-8.details {
+    .details {
         padding-top: 0;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 300px;
+        margin-left: 10px;
+        margin-right: 10px;
+        position: absolute;
     }
-
-    .review {
-        width: 333px;
-
-    }
-
-    /*.details-buttons {*/
-        /*margin-top: -30px;*/
-    /*}*/
-
-    .col-xs-12.review {
-        padding-right: 10px;
-    }
-
 }
 
 /* ---- End of max-width 992px CSS ---- */
@@ -359,12 +341,27 @@ body {
     }
 }
 
-.theme-showcase {
-    margin-top: 75px;
+@media (max-width: 996px) and (min-width:768px) {
+    .details {
+        position: fixed;
+    }
 }
 
-.top-padding {
-    /*padding-top: 50px;*/
+@media (max-width: 738px) {
+    .details {
+        position: static;
+    }
+}
+
+@media (min-width:768px) {
+    .details {
+        position: fixed;
+        padding-top: 10px;
+    }
+}
+
+.theme-showcase {
+    margin-top: 75px;
 }
 
 .table-padding {
@@ -378,14 +375,14 @@ body {
 .poster {
     display: inline-block;
     float: left;
-    /*position: absolute;*/
+    margin-left: 10px;
 }
 
 .details {
     display: block;
     float: left;
-    /*padding-top: 50px;*/
-    position: static;
+    margin-left: 10px;
+    /*position: static;*/
 }
 
 .details-top-row {
@@ -418,12 +415,12 @@ div.details {
 .details-buttons {
     padding-top: 10px;
     padding-bottom: 50px;
-    /*position: absolute;*/
+    position: absolute;
     left: 0px;
     right: 0px;
     margin-bottom: 0;
-    /*margin-left: 0;*/
-    /*margin-right: 0;*/
+    margin-left: 10px;
+    margin-right: 10px;
     width: 333px;
 }
 
@@ -442,10 +439,16 @@ div.details {
 
 .review {
     float: left;
-    position: static;
+    position: relative;
     display: inline-block;
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 50px;
-    margin: 0;
+    /*margin: 0;*/
+    left: 0px;
+    right: 0px;
+}
+
+.watch-movie {
+    margin-top: 5px;
 }

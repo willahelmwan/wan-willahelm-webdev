@@ -97,6 +97,38 @@
                     currentUser: checkLoggedIn
                 }
             })
+            .when("/channel", {
+                templateUrl: "views/channel/templates/channel-list.view.client.html",
+                controller: "channelListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel/new", {
+                templateUrl: "views/channel/templates/channel-new.view.client.html",
+                controller: "channelNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel/:cid", {
+                templateUrl: "views/channel/templates/channel-edit.view.client.html",
+                controller: "channelEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            // .when("/channel/:cid/page", {
+            //     templateUrl: "views/page/templates/page-list.view.client.html",
+            //     controller: "pageListController",
+            //     controllerAs: "model",
+            //     resolve: {
+            //         currentUser: checkLoggedIn
+            //     }
+            // })
             .when("/watchlist/:wid/page/new", {
                 templateUrl: "views/page/templates/page-new.view.client.html",
                 controller: "pageNewController",

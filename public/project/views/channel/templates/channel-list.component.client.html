@@ -1,0 +1,25 @@
+<ul class="list-group">
+    <li class="list-group-item active">
+        <div class="row">
+            <div class="col-xs-10">Name</div>
+            <div class="col-xs-2">
+                <a href="#!/channel/new" class="plusglyphicon">
+                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <li ng-repeat="channel in model.channels" class="list-group-item">
+        <div class="row">
+            <div class="col-xs-10">
+                <a href="#!/channel/{{channel._id}}/page">{{channel.name}}</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="#!/channel/{{channel._id}}">
+                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                </a>
+            </div>
+        </div>
+    </li>
+</ul>

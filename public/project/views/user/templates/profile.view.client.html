@@ -75,9 +75,16 @@
            role="button">Create Video</a>
 
         <a class="btn btn-default btn-primary btn-block"
+           ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.user._id"
+           href="#!/channel"
+           role="button">Channels</a>
+
+        <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"
            href="#!/watchlist"
            role="button">Watchlists</a>
+
+
 
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"

@@ -68,6 +68,11 @@
        ng-click="model.deleteUser(model.edituser)"
        role="button">Delete User</a>
 
+    <a class="btn btn-default btn-success btn-block"
+       ng-if="model.currentUser.role='ADMIN'"
+       ng-click="model.doneUpdateUser()"
+       role="button">Done</a>
+
     <!--<label>Following:</label>-->
     <!--<li ng-repeat="followinguser in model.currentUser.following" class="list-group-item">-->
     <!--<a ng-if="model.currentUser._id===model.edituser._id">{{followinguser.username}}</a>-->

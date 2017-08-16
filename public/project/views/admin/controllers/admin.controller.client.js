@@ -11,6 +11,7 @@
         model.deleteUser = deleteUser;
         model.findUserByUsername = findUserByUsername;
         model.editUser = editUser;
+        model.doneUpdateUser = doneUpdateUser;
 
 
         function init() {
@@ -59,10 +60,12 @@
         function deleteUser(user) {
             userService
                 .deleteUser(user._id, user)
-                .then(function () {
-                    model.view = "userList";
-                    location.reload()
-                });
+                .then(doneUpdateUser);
+        }
+
+        function doneUpdateUser(){
+            model.view = "userList";
+            location.reload()
         }
     }
 })();

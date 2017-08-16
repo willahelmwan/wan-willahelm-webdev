@@ -316,7 +316,12 @@ body {
 }
 
 /*Start of Responsive Design*/
+@media (min-width: 992px) {
+    .details-buttons {
+        margin-top: -50px;
+    }
 
+}
 /* ---- Start of max-width 992px CSS ---- */
 @media (max-width: 992px) {
     .jumbotron > h1 {
@@ -326,10 +331,21 @@ body {
     .col-sm-12.col-md-8.details {
         padding-top: 0;
         max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .review {
         width: 333px;
+
+    }
+
+    /*.details-buttons {*/
+        /*margin-top: -30px;*/
+    /*}*/
+
+    .col-xs-12.review {
+        padding-right: 10px;
     }
 
 }
@@ -402,10 +418,12 @@ div.details {
 .details-buttons {
     padding-top: 10px;
     padding-bottom: 50px;
-    position: absolute;
-    left: 30px;
+    /*position: absolute;*/
+    left: 0px;
     right: 0px;
-    margin: 0;
+    margin-bottom: 0;
+    /*margin-left: 0;*/
+    /*margin-right: 0;*/
     width: 333px;
 }
 
@@ -426,5 +444,8 @@ div.details {
     float: left;
     position: static;
     display: inline-block;
-    padding: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin: 0;
 }

@@ -76,10 +76,7 @@
                         <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
                     </div>
 
-                    <!--<div class="row">-->
 
-
-                    <!--<div class="row">-->
                     <div class="col-sm-12 col-md-8 details">
 
                         <div class="row">
@@ -175,26 +172,15 @@
                                 <div ng-repeat="review in model.reviews" class="reviewtext">
                                     <b>{{review._user.username}}: </b>{{review.text}}
                                 </div>
-
-                                <div class="col-xs-12 review">
-                                <textarea row="5"
-                                          ng-show="model.currentUser.role === 'CRITIC'"
-
-                                          placeholder="Enter comment here..."
-                                          ng-model="model.comment.text"
-                                          class="form-control"></textarea>
-
-                                    <a class="btn btn-default btn-success btn-block"
-                                       ng-show="model.currentUser.role === 'CRITIC'"
-                                       ng-click="model.createReview(model.movie.imdbID, model.review)"
-                                       role="button">Submit Review</a>
-                                </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
 
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -211,44 +197,58 @@
                                            role="button">{{watchlist.name}}</a>
                                     </li>
                                 </ul>
+
+                <div class="row">
+                    <div class="col-xs-4 details-buttons">
+
+                        <a class="btn btn-default btn-success btn-block"
+                           role="button">Watch Movie</a>
+
+                        <a class="btn btn-default btn-primary btn-block"
+                           href="#!/user"
+                           role="button">Profile</a>
+
+                        <div>
+                            Comments:
+                            <div ng-repeat="comment in model.comments" class="commenttext">
+                                <b>{{comment._user.username}}: </b>{{comment.text}}
+                                <a>
+                                    <i ng-show="!(model.currentUser._id===comment._user._id)"
+                                       ng-click="model.followUser(comment._user, model.currentUser)"
+                                       class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+                                </a>
+
                             </div>
-
-                            <a class="btn btn-default btn-success btn-block"
-                               role="button">Watch Movie</a>
-
-                            <a class="btn btn-default btn-primary btn-block"
-                               href="#!/user"
-                               role="button">Profile</a>
-
-                            <div>
-                                Comments:
-                                <div ng-repeat="comment in model.comments" class="commenttext">
-                                    <b>{{comment._user.username}}: </b>{{comment.text}}
-                                    <a>
-                                        <i ng-show="!(model.currentUser._id===comment._user._id)"
-                                           ng-click="model.followUser(comment._user, model.currentUser)"
-                                           class="fa fa-user-plus pull-right" aria-hidden="true"></i>
-                                    </a>
-
-                                </div>
-                            </div>
-
-
-                            <textarea row="5"
-                                      placeholder="Enter comment here..."
-                                      ng-model="model.comment.text"
-                                      class="form-control"></textarea>
-
-
-                            <a class="btn btn-default btn-success btn-block"
-                               ng-click="model.createComment(model.movie.imdbID, model.comment)"
-                               role="button">Submit</a>
                         </div>
-                    </div>
 
+
+                        <textarea row="5"
+                                  placeholder="Enter comment here..."
+                                  ng-model="model.comment.text"
+                                  class="form-control"></textarea>
+
+
+                        <a class="btn btn-default btn-success btn-block"
+                           ng-click="model.createComment(model.movie.imdbID, model.comment)"
+                           role="button">Submit</a>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-6 review">
+                <textarea row="5"
+                          ng-show="model.currentUser.role === 'CRITIC'"
+                          placeholder="Enter comment here..."
+                          ng-model="model.comment.text"
+                          class="form-control"></textarea>
+
+                    <a class="btn btn-default btn-success btn-block"
+                       ng-show="model.currentUser.role === 'CRITIC'"
+                       ng-click="model.createReview(model.movie.imdbID, model.review)"
+                       role="button">Submit Review</a>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>

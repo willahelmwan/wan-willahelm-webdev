@@ -57,6 +57,14 @@
                     adminUser: isAdmin
                 }
             })
+            // .when("/admin/user",{
+            //     templateUrl: "views/admin/templates/admin-edit-user.view.client.html",
+            //     // controller: "adminController",
+            //     // controllerAs: "model",
+            //     resolve: {
+            //         adminUser: isAdmin
+            //     }
+            // })
             .when("/watchlist", {
                 templateUrl: "views/watchlist/templates/watchlist-list.view.client.html",
                 controller: "watchlistListController",
@@ -82,6 +90,38 @@
                 }
             })
             .when("/watchlist/:wid/page", {
+                templateUrl: "views/page/templates/page-list.view.client.html",
+                controller: "pageListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel", {
+                templateUrl: "views/channel/templates/channel-list.view.client.html",
+                controller: "channelListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel/new", {
+                templateUrl: "views/channel/templates/channel-new.view.client.html",
+                controller: "channelNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel/:cid", {
+                templateUrl: "views/channel/templates/channel-edit.view.client.html",
+                controller: "channelEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/channel/:cid/channelpage", {
                 templateUrl: "views/page/templates/page-list.view.client.html",
                 controller: "pageListController",
                 controllerAs: "model",

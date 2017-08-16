@@ -57,6 +57,15 @@
            class="form-control"
            id="password2"/>
 
+    <h5 class="contentCreatorMessage">Would you like to be a content creator? As a content creator, you can create your
+        own channels and upload videos.</h5>
+    <div class="form-check">
+        <label class="form-check-label">
+            <!--<input type="checkbox" class="form-check-input" ng-model="user.role" ng-init="user.role='USER'">-->
+            <input type="checkbox" ng-model="user.role" ng-true-value="'CREATOR'" ng-false-value="'USER'">
+            Yes, make me a content creator.
+        </label>
+    </div>
     <a class="btn btn-default btn-primary btn-block"
        ng-click="model.registerUser(user)"
        type="submit"

@@ -4,11 +4,11 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
 
-                <a href="#!/user/{{model.currentUser._id}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget" class="userglyphicon">
+                <a href="#!/user" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a ng-click="model.updateWidget(model.widget)"
+                <a ng-click="model.updateVideo(model.widget)"
                    role="button">
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
@@ -40,13 +40,14 @@
                    class="form-control"
                    id="text"/>
 
-            <label for="URL">URL</label>
-            <input name="URL"
-                   type="text"
-                   ng-model="model.widget.url"
-                   placeholder="URL"
-                   class="form-control"
-                   id="URL"/>
+            <!--<label for="URL">URL</label>-->
+            <!--<input name="URL"-->
+                   <!--type="text"-->
+                   <!--ng-model="model.widget.url"-->
+                   <!--placeholder="URL"-->
+                   <!--class="form-control"-->
+                   <!--id="URL"-->
+                   <!--style="..."/>-->
 
             <label for="Width">Width</label>
             <input name="width"
@@ -69,9 +70,8 @@
         </form>
 
 
-
         <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.currentUser._id}}"
+           href="#!/user"
            role="button">Cancel</a>
 
         <a class="btn btn-default btn-primary btn-block"

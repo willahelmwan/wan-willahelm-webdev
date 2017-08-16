@@ -1,7 +1,6 @@
 .container-fluid.entry {
     margin: auto;
     max-width: 400px;
-    padding-top: 60px;
 }
 
 input.form-control, select.form-control, textarea {
@@ -23,7 +22,7 @@ input.form-control, select.form-control, textarea {
 }
 
 div.profile {
-    /*padding-top: 60px;*/
+    padding-top: 60px;
     padding-bottom: 60px;
     overflow-y: scroll;
 }
@@ -38,7 +37,7 @@ div.profile {
 
 .navbar-background {
     background-color: #36454f;
-    border-color: #36454f;
+    border-color: #b2b1b5;
 
 }
 
@@ -67,6 +66,10 @@ div.profile {
 
 .glyphicon.glyphicon-remove.userremove {
     color: maroon;
+}
+
+.glyphicon.glyphicon-cog.userupdate{
+    color: dodgerblue;
 }
 
 .glyphicon.comment-glyphicon {
@@ -314,6 +317,7 @@ body {
     background: black;
     overflow: hidden;
 }
+
 /************************ NEW CHANGES **************************************/
 /*Start of Responsive Design*/
 
@@ -467,4 +471,3 @@ div.details {
     margin: auto;
     /*padding-left: 10px;*/
     /*padding-right: 10px;*/
-}

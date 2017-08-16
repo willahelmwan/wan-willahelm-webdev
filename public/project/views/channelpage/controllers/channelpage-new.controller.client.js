@@ -1,29 +1,29 @@
 (function () {
     angular
         .module("omdbApp")
-        .controller("pageNewController", pageNewController);
+        .controller("channelpageNewController", channelpageNewController);
 
-    function pageNewController($routeParams, pageService, $location, currentUser) {
+    function channelpageNewController($routeParams, channelpageService, $location, currentUser) {
         var model = this;
         model.userId = currentUser._id;
-        model.webId = $routeParams.wid;
-        model.createPage = createPage;
+        model.channelId = $routeParams.cid;
+        model.createchannelPage = createchannelPage;
 
         function init() {
-            pageService
-                .findPageBywatchlistId(model.webId)
-                .then(function (pages) {
-                    model.pages = pages;
+            channelpageService
+                .findchannelPageBychannelId(model.channelId)
+                .then(function (channelpages) {
+                    model.channelpages = channelpages;
                 });
         }
 
         init();
 
-        function createPage(page) {
-            pageService
-                .createPage(model.webId, page)
+        function createchannelPage(channelpage) {
+            channelpageService
+                .createchannelPage(model.channelId, channelpage)
                 .then(function () {
-                    $location.url("user/" + model.userId + "/watchlist/" + model.webId + "/page");
+                    $location.url("channel/" + model.channelId + "/channelpage");
                 });
         }
     }

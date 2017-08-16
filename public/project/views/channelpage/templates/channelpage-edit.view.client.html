@@ -2,7 +2,7 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/channel/{{model.channelId}}/channelpage"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
                 <a ng-click="model.updatechannelPage(model.channelpage)"
                    role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
@@ -10,7 +10,7 @@
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
                         <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >channelPages</a></div>
-                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist"><a class="navbar-brand splitnav">Edit channelPage</a></div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwebsite"><a class="navbar-brand splitnav">Edit channelPage</a></div>
                     </div>
                 </div>
             </nav>
@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage/new" class="plusglyphicon">
+                                <a href="#!/user/{{model.userId}}/channel/{{model.channelId}}/channelpage/new" class="plusglyphicon">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -35,10 +35,10 @@
                     <li ng-repeat="channelpage in model.channelpages" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage/{{channelpage._id}}/widget">{{channelpage.name}}</a>
+                                <a href="#!/user/{{model.userId}}/channel/{{model.channelId}}/channelpage/{{channelpage._id}}/widget">{{channelpage.name}}</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage/{{channelpage._id}}">
+                                <a href="#!/user/{{model.userId}}/channel/{{model.channelId}}/channelpage/{{channelpage._id}}">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -67,7 +67,7 @@
                    role="button">OK</a>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage"
+                   href="#!/user/{{model.userId}}/channel/{{model.channelId}}/channelpage"
                    role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"

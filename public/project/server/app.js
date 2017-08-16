@@ -22,3 +22,4 @@ require("./services/widget.service.server");
 require("./services/comment.service.server");
 require("./services/video.service.server");
 require("./services/channel.service.server");
+require("./services/channelpage.service.server");

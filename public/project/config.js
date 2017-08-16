@@ -28,7 +28,7 @@
                 controller: "videoNewController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLoggedIn
+                    currentUser: isCreator
                 }
             })
             .when("/login", {
@@ -97,6 +97,22 @@
                     currentUser: checkLoggedIn
                 }
             })
+            .when("/watchlist/:wid/page/new", {
+                templateUrl: "views/page/templates/page-new.view.client.html",
+                controller: "pageNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/watchlist/:wid/page/:pid", {
+                templateUrl: "views/page/templates/page-edit.view.client.html",
+                controller: "pageEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when("/channel", {
                 templateUrl: "views/channel/templates/channel-list.view.client.html",
                 controller: "channelListController",
@@ -122,24 +138,24 @@
                 }
             })
             .when("/channel/:cid/channelpage", {
-                templateUrl: "views/page/templates/page-list.view.client.html",
-                controller: "pageListController",
+                templateUrl: "views/channelpage/templates/channelpage-list.view.client.html",
+                controller: "channelpageListController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/watchlist/:wid/page/new", {
-                templateUrl: "views/page/templates/page-new.view.client.html",
-                controller: "pageNewController",
+            .when("/channel/:cid/channelpage/new", {
+                templateUrl: "views/channelpage/templates/channelpage-new.view.client.html",
+                controller: "channelpageNewController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/watchlist/:wid/page/:pid", {
-                templateUrl: "views/page/templates/page-edit.view.client.html",
-                controller: "pageEditController",
+            .when("/channel/:cid/channelpage/:cpid", {
+                templateUrl: "views/channelpage/templates/channelpage-edit.view.client.html",
+                controller: "channelpageEditController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
@@ -171,6 +187,21 @@
         var deferred = $q.defer();
         userService
             .isAdmin()
+            .then(function (user) {
+                if (user === '0') {
+                    deferred.reject();
+                    $location.url('/user');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function isCreator($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .isCreator()
             .then(function (user) {
                 if (user === '0') {
                     deferred.reject();

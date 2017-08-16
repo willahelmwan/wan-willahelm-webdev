@@ -21,7 +21,8 @@
             "checkLoggedIn": checkLoggedIn,
             "logoutUser":logoutUser,
             "isAdmin": isAdmin,
-            "findAllUser": findAllUser
+            "findAllUser": findAllUser,
+            "isCreator": isCreator
             // "checkFollowing": checkFollowing
         };
 
@@ -45,6 +46,14 @@
         
         function isAdmin() {
             var url = "/api/project/isAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function isCreator() {
+            var url = "/api/project/isCreator";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

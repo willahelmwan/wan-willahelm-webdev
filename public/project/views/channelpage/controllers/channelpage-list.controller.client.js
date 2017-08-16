@@ -1,24 +1,24 @@
 (function(){
     angular
         .module("omdbApp")
-        .controller("pageListController", pageListController);
+        .controller("channelpageListController", channelpageListController);
 
-    function pageListController($routeParams, pageService, watchlistService, currentUser, movieService){
+    function channelpageListController($routeParams, channelpageService, channelService, currentUser, movieService){
         var model = this;
         model.userId = currentUser._id;
-        model.watchlistId = $routeParams.wid;
+        model.channelId = $routeParams.cid;
         model.searchMovieByImdbId = searchMovieByImdbId;
 
         function init(){
-            pageService
-                .findPageBywatchlistId(model.watchlistId)
-                .then(function(pages){
-                    model.pages = pages;
+            channelpageService
+                .findchannelPageBychannelId(model.channelId)
+                .then(function(channelpages){
+                    model.channelpages = channelpages;
                 });
-            watchlistService
-                .findwatchlistById(model.watchlistId)
-                .then(function(watchlist){
-                    model.watchlist=watchlist;
+            channelService
+                .findchannelById(model.channelId)
+                .then(function(channel){
+                    model.channel=channel;
                 })
         }
         init();

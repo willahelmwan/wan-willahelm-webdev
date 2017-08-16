@@ -13,6 +13,7 @@ app.post("/api/project/login", login);
 
 // http handlers
 app.get("/api/project/isAdmin", isAdmin);
+app.get("/api/project/isCreator", isCreator);
 app.get("/api/project/admin/user", getAllUser);
 app.get("/api/project/checkLoggedIn", checkLoggedIn);
 app.post("/api/project/logoutUser", logoutUser);
@@ -21,7 +22,6 @@ app.get("/api/project/user", findUser);
 app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
-
 app.get("/project/auth/google", passport.authenticate('google', {scope: ['profile', 'email']}));
 
 app.get('/google/oauth/callback',
@@ -39,9 +39,12 @@ var googleConfig = {
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
 
-
 function isAdmin(req, res) {
     res.send(req.isAuthenticated() && req.user.role === 'ADMIN' ? req.user : '0');
+}
+
+function isCreator(req, res) {
+    res.send(req.isAuthenticated() && req.user.role === 'CREATOR' ? req.user : '0');
 }
 
 function googleStrategy(token, refreshToken, profile, done) {

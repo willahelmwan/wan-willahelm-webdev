@@ -68,6 +68,10 @@ div.profile {
     color: maroon;
 }
 
+.glyphicon.glyphicon-cog.userupdate{
+    color: dodgerblue;
+}
+
 .glyphicon.comment-glyphicon {
     color: #2B81AF;
     padding-right: 10px;

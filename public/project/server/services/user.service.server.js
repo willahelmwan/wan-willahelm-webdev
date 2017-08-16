@@ -207,7 +207,7 @@ function findUser(req, response) {
                 response.send("2");
                 return;
             } else {
-                response.send("0");
+                response.send(user);
                 return;
             }
         });

@@ -1,0 +1,107 @@
+<div class="container-fluid entry">
+    <div ng-switch="model.messageType">
+        <div ng-switch-when="message"
+             ng-show="model.message"
+             class="alert alert-success alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.message}}
+        </div>
+
+        <div ng-switch-when="warning"
+             ng-show="model.warning"
+             class="alert alert-warning alert-dismissable">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.warning}}
+        </div>
+    </div>
+    <h4><span class="label label-warning">Edit User: <i>{{model.edituser.username}}</i></span></h4>
+
+    <label for="firstname">First Name</label>
+    <input name="firstname"
+           type="text"
+           ng-model="model.edituser.firstName"
+           placeholder="First Name"
+           class="form-control"
+           id="firstname"/>
+
+    <label for="lastname">Last Name</label>
+    <input name="lastname"
+           type="text"
+           ng-model="model.edituser.lastName"
+           placeholder="Last Name"
+           class="form-control"
+           id="lastname"/>
+
+    <label for="username">Username</label>
+    <input name="username"
+           readonly
+           type="text"
+           ng-model="model.edituser.username"
+           placeholder="alice"
+           class="form-control"
+           id="username"/>
+
+    <label for="email">Email</label>
+    <input name="email"
+           type="email"
+           ng-model="model.edituser.email"
+           placeholder="Email"
+           class="form-control"
+           id="email"/>
+
+    <div ng-if="model.edituser.role==='USER' || model.edituser.role==='CRITIC'"
+         class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" ng-model="model.edituser.role" ng-true-value="'CRITIC'"
+                   ng-false-value="'USER'">
+            Make <i>{{model.edituser.username}}</i> a critic.
+        </label>
+    </div>
+
+    <a class="btn btn-default btn-primary btn-block"
+       ng-if="model.currentUser.role='ADMIN'"
+       ng-click="model.updateUser(model.edituser)"
+       role="button">Update</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-if="model.currentUser.role='ADMIN'"
+       ng-click="model.deleteUser(model.edituser)"
+       role="button">Delete User</a>
+
+    <!--<label>Following:</label>-->
+    <!--<li ng-repeat="followinguser in model.currentUser.following" class="list-group-item">-->
+    <!--<a ng-if="model.currentUser._id===model.edituser._id">{{followinguser.username}}</a>-->
+    <!--</li>-->
+    <!--<br/>-->
+
+    <!--<a class="btn btn-default btn-success btn-block"-->
+    <!--ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.edituser._id"-->
+    <!--href="#!/video/new"-->
+    <!--role="button">Create Video</a>-->
+
+    <!--<a class="btn btn-default btn-primary btn-block"-->
+    <!--ng-if="model.currentUser._id===model.edituser._id"-->
+    <!--href="#!/watchlist"-->
+    <!--role="button">Watchlists</a>-->
+
+    <!--<a class="btn btn-default btn-primary btn-block"-->
+    <!--ng-if="model.currentUser._id===model.edituser._id"-->
+    <!--href="#!/user/{{model.edituser._id}}/watchlist"-->
+    <!--role="button">Movie Discussions</a>-->
+
+
+    <!--<a class="btn btn-default btn-warning btn-block"-->
+    <!--ng-if="model.currentUser.role === 'ADMIN'"-->
+    <!--href="#!/admin"-->
+    <!--role="button">Admin</a>-->
+
+    <!--<a class="btn btn-default btn-info btn-block"-->
+    <!--href="#!/"-->
+    <!--role="button">Home</a>-->
+
+    <!--<a class="btn btn-default btn-danger btn-block"-->
+    <!--ng-if="model.currentUser._id===model.edituser._id"-->
+    <!--ng-click="model.logoutUser()"-->
+    <!--href="#!/login"-->
+    <!--role="button">Logout</a>-->
+</div>

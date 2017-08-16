@@ -57,6 +57,14 @@
                     adminUser: isAdmin
                 }
             })
+            // .when("/admin/user",{
+            //     templateUrl: "views/admin/templates/admin-edit-user.view.client.html",
+            //     // controller: "adminController",
+            //     // controllerAs: "model",
+            //     resolve: {
+            //         adminUser: isAdmin
+            //     }
+            // })
             .when("/watchlist", {
                 templateUrl: "views/watchlist/templates/watchlist-list.view.client.html",
                 controller: "watchlistListController",

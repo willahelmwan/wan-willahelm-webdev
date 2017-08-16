@@ -1,0 +1,32 @@
+<div class="input-group add-on">
+    <input class="form-control"
+           placeholder="Search User"
+           name="srch-user"
+           id="srch-user"
+           ng-model="username"
+           type="text">
+    <div class="input-group-btn">
+        <button class="btn btn-default"
+                ng-click="model.findUserByUsername(username)"
+                role="button">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>
+</div>
+<br/>
+
+<ul class="list-group">
+    <li class="list-group-item active">
+        Users
+    </li>
+    <li ng-repeat="user in model.users"
+        ng-if="!(user.role === 'ADMIN')"
+        class="list-group-item">
+        {{user.username}}
+        <span class="pull-right">
+            <a><span ng-click="model.editUser(user)"
+                     class="glyphicon glyphicon-cog userupdate"
+                     role="button"></span></a>
+        </span>
+    </li>
+</ul>

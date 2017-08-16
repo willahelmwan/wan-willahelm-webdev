@@ -25,10 +25,18 @@
             })
             .when("/video/new", {
                 templateUrl: "views/video/templates/video-new.view.client.html",
-                controller: "videoNewController",
-                controllerAs: "model",
+                // controller: "videoNewController",
+                // controllerAs: "model",
                 resolve: {
                     currentUser: isCreator
+                }
+            })
+            .when("/video/:videoId", {
+                templateUrl: "views/video/templates/video.view.client.html",
+                controller: "videoController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
                 }
             })
             .when("/login", {
@@ -49,7 +57,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/admin",{
+            .when("/admin", {
                 templateUrl: "views/admin/templates/admin.view.client.html",
                 controller: "adminController",
                 controllerAs: "model",

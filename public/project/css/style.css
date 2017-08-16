@@ -314,7 +314,7 @@ body {
     background: black;
     overflow: hidden;
 }
-
+/************************ NEW CHANGES **************************************/
 /*Start of Responsive Design*/
 
 /* ---- Start of max-width 992px CSS ---- */
@@ -353,12 +353,21 @@ body {
     }
 }
 
-@media (min-width:768px) {
+@media (min-width: 738px) {
     .details {
-        position: fixed;
+        position: absolute;
         padding-top: 10px;
+        padding-left: 50px;
     }
 }
+
+/*@media (min-width: 992px) {*/
+    /*.details {*/
+        /*position: absolute;*/
+        /*!*padding-top: 10px;*!*/
+        /*!*padding-left: 50px;*!*/
+    /*}*/
+/*}*/
 
 .theme-showcase {
     margin-top: 75px;
@@ -451,4 +460,11 @@ div.details {
 
 .watch-movie {
     margin-top: 5px;
+}
+
+.center {
+    max-width: 960px;
+    margin: auto;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
 }

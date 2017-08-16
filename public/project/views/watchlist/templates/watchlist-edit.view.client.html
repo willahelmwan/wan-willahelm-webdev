@@ -1,7 +1,7 @@
 <div class="profile">
     <div class="profilenav">
         <div class="row">
-            <nav class="navbar navbar-default navbar-fixed-top">
+            <nav class="navbar navbar-default navbar-fixed-top jumbo">
                 <a href="#!/watchlist"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
                 <a ng-click="model.updatewatchlist(model.watchlist)"
@@ -28,7 +28,7 @@
                 <input name="name"
                        type="text"
                        ng-model="model.watchlist.name"
-                       placeholder="Facebook"
+                       placeholder="Name"
                        class="form-control"
                        id="name"/>
 
@@ -36,7 +36,7 @@
                 <textarea name="description"
                           rows="5"
                           ng-model="model.watchlist.description"
-                          placeholder="Largest country in the world"
+                          placeholder="Description"
                           class="form-control"
                           id="description"/></textarea>
 
@@ -55,7 +55,7 @@
         </div>
 
         <div class="profilenav">
-            <nav class="navbar navbar-default navbar-fixed-bottom">
+            <nav class="navbar navbar-default navbar-fixed-bottom jumbo">
                 <div class="container-fluid navbar-background">
                     <a href="#!/user" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>

@@ -261,7 +261,7 @@ a:hover {
 }
 
 body {
-    background: url("../../vendor/image/nice_snow_@2X.png");
+    background: url("../../vendor/image/dark-background.jpg");
 }
 
 .centered-table {
@@ -284,15 +284,20 @@ body {
     color: #b2b1b5;
 }
 
+.jumbotron {
+    background: black;
+    overflow: hidden;
+}
+
 #center {
     margin-left: auto;
     margin-right: auto;
 }
 
-.navbar.navbar-inverse.navbar-fixed-top {
-    background-color: darkred;
-    border-color: darkred;
-}
+/*.navbar.navbar-inverse.navbar-fixed-top {*/
+    /*background-color: darkred;*/
+    /*border-color: darkred;*/
+/*}*/
 
 
 .table > tbody > tr > td {
@@ -313,10 +318,7 @@ body {
     text-align: center;
 }
 
-.jumbotron {
-    background: black;
-    overflow: hidden;
-}
+
 
 /************************ NEW CHANGES **************************************/
 /*Start of Responsive Design*/
@@ -427,7 +429,7 @@ div.details {
 
 .details-buttons {
     padding-top: 10px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -475,4 +477,20 @@ div.details {
 
 .table > tbody > tr > td {
     padding-bottom: 60px;
+}
+
+div {
+    text-align: justify;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+#jumbo {
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.opacity {
+    background: rgba(47, 47, 47, 0.6);
 }

@@ -13,7 +13,7 @@ module.exports = function (app, model) {
             form: form,
             forms: model.findAllForms()
         };
-        res.render("../public/project/views/ejs/form/form-list.view.server.ejs", data)
+        res.render("../public/project/views/ejs/form/form-list.view.server.ejs", data);
 
     }
 
@@ -40,6 +40,6 @@ module.exports = function (app, model) {
         var data = {
             forms: forms
         };
-        res.render("../public/project/views/ejs/form/form-list.view.server.ejs", data)
+        res.render("../public/project/views/ejs/form/form-list.view.server.ejs", data);
     }
 };

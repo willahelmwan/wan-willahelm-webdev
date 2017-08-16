@@ -1,7 +1,7 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top opacity">
             <div class="container-fluid navbar-background">
 
                 <a href="#!/user" class="userglyphicon">
@@ -21,7 +21,9 @@
         </nav>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid entry top-padding">
+
+        <h2>Create Video</h2>
 
         <form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">
             <label for="Name">Name</label>
@@ -84,7 +86,7 @@
     </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
             <div class="container-fluid navbar-background">
                 <a href="#!/user/{{model.currentUser._id}}"  class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>

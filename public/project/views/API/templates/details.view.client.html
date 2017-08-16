@@ -1,201 +1,193 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid navbar-background">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">NeuTube</a>
-            <div class="navbar-header pull-right">
-                <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+        <a href="#!/" class="userglyphicon">
+            <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+        </a>
+    <div class="container">
+        <a class="navbar-brand" href="#">NeuTube</a>
+        <div class="navbar-header pull-right">
+            <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-            </div>
-            <div id="navbar" class="collapse navbar-collapse navbar-left">>
-                <ul class="nav navbar-nav collapsed pull-left">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
-                    <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
-                    <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
-                    <li><a ng-show="model.currentUser._id"
-                           ng-click="model.logoutUser()"
-                           href="#!">Logout</a></li>
-                    <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
-                    <li><a href="#!/about">About</a></li>
-                    <li><a href="#!/contact">Contact</a></li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div><!--/.nav-collapse -->
         </div>
-    </nav>
+        <div id="navbar" class="collapse navbar-collapse navbar-left">
+            <ul class="nav navbar-nav collapsed pull-left">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+                <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+                <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
+                <li><a ng-show="model.currentUser._id"
+                       ng-click="model.logoutUser()"
+                       href="#!">Logout</a></li>
+                <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                <li><a href="#!/about">About</a></li>
+                <li><a href="#!/contact">Contact</a></li>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+    </div>
+</nav>
 
 
-    <div class="container-fluid details-page center">
+<div class="container-fluid details-page center">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4"></div>
+
 
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4"></div>
+            <div class="col-xs-12 details-top-row">
+                <div ng-switch="model.messageType" class="detailsPageMessage">
+
+                    <div ng-switch-when="message"
+                         ng-show="model.message"
+                         class="alert alert-success alert-dismissable">
+                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{model.message}}
+                    </div>
+
+                    <div ng-switch-when="warning"
+                         ng-show="model.warning"
+                         class="alert alert-warning alert-dismissable">
+                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{model.warning}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 poster">
+                <h2>Movie Details</h2>
+                <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
+            </div>
 
 
-            <div class="row">
-                <div class="col-xs-12 details-top-row">
-                    <div ng-switch="model.messageType" class="detailsPageMessage">
+            <div class="col-xs-12 col-md-7 details">
 
-                        <div ng-switch-when="message"
-                             ng-show="model.message"
-                             class="alert alert-success alert-dismissable">
-                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            {{model.message}}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>{{model.movie.Title}}</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>{{model.movie.Plot}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Year: {{model.movie.Year}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Rated: {{model.movie.Rated}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Released: {{model.movie.Released}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Runtime: {{model.movie.Runtime}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Genre: {{model.movie.Genre}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Director: {{model.movie.Director}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Writer: {{model.movie.Writer}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Actors: {{model.movie.Actors}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Language: {{model.movie.Language}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Country: {{model.movie.Country}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Awards: {{model.movie.Awards}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Ratings: {{model.movie.Ratings[0].Source}}, {{model.movie
+                            .Ratings[0].Value}}, {{model.movie.Ratings[1].Source}}, {{model.movie
+                            .Ratings[1].Value}}, {{model.movie.Ratings[2].Source}}, {{model.movie
+                            .Ratings[2].Value}}</h5>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Critic Reviews: </h5>
+                        <div ng-repeat="review in model.reviews" class="reviewtext">
+                            <b>{{review._user.username}}: </b>{{review.text}}
                         </div>
-
-                        <div ng-switch-when="warning"
-                             ng-show="model.warning"
-                             class="alert alert-warning alert-dismissable">
-                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            {{model.warning}}
-                        </div>
-
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4 poster">
-                        <h2>Movie Details</h2>
-                        <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
+        <div class="row">
+            <div class="col-xs-3">
+
+                <div class="container-fluid details-buttons">
+                    <div class="dropdown addto">
+                        <button class="btn btn-default dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown">Add to watchlist
+                            <span class="glyphicon-plus"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="watchlist in model.watchlists">
+                                <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
+                                   role="button">{{watchlist.name}}</a>
+                            </li>
+                        </ul>
                     </div>
-
-
-                    <div class="col-xs-12 col-md-7 details">
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2>{{model.movie.Title}}</h2>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>{{model.movie.Plot}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Year: {{model.movie.Year}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Rated: {{model.movie.Rated}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Released: {{model.movie.Released}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Runtime: {{model.movie.Runtime}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Genre: {{model.movie.Genre}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Director: {{model.movie.Director}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Writer: {{model.movie.Writer}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Actors: {{model.movie.Actors}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Language: {{model.movie.Language}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Country: {{model.movie.Country}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Awards: {{model.movie.Awards}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Ratings: {{model.movie.Ratings[0].Source}}, {{model.movie
-                                    .Ratings[0].Value}}, {{model.movie.Ratings[1].Source}}, {{model.movie
-                                    .Ratings[1].Value}}, {{model.movie.Ratings[2].Source}}, {{model.movie
-                                    .Ratings[2].Value}}</h5>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Critic Reviews: </h5>
-                                <div ng-repeat="review in model.reviews" class="reviewtext">
-                                    <b>{{review._user.username}}: </b>{{review.text}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-                <div class="row">
-                    <div class="col-xs-3">
-
-                        <div class="container-fluid details-buttons">
-                            <div class="dropdown addto">
-                                <button class="btn btn-default dropdown-toggle"
-                                        type="button"
-                                        data-toggle="dropdown">Add to
-                                    <span class="glyphicon-plus"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="watchlist in model.watchlists">
-                                        <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
-                                           role="button">{{watchlist.name}}</a>
-                                    </li>
-                                </ul>
 
                         <a class="btn btn-default btn-success btn-block watch-movie"
                            role="button">Watch Movie</a>
@@ -228,28 +220,30 @@
                            ng-click="model.createComment(model.movie.imdbID, model.comment)"
                            role="button">Submit</a>
                     </div>
-                            <h5 ng-show="model.currentUser.role === 'CRITIC'">
-                                Critic Review:
-                            </h5>
-                            <textarea row="5"
-                                      ng-show="model.currentUser.role === 'CRITIC'"
-                                      placeholder="Enter comment here..."
-                                      ng-model="model.comment.text"
-                                      class="form-control"></textarea>
+                    <h5 ng-show="model.currentUser.role === 'CRITIC'">
+                        Critic Review:
+                    </h5>
+                    <textarea row="5"
+                              ng-show="model.currentUser.role === 'CRITIC'"
+                              placeholder="Enter comment here..."
+                              ng-model="model.comment.text"
+                              class="form-control"></textarea>
 
-                            <a class="btn btn-default btn-success btn-block"
-                               ng-show="model.currentUser.role === 'CRITIC'"
-                               ng-click="model.createReview(model.movie.imdbID, model.review)"
-                               role="button">Submit Review</a>
-                        </div>
+                    <a class="btn btn-default btn-success btn-block"
+                       ng-show="model.currentUser.role === 'CRITIC'"
+                       ng-click="model.createReview(model.movie.imdbID, model.review)"
+                       role="button">Submit Review</a>
                 </div>
-                    </div>
-
-
-                <!--<div class="col-xs-3 col-sm-8 review">-->
-                <!---->
-            <!--</div>-->
-
+            </div>
         </div>
+
     </div>
 <!--</div>-->
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid navbar-background">
+        <a href="#!/user" class="userglyphicon">
+            <span class="pull-right glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>

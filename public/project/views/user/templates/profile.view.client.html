@@ -1,21 +1,39 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">NeuTube</a>
+                <div class="navbar-header pull-right">
+                    <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                <a ng-click="model.updateUser(model.user)"
-                   role="button">
-                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
-                </a>
-
-                <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active profilespacing">Profile</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse navbar-left">>
+                    <ul class="nav navbar-nav collapsed pull-left">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+                        <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+                        <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
+                        <li><a ng-show="model.currentUser._id"
+                               ng-click="model.logoutUser()"
+                               href="#!">Logout</a></li>
+                        <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                        <li><a href="#!/about">About</a></li>
+                        <li><a href="#!/contact">Contact</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </div>
     <div class="container-fluid entry">
+
+        <h2>Profile</h2>
 
         <label for="firstname">First Name</label>
         <input name="firstname"
@@ -84,13 +102,6 @@
            href="#!/watchlist"
            role="button">Watchlists</a>
 
-
-
-        <a class="btn btn-default btn-primary btn-block"
-           ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"
-           href="#!/user/{{model.user._id}}/watchlist"
-           role="button">Movie Discussions</a>
-
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id"
            ng-click="model.updateUser(model.user)"
@@ -118,12 +129,8 @@
     </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
-                <a href="#!/user" class="userglyphicon">
-                    <span class="pull-right glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid navbar-background"></div>
         </nav>
     </div>
 </div>

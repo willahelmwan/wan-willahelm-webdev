@@ -1,6 +1,7 @@
 .container-fluid.entry {
     margin: auto;
     max-width: 400px;
+    padding-top: 60px;
 }
 
 input.form-control, select.form-control, textarea {
@@ -22,7 +23,6 @@ input.form-control, select.form-control, textarea {
 }
 
 div.profile {
-    padding-top: 60px;
     padding-bottom: 60px;
     overflow-y: scroll;
 }
@@ -31,15 +31,15 @@ div.profile {
     padding-bottom: 5px;
 }
 
-.profilenav .navbar-default .navbar-toggle {
-    border-color: #fff;
-}
+/*.profilenav .navbar-default .navbar-toggle {*/
+    /*border-color: #fff;*/
+/*}*/
 
-.navbar-background {
-    background-color: #36454f;
-    border-color: #b2b1b5;
+/*.navbar-background {*/
+    /*background-color: #36454f;*/
+    /*border-color: #b2b1b5;*/
 
-}
+/*}*/
 
 .profilenav .navbar-default .navbar-brand {
     color: #fff;
@@ -441,10 +441,6 @@ div.details {
     padding-top: 60px;
 }
 
-.watchlist {
-    padding-top: 60px;
-}
-
 .profile-bottom-nav {
     background-color: #36454f;
     border-color: #36454f;
@@ -471,3 +467,12 @@ div.details {
     margin: auto;
     /*padding-left: 10px;*/
     /*padding-right: 10px;*/
+}
+
+.top-padding {
+    padding-top: 60px;
+}
+
+.table > tbody > tr > td {
+    padding-bottom: 60px;
+}

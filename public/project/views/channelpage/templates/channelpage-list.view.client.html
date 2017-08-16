@@ -3,16 +3,16 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid navbar-background">
 
-                <a href="#!/user" class="userglyphicon">
+                <a href="#!/user/{{model.userId}}/channel" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <!--<a href="#!/channel">-->
-                    <!--<span class="navbar-text pull-right glyphicon glyphicon-ok"></span>-->
-                <!--</a>-->
+                <a href="#!/user/{{model.userId}}/channel/{{model.webId}}/channelpage" >
+                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
+                </a>
 
-                <div class="navbar-header navbar-title titlespacing">
-                    <a class="navbar-brand active">channels</a>
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand active ">{{model.channel.name}}</a>
                 </div>
 
             </div>
@@ -28,29 +28,29 @@
                     <div class="col-xs-6 col-sm-3 ">Updated</div>
                     <div class="col-sm-3 hidden-xs">Visits</div>
                     <div class="col-xs-2">
-                        <a href="#!/channel/new" class="plusglyphicon">
+                        <a href="#!/user/{{model.userId}}/channel/{{model.webId}}/channelpage/new" class="plusglyphicon">
                             <span class="pull-right glyphicon glyphicon-plus"></span>
                         </a>
                     </div>
                 </div>
             </li>
 
-
-            <li ng-repeat="channel in model.channels" class="list-group-item">
+            <li ng-repeat="movie in model.channel.movies" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="#!/channel/{{channel._id}}/channelpage">{{channel.name}}</a>
+                        <a href="#!/details/{{movie._id}}">{{movie.title}}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">2017-07-05</div>
                     <div class="col-sm-3 hidden-xs">1,345,345</div>
                     <div class="col-xs-2">
-                        <a href="#!/channel/{{channel._id}}">
+                        <a href="#!/user/{{model.userId}}/channel/{{model.webId}}/channelpage/{{channelpage._id}}">
                             <span class="pull-right glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
                 </div>
             </li>
         </ul>
+
     </div>
 
     <div class="profilenav">

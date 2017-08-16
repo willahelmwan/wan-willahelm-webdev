@@ -40,150 +40,173 @@
                     </li>
 
                 </ul>
-            </div>
+            </div><!--/.nav-collapse -->
         </div>
     </nav>
-
 
 
     <div class="container-fluid details-page">
 
         <div class="row">
-            <div class="col-xs-12 col-sm-7 col-md-6"></div>
-            <div ng-switch="model.messageType" class="detailsPageMessage">
+            <div class="col-xs-12 col-sm-6 col-md-4"></div>
 
-                <div ng-switch-when="message"
-                     ng-show="model.message"
-                     class="alert alert-success alert-dismissable">
-                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{model.message}}
+
+            <div class="row">
+                <div class="col-xs-12 details-top-row">
+                    <div ng-switch="model.messageType" class="detailsPageMessage">
+
+                        <div ng-switch-when="message"
+                             ng-show="model.message"
+                             class="alert alert-success alert-dismissable">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{model.message}}
+                        </div>
+
+                        <div ng-switch-when="warning"
+                             ng-show="model.warning"
+                             class="alert alert-warning alert-dismissable">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{model.warning}}
+                        </div>
+
+                    </div>
                 </div>
-
-                <div ng-switch-when="warning"
-                     ng-show="model.warning"
-                     class="alert alert-warning alert-dismissable">
-                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{model.warning}}
-                </div>
-
             </div>
 
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-6 col-md-4 poster">
+                    <h2 class="top-padding">Movie Details</h2>
+                    <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
+                </div>
 
 
-                    <div class="col-xs-12 col-sm-6 col-md-4 poster">
-                        <h2 class="top-padding">Movie Details</h2>
-                        <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
+                <div class="col-sm-12 col-md-7 details">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>{{model.movie.Title}}</h2>
+                        </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-8 details">
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2>{{model.movie.Title}}</h2>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>{{model.movie.Plot}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>{{model.movie.Plot}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Year: {{model.movie.Year}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Year: {{model.movie.Year}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Rated: {{model.movie.Rated}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Rated: {{model.movie.Rated}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Released: {{model.movie.Released}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Released: {{model.movie.Released}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Runtime: {{model.movie.Runtime}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Runtime: {{model.movie.Runtime}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Genre: {{model.movie.Genre}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Genre: {{model.movie.Genre}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Director: {{model.movie.Director}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Director: {{model.movie.Director}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Writer: {{model.movie.Writer}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Writer: {{model.movie.Writer}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Actors: {{model.movie.Actors}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Actors: {{model.movie.Actors}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Language: {{model.movie.Language}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Language: {{model.movie.Language}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Country: {{model.movie.Country}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Country: {{model.movie.Country}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Awards: {{model.movie.Awards}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Awards: {{model.movie.Awards}}</h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Ratings: {{model.movie.Ratings[0].Source}}, {{model.movie
+                                .Ratings[0].Value}}, {{model.movie.Ratings[1].Source}}, {{model.movie
+                                .Ratings[1].Value}}, {{model.movie.Ratings[2].Source}}, {{model.movie
+                                .Ratings[2].Value}}</h5>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h5>Ratings: {{model.movie.Ratings[0].Source}}, {{model.movie
-                                    .Ratings[0].Value}}</h5>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5>Critic Reviews: </h5>
+                            <div ng-repeat="review in model.reviews" class="reviewtext">
+                                <b>{{review._user.username}}: </b>{{review.text}}
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+            <!--</div>-->
 
-                        <div class="container-fluid details-buttons">
-                            <div class="dropdown addto">
-                                <button class="btn btn-default dropdown-toggle"
-                                        type="button"
-                                        data-toggle="dropdown">Add to
-                                    <span class="glyphicon-plus"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="watchlist in model.watchlists">
-                                        <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
-                                           role="button">{{watchlist.name}}</a>
-                                    </li>
-                                </ul>
-                            </div>
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
 
-                            <a class="btn btn-default btn-success btn-block"
+            <div class="row">
+                <div class="col-xs-3">
+
+                    <div class="container-fluid details-buttons">
+                        <div class="dropdown addto">
+                            <button class="btn btn-default dropdown-toggle"
+                                    type="button"
+                                    data-toggle="dropdown">Add to
+                                <span class="glyphicon-plus"></span></button>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="watchlist in model.watchlists">
+                                    <a ng-click="model.addMovieToWatchlist(model.movie, watchlist._id, watchlist)"
+                                       role="button">{{watchlist.name}}</a>
+                                </li>
+                            </ul>
+
+                            <!--<div class="row">-->
+                            <!--<div class="col-xs-4 details-buttons">-->
+
+                            <a class="btn btn-default btn-success btn-block watch-movie"
                                role="button">Watch Movie</a>
 
                             <a class="btn btn-default btn-primary btn-block"
@@ -191,7 +214,7 @@
                                role="button">Profile</a>
 
                             <div>
-                                Comments:
+                                <h5>Comments:</h5>
                                 <div ng-repeat="comment in model.comments" class="commenttext">
                                     <b>{{comment._user.username}}: </b>{{comment.text}}
                                     <a>
@@ -214,10 +237,28 @@
                                ng-click="model.createComment(model.movie.imdbID, model.comment)"
                                role="button">Submit</a>
                         </div>
+                        <h5 ng-show="model.currentUser.role === 'CRITIC'">
+                            Critic Review:
+                        </h5>
+                        <textarea row="5"
+                                  ng-show="model.currentUser.role === 'CRITIC'"
+                                  placeholder="Enter comment here..."
+                                  ng-model="model.comment.text"
+                                  class="form-control"></textarea>
+
+                        <a class="btn btn-default btn-success btn-block"
+                           ng-show="model.currentUser.role === 'CRITIC'"
+                           ng-click="model.createReview(model.movie.imdbID, model.review)"
+                           role="button">Submit Review</a>
                     </div>
                 </div>
-
             </div>
+
+
+            <!--<div class="col-xs-3 col-sm-8 review">-->
+            <!---->
+            <!--</div>-->
+
         </div>
     </div>
 </div>

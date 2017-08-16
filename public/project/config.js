@@ -121,14 +121,14 @@
                     currentUser: checkLoggedIn
                 }
             })
-            // .when("/channel/:cid/page", {
-            //     templateUrl: "views/page/templates/page-list.view.client.html",
-            //     controller: "pageListController",
-            //     controllerAs: "model",
-            //     resolve: {
-            //         currentUser: checkLoggedIn
-            //     }
-            // })
+            .when("/channel/:cid/channelpage", {
+                templateUrl: "views/page/templates/page-list.view.client.html",
+                controller: "pageListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when("/watchlist/:wid/page/new", {
                 templateUrl: "views/page/templates/page-new.view.client.html",
                 controller: "pageNewController",

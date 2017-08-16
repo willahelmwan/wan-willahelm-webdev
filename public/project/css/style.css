@@ -319,18 +319,19 @@ body {
 }
 
 /*Start of Responsive Design*/
-
 /* ---- Start of max-width 992px CSS ---- */
 @media (max-width: 992px) {
     .jumbotron > h1 {
         font-size: 80px;
     }
 
-    .col-sm-12.col-md-8.details {
+    .details {
         padding-top: 0;
-        max-width: 500px;
+        max-width: 300px;
+        margin-left: 10px;
+        margin-right: 10px;
+        position: absolute;
     }
-
 }
 
 /* ---- End of max-width 992px CSS ---- */
@@ -340,11 +341,29 @@ body {
     .jumbotron > h1 {
         font-size: 60px;
     }
-
 }
 
-.top-padding {
-    padding-top: 50px;
+@media (max-width: 996px) and (min-width:768px) {
+    .details {
+        position: fixed;
+    }
+}
+
+@media (max-width: 738px) {
+    .details {
+        position: static;
+    }
+}
+
+@media (min-width:768px) {
+    .details {
+        position: fixed;
+        padding-top: 10px;
+    }
+}
+
+.theme-showcase {
+    margin-top: 75px;
 }
 
 .table-padding {
@@ -358,15 +377,19 @@ body {
 .poster {
     display: inline-block;
     float: left;
+    margin-left: 10px;
 }
 
 .details {
     display: block;
     float: left;
-    padding-top: 50px;
-    position: static;
+    margin-left: 10px;
+    /*position: static;*/
 }
 
+.details-top-row {
+
+}
 
 .title {
     top: 60px;
@@ -395,9 +418,11 @@ div.details {
     padding-top: 10px;
     padding-bottom: 50px;
     position: absolute;
-    left: 30px;
+    left: 0px;
     right: 0px;
-    margin: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
     width: 333px;
 }
 
@@ -405,6 +430,27 @@ div.details {
     padding-top: 60px;
 }
 
-.contentCreatorMessage{
-    color: #3c3c3c;
+.watchlist {
+    padding-top: 60px;
+}
+
+.profile-bottom-nav {
+    background-color: #36454f;
+    border-color: #36454f;
+}
+
+.review {
+    float: left;
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    /*margin: 0;*/
+    left: 0px;
+    right: 0px;
+}
+
+.watch-movie {
+    margin-top: 5px;
 }

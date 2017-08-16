@@ -1,0 +1,91 @@
+<div class="profile">
+    <div class="profilenav">
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+
+                <a ng-click="model.createchannelPage(channelpage)"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+
+                <div class="container-fluid nav-header navbar-background">
+                    <div class="navbar-header">
+                        <div class="col-lg-3 visible-lg split-view-left-nav">
+                            <a class="navbar-brand navsplit" >channelPages</a>
+                        </div>
+                        <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist">
+                            <a class="navbar-brand splitnav">New channelPage</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-lg split-view-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="row">
+                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-2">
+                                <a href="channelpage-new.view.client.html" class="plusglyphicon">
+                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li ng-repeat="channelpage in model.channelpages" class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage/{{channelpage._id}}/widget">{{channelpage.name}}</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage/{{channelpage._id}}">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="col-lg-9 col-xs-12 split-view-right">
+                <label for="name">Name</label>
+                <input name="channelpagename"
+                       ng-model="channelpage.name"
+                       placeholder="channelPage Name"
+                       class="form-control"
+                       id="name"/>
+
+                <label for="title">Title</label>
+                <input name="channelpagetitle"
+                       ng-model="channelpage.description"
+                       placeholder="channelPage Title"
+                       class="form-control"
+                       id="title"/>
+
+                <a class="btn btn-default btn-primary btn-block"
+                   ng-click="model.createchannelPage(channelpage)"
+                   role="button">Create</a>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/channelpage"
+                   role="button">Cancel</a>
+            </div>
+        </div>
+
+        <div class="profilenav">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid navbar-background">
+                    <a href="#!/user/{{model.userId}}" class="userglyphicon">
+                        <span class="pull-right glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+    </div>
+</div>

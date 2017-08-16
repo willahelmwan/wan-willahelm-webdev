@@ -28,7 +28,7 @@
             watchlistService
                 .updatewatchlist(watchlist._id, watchlist)
                 .then(function(response){
-                    $location.url("user/" + model.userId +"/watchlist");
+                    $location.url("/watchlist");
                 });
         }
 

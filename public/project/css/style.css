@@ -1,6 +1,7 @@
 .container-fluid.entry {
     margin: auto;
     max-width: 400px;
+    padding-top: 60px;
 }
 
 input.form-control, select.form-control, textarea {
@@ -22,7 +23,7 @@ input.form-control, select.form-control, textarea {
 }
 
 div.profile {
-    padding-top: 60px;
+    /*padding-top: 60px;*/
     padding-bottom: 60px;
     overflow-y: scroll;
 }
@@ -37,7 +38,7 @@ div.profile {
 
 .navbar-background {
     background-color: #36454f;
-    border-color: #b2b1b5;
+    border-color: #36454f;
 
 }
 
@@ -327,6 +328,10 @@ body {
         max-width: 500px;
     }
 
+    .review {
+        width: 333px;
+    }
+
 }
 
 /* ---- End of max-width 992px CSS ---- */
@@ -336,11 +341,14 @@ body {
     .jumbotron > h1 {
         font-size: 60px;
     }
+}
 
+.theme-showcase {
+    margin-top: 75px;
 }
 
 .top-padding {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 .table-padding {
@@ -360,10 +368,13 @@ body {
 .details {
     display: block;
     float: left;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     position: static;
 }
 
+.details-top-row {
+
+}
 
 .title {
     top: 60px;
@@ -400,4 +411,20 @@ div.details {
 
 .detailsPageMessage{
     padding-top: 60px;
+}
+
+.watchlist {
+    padding-top: 60px;
+}
+
+.profile-bottom-nav {
+    background-color: #36454f;
+    border-color: #36454f;
+}
+
+.review {
+    float: left;
+    position: static;
+    display: inline-block;
+    padding: 0;
 }

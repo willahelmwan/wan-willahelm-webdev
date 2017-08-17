@@ -9,7 +9,7 @@
         this.createVideo = createVideo;
         this.findVideoById = findVideoById;
         // this.findVideosByPageId = findVideosByPageId;
-        // this.updateVideo= updateVideo;
+        this.updateVideo= updateVideo;
         // this.deleteVideo = deleteVideo;
         // this.updateSortIndex = updateSortIndex;
         //
@@ -45,14 +45,14 @@
                 });
         }
 
-        // function updateVideo (wgid, video){
-        //     var url = "/api/project/video/"+wgid;
-        //     return $http.put(url, video)
-        //         .then(function(response){
-        //             return response.data;
-        //         });
-        // }
-        //
+        function updateVideo (vid, video){
+            var url = "/api/project/video/"+vid;
+            return $http.put(url, video)
+                .then(function(response){
+                    return response.data;
+                });
+        }
+
         // function deleteVideo(wgid){
         //     var url = "/api/project/video/"+wgid;
         //     return $http.delete(url)

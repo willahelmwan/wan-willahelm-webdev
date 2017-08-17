@@ -23,14 +23,14 @@
                     currentUser: checkCurrentUser
                 }
             })
-            // .when("/video/new", {
-            //     templateUrl: "views/video/templates/video-new.view.client.html",
-            //     // controller: "videoNewController",
-            //     // controllerAs: "model",
-            //     resolve: {
-            //         currentUser: isCreator
-            //     }
-            // })
+            .when("/video/view/:videoId", {
+                templateUrl: "views/video/templates/video.view.client.html",
+                controller: "videoController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
             .when("/video/:videoId", {
                 templateUrl: "views/video/templates/video-edit.view.client.html",
                 controller: "videoEditController",

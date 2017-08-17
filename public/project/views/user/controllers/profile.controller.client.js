@@ -30,7 +30,9 @@
         init();
         
         function createVideo() {
-            var video = {_id: model.currentUser._id, type: "video", _creator: model.currentUser._id};
+            var video = {type: "video",
+                _creator: model.currentUser._id,
+                name:""};
             videoService
                 .createVideo(video)
                 .then(function(response){

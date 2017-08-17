@@ -2,8 +2,10 @@ var app = require("../../../../express");
 var videoModel = require('../models/video/video.model.server');
 var userModel = require('../models/user/user.model.server');
 var multer = require('multer'); // npm install multer --save
-var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
+var uploadposter = multer({ dest: __dirname+'/../../public/uploads/posters' });
+var uploadvideo = multer({ dest: __dirname+'/../../public/uploads/videos' });
 
+var ObjectId = require('mongodb').ObjectID;
 
 // var videos = [
 //     { "_id": "123", "videoType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -20,27 +22,20 @@ var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 app.post("/api/project/video", createVideo);
 // app.get("/api/project/page/:pageId/video", findAllvideosForPage);
 app.get("/api/project/video/:videoId", findVideoById);
-// app.put("/api/project/video/:videoId", updatevideo);
+app.put("/api/project/video/:videoId", updateVideo);
 // app.delete("/api/project/video/:videoId", deletevideo);
-// app.post ("/api/project/uploadposter", upload.single('myFile'), uploadVideo);
+app.post ("/api/project/uploadposter", uploadposter.single('myFile'), uploadPoster);
+app.post ("/api/project/uploadvideo", uploadvideo.single('myFile'), uploadVideo);
+
 // app.put("/api/project/page/:pageId/video", updateSortIndex);
 //
 
 function createVideo(req, res){
     var video = req.body;
-    // var pageId = req.body._creator;
     videoModel
-        .findVideoById(video._id)
-        .then(function(data){
-            if (data){
-                res.json(data);
-            }else{
-                videoModel
-                    .createVideo(video)
-                    .then(function (video) {
-                        res.json(video);
-                    })
-            }
+        .createVideo(video)
+        .then(function (video) {
+            res.json(video);
         })
 }
 
@@ -53,7 +48,65 @@ function createVideo(req, res){
 //     res.send(videos);
 // }
 //
-//
+
+function uploadPoster(req, res) {
+    var videoId      = req.body.videoId;
+    var myFile        = req.file;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    videoModel
+        .findVideoById(videoId)
+        .then(function(video){
+            video.posterurl = '/project/public/uploads/posters/'+filename;
+            videoModel
+                .updateVideo(videoId, video)
+                .then(function(status){
+                    var callbackUrl = "/project/#!/video/" + video._id;
+                    res.redirect(callbackUrl);
+                })
+        })
+}
+
+function uploadVideo(req, res) {
+    var videoId      = req.body.videoId;
+    var name = req.body.Name;
+    var text = req.body.text;
+    var myFile        = req.file;
+    var description = req.body.description;
+    var width = req.body.width;
+    var channel = req.body.channel;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    videoModel
+        .findVideoById(videoId)
+        .then(function(video){
+            video.text = text;
+            video.name = name;
+            video.description = description;
+            video.width = width;
+            video.channel = channel;
+            video.url = '/project/public/uploads/videos/'+filename;
+            videoModel
+                .updateVideo(videoId, video)
+                .then(function(video){
+                    var callbackUrl = "/project/#!/video/view/" + videoId;
+                    res.redirect(callbackUrl);
+                })
+        })
+}
+
 // function uploadVideo(req, res) {
 //     var videoId      = req.body.videoId;
 //     // var width         = req.body.width;
@@ -94,20 +147,16 @@ function createVideo(req, res){
 //             res.send(err);
 //         });
 // }
-//
-// function updatevideo(req, res){
-//     var video = req.body;
-//     var videoId = req.params.videoId;
-//     var pageId = req.body._page;
-//     videoModel
-//         .updatevideo(videoId, video)
-//         .then(function(status){
-//             // updatePage(pageId, videoId, video);
-//             res.send(status);
-//         }, function(err){
-//             res.send(err);
-//         });
-// }
+
+function updateVideo(req, res){
+    var video = req.body;
+    var videoId = req.params.videoId;
+    videoModel
+        .updateVideo(videoId, video)
+        .then(function(video){
+            res.json(video);
+        });
+}
 
 function findVideoById(req,res){
     var videoId = req.params.videoId;
@@ -115,9 +164,7 @@ function findVideoById(req,res){
         .findVideoById(videoId)
         .then(function(video){
             res.json(video);
-        }, function(err){
-            res.send(err);
-        });
+        })
 }
 
 

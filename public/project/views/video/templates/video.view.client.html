@@ -1,20 +1,20 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-top">
+            <div class="container-fluid">
 
-                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/" class="userglyphicon">
+                <a href="#!/user" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a ng-click="model.updateComment(model.comment)"
+                <a ng-click="model.updateVideo(model.video)"
                    role="button">
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
 
                 <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active">Watch Video</a>
+                    <a class="navbar-brand active">Video</a>
                 </div>
 
             </div>
@@ -22,40 +22,17 @@
     </div>
 
     <div class="container-fluid">
-    <iframe>
-    <div ng-if="model.video"
-         ng-include="model.getVideoIncludeUrl(model.video)">
-    </div>
-    </iframe>
-
-
-    <textarea row="5"
-              placeholder="Enter comment here..."
-              ng-model="model.comment.text"
-              class="form-control"></textarea>
-
-    <a class="btn btn-default btn-success btn-block"
-       ng-click="model.createComment(model.comment)"
-       role="button">Submit</a>
-
-    </div>
-
-    <div  class="container-fluid">
-        <div class="row" wbdv-sortable="">
-            <div ng-repeat="comment in model.comments" class="col-xs-12">
-                <div ng-include="model.getWidgetIncludeUrl(widget.type)"></div>
-                <span class="glyphicon glyphicon-align-justify pull-right widgetjustify"></span>
-                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                    <span class="pull-right glyphicon glyphicon-cog widgetcog"></span>
-                </a>
-            </div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video ng-src="{{model.video.url}}" width="100%" controls>
+                Your browser does not support the video tag.
+            </video>
         </div>
     </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
+                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

@@ -8,13 +8,13 @@
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a ng-click="model.updateVideo(model.widget)"
+                <a ng-click="model.updateVideo(model.video)"
                    role="button">
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
 
                 <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active">New Video</a>
+                    <a class="navbar-brand active">Edit Video</a>
                 </div>
 
             </div>
@@ -22,58 +22,57 @@
     </div>
 
     <div class="container-fluid entry">
-
-        <!--<form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">-->
-        <label for="Name">Name</label>
-        <input name="Name"
-               type="text"
-               ng-model="model.widget.name"
-               placeholder="Name of Video"
-               class="form-control"
-               id="Name"/>
-
-        <label for="text">Text</label>
-        <input name="text"
-               type="text"
-               ng-model="model.widget.text"
-               placeholder="Text of Video"
-               class="form-control"
-               id="text"/>
-
-        <!--<label for="URL">URL</label>-->
-        <!--<input name="URL"-->
-        <!--type="text"-->
-        <!--ng-model="model.widget.url"-->
-        <!--placeholder="URL"-->
-        <!--class="form-control"-->
-        <!--id="URL"-->
-        <!--style="..."/>-->
-
-        <label for="Width">Width</label>
-        <input name="width"
-               type="text"
-               ng-model="video.width"
-               placeholder="100%"
-               class="form-control"
-               id="Width"/>
-
-
-        <form action="/api/project/uploadposter" class="fileupload" method="post" enctype="multipart/form-data">
-            <label for="uploadimage">Upload Poster Picture</label>
-            <div class="input-group">
-                <input name="myFile"
-                       type="file"
-                       class="form-control"
-                       id="uploadimage"/>
-                <span class="input-group-btn">
-                    <button class="btn btn-default btn-success uploadbutton"
-                            type="submit">Upload Image</button>
-                </span>
-            </div>
-        </form>
-
         <form action="/api/project/uploadvideo" class="fileupload" method="post" enctype="multipart/form-data">
-            <label for="uploadvideo">Upload Poster Picture</label>
+            <!--<form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">-->
+            <label for="Name">Name</label>
+            <input name="Name"
+                   type="text"
+                   ng-model="model.video.name"
+                   placeholder="Name of Video"
+                   class="form-control"
+                   id="Name"/>
+
+            <label for="text">Text</label>
+            <input name="text"
+                   type="text"
+                   ng-model="model.video.text"
+                   placeholder="Text of Video"
+                   class="form-control"
+                   id="text"/>
+
+            <label for="description">Description</label>
+            <input name="description"
+                   type="text"
+                   ng-model="model.video.description"
+                   placeholder="Description of Video"
+                   class="form-control"
+                   id="description"/>
+
+            <label for="Width">Width</label>
+            <input name="width"
+                   type="text"
+                   ng-model="model.video.width"
+                   value="100%"
+                   class="form-control"
+                   id="Width"/>
+
+            <label for="channel">Channel</label>
+            <select name="channel"
+                    type="number"
+                    ng-model="model.video._channel"
+                    class="form-control sizeSelect"
+                    id="channel">
+                <option value="" disabled selected>Select your option</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+            </select>
+
+
+            <label for="uploadvideo">Upload Video</label>
             <div class="input-group">
                 <input name="myFile"
                        type="file"
@@ -84,27 +83,27 @@
                             type="submit">Upload Video</button>
                 </span>
             </div>
+            <input name="videoId" value="{{model.video._id}}" style="display: none"/>
         </form>
 
 
-        <input name="userId"
-               ng-model="video._creator"
-               value="{{model.currentUser._id}}" style="display: none"/>
-        <input name="channelId" value="{{model.channelId}}" style="display: none"/>
-        <input name="pageId" value="{{model.pageId}}" style="display: none"/>
-        <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+        <!--<input name="pageId" value="{{model.pageId}}" style="display: none"/>-->
+        <!--<input name="videoId" value="{{model.video._id}}" style="display: none"/>-->
 
+        <a class="btn btn-default btn-success btn-block"
+           ng-click="model.updateVideo(model.video)"
+           role="button">Done</a>
 
         <a class="btn btn-default btn-primary btn-block"
            href="#!/user"
            role="button">Cancel</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.currentUser._id}}/channel/{{model.channelId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
+           href="#!/user/{{model.currentUser._id}}/channel/{{model.channelId}}/page/{{model.pageId}}/video/{{model.video._id}}/flickr"
            role="button">Search</a>
 
         <a class="btn btn-default btn-danger btn-block"
-           ng-click="model.deleteWidget(model.widget)"
+           ng-click="model.deleteVideo(model.video)"
            role="button">Delete</a>
     </div>
 

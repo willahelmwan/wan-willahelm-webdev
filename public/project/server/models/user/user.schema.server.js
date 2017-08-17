@@ -12,6 +12,7 @@ var userSchema = mongoose.Schema({
     watchlists: [{type: mongoose.Schema.Types.ObjectId, ref: "watchlistModel"}],
     following: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
+    videos: [{type: mongoose.Schema.Types.ObjectId, ref: "projectVideoModel"}],
     dateCreated: {type: Date, default: Date.now},
     isAdmin: Boolean
 }, {collection: "projectuser"});

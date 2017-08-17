@@ -23,20 +23,20 @@
                     currentUser: checkCurrentUser
                 }
             })
-            .when("/video/new", {
-                templateUrl: "views/video/templates/video-new.view.client.html",
-                // controller: "videoNewController",
-                // controllerAs: "model",
-                resolve: {
-                    currentUser: isCreator
-                }
-            })
+            // .when("/video/new", {
+            //     templateUrl: "views/video/templates/video-new.view.client.html",
+            //     // controller: "videoNewController",
+            //     // controllerAs: "model",
+            //     resolve: {
+            //         currentUser: isCreator
+            //     }
+            // })
             .when("/video/:videoId", {
-                templateUrl: "views/video/templates/video.view.client.html",
-                controller: "videoController",
+                templateUrl: "views/video/templates/video-edit.view.client.html",
+                controller: "videoEditController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkCurrentUser
+                    currentUser: isCreator
                 }
             })
             .when("/login", {

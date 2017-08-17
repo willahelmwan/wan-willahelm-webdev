@@ -1,7 +1,7 @@
 (function(){
     angular
         .module("omdbApp")
-        .controller("videoNewController", videoNewController);
+        .controller("videoEditController", videoNewController);
 
     function videoNewController(currentUser){
         var model = this;

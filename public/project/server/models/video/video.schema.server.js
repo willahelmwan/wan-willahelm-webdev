@@ -9,6 +9,7 @@ var videoSchema = mongoose.Schema({
     url: String,
     posterurl: String,
     width: String,
+    type: String,
     dateCreated: {type: Date, default: Date.now}
 }, {collection: 'projectvideo'});
 

@@ -23,8 +23,6 @@
         function createWidget(type){
             // var widget = {_id: (new Date()).getTime() +""};
             var widget = {type: type};
-            // widget.widgetType = type;
-            // model.widgetId = widget._id;
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function(response){

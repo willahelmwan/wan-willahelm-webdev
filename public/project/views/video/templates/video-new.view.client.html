@@ -1,8 +1,8 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-top">
+            <div class="container-fluid">
 
                 <a href="#!/user" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
@@ -21,7 +21,7 @@
         </nav>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid entry">
 
         <!--<form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">-->
         <label for="Name">Name</label>
@@ -56,6 +56,7 @@
                placeholder="100%"
                class="form-control"
                id="Width"/>
+
 
         <form action="/api/project/uploadposter" class="fileupload" method="post" enctype="multipart/form-data">
             <label for="uploadimage">Upload Poster Picture</label>
@@ -108,8 +109,8 @@
     </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
                 <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>

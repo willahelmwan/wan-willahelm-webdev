@@ -290,7 +290,6 @@ body {
 }
 
 .navbar.navbar-inverse.navbar-fixed-top {
-    background-color: darkred;
     border-color: darkred;
 }
 
@@ -318,7 +317,9 @@ body {
     overflow: hidden;
 }
 
+/************************ NEW CHANGES **************************************/
 /*Start of Responsive Design*/
+
 /* ---- Start of max-width 992px CSS ---- */
 @media (max-width: 992px) {
     .jumbotron > h1 {
@@ -355,10 +356,11 @@ body {
     }
 }
 
-@media (min-width:768px) {
+@media (min-width: 738px) {
     .details {
-        position: fixed;
+        position: absolute;
         padding-top: 10px;
+        padding-left: 50px;
     }
 }
 
@@ -378,23 +380,19 @@ body {
     display: inline-block;
     float: left;
     margin-left: 10px;
+    margin-top: 80px;
 }
 
 .details {
     display: block;
     float: left;
     margin-left: 10px;
-    /*position: static;*/
-}
-
-.details-top-row {
-
+    margin-top: 50px;
 }
 
 .title {
     top: 60px;
     display: inline-block;
-    /*float: left;*/
     overflow: hidden;
     padding-left: 20px;
     padding-right: 20px;
@@ -416,7 +414,7 @@ div.details {
 
 .details-buttons {
     padding-top: 10px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -427,10 +425,6 @@ div.details {
 }
 
 .detailsPageMessage{
-    padding-top: 60px;
-}
-
-.watchlist {
     padding-top: 60px;
 }
 
@@ -455,6 +449,67 @@ div.details {
     margin-top: 5px;
 }
 
+.center {
+    max-width: 960px;
+    margin: auto;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+}
+
+.top-padding {
+    padding-top: 60px;
+}
+
+.table > tbody > tr > td {
+    padding-bottom: 60px;
+}
+
+/*div {*/
+/*text-align: justify;*/
+/*}*/
+
+body, h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+#jumbo {
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.nav-opacity {
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.opacity {
+    background: rgba(47, 47, 47, 0.6);
+}
+
+.list-group .active {
+    background-color: #030;;
+    border-color: gray;
+}
+
+.movie-details {
+    margin-top: 30px;
+}
+
+.movie-added {
+    position: absolute;
+}
+
+body {
+    background: url("../../vendor/image/dark-background.jpg");
+}
+
 .uploadbutton{
     width:120px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-bottom {
+    /*background-color: darkred;*/
+    border-color: darkred;
+}
+
+.bottom-padding{
+    padding-bottom: 60px;
 }

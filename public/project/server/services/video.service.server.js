@@ -22,7 +22,7 @@ app.get("/api/project/page/:pageId/video", findAllvideosForPage);
 app.get("/api/project/video/:videoId", findvideoById);
 app.put("/api/project/video/:videoId", updatevideo);
 app.delete("/api/project/video/:videoId", deletevideo);
-app.post ("/api/project/assignment/upload", upload.single('myFile'), uploadVideo);
+app.post ("/api/project/uploadposter", upload.single('myFile'), uploadVideo);
 app.put("/api/project/page/:pageId/video", updateSortIndex);
 
 function updateSortIndex(req, res){
@@ -37,12 +37,12 @@ function updateSortIndex(req, res){
 
 function uploadVideo(req, res) {
     var videoId      = req.body.videoId;
-    var width         = req.body.width;
+    // var width         = req.body.width;
     var myFile        = req.file;
 
     var userId = req.body.userId;
-    var watchlistId = req.body.watchlistId;
-    var pageId = req.body.pageId;
+    // var watchlistId = req.body.watchlistId;
+    // var pageId = req.body.pageId;
 
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder

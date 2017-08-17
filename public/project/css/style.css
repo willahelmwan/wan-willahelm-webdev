@@ -41,6 +41,16 @@ div.profile {
 
 /*}*/
 
+.navbar.navbar-inverse.navbar-fixed-top {
+/*background-color: darkred;*/
+border-color: darkred;
+}
+
+.navbar.navbar-inverse.navbar-fixed-bottom {
+    /*background-color: darkred;*/
+    border-color: darkred;
+}
+
 .profilenav .navbar-default .navbar-brand {
     color: #fff;
 }
@@ -260,10 +270,6 @@ a:hover {
 
 }
 
-body {
-    background: url("../../vendor/image/dark-background.jpg");
-}
-
 .centered-table {
     margin-left: auto;
     margin-right: auto;
@@ -293,12 +299,6 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-
-/*.navbar.navbar-inverse.navbar-fixed-top {*/
-    /*background-color: darkred;*/
-    /*border-color: darkred;*/
-/*}*/
-
 
 .table > tbody > tr > td {
     border-top: none;
@@ -367,14 +367,6 @@ body {
     }
 }
 
-/*@media (min-width: 992px) {*/
-    /*.details {*/
-        /*position: absolute;*/
-        /*!*padding-top: 10px;*!*/
-        /*!*padding-left: 50px;*!*/
-    /*}*/
-/*}*/
-
 .theme-showcase {
     margin-top: 75px;
 }
@@ -391,23 +383,19 @@ body {
     display: inline-block;
     float: left;
     margin-left: 10px;
+    margin-top: 80px;
 }
 
 .details {
     display: block;
     float: left;
     margin-left: 10px;
-    /*position: static;*/
-}
-
-.details-top-row {
-
+    margin-top: 50px;
 }
 
 .title {
     top: 60px;
     display: inline-block;
-    /*float: left;*/
     overflow: hidden;
     padding-left: 20px;
     padding-right: 20px;
@@ -475,13 +463,17 @@ div.details {
     padding-top: 60px;
 }
 
+.bottom-padding {
+    padding-bottom: 60px;
+}
+
 .table > tbody > tr > td {
     padding-bottom: 60px;
 }
 
-div {
-    text-align: justify;
-}
+/*div {*/
+    /*text-align: justify;*/
+/*}*/
 
 body, h1, h2, h3, h4, h5, h6 {
     color: white;
@@ -491,6 +483,27 @@ body, h1, h2, h3, h4, h5, h6 {
     background: rgba(10, 10, 10, 0.4);
 }
 
+.nav-opacity {
+    background: rgba(10, 10, 10, 0.4);
+}
+
 .opacity {
     background: rgba(47, 47, 47, 0.6);
+}
+
+.list-group .active {
+    background-color: #030;;
+    border-color: gray;
+}
+
+.movie-details {
+    margin-top: 30px;
+}
+
+.movie-added {
+    position: absolute;
+}
+
+body {
+    background: url("../../vendor/image/dark-background.jpg");
 }

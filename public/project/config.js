@@ -145,26 +145,26 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget", {
+            .when("/watchlist/:wid/page/:pid/widget", {
                 templateUrl: "views/widget/templates/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/new", {
+            .when("/watchlist/:wid/page/:pid/widget/new", {
                 templateUrl: "views/widget/templates/widget-chooser.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid", {
+            .when("/watchlist/:wid/page/:pid/widget/:wgid", {
                 templateUrl: "views/widget/templates/widget-edit.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid/flickr", {
+            .when("/watchlist/:wid/page/:pid/widget/:wgid/flickr", {
                 templateUrl: "views/widget/templates/widget-flickr-search.view.client.html",
                 controller: "FlickrImageSearchController",
                 controllerAs: "model"
-            })
+            });
     }
 
     function isAdmin($q, $location, userService) {

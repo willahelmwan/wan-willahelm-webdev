@@ -36,7 +36,7 @@
             watchlistService
                 .deletewatchlist(watchlist._id)
                 .then(function(response){
-                    $location.url("user/" + model.userId +"/watchlist");
+                    $location.url("/watchlist");
                 });
         }
     }

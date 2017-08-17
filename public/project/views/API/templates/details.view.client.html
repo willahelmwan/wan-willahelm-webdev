@@ -1,37 +1,37 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top opacity">
     <div class="container-fluid navbar-background">
 
         <a href="#!/" class="userglyphicon">
             <span class="pull-left glyphicon glyphicon-chevron-left"></span>
         </a>
-    <div class="container">
-        <a class="navbar-brand" href="#">NeuTube</a>
-        <div class="navbar-header pull-right">
-            <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <div class="container">
+            <a class="navbar-brand" href="#">NeuTube</a>
+            <div class="navbar-header pull-right">
+                <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
+            </div>
+            <div id="navbar" class="collapse navbar-collapse navbar-left">
+                <ul class="nav navbar-nav collapsed pull-left">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+                    <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+                    <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
+                    <li><a ng-show="model.currentUser._id"
+                           ng-click="model.logoutUser()"
+                           href="#!">Logout</a></li>
+                    <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                    <li><a href="#!/about">About</a></li>
+                    <li><a href="#!/contact">Contact</a></li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="collapse navbar-collapse navbar-left">
-            <ul class="nav navbar-nav collapsed pull-left">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
-                <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
-                <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
-                <li><a ng-show="model.currentUser._id"
-                       ng-click="model.logoutUser()"
-                       href="#!">Logout</a></li>
-                <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
-                <li><a href="#!/about">About</a></li>
-                <li><a href="#!/contact">Contact</a></li>
-
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
     </div>
 </nav>
 
@@ -42,7 +42,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4"></div>
 
 
-        <div class="row">
+        <div class="row movie-added">
             <div class="col-xs-12 details-top-row">
                 <div ng-switch="model.messageType" class="detailsPageMessage">
 
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row movie-details">
             <div class="col-xs-12 col-sm-6 col-md-4 poster">
                 <h2>Movie Details</h2>
                 <img class="img-responsive img-fluid" ng-src="{{model.movie.Poster}}"/>
@@ -178,8 +178,9 @@
                 <div class="container-fluid details-buttons">
                     <div class="dropdown addto">
                         <button class="btn btn-default dropdown-toggle"
+                                ng-show="!(model.currentUser._id===comment._user._id)"
                                 type="button"
-                                data-toggle="dropdown">Add to watchlist
+                                data-toggle="dropdown">Add to
                             <span class="glyphicon-plus"></span></button>
                         <ul class="dropdown-menu">
                             <li ng-repeat="watchlist in model.watchlists">
@@ -189,44 +190,43 @@
                         </ul>
                     </div>
 
-                        <a class="btn btn-default btn-success btn-block watch-movie"
-                           role="button">Watch Movie</a>
+                    <a class="btn btn-default btn-success btn-block watch-movie"
+                       role="button">Watch Movie</a>
 
-                        <a class="btn btn-default btn-primary btn-block"
-                           href="#!/user"
-                           role="button">Profile</a>
+                    <a class="btn btn-default btn-primary btn-block"
+                       href="#!/user"
+                       role="button">Profile</a>
 
-                        <div>
-                            <h5>Comments:</h5>
-                            <div ng-repeat="comment in model.comments" class="commenttext">
-                                <b>{{comment._user.username}}: </b>{{comment.text}}
-                                <a>
-                                    <i ng-show="!(model.currentUser._id===comment._user._id)"
-                                       ng-click="model.followUser(comment._user, model.currentUser)"
-                                       class="fa fa-user-plus pull-right" aria-hidden="true"></i>
-                                </a>
+                    <div>
+                        <h5>Comments:</h5>
+                        <div ng-repeat="comment in model.comments" class="commenttext">
+                            <b>{{comment._user.username}}: </b>{{comment.text}}
+                            <a>
+                                <i ng-show="!(model.currentUser._id===comment._user._id)"
+                                   ng-click="model.followUser(comment._user, model.currentUser)"
+                                   class="fa fa-user-plus pull-right" aria-hidden="true"></i>
+                            </a>
 
-                            </div>
                         </div>
-
-
-                        <textarea row="5"
-                                  placeholder="Enter comment here..."
-                                  ng-model="model.comment.text"
-                                  class="form-control"></textarea>
-
-
-                        <a class="btn btn-default btn-success btn-block"
-                           ng-click="model.createComment(model.movie.imdbID, model.comment)"
-                           role="button">Submit</a>
                     </div>
+
+                    <textarea row="5"
+                              placeholder="Enter comment here..."
+                              ng-model="model.comment.text"
+                              class="form-control"></textarea>
+
+
+                    <a class="btn btn-default btn-success btn-block"
+                       ng-click="model.createComment(model.movie.imdbID, model.comment)"
+                       role="button">Submit</a>
+
                     <h5 ng-show="model.currentUser.role === 'CRITIC'">
                         Critic Review:
                     </h5>
                     <textarea row="5"
                               ng-show="model.currentUser.role === 'CRITIC'"
                               placeholder="Enter comment here..."
-                              ng-model="model.comment.text"
+                              ng-model="model.review.text"
                               class="form-control"></textarea>
 
                     <a class="btn btn-default btn-success btn-block"
@@ -236,11 +236,11 @@
                 </div>
             </div>
         </div>
-
     </div>
-<!--</div>-->
+</div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom opacity">
     <div class="container-fluid navbar-background">
         <a href="#!/user" class="userglyphicon">
             <span class="pull-right glyphicon glyphicon-user"></span>

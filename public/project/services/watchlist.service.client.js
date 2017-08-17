@@ -37,7 +37,7 @@
             return $http.put(url, watchlist)
                 .then(function(response){
                     return response.data;
-                })
+                });
         }
 
         function deletewatchlist(wid){
@@ -45,7 +45,7 @@
             return $http.delete(url)
                 .then(function(response){
                     return response.data;
-                })
+                });
         }
     }
 })();

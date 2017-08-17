@@ -13,7 +13,10 @@
 
         function createPage(webId, page){
             var url =　"/api/project/watchlist/" + webId + "/page";
-            return $http.post(url, page);
+            return $http.post(url, page)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function findPageBywatchlistId(wid){

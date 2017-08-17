@@ -16,7 +16,8 @@ userModel.deleteUser = deleteUser;
 userModel.deleteAll = deleteAll;
 userModel.addwatchlistToArray = addwatchlistToArray;
 userModel.findUserByGoogleId = findUserByGoogleId;
-
+userModel.addReview = addReview;
+userModel.removeReview = removeReview;
 
 module.exports = userModel;
 
@@ -69,8 +70,21 @@ function addwatchlistToArray(userId, watchlist) {
         });
 }
 
+function addReview(userId, review) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            user.reviews.push(review._id);
+            return user.save();
+        });
+}
 
-// createUser({username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , isAdmin: true });
-// createUser({username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley" });
-// createUser({username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi"});
-// createUser({username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia" });
+function removeReview(videoId, reviewId) {
+    return userModel
+        .findById(videoId)
+        .then(function (user) {
+            var index = user.reviews.indexOf(reviewId);
+            user.reviews.splice(index, 1);
+            return user.save();
+        });
+}

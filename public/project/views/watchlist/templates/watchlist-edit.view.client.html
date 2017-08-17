@@ -2,14 +2,17 @@
     <div class="profilenav">
         <div class="row">
             <nav class="navbar navbar-inverse opacity navbar-fixed-top">
-                <a href="#!/watchlist"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+                <a href="#!/watchlist">
+                    <span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span>
+                </a>
 
                 <a ng-click="model.updatewatchlist(model.watchlist)"
                    role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
-                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >watchlists</a></div>
+                        <div class="col-lg-3 visible-lg split-view-left-nav">
+                            <a class="navbar-brand navsplit">Watchlists</a></div>
                         <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist"><a class="navbar-brand splitnav">Edit watchlist</a></div>
                     </div>
                 </div>
@@ -45,7 +48,7 @@
                    role="button">OK</a>
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="#!/user/{{model.userId}}/watchlist"
+                   href="#!/watchlist"
                    role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"

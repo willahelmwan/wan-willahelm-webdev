@@ -73,6 +73,16 @@
             </li>
             <br/>
         </div>
+
+        <div ng-if="model.currentUser.role === 'CRITIC'">
+        <label>My Reviews:</label>
+            <div class="row">
+                <div class="col-xs-12 review-text">
+                    <li ng-repeat="review in model.reviews" class="list-group-item">
+                        <div ng-if="model.currentUser._id === model.user._id"></div>{{review.text}}
+                    </li>
+                </div>
+            </div>
         <!--<label for="dob">Date of Birth</label>-->
         <!--<input name="dob"-->
         <!--type="date"-->

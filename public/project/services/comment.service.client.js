@@ -13,7 +13,10 @@
 
         function createComment(videoId, comment){
             var url =　"/api/project/video/" + videoId + "/comment";
-            return $http.post(url, comment);
+            return $http.post(url, comment)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function findCommentsByVideoId(videoId){

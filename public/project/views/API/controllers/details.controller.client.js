@@ -13,6 +13,7 @@
         model.addMovieToWatchlist = addMovieToWatchlist;
         model.createComment = createComment;
         model.followUser = followUser;
+        model.backBtnClick = backBtnClick;
 
 
         function init() {
@@ -89,6 +90,10 @@
 
         function renderMovie(movie) {
             model.movie = movie;
+        }
+
+        function backBtnClick() {
+            history.back();
         }
     }
 

@@ -1,7 +1,7 @@
 <div class="profile">
     <div class="profilenav">
         <div class="row">
-            <nav class="navbar navbar-inverse navbar-fixed-top opacity">
+            <nav class="navbar navbar-inverse opacity navbar-fixed-top">
                 <a href="#!/watchlist"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
                 <a ng-click="model.updatewatchlist(model.watchlist)"
@@ -9,8 +9,7 @@
 
                 <div class="container-fluid nav-header navbar-background">
                     <div class="navbar-header">
-                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >
-                            Watchlists</a></div>
+                        <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >watchlists</a></div>
                         <div class="col-lg-9 col-xs-12 split-view-right-nav newwatchlist"><a class="navbar-brand splitnav">Edit watchlist</a></div>
                     </div>
                 </div>
@@ -18,7 +17,7 @@
         </div>
     </div>
 
-    <div class="container-fluid top-padding">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 visible-lg split-view-left">
                 <div ng-include="'views/watchlist/templates/watchlist-list.component.client.html'"></div>
@@ -29,7 +28,7 @@
                 <input name="name"
                        type="text"
                        ng-model="model.watchlist.name"
-                       placeholder="Name"
+                       placeholder="Facebook"
                        class="form-control"
                        id="name"/>
 
@@ -37,7 +36,7 @@
                 <textarea name="description"
                           rows="5"
                           ng-model="model.watchlist.description"
-                          placeholder="Description"
+                          placeholder="Largest country in the world"
                           class="form-control"
                           id="description"/></textarea>
 
@@ -56,8 +55,8 @@
         </div>
 
         <div class="profilenav">
-            <nav class="navbar navbar-inverse navbar-fixed-bottom opacity">
-                <div class="container-fluid navbar-background">
+            <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+                <div class="container-fluid">
                     <a href="#!/user" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>

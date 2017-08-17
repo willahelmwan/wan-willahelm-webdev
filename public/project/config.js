@@ -15,6 +15,16 @@
                     currentUser: checkCurrentUser
                 }
             })
+            //new route for homeSearch
+            .when("/search/:movieTitle", {
+                templateUrl: "views/home/templates/home-movie-search.view.client.html",
+                controller: "homeSearchController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+            //
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
@@ -49,7 +59,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/admin",{
+            .when("/admin", {
                 templateUrl: "views/admin/templates/admin.view.client.html",
                 controller: "adminController",
                 controllerAs: "model",

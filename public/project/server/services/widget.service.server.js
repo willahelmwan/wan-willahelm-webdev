@@ -2,7 +2,8 @@ var app = require("../../../../express");
 var widgetModel = require('../models/widget/widget.model.server');
 var pageModel = require('../models/page/page.model.server');
 var multer = require('multer'); // npm install multer --save
-var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
+var uploadimage = multer({ dest: __dirname+'/../../public/assignment/uploads/posters'});
+var uploadvideo = multer({ dest: __dirname+'/../../public/assignment/uploads/videos'});
 
 
 // var widgets = [
@@ -22,7 +23,7 @@ app.get("/api/project/page/:pageId/widget", findAllWidgetsForPage);
 app.get("/api/project/widget/:widgetId", findWidgetById);
 app.put("/api/project/widget/:widgetId", updateWidget);
 app.delete("/api/project/widget/:widgetId", deleteWidget);
-app.post ("/api/project/assignment/upload", upload.single('myFile'), uploadImage);
+app.post ("/api/project/assignment/upload", uploadimage.single('myFile'), uploadImage);
 app.put("/api/project/page/:pageId/widget", updateSortIndex);
 
 function updateSortIndex(req, res){

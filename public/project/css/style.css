@@ -507,3 +507,7 @@ body, h1, h2, h3, h4, h5, h6 {
 body {
     background: url("../../vendor/image/dark-background.jpg");
 }
+
+.dropdown-menu .dropdown-menu-right{
+    z-index: 999;
+}

@@ -1,44 +1,44 @@
 (function () {
     angular
         .module("omdbApp")
-        .controller("pageEditController", pageEditController);
+        .controller("channelpageEditController", channelpageEditController);
 
-    function pageEditController($routeParams, pageService, $location, currentUser) {
+    function channelpageEditController($routeParams, channelpageService, $location, currentUser) {
         var model = this;
         model.userId = currentUser._id;
-        model.webId = $routeParams.wid;
-        model.pageId = $routeParams.pid;
-        model.updatePage = updatePage;
-        model.deletePage = deletePage;
+        model.channelId = $routeParams.cid;
+        model.channelpId = $routeParams.cpid;
+        model.updatechannelPage = updatechannelPage;
+        model.deletechannelPage = deletechannelPage;
 
         function init() {
-            pageService
-                .findPageBywatchlistId(model.webId)
-                .then(function (pages) {
-                    model.pages = pages;
+            channelpageService
+                .findchannelPageBychannelId(model.channelId)
+                .then(function (channelpages) {
+                    model.channelpages = channelpages;
                 });
-            pageService
-                .findPageById(model.pageId)
-                .then(function (page) {
-                    model.page = page;
+            channelpageService
+                .findchannelPageById(model.channelpId)
+                .then(function (channelpage) {
+                    model.channelpage = channelpage;
                 });
         }
 
         init();
 
-        function updatePage(page) {
-            pageService
-                .updatePage(page._id, page)
+        function updatechannelPage(channelpage) {
+            channelpageService
+                .updatechannelPage(channelpage._id, channelpage)
                 .then(function () {
-                    $location.url("user/" + model.userId + "/watchlist/" + model.webId + "/page");
+                    $location.url("channel/" + model.channelId + "/channelpage");
                 });
         }
 
-        function deletePage(page) {
-            pageService
-                .deletePage(page._id)
+        function deletechannelPage(channelpage) {
+            channelpageService
+                .deletechannelPage(channelpage._id)
                 .then(function () {
-                    $location.url("user/" + model.userId + "/watchlist/" + model.webId + "/page");
+                    $location.url("channel/" + model.channelId + "/channelpage");
                 });
         }
     }

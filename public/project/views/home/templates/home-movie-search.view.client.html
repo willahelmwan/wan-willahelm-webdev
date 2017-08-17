@@ -1,0 +1,125 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top opacity">
+    <div class="container">
+        <a class="navbar-brand" href="#">NeuTube</a>
+        <div class="navbar-header pull-right">
+            <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-left">
+            <ul class="nav navbar-nav collapsed pull-left">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a ng-show="!model.currentUser._id" href="#!/login">Login</a></li>
+                <li><a ng-show="!model.currentUser._id" href="#!/register">Register</a></li>
+                <li><a ng-show="model.currentUser._id" href="#!/user">Profile</a></li>
+                <li><a ng-show="model.currentUser._id"
+                       ng-click="model.logoutUser()"
+                       href="#!">Logout</a></li>
+                <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                <li><a href="#!/about">About</a></li>
+                <li><a href="#!/contact">Contact</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="container theme-showcase" role="main">
+
+        <div class="jumbotron" id="jumbo">
+            <h1>NeuTube</h1>
+            <p>Build your watchlists.</p>
+        </div>
+
+        <!--<div class="input-group form-group">-->
+            <!--<input placeholder="Select Type"-->
+                   <!--type="text"-->
+                   <!--class="form-control">-->
+            <!--<div class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>-->
+                <!--<select class="dropdown-menu dropdown-menu-right"-->
+                        <!--name="size"-->
+                        <!--type="number"-->
+                        <!--ng-model="model.widget.size"-->
+                        <!--class="form-control sizeSelect"-->
+                        <!--id="size">>-->
+                    <!--<li><a href="#">Action</a></li>-->
+                    <!--<li><a href="#">Another action</a></li>-->
+                    <!--<li><a href="#">Something else here</a></li>-->
+                    <!--<li role="separator" class="divider"></li>-->
+                    <!--<li><a href="#">Separated link</a></li>-->
+                <!--</select>-->
+            <!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
+        <!--</div>&lt;!&ndash; /input-group &ndash;&gt;-->
+
+        <!--<div class="input-group form-group">-->
+            <!--<input placeholder="Search"-->
+                   <!--ng-model="model.movieTitle"-->
+                   <!--class="form-control"/>-->
+            <!--<div class="input-group-btn">-->
+                <!--<select name="size"-->
+                        <!--type="number"-->
+                        <!--ng-model="model.widget.size"-->
+                        <!--class="form-control"-->
+                        <!--id="size">-->
+                    <!--<option value="Movie">Movie</option>-->
+                    <!--<option value="Video">Video</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div ng-switch="model.widget.size">-->
+            <!--<div ng-switch-when="Movie">-->
+                <!--<div ng-include>-->
+                <!--<button ng-click="model.searchMovieByTitle(model.movieTitle)" class="btn btn-primary btn-block">-->
+                    <!--Search-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--<div ng-switch-when="Video">-->
+                    <!--<div ng-include>-->
+                        <!--<button ng-click="model.searchVideoByTitle(model.videoTitle)" class="btn btn-primary btn-block">-->
+                            <!--Search-->
+                        <!--</button>-->
+                    <!--</div>-->
+            <!--</div>-->
+        <div class="form-group">
+            <input placeholder="Search"
+                   ng-model="model.movieTitle"
+                   class="form-control"/>
+
+            <button ng-click="model.searchMovieByTitle(model.movieTitle)" class="btn btn-primary btn-block">
+                Search
+            </button>
+        </div>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <td>
+                        <a>
+                            <img ng-repeat="movie in model.movies.Search"
+                                 ng-src="{{movie.Poster}}"
+                                 role="button"
+                                 ng-click="model.gotoDetailPage(movie.imdbID)"/>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom opacity">
+    <div class="container-fluid navbar-background">
+        <a href="#!/user" class="userglyphicon">
+            <span ng-show="model.currentUser._id"
+                  class="pull-right glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>

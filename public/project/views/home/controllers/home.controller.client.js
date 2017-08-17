@@ -4,13 +4,15 @@
         .controller("homeController", homeController);
 
 
-    function homeController(movieService, currentUser, $location, userService) {
+    function homeController(movieService, currentUser, $location, userService, $routeParams, $rootScope) {
         var model = this;
 
+        // model.movieTitle = $routeParams.movieTitle;
         model.searchMovieByTitle = searchMovieByTitle;
         model.logoutUser = logoutUser;
         model.searchMovieByImdbId = searchMovieByImdbId;
         model.gotoDetailPage = gotoDetailPage;
+        model.movieTitle = "";
 
         model.currentUser = currentUser;
         function init() {
@@ -35,7 +37,9 @@
         function searchMovieByTitle(movieTitle) {
             movieService
                 .searchMovieByTitle(movieTitle)
-                .then(renderMovies);
+                .then(function () {
+                    $location.url("/search/" + movieTitle);
+                });
         }
 
         function renderMovies(movies) {

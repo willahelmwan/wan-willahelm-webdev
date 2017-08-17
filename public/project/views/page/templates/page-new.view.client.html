@@ -1,7 +1,7 @@
 <div class="profile">
     <div class="profilenav">
         <div class="row">
-            <nav class="navbar navbar-inverse navbar-fixed-top opacity">
+            <nav class="navbar navbar-inverse opacity navbar-fixed-top">
                 <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
 
                 <a ng-click="model.createPage(page)"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
@@ -78,8 +78,8 @@
         </div>
 
         <div class="profilenav">
-            <nav class="navbar navbar-inverse navbar-fixed-bottom opacity">
-                <div class="container-fluid navbar-background">
+            <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+                <div class="container-fluid">
                     <a href="#!/user/{{model.userId}}" class="userglyphicon">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>

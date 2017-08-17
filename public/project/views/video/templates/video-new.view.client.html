@@ -1,8 +1,8 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-inverse navbar-fixed-top opacity">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-top">
+            <div class="container-fluid">
 
                 <a href="#!/user" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
@@ -21,55 +21,78 @@
         </nav>
     </div>
 
-    <div class="container-fluid entry top-padding">
+    <div class="container-fluid entry">
 
-        <h2>Create Video</h2>
+        <!--<form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">-->
+        <label for="Name">Name</label>
+        <input name="Name"
+               type="text"
+               ng-model="model.widget.name"
+               placeholder="Name of Video"
+               class="form-control"
+               id="Name"/>
 
-        <form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">
-            <label for="Name">Name</label>
-            <input name="Name"
-                   type="text"
-                   ng-model="model.widget.name"
-                   placeholder="Name of Video"
-                   class="form-control"
-                   id="Name"/>
+        <label for="text">Text</label>
+        <input name="text"
+               type="text"
+               ng-model="model.widget.text"
+               placeholder="Text of Video"
+               class="form-control"
+               id="text"/>
 
-            <label for="text">Text</label>
-            <input name="text"
-                   type="text"
-                   ng-model="model.widget.text"
-                   placeholder="Text of Video"
-                   class="form-control"
-                   id="text"/>
+        <!--<label for="URL">URL</label>-->
+        <!--<input name="URL"-->
+        <!--type="text"-->
+        <!--ng-model="model.widget.url"-->
+        <!--placeholder="URL"-->
+        <!--class="form-control"-->
+        <!--id="URL"-->
+        <!--style="..."/>-->
 
-            <!--<label for="URL">URL</label>-->
-            <!--<input name="URL"-->
-                   <!--type="text"-->
-                   <!--ng-model="model.widget.url"-->
-                   <!--placeholder="URL"-->
-                   <!--class="form-control"-->
-                   <!--id="URL"-->
-                   <!--style="..."/>-->
+        <label for="Width">Width</label>
+        <input name="width"
+               type="text"
+               ng-model="video.width"
+               placeholder="100%"
+               class="form-control"
+               id="Width"/>
 
-            <label for="Width">Width</label>
-            <input name="width"
-                   type="text"
-                   ng-model="model.widget.width"
-                   placeholder="100%"
-                   class="form-control"
-                   id="Width"/>
-            <label for="upload">Upload</label>
-            <input  name="myFile"
-                    type="file"
-                    class="form-control"
-                    id="upload"/>
-            <input  name="userId"    value="{{model.currentUser._id}}"   style="display: none"/>
-            <input  name="watchlistId" value="{{model.webId}}"   style="display: none"/>
-            <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
-            <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
-            <button type="submit"
-                    class="btn btn-default btn-block btn-success">Upload Video</button>
+
+        <form action="/api/project/uploadposter" class="fileupload" method="post" enctype="multipart/form-data">
+            <label for="uploadimage">Upload Poster Picture</label>
+            <div class="input-group">
+                <input name="myFile"
+                       type="file"
+                       class="form-control"
+                       id="uploadimage"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-success uploadbutton"
+                            type="submit">Upload Image</button>
+                </span>
+            </div>
         </form>
+
+        <form action="/api/project/uploadvideo" class="fileupload" method="post" enctype="multipart/form-data">
+            <label for="uploadvideo">Upload Poster Picture</label>
+            <div class="input-group">
+                <input name="myFile"
+                       type="file"
+                       class="form-control"
+                       id="uploadvideo"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-success uploadbutton"
+                            type="submit">Upload Video</button>
+                </span>
+            </div>
+        </form>
+
+
+        <input name="userId"
+               ng-model="video._creator"
+               value="{{model.currentUser._id}}" style="display: none"/>
+        <input name="channelId" value="{{model.channelId}}" style="display: none"/>
+        <input name="pageId" value="{{model.pageId}}" style="display: none"/>
+        <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
 
 
         <a class="btn btn-default btn-primary btn-block"
@@ -77,7 +100,7 @@
            role="button">Cancel</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.currentUser._id}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
+           href="#!/user/{{model.currentUser._id}}/channel/{{model.channelId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr"
            role="button">Search</a>
 
         <a class="btn btn-default btn-danger btn-block"
@@ -86,9 +109,9 @@
     </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-inverse navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.currentUser._id}}"  class="userglyphicon">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
+                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>

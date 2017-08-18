@@ -58,12 +58,18 @@
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "loginController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedOut
+                }
             })
             .when("/register", {
                 templateUrl: "views/user/templates/register.view.client.html",
                 controller: "registerController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: isAdmin
+                }
             })
             .when("/user", {
                 templateUrl: "views/user/templates/profile.view.client.html",
@@ -261,6 +267,22 @@
                     $location.url('/login');
                 } else {
                     deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkLoggedOut($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function (currentUser) {
+                if (currentUser === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(currentUser);
+                    $location.url('/user');
                 }
             });
         return deferred.promise;

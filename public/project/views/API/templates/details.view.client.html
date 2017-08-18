@@ -182,7 +182,7 @@
                 <div class="container-fluid details-buttons">
                     <div class="dropdown addto">
                         <button class="btn btn-default dropdown-toggle"
-                                ng-show="!(model.currentUser._id===comment._user._id)"
+                                ng-show="model.currentUser._id"
                                 type="button"
                                 data-toggle="dropdown">Add to
                             <span class="glyphicon-plus"></span></button>
@@ -215,12 +215,14 @@
                     </div>
 
                     <textarea row="5"
+                              ng-show="model.currentUser._id"
                               placeholder="Enter comment here..."
                               ng-model="model.comment.text"
                               class="form-control"></textarea>
 
 
                     <a class="btn btn-default btn-success btn-block"
+                       ng-show="model.currentUser._id"
                        ng-click="model.createComment(model.movie.imdbID, model.comment)"
                        role="button">Submit</a>
 

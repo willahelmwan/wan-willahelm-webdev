@@ -13,6 +13,7 @@
 
         var api ={
             "createUser": createUser,
+            "createUserAdmin": createUserAdmin,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
             "findUserByCredentials": findUserByCredentials,
@@ -75,6 +76,11 @@
 
         function createUser(user){
             var url = "/api/project/user";
+            return $http.post(url, user);
+        }
+
+        function createUserAdmin(user){
+            var url = "/api/project/userAdmin";
             return $http.post(url, user);
         }
 

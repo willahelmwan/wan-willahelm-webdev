@@ -20,7 +20,7 @@
                 <li><a ng-show="model.currentUser._id"
                        ng-click="model.logoutUser()"
                        href="#!">Logout</a></li>
-                <li><a ng-show="model.currentUser.isAdmin" href="#!/admin">Admin</a></li>
+                <li><a ng-show="model.currentUser" href="#!/admin">Admin</a></li>
                 <li><a href="#!/about">About</a></li>
                 <li><a href="#!/contact">Contact</a></li>
             </ul>
@@ -87,19 +87,46 @@
            class="form-control"
            id="password2"/>
 
-    <h5 class="contentCreatorMessage">Would you like to be a content creator? As a content creator, you can create your
+    <h5 class="contentCreatorMessage"
+        ng-if="!(model.currentUser.role === 'ADMIN')">Would you like to be a content creator? As a content creator, you can create your
         own channels and upload videos.</h5>
-    <div class="form-check">
+    <div class="form-check"
+         ng-if="!(model.currentUser.role === 'ADMIN')">
         <label class="form-check-label">
             <!--<input type="checkbox" class="form-check-input" ng-model="user.role" ng-init="user.role='USER'">-->
             <input type="checkbox" ng-model="user.role" ng-true-value="'CREATOR'" ng-false-value="'USER'">
             Yes, make me a content creator.
         </label>
     </div>
+
+    <label ng-if="model.currentUser.role === 'ADMIN'"
+           for="role">User Role</label>
+
+    <form id="role" name="myForm">
+        <label>
+            <input type="radio" ng-model="user.role" value="CRITIC">
+            Critic
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="user.role" value="CREATOR">
+            Creator
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="user.role" value="USER">
+            User
+        </label><br/>
+    </form>
+
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.registerUser(user)"
-       type="submit"
+       ng-if="model.currentUser.role === 'ADMIN'"
+       ng-click="model.registerUserAdmin(user)"
        role="button">Register</a>
+
+    <!--<a class="btn btn-default btn-primary btn-block"-->
+       <!--ng-if="!(model.currentUser.role === 'ADMIN')"-->
+       <!--ng-click="model.registerUser(user)"-->
+       <!--type="submit"-->
+       <!--role="button">Register</a>-->
 
     <a class="btn btn-default btn-danger btn-block"
        href="#!/login"

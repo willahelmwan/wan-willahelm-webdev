@@ -20,6 +20,7 @@ app.post("/api/project/logoutUser", logoutUser);
 app.get("/api/project/user/:userId", getUserById);
 app.get("/api/project/user", findUser);
 app.post("/api/project/user", createUser);
+app.post("/api/project/userAdmin",creatUserAdmin);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
 app.get("/project/auth/google", passport.authenticate('google', {scope: ['profile', 'email']}));
@@ -198,6 +199,17 @@ function createUser(req, res) {
                 });
             }
         });
+}
+
+function creatUserAdmin(req, res) {
+    var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
+    user.password2 = bcrypt.hashSync(user.password2);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.send(user);
+        })
 }
 
 

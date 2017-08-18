@@ -98,17 +98,12 @@
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.user._id"
            href="#!/videolist"
-           role="button">All Videos</a>
+           role="button">All My Videos</a>
 
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"
            href="#!/watchlist"
            role="button">Watchlists</a>
-
-        <a class="btn btn-default btn-primary btn-block"
-           ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"
-           href="#!/user/{{model.user._id}}/watchlist"
-           role="button">Movie Discussions</a>
 
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id"
@@ -119,10 +114,6 @@
            ng-if="model.currentUser.role === 'ADMIN'"
            href="#!/admin"
            role="button">Admin</a>
-
-        <a class="btn btn-default btn-info btn-block"
-           href="#!/"
-           role="button">Home</a>
 
         <a class="btn btn-default btn-danger btn-block"
            ng-if="model.currentUser._id===model.user._id"

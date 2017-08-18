@@ -8,21 +8,16 @@ reviewModel.createReviewForVideo = createReviewForVideo;
 reviewModel.updateReview = updateReview;
 reviewModel.deleteReview = deleteReview;
 reviewModel.findReviewById = findReviewById;
+reviewModel.findAllReviewsForUser = findAllReviewsForUser;
 
 module.exports = reviewModel;
 
+function findAllReviewsForUser(userId) {
+    return reviewModel.find({_user: userId});
+}
 function createReviewForVideo(videoId, review) {
     review._video = videoId;
-    var reviewTmp = null;
-    return reviewModel
-        .create(review)
-        .then(function (newReview) {
-            reviewTmp = newReview;
-            return userModel.addReview(videoId, newReview._id);
-        })
-        .then(function (reviewTmp) {
-            return reviewTmp;
-        });
+    return reviewModel.create(review);
 }
 
 function findReviewsByVideoId(videoId) {
@@ -45,13 +40,5 @@ function updateReview(reviewId, review){
 // }
 
 function deleteReview(reviewId) {
-    return reviewModel
-        .findReviewById(reviewId)
-        .then(function (review){
-            var videoId = review._video;
-            return userModel.removeReview(videoId, reviewId);
-        })
-        .then(function () {
-            return reviewModel.remove({_id: reviewId});
-        });
+    return reviewModel.remove({_id: reviewId});
 }

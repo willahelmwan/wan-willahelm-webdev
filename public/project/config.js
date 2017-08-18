@@ -60,6 +60,22 @@
                 controller: "allvideoListController",
                 controllerAs: "model"
             })
+            .when("/commentlist", {
+                templateUrl: "views/comment/templates/comment-list.view.client.html",
+                controller: "commentListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+            .when("/reviewlist", {
+                templateUrl: "views/review/templates/review-list.view.client.html",
+                controller: "reviewListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "loginController",

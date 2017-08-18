@@ -8,6 +8,16 @@ app.get("/api/project/video/:videoId/review", findAllReviewsForVideo);
 app.get("/api/project/review/:reviewId", findReviewById);
 app.put("/api/project/widget/:widgetId", updateReview);
 app.delete("/api/project/review/:reviewId", deleteReview);
+app.get("/api/project/allreview/:userId", findAllReviewsForUser);
+
+function findAllReviewsForUser(req, res) {
+    var userId = req.params.userId;
+    reviewModel
+        .findAllReviewsForUser(userId)
+        .then(function(reviews){
+            res.json(reviews);
+        })
+}
 
 function createReview(req, res){
     var review = req.body;
@@ -63,6 +73,16 @@ function findAllReviewsForVideo(req,res){
         .findReviewsByVideoId(videoId)
         .then(function(reviews){
             res.json(reviews);
+        })
+}
+
+function updateVideo(videoId, review){
+    videoModel
+        .findVideoById(videoId)
+        .then(function(video){
+            video.reviews= website.pages.push(page._id);
+            websiteModel
+                .addPageToArray(webId, page)
         })
 }
 

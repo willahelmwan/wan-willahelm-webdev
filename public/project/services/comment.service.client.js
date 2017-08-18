@@ -10,6 +10,17 @@
         this.findCommentsByVideoId = findCommentsByVideoId;
         this.updateComment = updateComment;
         this.deletePage = deletePage;
+        this.findCommentsByUser = findCommentsByUser;
+
+
+
+        function findCommentsByUser(userId) {
+            var url = "/api/project/allcomment/" + userId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function createComment(videoId, comment){
             var url =　"/api/project/video/" + videoId + "/comment";

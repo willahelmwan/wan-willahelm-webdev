@@ -166,7 +166,7 @@
                         <div ng-repeat="review in model.reviews" class="reviewtext">
                             <b>{{review._user.username}}: </b>{{review.text}}
                             <a>
-                                <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id))"
+                                <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id)) || model.currentUser.role==='ADMIN'"
                                    ng-click="model.deleteReview(review._id)"
                                    class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>

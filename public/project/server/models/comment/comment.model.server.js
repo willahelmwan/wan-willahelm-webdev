@@ -5,18 +5,22 @@ var commentModel = mongoose.model('projectCommentModel', commentSchema);
 
 commentModel.findCommentsByVideoId = findCommentsByVideoId;
 commentModel.createCommentForVideo = createCommentForVideo;
+commentModel.findAllCommentsForUser = findAllCommentsForUser;
 // widgetModel.findWidgetById = findWidgetById;
 // widgetModel.updateWidget = updateWidget;
 // widgetModel.deleteWidget = deleteWidget;
 // widgetModel.reorderWidget = reorderWidget;
 
 module.exports = commentModel;
+function findAllCommentsForUser(userId) {
+    return commentModel.find({_user: userId});
+}
 
-function createCommentForVideo(videoId, comment){
+function createCommentForVideo(videoId, comment) {
     return commentModel.create(comment);
 }
 
-function findCommentsByVideoId(videoId){
+function findCommentsByVideoId(videoId) {
     return commentModel
         .find({_video: videoId})
         .populate('_user')

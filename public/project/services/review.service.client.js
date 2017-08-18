@@ -10,7 +10,15 @@
         this.findReviewsByVideoId = findReviewsByVideoId;
         this.updateReview = updateReview;
         this.deleteReview = deleteReview;
+        this.findReviewsByUser = findReviewsByUser;
 
+        function findReviewsByUser(userId) {
+            var url = "/api/project/allreview/" + userId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
         function createReview(videoId, review){
             var url =　"/api/project/video/" + videoId + "/review";
             return $http.post(url, review)

@@ -6,6 +6,11 @@
     function watchlistListController($routeParams, watchlistService, currentUser){
         var model = this;
         model.userId = currentUser._id;
+        model.backBtnClick = backBtnClick;
+        
+        function backBtnClick() {
+            history.back();
+        }
 
         function init(){
             watchlistService

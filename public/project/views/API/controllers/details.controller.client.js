@@ -16,6 +16,7 @@
         model.followUser = followUser;
         model.backBtnClick = backBtnClick;
         model.createReview = createReview;
+        model.deleteReview = deleteReview;
 
 
         function init() {
@@ -40,6 +41,14 @@
         }
 
         init();
+
+        function deleteReview(reviewId) {
+            reviewService
+                .deleteReview(reviewId)
+                .then(function (status) {
+                    $location.url("details/" + model.imdbID + "/");
+                })
+        }
 
         function followUser(user, currentUser) {
             var followings = model.currentUser.following;
@@ -73,7 +82,7 @@
             commentService
                 .createComment(imdbId, comment)
                 .then(function () {
-                    // location.reload();
+
                     $location.url("details/" + model.imdbID + "/");
                 })
         }
@@ -84,6 +93,7 @@
             reviewService
                 .createReview(imdbId, review)
                 .then(function () {
+                    // location.reload();
                     $location.url("details/" + model.imdbID + "/");
                 })
         }

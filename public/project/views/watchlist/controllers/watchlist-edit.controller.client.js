@@ -9,7 +9,10 @@
         model.webId = $routeParams.wid;
         model.updatewatchlist = updatewatchlist;
         model.deletewatchlist = deletewatchlist;
-
+        model.backBtnClick = backBtnClick;
+        function backBtnClick() {
+            history.back();
+        }
         function init(){
             watchlistService
                 .findwatchlistsByUser(model.userId)
@@ -28,7 +31,7 @@
             watchlistService
                 .updatewatchlist(watchlist._id, watchlist)
                 .then(function(response){
-                    $location.url("user/" + model.userId +"/watchlist");
+                    $location.url("watchlist");
                 });
         }
 
@@ -36,7 +39,7 @@
             watchlistService
                 .deletewatchlist(watchlist._id)
                 .then(function(response){
-                    $location.url("user/" + model.userId +"/watchlist");
+                    $location.url("watchlist");
                 });
         }
     }

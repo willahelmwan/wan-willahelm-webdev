@@ -13,6 +13,7 @@ var userSchema = mongoose.Schema({
     following: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
     videos: [{type: mongoose.Schema.Types.ObjectId, ref: "projectVideoModel"}],
+    reviews: [{type: mongoose.Schema.Types.ObjectId, ref: "projectReviewModel"}],
     dateCreated: {type: Date, default: Date.now},
     isAdmin: Boolean
 }, {collection: "projectuser"});

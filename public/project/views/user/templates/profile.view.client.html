@@ -107,6 +107,16 @@
 
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id"
+           href="#!/commentlist"
+           role="button">All Comments</a>
+
+        <a class="btn btn-default btn-primary btn-block"
+           ng-if="model.currentUser._id===model.user._id && model.currentUser.role === 'CRITIC'"
+           href="#!/reviewlist"
+           role="button">All Reviews</a>
+
+        <a class="btn btn-default btn-primary btn-block"
+           ng-if="model.currentUser._id===model.user._id"
            ng-click="model.updateUser(model.user)"
            role="button">Update</a>
 

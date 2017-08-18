@@ -8,6 +8,16 @@ app.get("/api/project/video/:videoId/comment", findAllCommentsForVideo);
 app.get("/api/project/comment/:commentId", findCommentById);
 app.put("/api/project/widget/:widgetId", updateComment);
 app.delete("/api/project/comment/:commentId", deleteComment);
+app.get("/api/project/allcomment/:userId", findAllCommentsForUser);
+
+function findAllCommentsForUser(req, res) {
+    var userId = req.params.userId;
+    commentModel
+        .findAllCommentsForUser(userId)
+        .then(function(comments){
+            res.json(comments);
+        })
+}
 
 function createComment(req, res){
     var comment = req.body;

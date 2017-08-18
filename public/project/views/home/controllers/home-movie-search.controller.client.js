@@ -15,6 +15,7 @@
 
         model.currentUser = currentUser;
         function init() {
+
             movieService
                 .searchMovieByTitle(model.movieTitle)
                 .then(renderMovies);
@@ -22,11 +23,11 @@
 
         init();
 
-        function gotoDetailPage(imdbId){
-            $location.url("/details/"+imdbId);
+        function gotoDetailPage(imdbId) {
+            $location.url("/details/" + imdbId);
         }
 
-        function logoutUser(){
+        function logoutUser() {
             userService.logoutUser();
         }
 

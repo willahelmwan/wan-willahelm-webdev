@@ -9,7 +9,7 @@
         this.findCommentById = findCommentById;
         this.findCommentsByVideoId = findCommentsByVideoId;
         this.updateComment = updateComment;
-        this.deletePage = deletePage;
+        this.deleteComment = deleteComment;
         this.findCommentsByUser = findCommentsByUser;
 
 
@@ -51,7 +51,7 @@
                 });
         }
 
-        function deletePage(commentId){
+        function deleteComment(commentId){
             var url = "/api/project/comment/" + commentId;
             return $http.delete(url)
                 .then(function(response){

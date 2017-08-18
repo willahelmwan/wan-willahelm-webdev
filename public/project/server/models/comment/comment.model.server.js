@@ -6,10 +6,10 @@ var commentModel = mongoose.model('projectCommentModel', commentSchema);
 commentModel.findCommentsByVideoId = findCommentsByVideoId;
 commentModel.createCommentForVideo = createCommentForVideo;
 commentModel.findAllCommentsForUser = findAllCommentsForUser;
-// widgetModel.findWidgetById = findWidgetById;
-// widgetModel.updateWidget = updateWidget;
-// widgetModel.deleteWidget = deleteWidget;
-// widgetModel.reorderWidget = reorderWidget;
+// commentModel.findCommentById = findCommentById;
+// commentModel.updateComment = updateComment;
+commentModel.deleteComment = deleteComment;
+// commentModel.reorderComment = reorderComment;
 
 module.exports = commentModel;
 function findAllCommentsForUser(userId) {
@@ -27,19 +27,19 @@ function findCommentsByVideoId(videoId) {
         .exec();
 }
 
-// function findWidgetById(widgetId){
-//     return widgetModel.findById(widgetId);
+// function findCommentById(commentId){
+//     return commentModel.findById(commentId);
 // }
 //
-// function updateWidget(widgetId, widget){
-//     return widgetModel.update({_id: widgetId}, {$set: widget});
+// function updateComment(commentId, comment){
+//     return commentModel.update({_id: commentId}, {$set: comment});
 // }
-//
-// function deleteWidget(widgetId){
-//     return widgetModel.remove({_id: widgetId});
-// }
-//
-// function reorderWidget(pageId, start, end){
+
+function deleteComment(commentId){
+    return commentModel.remove({_id: commentId});
+}
+
+// function reorderComment(pageId, start, end){
 //
 // }
 

@@ -17,6 +17,7 @@
         model.backBtnClick = backBtnClick;
         model.createReview = createReview;
         model.deleteReview = deleteReview;
+        model.deleteComment = deleteComment;
 
 
         function init() {
@@ -45,6 +46,14 @@
         function deleteReview(reviewId) {
             reviewService
                 .deleteReview(reviewId)
+                .then(function (status) {
+                    $location.url("details/" + model.imdbID + "/");
+                })
+        }
+
+        function deleteComment(commentId) {
+            commentService
+                .deleteComment(commentId)
                 .then(function (status) {
                     $location.url("details/" + model.imdbID + "/");
                 })

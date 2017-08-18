@@ -166,7 +166,7 @@
                         <div ng-repeat="review in model.reviews" class="reviewtext">
                             <b>{{review._user.username}}: </b>{{review.text}}
                             <a>
-                                <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id)) || model.currentUser.role==='ADMIN'"
+                                <i ng-if="(model.currentUser._id===review._user._id && model.currentUser._id) || model.currentUser.role==='ADMIN'"
                                    ng-click="model.deleteReview(review._id)"
                                    class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>
@@ -206,10 +206,16 @@
                         <div ng-repeat="comment in model.comments" class="commenttext">
                             <b>{{comment._user.username}}: </b>{{comment.text}}
                             <a>
+                                <i ng-if="(model.currentUser._id===comment._user._id && model.currentUser._id) || model.currentUser.role==='ADMIN'"
+                                   ng-click="model.deleteComment(comment._id)"
+                                   class="fa fa-trash-o pull-right" aria-hidden="true"></i>
+                            </a>
+                            <a>
                                 <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id))"
                                    ng-click="model.followUser(comment._user, model.currentUser)"
                                    class="fa fa-user-plus pull-right" aria-hidden="true"></i>
                             </a>
+
 
                         </div>
                     </div>

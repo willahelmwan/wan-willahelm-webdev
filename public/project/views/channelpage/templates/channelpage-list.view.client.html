@@ -1,65 +1,60 @@
-<div class="profile">
-    <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid navbar-background">
+<nav class="navbar navbar-inverse opacity navbar-fixed-top">
+    <div class="container-fluid ">
 
-                <a href="#!/channel" class="userglyphicon">
-                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
-                </a>
+        <a href="#!/channel" class="userglyphicon">
+            <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+        </a>
 
-                <a href="#!/channel/{{model.channelId}}/channelpage" >
-                    <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
-                </a>
+        <!--<a href="#!/channel/{{model.channelId}}/channelpage">-->
+            <!--<span class="navbar-text pull-right glyphicon glyphicon-ok"></span>-->
+        <!--</a>-->
 
-                <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active ">{{model.channel.name}}</a>
+        <div class="navbar-header navbar-title">
+            <a class="navbar-brand ">{{model.channel.name}}</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid top-padding bottom-padding">
+
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-4">Name</div>
+                <div class="col-xs-6 col-sm-3 "></div>
+                <div class="col-sm-3 hidden-xs"></div>
+                <div class="col-xs-2">
+                    <a href="#!/channel/{{model.channelId}}/channelpage/new" class="plusglyphicon">
+                        <span class="pull-right glyphicon glyphicon-plus"></span>
+                    </a>
                 </div>
-
             </div>
-        </nav>
-    </div>
+        </li>
 
-    <div class="container-fluid">
-
-        <ul class="list-group">
-            <li class="list-group-item active">
-                <div class="row">
-                    <div class="col-xs-4">Name</div>
-                    <div class="col-xs-6 col-sm-3 ">Updated</div>
-                    <div class="col-sm-3 hidden-xs">Visits</div>
-                    <div class="col-xs-2">
-                        <a href="#!/channel/{{model.channelId}}/channelpage/new" class="plusglyphicon">
-                            <span class="pull-right glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
+        <li ng-repeat="channelpage in model.channelpages" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="#!/video/view/{{channelpage._id}}">{{channelpage.name}}</a>
                 </div>
-            </li>
-
-            <li ng-repeat="channelpage in model.channelpages" class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a href="#!/video/view/{{channelpage._id}}">{{channelpage.name}}</a>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">2017-07-05</div>
-                    <div class="col-sm-3 hidden-xs">1,345,345</div>
-                    <div class="col-xs-2">
-                        <a href="#!/video/{{channelpage._id}}">
-                            <span class="pull-right glyphicon glyphicon-cog"></span>
-                        </a>
-                    </div>
+                <div class="col-xs-6 col-sm-3"></div>
+                <div class="col-sm-3 hidden-xs"></div>
+                <div class="col-xs-2">
+                    <a href="#!/video/{{channelpage._id}}">
+                        <span class="pull-right glyphicon glyphicon-cog"></span>
+                    </a>
                 </div>
-            </li>
-        </ul>
-
-    </div>
-
-    <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
-                <a href="#!/user" class="userglyphicon">
-                    <span class="pull-right glyphicon glyphicon-user"></span>
-                </a>
             </div>
-        </nav>
-    </div>
+        </li>
+    </ul>
+
 </div>
+
+<nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+    <div class="container-fluid ">
+        <a href="#!/user" class="userglyphicon">
+            <span class="pull-right glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>

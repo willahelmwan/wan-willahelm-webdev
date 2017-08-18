@@ -58,7 +58,10 @@
             .when("/alluservideos", {
                 templateUrl: "views/video/templates/all-videos-list.view.client.html",
                 controller: "allvideoListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             .when("/commentlist", {
                 templateUrl: "views/comment/templates/comment-list.view.client.html",

@@ -28,7 +28,8 @@
     </div>
 </nav>
 
-<div class="container-fluid entry top-padding bottom-padding">
+<div class="container-fluid entry top-padding bottom-padding"
+     ng-if="!model.currentUser._id || model.currentUser.role === 'ADMIN'">
 
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
@@ -102,7 +103,7 @@
     <label ng-if="model.currentUser.role === 'ADMIN'"
            for="role">User Role</label>
 
-    <form id="role" name="myForm">
+    <form id="role" name="myForm" ng-if="model.currentUser.role === 'ADMIN'">
         <label>
             <input type="radio" ng-model="user.role" value="CRITIC">
             Critic
@@ -122,14 +123,15 @@
        ng-click="model.registerUserAdmin(user)"
        role="button">Register</a>
 
-    <!--<a class="btn btn-default btn-primary btn-block"-->
-       <!--ng-if="!(model.currentUser.role === 'ADMIN')"-->
-       <!--ng-click="model.registerUser(user)"-->
-       <!--type="submit"-->
-       <!--role="button">Register</a>-->
+    <a class="btn btn-default btn-primary btn-block"
+       ng-if="!(model.currentUser.role === 'ADMIN')"
+       ng-click="model.registerUser(user)"
+       type="submit"
+       role="button">Register</a>
 
     <a class="btn btn-default btn-danger btn-block"
-       href="#!/login"
+       ng-if="!(model.currentUser.role === 'ADMIN')"
+       ng-click="model.backBtnClick()"
        role="button">Cancel</a>
 
     <a class="btn btn-default btn-info btn-block"

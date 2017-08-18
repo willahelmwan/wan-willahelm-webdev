@@ -60,7 +60,7 @@
                 controller: "loginController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLoggedOut
+                    currentUser: checkCurrentUser
                 }
             })
             .when("/register", {
@@ -68,7 +68,7 @@
                 controller: "registerController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: isAdmin
+                    currentUser: checkCurrentUser
                 }
             })
             .when("/user", {
@@ -264,6 +264,7 @@
             .then(function (currentUser) {
                 if (currentUser === '0') {
                     deferred.reject();
+
                     $location.url('/login');
                 } else {
                     deferred.resolve(currentUser);
@@ -279,10 +280,11 @@
             .then(function (currentUser) {
                 if (currentUser === '0') {
                     deferred.reject();
-                    $location.url('/login');
+                    console.log("Here")
+                    $location.url('login');
                 } else {
                     deferred.resolve(currentUser);
-                    $location.url('/user');
+                    $location.url('user');
                 }
             });
         return deferred.promise;

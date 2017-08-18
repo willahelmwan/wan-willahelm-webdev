@@ -28,8 +28,7 @@
     </div>
 </nav>
 
-<div class="container-fluid entry top-padding bottom-padding">
-    <div>
+<div class="container-fluid entry top-padding bottom-padding" ng-if="!model.currentUser._id" >
 
         <div ng-show="model.errorMessage" class="alert alert-danger">
             {{model.errorMessage}}
@@ -69,8 +68,6 @@
            href="#!/"
            role="button">Home</a>
 
-
-    </div>
 </div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom opacity">

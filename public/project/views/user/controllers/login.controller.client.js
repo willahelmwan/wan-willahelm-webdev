@@ -4,10 +4,11 @@
         .module("omdbApp")
         .controller("loginController", loginController);
 
-    function loginController($location, userService) {
+    function loginController($location, userService, currentUser) {
 
         var model = this;
         model.login = login;
+        model.currentUser = currentUser;
         function init() {
 
         }

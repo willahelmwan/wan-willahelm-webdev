@@ -7,13 +7,16 @@
         var model = this;
         model.registerUser = registerUser;
         model.registerUserAdmin = registerUserAdmin;
+        model.backBtnClick = backBtnClick;
         model.currentUser = currentUser;
         function init() {
 
         }
 
         init();
-
+        function backBtnClick() {
+            history.back();
+        }
         function registerUserAdmin(user){
             if (!user || !user.username) {
                 model.error = "Please enter a username.";

@@ -26,7 +26,7 @@ app.put("/api/project/video/:videoId", updateVideo);
 app.delete("/api/project/video/:videoId", deleteVideo);
 app.post ("/api/project/uploadposter", uploadposter.single('myFile'), uploadPoster);
 app.post ("/api/project/uploadvideo", uploadvideo.single('myFile'), uploadVideo);
-
+app.get("/api/project/allvideos", findAllVideos);
 // app.put("/api/project/page/:pageId/video", updateSortIndex);
 //
 
@@ -177,6 +177,13 @@ function findAllvideosForCreator(req, res) {
         })
 }
 
+function findAllVideos(req, res) {
+    videoModel
+        .findAllVideos()
+        .then(function (videos) {
+            res.json(videos);
+        })
+}
 
 // function findAllvideosForPage(req,res){
 //     var pageId = req.params.pageId;

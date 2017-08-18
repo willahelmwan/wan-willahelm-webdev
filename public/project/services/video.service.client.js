@@ -7,6 +7,7 @@
 
 
         this.createVideo = createVideo;
+        this.findAllVideos = findAllVideos;
         this.findVideoById = findVideoById;
         this.findVideoByCreator = findVideoByCreator;
         // this.findVideosByPageId = findVideosByPageId;
@@ -21,6 +22,14 @@
         //             return response.data;
         //         });
         // }
+
+        function findAllVideos() {
+            var url = "/api/project/allvideos";
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function findVideoByCreator(creatorId) {
             var url = "/api/project/allvideo/" + creatorId;

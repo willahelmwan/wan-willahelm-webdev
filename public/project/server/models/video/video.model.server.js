@@ -12,6 +12,7 @@ videoModel.updateVideo = updateVideo;
 videoModel.findAllvideosForchannel = findAllvideosForchannel;
 videoModel.deleteVideo = deleteVideo;
 videoModel.findAllvideosForCreator = findAllvideosForCreator;
+videoModel.findAllVideos = findAllVideos;
 // videoModel.reorderVideo = reorderVideo;
 
 module.exports = videoModel;
@@ -23,10 +24,9 @@ function createVideo(video){
 }
 
 
-
-// function findAllVideosForChannel(pageId){
-//     return pageModel.findById(pageId);
-// }
+function findAllVideos() {
+    return videoModel.find();
+}
 function findAllvideosForchannel(channelId){
     return videoModel.find({_channel: channelId});
 }

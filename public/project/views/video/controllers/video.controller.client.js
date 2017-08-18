@@ -3,9 +3,10 @@
         .module("omdbApp")
         .controller("videoController", videoController);
 
-    function videoController($routeParams, videoService, $location){
+    function videoController($routeParams, videoService, currentUser, $location){
         var model = this;
         model.videoId = $routeParams.videoId;
+        model.currentUser = currentUser;
 
         // model.createVideo = createVideo;
         // model.getVideoIncludeUrl = getVideoIncludeUrl;

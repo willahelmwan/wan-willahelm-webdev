@@ -9,7 +9,9 @@ var videoModel = mongoose.model('projectVideoModel', videoSchema);
 videoModel.createVideo = createVideo;
 videoModel.findVideoById = findVideoById;
 videoModel.updateVideo = updateVideo;
-// videoModel.deleteVideo = deleteVideo;
+videoModel.findAllvideosForchannel = findAllvideosForchannel;
+videoModel.deleteVideo = deleteVideo;
+videoModel.findAllvideosForCreator = findAllvideosForCreator;
 // videoModel.reorderVideo = reorderVideo;
 
 module.exports = videoModel;
@@ -22,10 +24,17 @@ function createVideo(video){
 
 
 
-// function findAllVideosForPage(pageId){
+// function findAllVideosForChannel(pageId){
 //     return pageModel.findById(pageId);
 // }
-//
+function findAllvideosForchannel(channelId){
+    return videoModel.find({_channel: channelId});
+}
+
+function findAllvideosForCreator(creatorId){
+    return videoModel.find({_creator: creatorId});
+}
+
 function findVideoById(videoId){
     return videoModel.findById(videoId);
 }
@@ -50,10 +59,10 @@ function updateId(video){
     return video;
 }
 
-// function deleteVideo(videoId){
-//     return videoModel.remove({_id: videoId});
-// }
-//
+function deleteVideo(videoId){
+    return videoModel.remove({_id: videoId});
+}
+
 // function reorderVideo(pageId, start, end){
 //
 // }

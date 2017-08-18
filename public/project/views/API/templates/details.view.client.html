@@ -1,7 +1,7 @@
-<nav class="navbar navbar-inverse opacity navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top opacity">
+    <div class="container-fluid ">
 
-        <a href="#!/" class="userglyphicon">
+        <a ng-click="model.backBtnClick()" class="userglyphicon">
             <span class="pull-left glyphicon glyphicon-chevron-left"></span>
         </a>
         <div class="container">
@@ -34,7 +34,6 @@
         </div>
     </div>
 </nav>
-
 
 <div class="container-fluid details-page center">
 
@@ -162,10 +161,15 @@
 
 
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 review-text">
                         <h5>Critic Reviews: </h5>
                         <div ng-repeat="review in model.reviews" class="reviewtext">
                             <b>{{review._user.username}}: </b>{{review.text}}
+                            <a>
+                                <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id))"
+                                   ng-click="model.deleteReview(review._id)"
+                                   class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -202,7 +206,7 @@
                         <div ng-repeat="comment in model.comments" class="commenttext">
                             <b>{{comment._user.username}}: </b>{{comment.text}}
                             <a>
-                                <i ng-show="!(model.currentUser._id===comment._user._id)"
+                                <i ng-show="(!(model.currentUser._id===comment._user._id) && (model.currentUser._id))"
                                    ng-click="model.followUser(comment._user, model.currentUser)"
                                    class="fa fa-user-plus pull-right" aria-hidden="true"></i>
                             </a>
@@ -225,7 +229,7 @@
                     </h5>
                     <textarea row="5"
                               ng-show="model.currentUser.role === 'CRITIC'"
-                              placeholder="Enter comment here..."
+                              placeholder="Enter review here..."
                               ng-model="model.review.text"
                               class="form-control"></textarea>
 

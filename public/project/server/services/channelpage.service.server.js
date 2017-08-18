@@ -1,5 +1,5 @@
 var app = require("../../../../express");
-var channelpageModel = require('../models/channelpage/channelpage.model.server');
+var videoModel = require('../models/video/video.model.server');
 var channelModel = require('../models/channel/channel.model.server');
 
 // var channelpages = [
@@ -16,7 +16,7 @@ app.delete("/api/project/channelpage/:channelpageId", deletechannelPage);
 
 function deletechannelPage(req, res){
     var channelpageId = req.params.channelpageId;
-    channelpageModel
+    videoModel
         .deletechannelPage(channelpageId)
         .then(function(status){
             res.send(status);
@@ -28,7 +28,7 @@ function deletechannelPage(req, res){
 function updatechannelPage(req, res){
     var channelpage = req.body;
     var channelpageId = req.params.channelpageId;
-    channelpageModel
+    videoModel
         .updatechannelPage(channelpageId, channelpage)
         .then(function(status){
             res.send(status);
@@ -39,7 +39,7 @@ function updatechannelPage(req, res){
 
 function findchannelPageById(req,res){
     var channelpageId = req.params.channelpageId;
-    channelpageModel
+    videoModel
         .findchannelPageById(channelpageId)
         .then(function(channelpage){
             res.json(channelpage);
@@ -50,30 +50,30 @@ function findchannelPageById(req,res){
 
 function createchannelPage(req, res){
     var channelpage = req.body;
-    var webId = req.params.channelId;
-    channelpageModel
-        .createchannelPage(webId, channelpage)
+    var channelId = req.params.channelId;
+    videoModel
+        .createchannelPage(channelId, channelpage)
         .then(function(channelpage){
-            updatechannel(webId, channelpage);
+            updatechannel(channelId, channelpage);
             res.json(channelpage);
         });
 }
 
 function findAllchannelPagesForchannel(req,res){
-    var webId = req.params.channelId;
-    channelpageModel
-        .findAllchannelPagesForchannel(webId)
+    var channelId = req.params.channelId;
+    videoModel
+        .findAllvideosForchannel(channelId)
         .then(function(channelpages){
             res.json(channelpages);
         })
 }
 
-function updatechannel(webId, channelpage){
+function updatechannel(channelId, channelpage){
     channelModel
-        .findchannelById(webId)
+        .findchannelById(channelId)
         .then(function(channel){
             channel.channelpages= channel.channelpages.push(channelpage._id);
             channelModel
-                .addchannelPageToArray(webId, channelpage)
+                .addchannelPageToArray(channelId, channelpage)
         })
 }

@@ -38,12 +38,12 @@
             <li ng-repeat="channelpage in model.channelpages" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="#!/details/{{channelpage._id}}">{{channelpage.name}}</a>
+                        <a href="#!/video/view/{{channelpage._id}}">{{channelpage.name}}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">2017-07-05</div>
                     <div class="col-sm-3 hidden-xs">1,345,345</div>
                     <div class="col-xs-2">
-                        <a href="#!/channel/{{model.channelId}}/channelpage/{{channelpage._id}}">
+                        <a href="#!/video/{{channelpage._id}}">
                             <span class="pull-right glyphicon glyphicon-cog"></span>
                         </a>
                     </div>

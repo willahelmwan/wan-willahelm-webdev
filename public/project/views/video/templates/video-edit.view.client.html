@@ -63,12 +63,7 @@
                     class="form-control sizeSelect"
                     id="channel">
                 <option value="" disabled selected>Select your option</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
+                <option ng-repeat="channel in model.channels" value={{channel._id}}>{{channel.name}}</option>
             </select>
 
 
@@ -97,10 +92,6 @@
         <a class="btn btn-default btn-primary btn-block"
            href="#!/user"
            role="button">Cancel</a>
-
-        <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.currentUser._id}}/channel/{{model.channelId}}/page/{{model.pageId}}/video/{{model.video._id}}/flickr"
-           role="button">Search</a>
 
         <a class="btn btn-default btn-danger btn-block"
            ng-click="model.deleteVideo(model.video)"

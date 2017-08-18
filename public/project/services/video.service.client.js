@@ -8,9 +8,10 @@
 
         this.createVideo = createVideo;
         this.findVideoById = findVideoById;
+        this.findVideoByCreator = findVideoByCreator;
         // this.findVideosByPageId = findVideosByPageId;
         this.updateVideo= updateVideo;
-        // this.deleteVideo = deleteVideo;
+        this.deleteVideo = deleteVideo;
         // this.updateSortIndex = updateSortIndex;
         //
         // function updateSortIndex(start, end, pageId){
@@ -20,6 +21,14 @@
         //             return response.data;
         //         });
         // }
+
+        function findVideoByCreator(creatorId) {
+            var url = "/api/project/allvideo/" + creatorId;
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+                })
+        }
 
         function createVideo(video){
             var url = "/api/project/video";
@@ -48,6 +57,14 @@
         function updateVideo (vid, video){
             var url = "/api/project/video/"+vid;
             return $http.put(url, video)
+                .then(function(response){
+                    return response.data;
+                });
+        }
+        
+        function deleteVideo(vid){
+            var url = "/api/project/video/" + vid;
+            return $http.delete(url)
                 .then(function(response){
                     return response.data;
                 });

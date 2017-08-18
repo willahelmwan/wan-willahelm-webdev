@@ -23,3 +23,4 @@ require("./services/comment.service.server");
 require("./services/video.service.server");
 require("./services/channel.service.server");
 require("./services/channelpage.service.server");
+require("./services/review.service.server");

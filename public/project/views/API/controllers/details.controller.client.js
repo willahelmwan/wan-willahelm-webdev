@@ -4,7 +4,8 @@
         .controller("detailsController", detailsController);
 
 
-    function detailsController($routeParams, movieService, $location, currentUser, watchlistService, userService, commentService) {
+    function detailsController($routeParams, movieService, $location, currentUser, watchlistService,
+                               reviewService, userService, commentService) {
         var model = this;
 
         model.imdbID = $routeParams.imdbID;
@@ -13,6 +14,8 @@
         model.addMovieToWatchlist = addMovieToWatchlist;
         model.createComment = createComment;
         model.followUser = followUser;
+        model.backBtnClick = backBtnClick;
+        model.createReview = createReview;
 
 
         function init() {
@@ -28,6 +31,11 @@
                 .findCommentsByVideoId(model.imdbID)
                 .then(function (comments) {
                     model.comments = comments;
+                });
+            reviewService
+                .findReviewsByVideoId(model.imdbID)
+                .then(function (reviews) {
+                    model.reviews = reviews;
                 });
         }
 
@@ -67,7 +75,17 @@
                 .then(function () {
                     // location.reload();
                     $location.url("details/" + model.imdbID + "/");
-                });
+                })
+        }
+
+        function createReview(imdbId, review) {
+            review._user = model.currentUser._id;
+            review._video = imdbId;
+            reviewService
+                .createReview(imdbId, review)
+                .then(function () {
+                    $location.url("details/" + model.imdbID + "/");
+                })
         }
 
         function addMovieToWatchlist(movie, watchlistId, watchlist) {
@@ -89,6 +107,10 @@
 
         function renderMovie(movie) {
             model.movie = movie;
+        }
+
+        function backBtnClick() {
+            history.back();
         }
     }
 

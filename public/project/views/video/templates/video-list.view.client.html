@@ -1,0 +1,67 @@
+<div class="profile">
+
+    <div class="profilenav">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-top">
+            <div class="container-fluid">
+
+                <a href="#!/user" class="userglyphicon">
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+
+                <a href="#!/video/{{model.videoId}}"
+                   role="button">
+                    <span class="navbar-text pull-right glyphicon glyphicon-cog"></span>
+                </a>
+
+                <div class="navbar-header navbar-title">
+                    <a class="navbar-brand">Video</a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-4">Name</div>
+                    <div class="col-xs-6 col-sm-3 "></div>
+                    <div class="col-sm-3 hidden-xs"></div>
+                    <div class="col-xs-2">
+                        <a href="#!/user" class="plusglyphicon">
+                            <span class="pull-right glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li ng-repeat="video in model.videos" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a href="#!/video/view/{{video._id}}">{{video.name}}</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 "></div>
+                    <div class="col-sm-3 hidden-xs"></div>
+                    <div class="col-xs-2">
+                        <a href="#!/video/{{video._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="profilenav">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
+                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

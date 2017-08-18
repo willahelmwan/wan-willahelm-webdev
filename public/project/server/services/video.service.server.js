@@ -20,10 +20,10 @@ var ObjectId = require('mongodb').ObjectID;
 // ];
 
 app.post("/api/project/video", createVideo);
-// app.get("/api/project/page/:pageId/video", findAllvideosForPage);
+app.get("/api/project/allvideo/:creatorId", findAllvideosForCreator);
 app.get("/api/project/video/:videoId", findVideoById);
 app.put("/api/project/video/:videoId", updateVideo);
-// app.delete("/api/project/video/:videoId", deletevideo);
+app.delete("/api/project/video/:videoId", deleteVideo);
 app.post ("/api/project/uploadposter", uploadposter.single('myFile'), uploadPoster);
 app.post ("/api/project/uploadvideo", uploadvideo.single('myFile'), uploadVideo);
 
@@ -81,6 +81,7 @@ function uploadVideo(req, res) {
     var description = req.body.description;
     var width = req.body.width;
     var channel = req.body.channel;
+    console.log(channel)
 
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder
@@ -96,7 +97,7 @@ function uploadVideo(req, res) {
             video.name = name;
             video.description = description;
             video.width = width;
-            video.channel = channel;
+            video._channel = ObjectId(channel);
             video.url = '/project/public/uploads/videos/'+filename;
             videoModel
                 .updateVideo(videoId, video)
@@ -137,16 +138,16 @@ function uploadVideo(req, res) {
 //         })
 // }
 //
-// function deletevideo(req, res){
-//     var videoId = req.params.videoId;
-//     videoModel
-//         .deletevideo(videoId)
-//         .then(function(status){
-//             res.send(status);
-//         }, function(err){
-//             res.send(err);
-//         });
-// }
+function deleteVideo(req, res){
+    var videoId = req.params.videoId;
+    videoModel
+        .deleteVideo(videoId)
+        .then(function(status){
+            res.send(status);
+        }, function(err){
+            res.send(err);
+        });
+}
 
 function updateVideo(req, res){
     var video = req.body;
@@ -167,6 +168,14 @@ function findVideoById(req,res){
         })
 }
 
+function findAllvideosForCreator(req, res) {
+    var creatorId = req.params.creatorId;
+    videoModel
+        .findAllvideosForCreator(creatorId)
+        .then(function(videos){
+            res.json(videos);
+        })
+}
 
 
 // function findAllvideosForPage(req,res){

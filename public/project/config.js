@@ -15,6 +15,14 @@
                     currentUser: checkCurrentUser
                 }
             })
+            .when("/search/:movieTitle", {
+                templateUrl: "views/home/templates/home-movie-search.view.client.html",
+                controller: "homeSearchController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
@@ -34,6 +42,14 @@
             .when("/video/:videoId", {
                 templateUrl: "views/video/templates/video-edit.view.client.html",
                 controller: "videoEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: isCreator
+                }
+            })
+            .when("/videolist", {
+                templateUrl: "views/video/templates/video-list.view.client.html",
+                controller: "videoListController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: isCreator

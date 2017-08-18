@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top opacity">
-    <div class="container-fluid navbar-background">
+    <div class="container-fluid ">
 
         <a ng-click="model.backBtnClick()" class="userglyphicon">
             <span class="pull-left glyphicon glyphicon-chevron-left"></span>
@@ -34,7 +34,6 @@
         </div>
     </div>
 </nav>
-
 
 <div class="container-fluid details-page center">
 
@@ -216,14 +215,12 @@
                     </div>
 
                     <textarea row="5"
-                              ng-show="model.currentUser._id"
                               placeholder="Enter comment here..."
                               ng-model="model.comment.text"
                               class="form-control"></textarea>
 
 
                     <a class="btn btn-default btn-success btn-block"
-                       ng-show="model.currentUser._id"
                        ng-click="model.createComment(model.movie.imdbID, model.comment)"
                        role="button">Submit</a>
 
@@ -248,7 +245,7 @@
 
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom opacity">
-    <div class="container-fluid navbar-background">
+    <div class="container-fluid">
         <a href="#!/user" class="userglyphicon">
             <span class="pull-right glyphicon glyphicon-user"></span>
         </a>

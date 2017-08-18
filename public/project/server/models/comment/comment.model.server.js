@@ -5,10 +5,10 @@ var commentModel = mongoose.model('projectCommentModel', commentSchema);
 
 commentModel.findCommentsByVideoId = findCommentsByVideoId;
 commentModel.createCommentForVideo = createCommentForVideo;
-// commentModel.findCommentById = findCommentById;
-// commentModel.updateComment = updateComment;
-// commentModel.deleteComment = deleteComment;
-// commentModel.reorderComment = reorderComment;
+// widgetModel.findWidgetById = findWidgetById;
+// widgetModel.updateWidget = updateWidget;
+// widgetModel.deleteWidget = deleteWidget;
+// widgetModel.reorderWidget = reorderWidget;
 
 module.exports = commentModel;
 
@@ -23,18 +23,20 @@ function findCommentsByVideoId(videoId){
         .exec();
 }
 
-// function findCommentById(commentId){
-//     return commentModel.findById(commentId);
+// function findWidgetById(widgetId){
+//     return widgetModel.findById(widgetId);
 // }
 //
-// function updateComment(commentId, comment){
-//     return commentModel.update({_id: commentId}, {$set: comment});
+// function updateWidget(widgetId, widget){
+//     return widgetModel.update({_id: widgetId}, {$set: widget});
 // }
 //
-// function deleteComment(commentId){
-//     return commentModel.remove({_id: commentId});
+// function deleteWidget(widgetId){
+//     return widgetModel.remove({_id: widgetId});
 // }
 //
-
+// function reorderWidget(pageId, start, end){
+//
+// }
 
 

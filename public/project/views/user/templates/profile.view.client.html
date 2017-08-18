@@ -73,17 +73,6 @@
             </li>
             <br/>
         </div>
-
-        <div ng-if="model.currentUser.role === 'CRITIC'">
-        <label>My Reviews:</label>
-            <div class="row">
-                <div class="col-xs-12 review-text">
-                    <li ng-repeat="review in model.reviews" class="list-group-item">
-                        <div ng-if="model.currentUser._id === model.user._id"></div>{{review.text}}
-                    </li>
-                </div>
-            </div>
-        </div>
         <!--<label for="dob">Date of Birth</label>-->
         <!--<input name="dob"-->
         <!--type="date"-->
@@ -98,7 +87,7 @@
 
         <a class="btn btn-default btn-success btn-block"
            ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.user._id"
-           href="#!/video/new"
+           ng-click="model.createVideo()"
            role="button">Create Video</a>
 
         <a class="btn btn-default btn-primary btn-block"
@@ -107,11 +96,14 @@
            role="button">Channels</a>
 
         <a class="btn btn-default btn-primary btn-block"
+           ng-if="model.currentUser.role === 'CREATOR' && model.currentUser._id===model.user._id"
+           href="#!/videolist"
+           role="button">All Videos</a>
+
+        <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"
            href="#!/watchlist"
            role="button">Watchlists</a>
-
-
 
         <a class="btn btn-default btn-primary btn-block"
            ng-if="model.currentUser._id===model.user._id && !(model.currentUser.role === 'ADMIN')"

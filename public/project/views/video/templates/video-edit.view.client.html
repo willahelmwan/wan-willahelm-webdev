@@ -1,37 +1,110 @@
 <div class="profile">
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid navbar-background">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-top">
+            <div class="container-fluid">
 
-                <a href="#!/user/{{model.userId}}/watchlist/{{model.webId}}/page/{{model.pageId}}/widget" class="userglyphicon">
+                <a href="#!/user" class="userglyphicon">
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
 
-                <a ng-click="model.updateWidget(model.widget)"
+                <a ng-click="model.updateVideo(model.video)"
                    role="button">
                     <span class="navbar-text pull-right glyphicon glyphicon-ok"></span>
                 </a>
 
                 <div class="navbar-header navbar-title">
-                    <a class="navbar-brand active">Widget Edit</a>
+                    <a class="navbar-brand active">Edit Video</a>
                 </div>
 
             </div>
         </nav>
     </div>
 
-    <div ng-if="model.widget.type"
-         ng-include="model.getWidgetIncludeUrl(model.widget.type)"></div>
+    <div class="container-fluid entry">
+        <form action="/api/project/uploadvideo" class="fileupload" method="post" enctype="multipart/form-data">
+            <!--<form action="/api/project/assignment/upload" class="fileupload"  method="post" enctype="multipart/form-data">-->
+            <label for="Name">Name</label>
+            <input name="Name"
+                   type="text"
+                   ng-model="model.video.name"
+                   placeholder="Name of Video"
+                   class="form-control"
+                   id="Name"/>
+
+            <label for="text">Text</label>
+            <input name="text"
+                   type="text"
+                   ng-model="model.video.text"
+                   placeholder="Text of Video"
+                   class="form-control"
+                   id="text"/>
+
+            <label for="description">Description</label>
+            <input name="description"
+                   type="text"
+                   ng-model="model.video.description"
+                   placeholder="Description of Video"
+                   class="form-control"
+                   id="description"/>
+
+            <label for="Width">Width</label>
+            <input name="width"
+                   type="text"
+                   ng-model="model.video.width"
+                   value="100%"
+                   class="form-control"
+                   id="Width"/>
+
+            <label for="channel">Channel</label>
+            <select name="channel"
+                    type="number"
+                    ng-model="model.video._channel"
+                    class="form-control sizeSelect"
+                    id="channel">
+                <option value="" disabled selected>Select your option</option>
+                <option ng-repeat="channel in model.channels" value={{channel._id}}>{{channel.name}}</option>
+            </select>
+
+
+            <label for="uploadvideo">Upload Video</label>
+            <div class="input-group">
+                <input name="myFile"
+                       type="file"
+                       class="form-control"
+                       id="uploadvideo"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-success uploadbutton"
+                            type="submit">Upload Video</button>
+                </span>
+            </div>
+            <input name="videoId" value="{{model.video._id}}" style="display: none"/>
+        </form>
+
+
+        <!--<input name="pageId" value="{{model.pageId}}" style="display: none"/>-->
+        <!--<input name="videoId" value="{{model.video._id}}" style="display: none"/>-->
+
+        <a class="btn btn-default btn-success btn-block"
+           ng-click="model.updateVideo(model.video)"
+           role="button">Done</a>
+
+        <a class="btn btn-default btn-primary btn-block"
+           href="#!/user"
+           role="button">Cancel</a>
+
+        <a class="btn btn-default btn-danger btn-block"
+           ng-click="model.deleteVideo(model.video)"
+           role="button">Delete</a>
+    </div>
 
     <div class="profilenav">
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid navbar-background">
-                <a href="#!/user/{{model.userId}}"  class="userglyphicon">
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
+                <a href="#!/user/{{model.currentUser._id}}" class="userglyphicon">
                     <span class="pull-right glyphicon glyphicon-user"></span>
                 </a>
             </div>
         </nav>
     </div>
 </div>
-

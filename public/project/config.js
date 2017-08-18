@@ -15,7 +15,6 @@
                     currentUser: checkCurrentUser
                 }
             })
-            //new route for homeSearch
             .when("/search/:movieTitle", {
                 templateUrl: "views/home/templates/home-movie-search.view.client.html",
                 controller: "homeSearchController",
@@ -24,7 +23,6 @@
                     currentUser: checkCurrentUser
                 }
             })
-            //
             .when("/details/:imdbID", {
                 templateUrl: "views/API/templates/details.view.client.html",
                 controller: "detailsController",
@@ -33,12 +31,28 @@
                     currentUser: checkCurrentUser
                 }
             })
-            .when("/video/new", {
-                templateUrl: "views/video/templates/video-new.view.client.html",
-                controller: "videoNewController",
+            .when("/video/view/:videoId", {
+                templateUrl: "views/video/templates/video.view.client.html",
+                controller: "videoController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLoggedIn
+                    currentUser: checkCurrentUser
+                }
+            })
+            .when("/video/:videoId", {
+                templateUrl: "views/video/templates/video-edit.view.client.html",
+                controller: "videoEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: isCreator
+                }
+            })
+            .when("/videolist", {
+                templateUrl: "views/video/templates/video-list.view.client.html",
+                controller: "videoListController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: isCreator
                 }
             })
             .when("/login", {
@@ -107,6 +121,22 @@
                     currentUser: checkLoggedIn
                 }
             })
+            .when("/watchlist/:wid/page/new", {
+                templateUrl: "views/page/templates/page-new.view.client.html",
+                controller: "pageNewController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
+            .when("/watchlist/:wid/page/:pid", {
+                templateUrl: "views/page/templates/page-edit.view.client.html",
+                controller: "pageEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when("/channel", {
                 templateUrl: "views/channel/templates/channel-list.view.client.html",
                 controller: "channelListController",
@@ -132,55 +162,70 @@
                 }
             })
             .when("/channel/:cid/channelpage", {
-                templateUrl: "views/page/templates/page-list.view.client.html",
-                controller: "pageListController",
+                templateUrl: "views/channelpage/templates/channelpage-list.view.client.html",
+                controller: "channelpageListController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/watchlist/:wid/page/new", {
-                templateUrl: "views/page/templates/page-new.view.client.html",
-                controller: "pageNewController",
+            .when("/channel/:cid/channelpage/new", {
+                templateUrl: "views/channelpage/templates/channelpage-new.view.client.html",
+                controller: "channelpageNewController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/watchlist/:wid/page/:pid", {
-                templateUrl: "views/page/templates/page-edit.view.client.html",
-                controller: "pageEditController",
+            .when("/channel/:cid/channelpage/:cpid", {
+                templateUrl: "views/channelpage/templates/channelpage-edit.view.client.html",
+                controller: "channelpageEditController",
                 controllerAs: "model",
                 resolve: {
                     currentUser: checkLoggedIn
                 }
             })
-            .when("/watchlist/:wid/page/:pid/widget", {
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget", {
                 templateUrl: "views/widget/templates/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"
             })
-            .when("/watchlist/:wid/page/:pid/widget/new", {
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/new", {
                 templateUrl: "views/widget/templates/widget-chooser.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
-            .when("/watchlist/:wid/page/:pid/widget/:wgid", {
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid", {
                 templateUrl: "views/widget/templates/widget-edit.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })
-            .when("/watchlist/:wid/page/:pid/widget/:wgid/flickr", {
+            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid/flickr", {
                 templateUrl: "views/widget/templates/widget-flickr-search.view.client.html",
                 controller: "FlickrImageSearchController",
                 controllerAs: "model"
-            });
+            })
     }
 
     function isAdmin($q, $location, userService) {
         var deferred = $q.defer();
         userService
             .isAdmin()
+            .then(function (user) {
+                if (user === '0') {
+                    deferred.reject();
+                    $location.url('/user');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function isCreator($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .isCreator()
             .then(function (user) {
                 if (user === '0') {
                     deferred.reject();

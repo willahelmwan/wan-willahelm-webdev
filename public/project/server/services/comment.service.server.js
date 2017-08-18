@@ -17,7 +17,7 @@ function createComment(req, res){
         .then(function(comment){
             // addToPage(videoId, comment);
             res.json(comment);
-        });
+        })
 }
 
 function deleteComment(req, res){
@@ -72,5 +72,5 @@ function addToVideo(videoId, comment){
         .then(function(video){
             video.comments.push(comment._id);
             return video.save();
-        });
+        })
 }

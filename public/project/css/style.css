@@ -1,7 +1,6 @@
 .container-fluid.entry {
     margin: auto;
     max-width: 400px;
-    padding-top: 60px;
 }
 
 input.form-control, select.form-control, textarea {
@@ -23,6 +22,7 @@ input.form-control, select.form-control, textarea {
 }
 
 div.profile {
+    padding-top: 60px;
     padding-bottom: 60px;
     overflow-y: scroll;
 }
@@ -31,24 +31,14 @@ div.profile {
     padding-bottom: 5px;
 }
 
-/*.profilenav .navbar-default .navbar-toggle {*/
-/*border-color: #fff;*/
-/*}*/
-
-/*.navbar-background {*/
-/*background-color: #36454f;*/
-/*border-color: #b2b1b5;*/
-
-/*}*/
-
-.navbar.navbar-inverse.navbar-fixed-top {
-    /*background-color: darkred;*/
-    border-color: darkred;
+.profilenav .navbar-default .navbar-toggle {
+    border-color: #fff;
 }
 
-.navbar.navbar-inverse.navbar-fixed-bottom {
-    /*background-color: darkred;*/
-    border-color: darkred;
+.navbar-background {
+    background-color: #36454f;
+    border-color: #b2b1b5;
+
 }
 
 .profilenav .navbar-default .navbar-brand {
@@ -78,7 +68,7 @@ div.profile {
     color: maroon;
 }
 
-.glyphicon.glyphicon-cog.userupdate {
+.glyphicon.glyphicon-cog.userupdate{
     color: dodgerblue;
 }
 
@@ -270,6 +260,10 @@ a:hover {
 
 }
 
+body {
+    background: url("../../vendor/image/nice_snow_@2X.png");
+}
+
 .centered-table {
     margin-left: auto;
     margin-right: auto;
@@ -290,15 +284,15 @@ a:hover {
     color: #b2b1b5;
 }
 
-.jumbotron {
-    background: black;
-    overflow: hidden;
-}
-
 #center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    border-color: darkred;
+}
+
 
 .table > tbody > tr > td {
     border-top: none;
@@ -316,6 +310,11 @@ a:hover {
 .table > tbody > tr > td > img {
     position: relative;
     text-align: center;
+}
+
+.jumbotron {
+    background: black;
+    overflow: hidden;
 }
 
 /************************ NEW CHANGES **************************************/
@@ -345,7 +344,7 @@ a:hover {
     }
 }
 
-@media (max-width: 996px) and (min-width: 768px) {
+@media (max-width: 996px) and (min-width:768px) {
     .details {
         position: fixed;
     }
@@ -400,6 +399,7 @@ body {
     padding-bottom: 0px;
 }
 
+
 div.details {
     display: block;
 }
@@ -424,7 +424,7 @@ div.details {
     width: 333px;
 }
 
-.detailsPageMessage {
+.detailsPageMessage{
     padding-top: 60px;
 }
 
@@ -458,10 +458,6 @@ div.details {
 
 .top-padding {
     padding-top: 60px;
-}
-
-.bottom-padding {
-    padding-bottom: 60px;
 }
 
 .table > tbody > tr > td {
@@ -505,11 +501,15 @@ body {
     background: url("../../vendor/image/dark-background.jpg");
 }
 
-.dropdown-menu .dropdown-menu-right {
-    z-index: 999;
+.uploadbutton{
+    width:120px;
 }
 
-.review-text {
-    max-width: 500px;
-    word-wrap: break-word;
+.navbar.navbar-inverse.navbar-fixed-bottom {
+    /*background-color: darkred;*/
+    border-color: darkred;
+}
+
+.bottom-padding{
+    padding-bottom: 60px;
 }

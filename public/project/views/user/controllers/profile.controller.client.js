@@ -4,13 +4,15 @@
         .module("omdbApp")
         .controller("profileController", profileController);
 
-    function profileController(userService, $location, currentUser){
+    function profileController(userService, $location, currentUser, videoService){
         var model = this;
         model.currentUser = currentUser;
         model.updateUser = updateUser;
         model.unregister = unregister;
         model.logoutUser = logoutUser;
         model.followUser = followUser;
+        model.createVideo = createVideo;
+
 
         var userId = currentUser._id;
 
@@ -26,6 +28,22 @@
                 })
         }
         init();
+        
+        function createVideo() {
+            var video = {type: "video",
+                _creator: model.currentUser._id,
+                name:""};
+            videoService
+                .createVideo(video)
+                .then(function(response){
+                    model.videoId = response._id;
+                    videoService
+                        .findVideoById(model.videoId)
+                        .then (function(video){
+                            $location.url("video/"+video._id);
+                        });
+                })
+        }
 
         function followUser(userId, cUser){
             cUser.following.push(userId);

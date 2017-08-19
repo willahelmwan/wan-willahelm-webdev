@@ -28,7 +28,10 @@
         }
 
         function logoutUser() {
-            userService.logoutUser();
+            userService.logoutUser()
+                .then(function(){
+                    $location.url("/");
+                })
         }
 
         function searchMovieByImdbId(imdbID) {
@@ -40,10 +43,14 @@
         function searchMovieByTitle(movieTitle) {
             movieService
                 .searchMovieByTitle(movieTitle)
-                .then(renderMovies);
+                .then(function(){
+                    renderMovies
+                    $location.url("/search/"+ movieTitle)
+                });
         }
 
         function renderMovies(movies) {
+
             model.movies = movies;
         }
     }

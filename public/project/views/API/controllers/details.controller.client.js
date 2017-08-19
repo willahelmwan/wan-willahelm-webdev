@@ -13,6 +13,7 @@
         // model.findwatchlistsByUser = findwatchlistsByUser;
         model.addMovieToWatchlist = addMovieToWatchlist;
         model.createComment = createComment;
+        model.logoutUser = logoutUser;
         model.followUser = followUser;
         model.backBtnClick = backBtnClick;
         model.createReview = createReview;
@@ -50,7 +51,12 @@
                     $location.url("details/" + model.imdbID + "/");
                 })
         }
-
+        function logoutUser(){
+            userService.logoutUser()
+                .then(function(){
+                    location.reload();
+                })
+        }
         function deleteComment(commentId) {
             commentService
                 .deleteComment(commentId)

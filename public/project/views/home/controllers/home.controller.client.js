@@ -13,7 +13,6 @@
         model.searchMovieByImdbId = searchMovieByImdbId;
         model.gotoDetailPage = gotoDetailPage;
         model.movieTitle = "";
-
         model.currentUser = currentUser;
         function init() {
         }

@@ -20,7 +20,7 @@
                 <li><a ng-show="model.currentUser._id"
                        ng-click="model.logoutUser()"
                        href="#!">Logout</a></li>
-                <li><a ng-show="model.currentUser" href="#!/admin">Admin</a></li>
+                <li><a ng-show="model.currentUser.role === 'ADMIN'" href="#!/admin">Admin</a></li>
                 <!--<li><a href="#!/about">About</a></li>-->
                 <!--<li><a href="#!/contact">Contact</a></li>-->
             </ul>

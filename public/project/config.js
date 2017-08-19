@@ -111,14 +111,6 @@
                     adminUser: isAdmin
                 }
             })
-            // .when("/admin/user",{
-            //     templateUrl: "views/admin/templates/admin-edit-user.view.client.html",
-            //     // controller: "adminController",
-            //     // controllerAs: "model",
-            //     resolve: {
-            //         adminUser: isAdmin
-            //     }
-            // })
             .when("/watchlist", {
                 templateUrl: "views/watchlist/templates/watchlist-list.view.client.html",
                 controller: "watchlistListController",
@@ -214,26 +206,6 @@
                 resolve: {
                     currentUser: checkLoggedIn
                 }
-            })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget", {
-                templateUrl: "views/widget/templates/widget-list.view.client.html",
-                controller: "widgetListController",
-                controllerAs: "model"
-            })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/new", {
-                templateUrl: "views/widget/templates/widget-chooser.view.client.html",
-                controller: "widgetNewController",
-                controllerAs: "model"
-            })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid", {
-                templateUrl: "views/widget/templates/widget-edit.view.client.html",
-                controller: "widgetEditController",
-                controllerAs: "model"
-            })
-            .when("/user/:userId/watchlist/:wid/page/:pid/widget/:wgid/flickr", {
-                templateUrl: "views/widget/templates/widget-flickr-search.view.client.html",
-                controller: "FlickrImageSearchController",
-                controllerAs: "model"
             })
     }
 

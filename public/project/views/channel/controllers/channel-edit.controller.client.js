@@ -34,7 +34,7 @@
 
         function deletechannel(channel){
             channelService
-                .deletechannel(channel._id)
+                .deletechannel(channel)
                 .then(function(response){
                     $location.url("channel");
                 });

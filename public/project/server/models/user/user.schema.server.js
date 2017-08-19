@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
     email: String,
     google: {id: String, token: String},
     watchlists: [{type: mongoose.Schema.Types.ObjectId, ref: "watchlistModel"}],
+    channels: [{type: mongoose.Schema.Types.ObjectId, ref: "channelModel"}],
     following: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: "projectUserModel"}],
     videos: [{type: mongoose.Schema.Types.ObjectId, ref: "projectVideoModel"}],

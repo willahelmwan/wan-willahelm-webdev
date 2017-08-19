@@ -17,10 +17,11 @@
         init();
 
         function createchannel(channel){
+            channel._user = model.userId;
             channelService
                 .createchannel(model.userId, channel)
-                .then(function(){
-                    $location.url("/channel");
+                .then(function(channel){
+                    $location.url("channel");
                 });
         }
     }

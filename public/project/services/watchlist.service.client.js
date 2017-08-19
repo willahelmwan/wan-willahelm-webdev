@@ -12,12 +12,12 @@
         this.deletewatchlist = deletewatchlist;
 
         function createwatchlist(userId, watchlist){
-            var url = "/api/project/watchlist";
+            var url = "/api/project/watchlist/" + userId;
             return $http.post(url,watchlist);
         }
 
         function findwatchlistsByUser(userId){
-            var url = "/api/project/watchlist";
+            var url = "/api/project/watchlists/" + userId;
             return $http.get(url)
                 .then(function(response){
                     return response.data;
@@ -40,8 +40,8 @@
                 })
         }
 
-        function deletewatchlist(wid){
-            var url = "/api/project/watchlist/" + wid;
+        function deletewatchlist(watchlist){
+            var url = "/api/project/watchlist/" + watchlist._user + "/"+watchlist._id;
             return $http.delete(url)
                 .then(function(response){
                     return response.data;

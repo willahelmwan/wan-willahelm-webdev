@@ -1,64 +1,56 @@
-<div class="profile">
+<nav class="navbar navbar-inverse opacity navbar-fixed-top">
+    <a href="#!/channel"><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
+
+    <a ng-click="model.createchannel(channel)" role="button"><span
+            class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
+
+    <div class="container-fluid nav-header">
+        <div class="navbar-header">
+            <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit">channels</a></div>
+            <div class="col-lg-9 col-xs-12 split-view-right-nav newchannel"><a class="navbar-brand splitnav">New
+                channel</a></div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid top-padding bottom-padding">
+    <div class="row">
+        <div class="col-xs-3 visible-lg split-view-left">
+            <div ng-include="'views/channel/templates/channel-list.component.client.html'"></div>
+        </div>
+
+        <div class="col-lg-9 col-xs-12 split-view-right">
+            <label for="name">Name</label>
+            <input name="name"
+                   type="text"
+                   ng-model="channel.name"
+                   placeholder="Name"
+                   class="form-control"
+                   id="name"/>
+
+            <label for="description">Description</label>
+            <textarea name="description"
+                      rows="5"
+                      ng-model="channel.description"
+                      placeholder="Description"
+                      class="form-control"
+                      id="description"/></textarea>
+
+            <a class="btn btn-default btn-primary btn-block"
+               ng-click="model.createchannel(channel)"
+               role="button">Create</a>
+
+            <a class="btn btn-default btn-danger btn-block"
+               href="#!/channel"
+               role="button">Cancel</a>
+        </div>
+    </div>
 
     <div class="profilenav">
-        <div class="row">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <a href="#!/channel" ><span class="pull-left glyphicon glyphicon-chevron-left nav-glyphicon-chevron-left"></span></a>
-
-                <a ng-click="model.createchannel(channel)" role="button"><span class="pull-right glyphicon glyphicon-ok nav-glyphicon-ok"></span></a>
-
-                <div class="container-fluid nav-header navbar-background">
-                    <div class="navbar-header">
-                            <div class="col-lg-3 visible-lg split-view-left-nav"><a class="navbar-brand navsplit" >channels</a></div>
-                            <div class="col-lg-9 col-xs-12 split-view-right-nav newchannel"><a class="navbar-brand splitnav">New channel</a></div>
-                    </div>
-                </div>
-            </nav>
-
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-3 visible-lg split-view-left">
-                <div ng-include="'views/channel/templates/channel-list.component.client.html'"></div>
+        <nav class="navbar navbar-inverse opacity navbar-fixed-bottom">
+            <div class="container-fluid ">
+                <a href="#!/user" class="userglyphicon">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
             </div>
-
-            <div class="col-lg-9 col-xs-12 split-view-right">
-                <label for="name">Name</label>
-                <input name="name"
-                       type="text"
-                       ng-model="channel.name"
-                       placeholder="Name"
-                       class="form-control"
-                       id="name"/>
-
-                <label for="description">Description</label>
-                <textarea name="description"
-                          rows="5"
-                          ng-model="channel.description"
-                          placeholder="Description"
-                          class="form-control"
-                          id="description"/></textarea>
-
-                <a class="btn btn-default btn-primary btn-block"
-                   ng-click="model.createchannel(channel)"
-                   role="button">Create</a>
-
-                <a class="btn btn-default btn-danger btn-block"
-                   href="#!/channel"
-                   role="button">Cancel</a>
-            </div>
-        </div>
-
-        <div class="profilenav">
-            <nav class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container-fluid navbar-background">
-                    <a href="#!/user" class="userglyphicon">
-                        <span class="pull-right glyphicon glyphicon-user"></span>
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+        </nav>

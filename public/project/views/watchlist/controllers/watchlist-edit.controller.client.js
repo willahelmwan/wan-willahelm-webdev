@@ -6,7 +6,7 @@
     function watchlistEditController($routeParams, $location, watchlistService, currentUser){
         var model = this;
         model.userId = currentUser._id;
-        model.webId = $routeParams.wid;
+        model.watchlistId = $routeParams.wid;
         model.updatewatchlist = updatewatchlist;
         model.deletewatchlist = deletewatchlist;
         model.backBtnClick = backBtnClick;
@@ -20,7 +20,7 @@
                     model.watchlists = watchlists;
                 });
             watchlistService
-                .findwatchlistById(model.webId)
+                .findwatchlistById(model.watchlistId)
                 .then(function(watchlist){
                     model.watchlist = watchlist;
                 });
@@ -37,7 +37,7 @@
 
         function deletewatchlist(watchlist){
             watchlistService
-                .deletewatchlist(watchlist._id)
+                .deletewatchlist(watchlist)
                 .then(function(response){
                     $location.url("watchlist");
                 });

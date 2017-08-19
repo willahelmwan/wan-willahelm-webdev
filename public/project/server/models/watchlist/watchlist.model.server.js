@@ -24,8 +24,7 @@ function deletewatchlist(watchlistId){
     return watchlistModel.remove({_id: watchlistId});
 }
 
-function createwatchlistForUser(userId, watchlist){
-    watchlist._user = userId;
+function createwatchlistForUser(watchlist){
     return watchlistModel.create(watchlist);
 }
 

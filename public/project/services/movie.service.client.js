@@ -9,7 +9,7 @@
         this.searchMovieByImdbId = searchMovieByImdbId;
 
         function searchMovieByImdbId(imdbID) {
-            var url = "http://www.omdbapi.com/?i="+imdbID+"&apikey=8d5425f4";
+            var url = "https://www.omdbapi.com/?i="+imdbID+"&apikey=8d5425f4";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
@@ -17,7 +17,7 @@
         }
 
         function searchMovieByTitle(movieTitle) {
-            var url = "http://www.omdbapi.com/?s="+movieTitle+"&apikey=8d5425f4";
+            var url = "https://www.omdbapi.com/?s="+movieTitle+"&apikey=8d5425f4";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

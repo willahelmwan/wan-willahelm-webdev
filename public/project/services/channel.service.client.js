@@ -12,12 +12,12 @@
         this.deletechannel = deletechannel;
 
         function createchannel(userId, channel){
-            var url = "/api/project/channel";
+            var url = "/api/project/channel/" + userId;
             return $http.post(url,channel);
         }
 
         function findchannelsByUser(userId){
-            var url = "/api/project/channel";
+            var url = "/api/project/channels/"+userId;
             return $http.get(url)
                 .then(function(response){
                     return response.data;
@@ -40,8 +40,8 @@
                 })
         }
 
-        function deletechannel(wid){
-            var url = "/api/project/channel/" + wid;
+        function deletechannel(channel){
+            var url = "/api/project/channel/" + channel._user + "/"+channel._id;
             return $http.delete(url)
                 .then(function(response){
                     return response.data;

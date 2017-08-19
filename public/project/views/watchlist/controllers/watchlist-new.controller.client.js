@@ -20,6 +20,7 @@
         init();
 
         function createwatchlist(watchlist){
+            watchlist._user = model.userId;
             watchlistService
                 .createwatchlist(model.userId, watchlist)
                 .then(function(){

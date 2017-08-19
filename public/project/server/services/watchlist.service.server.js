@@ -14,82 +14,70 @@ var userModel = require('../models/user/user.model.server');
 //     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 // ];
 
-app.post("/api/project/watchlist", createwatchlist);
-app.get("/api/project/watchlist", findAllwatchlistsForUser);
+app.post("/api/project/watchlist/:userId", createwatchlist);
+app.get("/api/project/watchlists/:userId", findAllwatchlistsForUser);
 app.get("/api/project/watchlist/:watchlistId", findwatchlistById);
 app.put("/api/project/watchlist/:watchlistId", updatewatchlist);
-app.delete("/api/project/watchlist/:watchlistId", deletewatchlist);
+app.delete("/api/project/watchlist/:userId/:watchlistId", deletewatchlist);
 
-function deletewatchlist(req, res){
+function deletewatchlist(req, res) {
     var watchlistId = req.params.watchlistId;
+    var userId = req.params.userId;
     watchlistModel
         .deletewatchlist(watchlistId)
-        .then(function(status){
+        .then(function (status) {
+            userModel
+                .deleteWatchlistFromArray(userId, watchlistId)
             res.send(status);
-        }, function(err){
+        }, function (err) {
             res.send(err);
         });
 }
 
-function updatewatchlist(req, res){
+function updatewatchlist(req, res) {
     var watchlist = req.body;
     var watchlistId = req.params.watchlistId;
     watchlistModel
         .updatewatchlist(watchlistId, watchlist)
-        .then(function(status){
+        .then(function (status) {
             res.send(status);
-        }, function(err){
+        }, function (err) {
             res.send(err);
         });
 }
 
-function findwatchlistById(req,res){
+function findwatchlistById(req, res) {
     var watchlistId = req.params.watchlistId;
     watchlistModel
         .findwatchlistById(watchlistId)
-        .then(function(watchlist){
+        .then(function (watchlist) {
             res.json(watchlist);
-        }, function(err){
+        }, function (err) {
             res.send(err);
         });
 }
 
-function createwatchlist(req, res){
+function createwatchlist(req, res) {
     var watchlist = req.body;
     var userId = req.params.userId;
     watchlistModel
-        .createwatchlistForUser(userId,watchlist)
-        .then(function(watchlist){
-            updateUser(userId,watchlist);
+        .createwatchlistForUser(watchlist)
+        .then(function (watchlist) {
+            updateUser(userId, watchlist);
             res.json(watchlist);
         });
 }
 
-function findAllwatchlistsForUser(req,res){
+function findAllwatchlistsForUser(req, res) {
     var userId = req.params.userId;
     watchlistModel
         .findAllwatchlistsForUser(userId)
-        .then(function(watchlists){
+        .then(function (watchlists) {
             res.json(watchlists);
         })
 }
 
-function updateUser(userId, watchlist){
+function updateUser(userId, watchlist) {
     userModel
-        .findUserById(userId)
-        .then(function(user){
-            user.watchlists= user.watchlists.push(watchlist._id);
-            userModel
-                .addwatchlistToArray(userId, watchlist)
-        })
+        .addwatchlistToArray(userId, watchlist)
 }
-
-// function updateUser(userId, watchlist){
-//     userModel
-//         .findUserById(userId)
-//         .then(function(user){
-//             user.watchlists= user.watchlists.push(watchlist._id)
-//             userModel
-//                 .updateUser(userId, user)
-//         })
-// }

@@ -24,8 +24,7 @@ function deletechannel(channelId){
     return channelModel.remove({_id: channelId});
 }
 
-function createchannelForUser(userId, channel){
-    channel._user = userId;
+function createchannelForUser(channel){
     return channelModel.create(channel);
 }
 

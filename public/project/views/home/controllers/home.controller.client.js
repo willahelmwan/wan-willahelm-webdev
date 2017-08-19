@@ -25,7 +25,10 @@
         }
 
         function logoutUser(){
-            userService.logoutUser();
+            userService.logoutUser()
+                .then(function(){
+                    location.reload();
+                })
         }
 
         function searchMovieByImdbId(imdbID) {
